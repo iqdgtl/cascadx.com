@@ -39,7 +39,7 @@ export default function PageSection({
   const bg = alt ? "bg-bg-alt" : "bg-bg";
 
   return (
-    <section className={`relative z-[2] py-[100px] px-7 ${bg}`} ref={ref}>
+    <section className={`relative z-[2] py-14 md:py-[100px] px-5 md:px-7 ${bg}`} ref={ref}>
       <div
         className="max-w-[var(--max)] mx-auto"
         style={{

@@ -51,8 +51,8 @@ export default function StatsBar({ stats }: { stats: Stat[] }) {
   }, []);
 
   return (
-    <section className="relative z-[2] py-12 px-7 border-t border-b border-line bg-bg-alt" ref={ref}>
-      <div className="max-w-[var(--max)] mx-auto flex flex-wrap justify-center gap-8 md:gap-16">
+    <section className="relative z-[2] py-8 md:py-12 px-5 md:px-7 border-t border-b border-line bg-bg-alt" ref={ref}>
+      <div className="max-w-[var(--max)] mx-auto grid grid-cols-2 md:flex md:flex-wrap justify-center gap-6 md:gap-16">
         {stats.map((s, i) => (
           <StatItem key={s.label} stat={s} trigger={vis} delay={i * 120} />
         ))}

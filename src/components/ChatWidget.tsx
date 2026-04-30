@@ -215,7 +215,8 @@ export default function ChatWidget() {
         <button
           onClick={() => setOpen(true)}
           aria-label="Open chat with CascadX assistant"
-          className="fixed bottom-6 right-6 z-50 flex items-center gap-3 h-14 pl-2 pr-5 bg-surface-el border border-[rgba(255,255,255,0.12)] rounded-full shadow-[0_12px_30px_-10px_rgba(0,0,0,0.6),0_0_0_1px_rgba(217,119,87,0.2)] transition-all duration-200 hover:bg-[#2e3533] hover:border-accent hover:scale-[1.03] animate-[float_3s_ease-in-out_infinite] max-[600px]:w-14 max-[600px]:pl-0 max-[600px]:pr-0 max-[600px]:justify-center"
+          className="fixed z-50 flex items-center gap-3 h-14 pl-2 pr-5 bg-surface-el border border-[rgba(255,255,255,0.12)] rounded-full shadow-[0_12px_30px_-10px_rgba(0,0,0,0.6),0_0_0_1px_rgba(217,119,87,0.2)] transition-all duration-200 hover:bg-[#2e3533] hover:border-accent hover:scale-[1.03] animate-[float_3s_ease-in-out_infinite] max-[600px]:w-14 max-[600px]:pl-0 max-[600px]:pr-0 max-[600px]:justify-center"
+          style={{ bottom: "calc(24px + env(safe-area-inset-bottom, 0px))", right: "24px" }}
         >
           <div className="relative w-10 h-10 rounded-full bg-surface grid place-items-center shrink-0">
             <RobotMascot size={32} />
@@ -227,7 +228,7 @@ export default function ChatWidget() {
 
       {/* Expanded panel */}
       {open && (
-        <div className="fixed bottom-6 right-6 z-50 w-[400px] h-[600px] max-[600px]:inset-0 max-[600px]:w-full max-[600px]:h-full max-[600px]:bottom-0 max-[600px]:right-0 max-[600px]:rounded-none bg-surface-el border border-[rgba(255,255,255,0.12)] rounded-[18px] shadow-[0_20px_50px_-10px_rgba(0,0,0,0.7),0_1px_0_rgba(255,255,255,0.08)_inset] flex flex-col overflow-hidden animate-[msgIn_0.35s_cubic-bezier(0.2,0.8,0.2,1)_forwards]">
+        <div className="fixed bottom-6 right-6 z-50 w-[400px] h-[600px] max-[600px]:inset-0 max-[600px]:w-full max-[600px]:h-full max-[600px]:bottom-0 max-[600px]:right-0 max-[600px]:rounded-none bg-surface-el border border-[rgba(255,255,255,0.12)] rounded-[18px] shadow-[0_20px_50px_-10px_rgba(0,0,0,0.7),0_1px_0_rgba(255,255,255,0.08)_inset] flex flex-col overflow-hidden animate-[msgIn_0.35s_cubic-bezier(0.2,0.8,0.2,1)_forwards] max-[600px]:pb-[env(safe-area-inset-bottom)]">
           {/* Header */}
           <div className="flex items-center justify-between px-5 py-4 border-b border-line shrink-0">
             <div className="flex items-center gap-3">

@@ -37,7 +37,7 @@ export default function FAQ({ kicker, title, items }: { kicker: string; title: R
   const [openIdx, setOpenIdx] = useState<number | null>(0);
 
   return (
-    <section className="relative z-[2] py-[100px] px-7">
+    <section className="relative z-[2] py-14 md:py-[100px] px-5 md:px-7">
       <div className="max-w-[800px] mx-auto">
         <div className="flex items-center gap-3 font-mono text-[11.5px] tracking-[0.14em] uppercase text-accent-deep mb-[18px]">
           <span className="w-7 h-px bg-accent" />{kicker}

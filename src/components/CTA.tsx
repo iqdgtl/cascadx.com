@@ -5,7 +5,7 @@ import RobotMascot from "./RobotMascot";
 
 export default function CTA() {
   return (
-    <section id="cta" className="relative z-[2] py-[140px] px-7 bg-gradient-to-b from-[#0d0f0e] to-[#050606] text-ink overflow-hidden">
+    <section id="cta" className="relative z-[2] py-16 md:py-[140px] px-5 md:px-7 bg-gradient-to-b from-[#0d0f0e] to-[#050606] text-ink overflow-hidden">
       {/* Glow overlay */}
       <div className="absolute inset-0 bg-[radial-gradient(500px_300px_at_80%_20%,rgba(217,119,87,0.35),transparent_65%),radial-gradient(400px_250px_at_20%_80%,rgba(217,119,87,0.12),transparent_60%)]" />
 

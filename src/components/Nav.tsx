@@ -155,6 +155,13 @@ function MobileMenu() {
   // Close on route change
   useEffect(() => { setOpen(false); }, [pathname]);
 
+  // Lock body scroll when menu is open
+  useEffect(() => {
+    if (open) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
+
   return (
     <>
       {/* Hamburger button */}
@@ -170,24 +177,31 @@ function MobileMenu() {
 
       {/* Overlay */}
       {open && (
-        <div className="fixed inset-0 top-[65px] z-40 bg-bg/95 backdrop-blur-md overflow-y-auto lg:hidden">
-          <div className="max-w-[var(--max)] mx-auto px-7 py-8">
-            {navGroups.map((group) => (
-              <div key={group.label} className="border-b border-line">
+        <div className="fixed inset-0 top-[57px] z-40 bg-[rgba(13,15,14,0.95)] backdrop-blur-[20px] overflow-y-auto lg:hidden">
+          <div className="max-w-[var(--max)] mx-auto px-6 py-8">
+            {navGroups.map((group, gi) => (
+              <div
+                key={group.label}
+                className="border-b border-line opacity-0 animate-[msgIn_0.3s_ease_forwards]"
+                style={{ animationDelay: `${gi * 80}ms` }}
+              >
                 <button
-                  className="flex items-center justify-between w-full py-4 text-left text-ink font-display font-semibold text-lg"
+                  className="flex items-center justify-between w-full py-4 text-left text-ink font-display font-[700] text-[22px] tracking-[-0.02em]"
                   onClick={() => setExpandedGroup(expandedGroup === group.label ? null : group.label)}
                 >
                   {group.label}
                   <Chevron open={expandedGroup === group.label} />
                 </button>
-                {expandedGroup === group.label && (
-                  <div className="pb-4 pl-4 flex flex-col gap-1">
+                <div
+                  className="overflow-hidden transition-all duration-300"
+                  style={{ maxHeight: expandedGroup === group.label ? "300px" : "0", opacity: expandedGroup === group.label ? 1 : 0 }}
+                >
+                  <div className="pb-4 pl-4 flex flex-col gap-0.5">
                     {group.items.map((item) => (
                       <Link
                         key={item.href}
                         href={item.href}
-                        className={`py-2.5 px-3 rounded-lg text-sm ${
+                        className={`py-3.5 px-3 rounded-lg text-[17px] ${
                           pathname === item.href ? "text-accent font-medium" : "text-ink-soft"
                         }`}
                         onClick={() => setOpen(false)}
@@ -196,7 +210,7 @@ function MobileMenu() {
                       </Link>
                     ))}
                   </div>
-                )}
+                </div>
               </div>
             ))}
 

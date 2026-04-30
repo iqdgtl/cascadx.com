@@ -152,7 +152,7 @@ export default function Footer() {
                 key={s.label}
                 href={s.href}
                 aria-label={s.label}
-                className="text-white/50 hover:text-accent transition-all duration-250 hover:scale-110 [&_svg]:w-[22px] [&_svg]:h-[22px]"
+                className="text-white/50 hover:text-accent transition-all duration-250 hover:scale-110 [&_svg]:w-[22px] [&_svg]:h-[22px] p-2 -m-2"
               >
                 {s.icon}
               </a>
