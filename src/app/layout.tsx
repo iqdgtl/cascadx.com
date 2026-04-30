@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://cascadx.com"),
   alternates: { canonical: "/" },
   title: {
-    default: "CascadX ��� AI-Powered Payment Cascading & Smart Routing",
+    default: "CascadX — AI-Powered Payment Cascading & Smart Routing",
     template: "%s — CascadX",
   },
   description: "Recover declined transactions with AI-powered payment cascading. Route every transaction through 1,000+ PSPs in under 40ms. Lift approval rates by 18%.",
@@ -41,6 +41,21 @@ export const metadata: Metadata = {
     title: "CascadX — AI-Powered Payment Cascading",
     description: "Recover declined transactions with AI-powered payment cascading. Lift approval rates by 18%.",
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    other: [
+      { rel: "mask-icon", url: "/favicon.svg", color: "#d97757" },
+    ],
+  },
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({
