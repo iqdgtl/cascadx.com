@@ -11,7 +11,7 @@ import RobotMascot from "./RobotMascot";
 
 /* --- APM logos --- */
 const GooglePayLogo = () => (<svg viewBox="0 0 56 24" className="w-[36px]"><path d="M21.4 10.5c0-.6-.1-1.2-.2-1.9h-9.7v3.5h5.6c-.2 1.2-.9 2.3-2 3v2.4h3.2c1.9-1.7 3-4.3 3.1-7z" fill="#4285F4"/><path d="M11.5 18.7c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H2.6v2.6c1.7 3.3 5.1 5.4 8.9 5.4z" fill="#34A853"/><path d="M5.9 10.7c-.4-1.2-.4-2.5 0-3.7V4.4H2.6C1.1 7.3 1.1 10.7 2.6 13.6L5.9 11v-.3z" fill="#FBBC04"/><path d="M11.5 3c1.5 0 2.8.5 3.9 1.5l2.9-2.9C16.4.6 14.1-.3 11.5-.3c-3.8 0-7.2 2.2-8.9 5.4L5.9 7.7c.8-2.3 3-4.1 5.6-4.7z" fill="#EA4335"/><text x="30" y="16" fontFamily="Inter,sans-serif" fontWeight="600" fontSize="9" fill="#b8bcb6">Pay</text></svg>);
-const ApplePayLogo = () => (<svg viewBox="0 0 50 22" className="w-[34px]"><path d="M9.4 3.2c.8-1 1.3-2.3 1.2-3.7-1.2 0-2.6.8-3.4 1.8-.7.9-1.4 2.3-1.2 3.6 1.3.1 2.6-.7 3.4-1.7z" fill="#fafaf7"/><path d="M10.6 7.4c-1.9-.1-3.5 1.1-4.4 1.1s-2.3-1-3.8-1C.5 7.6-1.3 9.3-1.3 12.7c0 4.3 3.1 9.3 5.6 9.3 1 0 2-.7 3.4-.7 1.3 0 1.9.7 3.4.7 2.4 0 4.5-4 5.1-5.3-3.2-1.5-3.3-5.7-.1-7.3-.9-1.4-2.6-2.1-4.1-2z" fill="#fafaf7" transform="translate(10,-2) scale(0.8)"/><text x="28" y="16" fontFamily="Inter,sans-serif" fontWeight="600" fontSize="9" fill="#fafaf7">Pay</text></svg>);
+const ApplePayLogo = () => (<svg viewBox="0 0 50 20" className="w-[34px]"><g transform="translate(2,0) scale(0.65)"><path d="M15.1 4.7c-.9 1.1-2.4 1.9-3.8 1.8-.2-1.5.5-3.1 1.4-4.1C13.6 1.3 15.2.4 16.5.3c.1 1.6-.5 3.2-1.4 4.4z" fill="#fafaf7"/><path d="M16.4 6.3c-2.1-.1-3.9 1.2-4.9 1.2s-2.6-1.1-4.2-1.1C5 6.4 2.8 7.7 1.6 9.9c-2.5 4.3-.6 10.7 1.8 14.2 1.2 1.7 2.6 3.6 4.5 3.5 1.8-.1 2.5-1.2 4.6-1.2 2.2 0 2.7 1.2 4.6 1.1 1.9 0 3.2-1.7 4.4-3.5 1.4-2 1.9-3.9 2-4-.1 0-3.8-1.5-3.8-5.8 0-3.6 2.9-5.3 3.1-5.5-1.7-2.5-4.4-2.8-5.3-2.9-.7-.1-1.5-.1-2.1.5z" fill="#fafaf7"/></g><text x="28" y="14" fontFamily="Inter,sans-serif" fontWeight="600" fontSize="9" fill="#fafaf7">Pay</text></svg>);
 const KlarnaLogo = () => (<svg viewBox="0 0 70 22" className="w-[38px]"><text x="0" y="18" fontFamily="Inter,sans-serif" fontWeight="800" fontSize="18" fill="#FFB3C7" letterSpacing="-0.8">Klarna.</text></svg>);
 const PayPalLogo = () => (<svg viewBox="0 0 62 20" className="w-[36px]"><text x="0" y="16" fontFamily="Inter,sans-serif" fontWeight="700" fontSize="15" fill="#003087" letterSpacing="-0.4">Pay</text><text x="28" y="16" fontFamily="Inter,sans-serif" fontWeight="700" fontSize="15" fill="#009CDE" letterSpacing="-0.4">Pal</text></svg>);
 const SkrillLogo = () => (<svg viewBox="0 0 52 20" className="w-[32px]"><text x="0" y="16" fontFamily="Inter,sans-serif" fontWeight="800" fontSize="16" fill="#862165" letterSpacing="-0.4">Skrill</text></svg>);
@@ -219,12 +219,12 @@ export default function NeuralVisual() {
                     <circle cx={n.x} cy={n.y} r={n.badgeR} fill="#262c2b" stroke="rgba(255,255,255,0.12)" strokeWidth="1"/>
                     <path d={`M${n.x-n.badgeR+5},${n.y-n.badgeR+2} A${n.badgeR},${n.badgeR} 0 0,1 ${n.x+n.badgeR-5},${n.y-n.badgeR+2}`}
                       fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="1"/>
-                    {/* Counter-rotate the logo so it stays upright */}
-                    <foreignObject x={n.x-n.badgeR+4} y={n.y-n.badgeR+4} width={(n.badgeR-4)*2} height={(n.badgeR-4)*2}
-                      style={{ transform: `rotate(${-scrollDeg}deg)`, transformOrigin: `${n.x}px ${n.y}px` }}
-                    >
-                      <div className="flex items-center justify-center w-full h-full">{n.logo}</div>
-                    </foreignObject>
+                    {/* Counter-rotate logo via SVG transform (not CSS — reliable on mobile) */}
+                    <g transform={`rotate(${-scrollDeg} ${n.x} ${n.y})`}>
+                      <foreignObject x={n.x-n.badgeR+4} y={n.y-n.badgeR+4} width={(n.badgeR-4)*2} height={(n.badgeR-4)*2}>
+                        <div className="flex items-center justify-center w-full h-full">{n.logo}</div>
+                      </foreignObject>
+                    </g>
                   </g>
                 );
               })}
