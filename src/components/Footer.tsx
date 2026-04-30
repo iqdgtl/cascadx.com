@@ -111,49 +111,90 @@ const socials = [
   },
 ];
 
+/* ================================================================
+   Footer link columns
+   ================================================================ */
+const footerColumns = [
+  { title: "Company", links: [
+    { label: "Who we are", href: "/about" },
+    { label: "Contact us", href: "/contact" },
+  ]},
+  { title: "Solutions", links: [
+    { label: "E-Commerce", href: "/solutions/ecommerce" },
+    { label: "iGaming", href: "/solutions/igaming" },
+    { label: "Dating", href: "/solutions/dating" },
+  ]},
+  { title: "Technology", links: [
+    { label: "AI Routing", href: "/technology/ai-routing" },
+    { label: "Integration", href: "/technology/integration" },
+    { label: "Hosted Payment", href: "/technology/hosted-payment" },
+  ]},
+  { title: "Legal", links: [
+    { label: "Terms and Conditions", href: "/terms" },
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Cookies Settings", href: "/cookies" },
+  ]},
+];
+
 export default function Footer() {
   return (
     <footer className="relative z-[2] bg-[#050606] text-white/60 border-t border-line">
-      {/* Logo + copyright */}
-      <div className="px-7 pt-12 pb-6">
-        <div className="max-w-[var(--max)] mx-auto flex flex-col md:flex-row justify-between items-center gap-5 font-mono text-xs tracking-[0.04em]">
-          <Link href="/" className="text-white">
-            <Logo className="text-[18px]" dotSize={5} />
-          </Link>
-          <span>&copy; 2026 CascadX · AI Payment Orchestration</span>
+      {/* 4-column link grid */}
+      <div className="px-5 md:px-7 pt-14 pb-10">
+        <div className="max-w-[var(--max)] mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+          {footerColumns.map((col) => (
+            <div key={col.title}>
+              <h4 className="font-display font-[600] text-[13px] uppercase tracking-[0.08em] text-ink-soft mb-5">
+                {col.title}
+              </h4>
+              <ul className="space-y-0">
+                {col.links.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="group flex items-center gap-2 py-2 text-[14px] font-medium text-ink-muted hover:text-ink transition-colors leading-relaxed min-h-[44px]"
+                    >
+                      <span className="w-0 group-hover:w-1 h-1 rounded-full bg-accent transition-all duration-200 shrink-0" />
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
 
       {/* Divider */}
-      <div className="mx-7">
+      <div className="mx-5 md:mx-7">
         <div className="max-w-[var(--max)] mx-auto border-t border-white/[0.08]" />
       </div>
 
-      {/* Bottom row: trust badges left, social icons right */}
-      <div className="px-7 py-8 pb-10">
-        <div className="max-w-[var(--max)] mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-          {/* Trust/security badges — left */}
-          <div className="flex flex-wrap items-center gap-3">
-            {trustBadges.map((badge) => (
-              <span
-                key={badge.label}
-                title={badge.label}
-                className="text-white/80 hover:text-white transition-all duration-250 cursor-default"
-              >
-                {badge.icon}
-              </span>
-            ))}
-          </div>
+      {/* Trust badges */}
+      <div className="px-5 md:px-7 py-6">
+        <div className="max-w-[var(--max)] mx-auto flex flex-wrap justify-center gap-3">
+          {trustBadges.map((badge) => (
+            <span key={badge.label} title={badge.label} className="text-white/80 hover:text-white transition-all duration-250 cursor-default">{badge.icon}</span>
+          ))}
+        </div>
+      </div>
 
-          {/* Social icons — right */}
+      {/* Divider */}
+      <div className="mx-5 md:mx-7">
+        <div className="max-w-[var(--max)] mx-auto border-t border-white/[0.08]" />
+      </div>
+
+      {/* Bottom bar: logo + copyright + socials */}
+      <div className="px-5 md:px-7 py-8 pb-10">
+        <div className="max-w-[var(--max)] mx-auto flex flex-col md:flex-row justify-between items-center gap-5 font-mono text-xs tracking-[0.04em]">
+          <Link href="/" className="text-white">
+            <Logo className="text-[18px]" dotSize={5} />
+          </Link>
+          <span className="text-center">&copy; 2026 CascadX · AI Payment Orchestration</span>
           <div className="flex items-center gap-6">
             {socials.map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                aria-label={s.label}
-                className="text-white/50 hover:text-accent transition-all duration-250 hover:scale-110 [&_svg]:w-[22px] [&_svg]:h-[22px] p-2 -m-2"
-              >
+              <a key={s.label} href={s.href} aria-label={s.label}
+                className="text-white/50 hover:text-accent transition-all duration-250 hover:scale-110 [&_svg]:w-[22px] [&_svg]:h-[22px] p-2 -m-2">
                 {s.icon}
               </a>
             ))}
