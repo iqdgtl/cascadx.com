@@ -66,7 +66,7 @@ export default function Hero() {
 
           <Button
             variant="primary" icon="arrow"
-            className="!text-[13px] !px-5 !py-[13px] w-full sm:w-auto !py-4 sm:!py-[13px]"
+            className="!text-[13px] !px-5 !py-[13px] hidden md:inline-flex"
             onClick={() => window.dispatchEvent(new Event("open-chat"))}
           >
             Book a demo
