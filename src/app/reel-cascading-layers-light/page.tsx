@@ -1,0 +1,1 @@
+"use client"; import { lightTheme } from "@/lib/themes"; import CascadingLayers from "@/components/reels/CascadingLayers"; export default function Page() { return <CascadingLayers theme={lightTheme} />; }
