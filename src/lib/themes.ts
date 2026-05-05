@@ -32,17 +32,17 @@ export const darkTheme: ReelTheme = {
 };
 
 export const lightTheme: ReelTheme = {
-  bg: "#f5f0e8",
-  surface: "#ffffff",
-  surfaceSubtle: "#ede6db",
+  bg: "#e8dfd3",
+  surface: "#f0e8dc",
+  surfaceSubtle: "#ddd4c6",
   ink: "#1a1a1a",
-  inkSoft: "#5a5a5a",
-  inkMuted: "#8a8a8a",
+  inkSoft: "#4a4a4a",
+  inkMuted: "#7a7a7a",
   accent: "#d97757",
   accentDeep: "#b35a3e",
   border: "rgba(0,0,0,0.08)",
   borderStrong: "rgba(0,0,0,0.10)",
   lqFrom: "#d97757",
-  lqTo: "#e8dccc",
+  lqTo: "#ddd4c6",
   lqHighlight: "rgba(255,255,255,0.6)",
 };
