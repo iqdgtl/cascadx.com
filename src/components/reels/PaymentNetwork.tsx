@@ -171,8 +171,8 @@ export default function PaymentNetwork({ theme }: { theme: ReelTheme }) {
           transform: `scale(${0.96 + 0.04 * tagP}) translateY(${6 * (1 - tagP)}px)`,
         }}
       >
-        <p className="font-display font-[600] text-[56px] tracking-[-0.025em] leading-[1.1] text-center" style={{ color: theme.ink }}>
-          All your payment providers,{" "}
+        <p className="font-display font-[600] text-[32px] tracking-[-0.02em] leading-[1.2] text-center" style={{ color: theme.ink }}>
+          All your payment providers,<br />
           <span style={{ color: theme.accent }}>in one place.</span>
         </p>
       </div>
