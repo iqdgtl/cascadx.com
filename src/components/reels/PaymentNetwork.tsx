@@ -4,16 +4,24 @@ import type { ReelTheme } from "@/lib/themes";
 import { darkTheme } from "@/lib/themes";
 import ReelLogoOutro from "@/components/ReelLogoOutro";
 
-const LOOP = 13000;
+const LOOP = 16000;
 
+// Timeline
 const CENTER_IN = 0, CENTER_DUR = 1000;
 const POP_START = 1000, POP_STAGGER = 250, POP_DUR = 600;
-const LINE_START = 6500, LINE_DUR = 1500, LINE_STAGGER = 80;
-const PULSE_AT = 8300, PULSE_DUR = 600;
-const STAT_IN = 9000, STAT_DUR = 800;
-const TAG_IN = 9800, TAG_DUR = 800;
-const HOLD_END = 11000;
-const OUTRO_START = 11500, OUTRO_DUR = 1500;
+const LINE_START = 7000, LINE_STAGGER = 80;
+const PULSE_AT = 8500, PULSE_DUR = 600;
+// Transition: network fades to backdrop
+const BACKDROP_START = 9500, BACKDROP_DUR = 1000;
+// Tagline
+const TAG_LINE1_IN = 10500, TAG_LINE1_DUR = 500;
+const TAG_LINE2_IN = 11400, TAG_LINE2_DUR = 500;
+// Hold: 11.9s → 14.5s = 2.6s of stillness
+const TAG_HOLD_END = 14500;
+// Fade out tagline, network comes back
+const TAG_FADE_START = 14500, TAG_FADE_DUR = 500;
+// Outro
+const OUTRO_START = 15000, OUTRO_DUR = 1000;
 
 const psps = [
   { name: "Stripe", color: "#635BFF", x: -36, y: -35 },
@@ -47,22 +55,31 @@ export default function PaymentNetwork({ theme }: { theme: ReelTheme }) {
   const centerP = ease(Math.max(0, Math.min(1, (t - CENTER_IN) / CENTER_DUR)));
   const pulseActive = t >= PULSE_AT && t < PULSE_AT + PULSE_DUR;
   const pulseScale = pulseActive ? 1 + 0.04 * Math.sin(((t - PULSE_AT) / PULSE_DUR) * Math.PI) : 1;
-  const statP = ease(Math.max(0, Math.min(1, (t - STAT_IN) / STAT_DUR)));
-  const tagP = ease(Math.max(0, Math.min(1, (t - TAG_IN) / TAG_DUR)));
+
+  // Network fades to backdrop when tagline comes
+  const backdropP = ease(Math.max(0, Math.min(1, (t - BACKDROP_START) / BACKDROP_DUR)));
+  // Network comes back slightly after tagline fades
+  const tagFadeP = ease(Math.max(0, Math.min(1, (t - TAG_FADE_START) / TAG_FADE_DUR)));
+  const networkOpacity = 1 - backdropP * 0.8 + tagFadeP * 0.4; // 1.0 → 0.2 → 0.6
+
+  // Tagline lines
+  const line1P = ease(Math.max(0, Math.min(1, (t - TAG_LINE1_IN) / TAG_LINE1_DUR)));
+  const line2P = ease(Math.max(0, Math.min(1, (t - TAG_LINE2_IN) / TAG_LINE2_DUR)));
+  const tagVisible = t >= TAG_LINE1_IN && t < TAG_FADE_START + TAG_FADE_DUR;
+  const tagFadeOut = t >= TAG_FADE_START ? ease(Math.max(0, Math.min(1, (t - TAG_FADE_START) / TAG_FADE_DUR))) : 0;
+  const tagOpacity = tagVisible ? Math.max(0, 1 - tagFadeOut) : 0;
+
   const outroP = Math.max(0, (t - OUTRO_START) / OUTRO_DUR);
-  const mainFade = t < HOLD_END ? 1 : Math.max(0, 1 - (t - HOLD_END) / 500);
 
   const isDark = theme === darkTheme;
   const badgeBg = isDark ? "rgba(255,255,255,0.95)" : "rgba(26,26,26,0.9)";
   const badgeTextColor = isDark ? undefined : "#fafaf7";
 
-  // Count up for stat
-  const statElapsed = Math.max(0, t - STAT_IN);
-  const statVal = Math.min(1000, Math.round((Math.min(1, statElapsed / 800)) * 1000));
-
   return (
-    <div className="fixed inset-0 flex flex-col items-center justify-center overflow-hidden" style={{ cursor: "none", background: theme.bg }}>
-      <div className="relative" style={{ width: "min(82vw, 480px)", height: "min(82vw, 480px)", opacity: mainFade }}>
+    <div className="fixed inset-0 flex items-center justify-center overflow-hidden" style={{ cursor: "none", background: theme.bg }}>
+
+      {/* Network composition */}
+      <div className="relative" style={{ width: "min(82vw, 480px)", height: "min(82vw, 480px)", opacity: networkOpacity }}>
         {/* Center CX badge */}
         <div className="absolute left-1/2 top-1/2 w-[90px] h-[90px] rounded-full grid place-items-center -translate-x-1/2 -translate-y-1/2 z-10"
           style={{ background: theme.surface, border: `2px solid ${theme.accent}`, opacity: centerP, transform: `translate(-50%,-50%) scale(${spring(centerP)})`, boxShadow: `0 0 50px rgba(217,119,87,${0.35 * centerP})` }}>
@@ -99,23 +116,30 @@ export default function PaymentNetwork({ theme }: { theme: ReelTheme }) {
         </svg>
       </div>
 
-      {/* Stat + tagline below the network */}
-      <div className="text-center mt-6 px-8" style={{ opacity: mainFade }}>
-        {/* Big stat number */}
-        <div style={{ opacity: statP, transform: `translateY(${10 * (1 - statP)}px)` }}>
-          <span className="font-display font-[800] text-[56px] tracking-[-0.04em]" style={{ color: theme.accent }}>
-            {statVal.toLocaleString()}+
-          </span>
-          <span className="block font-mono text-[12px] uppercase tracking-[0.08em] mt-1" style={{ color: theme.inkMuted }}>
-            payment providers connected
-          </span>
-        </div>
+      {/* Dark gradient overlay behind tagline */}
+      {tagVisible && (
+        <div className="absolute inset-0 pointer-events-none" style={{
+          background: `radial-gradient(600px 400px at 50% 50%, ${theme.bg}cc, transparent 70%)`,
+          opacity: tagOpacity * 0.6,
+        }} />
+      )}
 
-        {/* Tagline */}
-        <div className="mt-5" style={{ opacity: tagP, transform: `translateY(${8 * (1 - tagP)}px)` }}>
-          <p className="font-display font-[600] text-[28px] tracking-[-0.03em] leading-[1.15]" style={{ color: theme.ink }}>
-            Every provider. One platform.<br /><span style={{ color: theme.accent }}>Zero chaos.</span>
-          </p>
+      {/* TAGLINE — centered, huge, dominant */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none px-8" style={{ opacity: tagOpacity }}>
+        <div className="text-center">
+          {/* Line 1 */}
+          <div style={{ opacity: line1P, transform: `scale(${0.95 + 0.05 * line1P}) translateY(${8 * (1 - line1P)}px)` }}>
+            <span className="font-display font-[800] text-[96px] tracking-[-0.045em] leading-[1.0] block" style={{ color: theme.ink }}>
+              Every provider.
+            </span>
+          </div>
+          {/* Line 2 */}
+          <div style={{ opacity: line2P, transform: `scale(${0.95 + 0.05 * line2P}) translateY(${8 * (1 - line2P)}px)` }}>
+            <span className="font-display font-[800] text-[96px] tracking-[-0.045em] leading-[1.0] block">
+              <span style={{ color: theme.ink }}>One </span>
+              <span style={{ color: theme.accent }}>platform.</span>
+            </span>
+          </div>
         </div>
       </div>
 
