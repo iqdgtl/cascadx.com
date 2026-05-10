@@ -3,15 +3,16 @@ import { useEffect, useState, useRef, useMemo } from "react";
 import { pastel, type LetterTheme } from "@/lib/pastelTheme";
 import LivingGlobe from "./LivingGlobe";
 
-const LOOP = 10000;
+const LOOP = 14000;
 const LETTER_IN = 0, LETTER_DUR = 1500;
 const LETTER_HOLD_END = 2500;
 const SHRINK_START = 2500, SHRINK_DUR = 1000;
 const TYPE_START = 3500;
-const CHAR_MS = 125; // slowed to 110-140ms range
-const HOLD_START = 7500, HOLD_DUR = 1000;
-const OUTRO_START = 8500, OUTRO_DUR = 1500;
-const HIGHLIGHT_FADEOUT_START = 7200; // glow fades after typing done
+const CHAR_MS = 125;
+const HOLD_START = 7500, HOLD_DUR = 2500; // phrase visible for 2.5s
+const OUTRO_START = 10000, OUTRO_DUR = 2000; // logo plays for 2s
+const OUTRO_HOLD = 12000; // logo holds visible until 13.5s
+const HIGHLIGHT_FADEOUT_START = 7200;
 
 function genDelays(len: number): number[] {
   // Natural variance: 110-140ms per character
@@ -60,9 +61,12 @@ export default function LetterReel({ letter, phrase, bgVariant: _, theme = paste
   // Approximate cursor X position (chars typed * avg char width)
   const cursorProgress = (1 + chars) / (1 + restPhrase.length); // 0→1
 
-  // Outro
-  const outroP = ease(Math.max(0, (t - OUTRO_START) / OUTRO_DUR));
-  const mainFade = t < OUTRO_START - 300 ? 1 : Math.max(0, 1 - (t - (OUTRO_START - 300)) / 300);
+  // Outro — logo animates in over OUTRO_DUR, then HOLDS until loop end
+  const outroP = ease(Math.max(0, Math.min(1, (t - OUTRO_START) / OUTRO_DUR)));
+  // Fade out the logo only in the last 0.5s before loop resets
+  const outroFade = t >= LOOP - 500 ? Math.max(0, 1 - (t - (LOOP - 500)) / 500) : 1;
+  // Main content (letter + phrase) fades out as outro starts
+  const mainFade = t < OUTRO_START - 500 ? 1 : Math.max(0, 1 - (t - (OUTRO_START - 500)) / 500);
   const showBigLetter = t < SHRINK_START + SHRINK_DUR && t >= 0;
 
   const logoLetters = "CascadX".split("");
@@ -144,7 +148,7 @@ export default function LetterReel({ letter, phrase, bgVariant: _, theme = paste
 
         {/* Logo outro — positioned at 55-60% Y (higher, not bottom) */}
         {outroP > 0 && (
-          <div className="absolute left-0 right-0 flex flex-col items-center" style={{ top: "55%", opacity: outroP, zIndex: 10 }}>
+          <div className="absolute left-0 right-0 flex flex-col items-center" style={{ top: "55%", opacity: outroP * outroFade, zIndex: 10 }}>
             <div className="flex items-baseline">
               {logoLetters.map((char, i) => {
                 const p = Math.max(0, Math.min(1, (outroP * logoLetters.length - i * 0.5) / 1.2));
