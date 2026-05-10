@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState, useRef, useMemo } from "react";
-import { pastel } from "@/lib/pastelTheme";
+import { pastel, type LetterTheme } from "@/lib/pastelTheme";
 import LivingGlobe from "./LivingGlobe";
 
 const LOOP = 10000;
@@ -19,7 +19,8 @@ function genDelays(len: number): number[] {
   return Array.from({ length: len }, (_, i) => seed[i % seed.length]);
 }
 
-export default function LetterReel({ letter, phrase, bgVariant: _ }: { letter: string; phrase: string; bgVariant: string }) {
+export default function LetterReel({ letter, phrase, bgVariant: _, theme = pastel }: { letter: string; phrase: string; bgVariant: string; theme?: LetterTheme }) {
+  const T = theme;
   const [t, setT] = useState(-1);
   const raf = useRef(0); const s = useRef(0);
   useEffect(() => {
@@ -71,8 +72,8 @@ export default function LetterReel({ letter, phrase, bgVariant: _ }: { letter: s
   ];
 
   return (
-    <div style={{ width: "100vw", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "#1a1a1a", overflow: "hidden", cursor: "none" }}>
-      <div style={{ width: "min(1080px, 56.25vh)", height: "min(1920px, 100vh)", aspectRatio: "9 / 16", position: "relative", overflow: "hidden", background: pastel.bg }}>
+    <div style={{ width: "100vw", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: T.outerBg, overflow: "hidden", cursor: "none" }}>
+      <div style={{ width: "min(1080px, 56.25vh)", height: "min(1920px, 100vh)", aspectRatio: "9 / 16", position: "relative", overflow: "hidden", background: T.bg }}>
 
         {/* Living globe background */}
         <LivingGlobe t={Math.max(0, t)} />
@@ -84,7 +85,7 @@ export default function LetterReel({ letter, phrase, bgVariant: _ }: { letter: s
             transform: "translate(-50%, -50%)",
             width: "700px", height: "400px",
             maxWidth: "100%",
-            background: `radial-gradient(ellipse at center, rgba(245,239,230,0.75) 0%, rgba(245,239,230,0) 70%)`,
+            background: `radial-gradient(ellipse at center, ${T.bg}cc 0%, ${T.bg}00 70%)`,
             zIndex: 8,
             opacity: mainFade,
           }} />
@@ -102,7 +103,7 @@ export default function LetterReel({ letter, phrase, bgVariant: _ }: { letter: s
             <span className="font-display font-[800] leading-none select-none"
               style={{
                 fontSize: shrinkP > 0 ? "min(38px, 4.2vh)" : "min(480px, 50vh)",
-                color: pastel.letter,
+                color: T.letter,
                 opacity: 0.85,
               }}>
               {letter}
@@ -129,12 +130,12 @@ export default function LetterReel({ letter, phrase, bgVariant: _ }: { letter: s
               )}
               {/* Text */}
               <p className="font-display font-[600] text-center leading-[1.35] tracking-[-0.01em] relative"
-                style={{ fontSize: "min(38px, 4.2vh)", color: pastel.ink }}>
+                style={{ fontSize: "min(38px, 4.2vh)", color: T.ink }}>
                 <span>{letter}</span>
                 <span>{restPhrase.slice(0, chars)}</span>
                 {typing && (
                   <span className="inline-block w-[2px] align-middle ml-[1px]"
-                    style={{ height: "min(32px, 3.5vh)", background: pastel.accent, animation: "pulse 0.8s step-end infinite" }} />
+                    style={{ height: "min(32px, 3.5vh)", background: T.accent, animation: "pulse 0.8s step-end infinite" }} />
                 )}
               </p>
             </div>
@@ -151,16 +152,16 @@ export default function LetterReel({ letter, phrase, bgVariant: _ }: { letter: s
                 const ls = logoStarts[i];
                 return (
                   <span key={i} className="font-display font-[800] tracking-[-0.035em] inline-block"
-                    style={{ fontSize: "min(44px, 4.5vh)", color: pastel.ink, transform: `translate(${ls.x * (1 - sp)}px, ${ls.y * (1 - sp)}px) rotate(${ls.r * (1 - sp)}deg)`, opacity: p > 0 ? Math.min(1, p * 3) : 0 }}>
+                    style={{ fontSize: "min(44px, 4.5vh)", color: T.ink, transform: `translate(${ls.x * (1 - sp)}px, ${ls.y * (1 - sp)}px) rotate(${ls.r * (1 - sp)}deg)`, opacity: p > 0 ? Math.min(1, p * 3) : 0 }}>
                     {char}
                   </span>
                 );
               })}
               <span className="inline-block rounded-full ml-[2px]"
-                style={{ width: "min(7px, 0.8vh)", height: "min(7px, 0.8vh)", background: pastel.accent, transform: `scale(${spring(Math.max(0, (outroP - 0.7) / 0.15))})` }} />
+                style={{ width: "min(7px, 0.8vh)", height: "min(7px, 0.8vh)", background: T.accent, transform: `scale(${spring(Math.max(0, (outroP - 0.7) / 0.15))})` }} />
             </div>
             <p className="font-display font-[400] tracking-[-0.01em] mt-3"
-              style={{ fontSize: "min(20px, 2.2vh)", color: pastel.inkSoft, opacity: Math.max(0, (outroP - 0.8) / 0.2) }}>
+              style={{ fontSize: "min(20px, 2.2vh)", color: T.inkSoft, opacity: Math.max(0, (outroP - 0.8) / 0.2) }}>
               Payments that think.
             </p>
           </div>
