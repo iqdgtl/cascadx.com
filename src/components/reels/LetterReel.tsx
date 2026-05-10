@@ -145,9 +145,9 @@ export default function LetterReel({ letter, phrase, bgVariant: _, theme = paste
           </div>
         )}
 
-        {/* Logo outro — positioned at 55-60% Y (higher, not bottom) */}
+        {/* Logo outro — full overlay, centered, highest z-index */}
         {outroP > 0 && (
-          <div className="absolute left-0 right-0 flex flex-col items-center" style={{ top: "55%", opacity: outroP * outroFade, zIndex: 10 }}>
+          <div className="absolute inset-0 flex flex-col items-center justify-center" style={{ opacity: outroP * outroFade, zIndex: 50, background: `${T.bg}e6` }}>
             <div className="flex items-baseline">
               {logoLetters.map((char, i) => {
                 const p = Math.max(0, Math.min(1, (outroP * logoLetters.length - i * 0.5) / 1.2));
@@ -155,16 +155,16 @@ export default function LetterReel({ letter, phrase, bgVariant: _, theme = paste
                 const ls = logoStarts[i];
                 return (
                   <span key={i} className="font-display font-[800] tracking-[-0.035em] inline-block"
-                    style={{ fontSize: "min(44px, 4.5vh)", color: T.ink, transform: `translate(${ls.x * (1 - sp)}px, ${ls.y * (1 - sp)}px) rotate(${ls.r * (1 - sp)}deg)`, opacity: p > 0 ? Math.min(1, p * 3) : 0 }}>
+                    style={{ fontSize: "48px", color: T.ink, transform: `translate(${ls.x * (1 - sp)}px, ${ls.y * (1 - sp)}px) rotate(${ls.r * (1 - sp)}deg)`, opacity: p > 0 ? Math.min(1, p * 3) : 0 }}>
                     {char}
                   </span>
                 );
               })}
-              <span className="inline-block rounded-full ml-[2px]"
-                style={{ width: "min(7px, 0.8vh)", height: "min(7px, 0.8vh)", background: T.accent, transform: `scale(${spring(Math.max(0, (outroP - 0.7) / 0.15))})` }} />
+              <span className="inline-block rounded-full ml-[3px]"
+                style={{ width: "8px", height: "8px", background: T.accent, transform: `scale(${spring(Math.max(0, (outroP - 0.7) / 0.15))})` }} />
             </div>
-            <p className="font-display font-[400] tracking-[-0.01em] mt-3"
-              style={{ fontSize: "min(20px, 2.2vh)", color: T.inkSoft, opacity: Math.max(0, (outroP - 0.8) / 0.2) }}>
+            <p className="font-display font-[400] tracking-[-0.01em] mt-4"
+              style={{ fontSize: "20px", color: T.inkSoft, opacity: Math.max(0, (outroP - 0.8) / 0.2) }}>
               Payments that think.
             </p>
           </div>
