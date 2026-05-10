@@ -77,19 +77,23 @@ export default function LetterReel({ letter, phrase, bgVariant: _ }: { letter: s
         {/* Living globe background */}
         <LivingGlobe t={Math.max(0, t)} />
 
-        {/* Subtle text backdrop — ensures readability over globe */}
+        {/* Reading stage gradient — z-index 8, above icons, below text */}
         {letterDone && (
-          <div className="absolute left-0 right-0 pointer-events-none" style={{
-            top: "35%", height: "30%",
-            background: `radial-gradient(ellipse 90% 100% at 50% 50%, ${pastel.bg}cc, transparent)`,
-            opacity: mainFade * 0.7,
+          <div className="absolute pointer-events-none" style={{
+            left: "50%", top: "42%",
+            transform: "translate(-50%, -50%)",
+            width: "700px", height: "400px",
+            maxWidth: "100%",
+            background: `radial-gradient(ellipse at center, rgba(245,239,230,0.75) 0%, rgba(245,239,230,0) 70%)`,
+            zIndex: 8,
+            opacity: mainFade,
           }} />
         )}
 
-        {/* Big letter — morphs into phrase */}
+        {/* Big letter — morphs into phrase — z-index 10 */}
         {showBigLetter && (
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none"
-            style={{
+            style={{ zIndex: 10,
               opacity: mainFade * letterP,
               transform: shrinkP > 0
                 ? `translateY(${shrinkP * 8}vh) scale(${1 - shrinkP * 0.92})`
@@ -108,7 +112,7 @@ export default function LetterReel({ letter, phrase, bgVariant: _ }: { letter: s
 
         {/* Phrase text with highlight glow */}
         {letterDone && (
-          <div className="absolute left-0 right-0 flex justify-center px-[8%] pointer-events-none" style={{ top: "42%", opacity: mainFade }}>
+          <div className="absolute left-0 right-0 flex justify-center px-[8%] pointer-events-none" style={{ top: "42%", opacity: mainFade, zIndex: 10 }}>
             <div className="relative" style={{ maxWidth: "85%" }}>
               {/* Highlight glow — behind text */}
               {highlightOpacity > 0 && (
@@ -139,7 +143,7 @@ export default function LetterReel({ letter, phrase, bgVariant: _ }: { letter: s
 
         {/* Logo outro — positioned at 55-60% Y (higher, not bottom) */}
         {outroP > 0 && (
-          <div className="absolute left-0 right-0 flex flex-col items-center" style={{ top: "55%", opacity: outroP }}>
+          <div className="absolute left-0 right-0 flex flex-col items-center" style={{ top: "55%", opacity: outroP, zIndex: 10 }}>
             <div className="flex items-baseline">
               {logoLetters.map((char, i) => {
                 const p = Math.max(0, Math.min(1, (outroP * logoLetters.length - i * 0.5) / 1.2));
