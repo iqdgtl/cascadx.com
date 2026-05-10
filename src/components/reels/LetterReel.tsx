@@ -3,15 +3,17 @@ import { useEffect, useState, useRef, useMemo } from "react";
 import { pastel, type LetterTheme } from "@/lib/pastelTheme";
 import LivingGlobe from "./LivingGlobe";
 
-const LOOP = 14000;
+const LOOP = 16000;
 const LETTER_IN = 0, LETTER_DUR = 1500;
 const LETTER_HOLD_END = 2500;
 const SHRINK_START = 2500, SHRINK_DUR = 1000;
 const TYPE_START = 3500;
 const CHAR_MS = 125;
-const HOLD_START = 7500, HOLD_DUR = 2500; // phrase visible for 2.5s
-const OUTRO_START = 10000, OUTRO_DUR = 2000; // logo plays for 2s
-const OUTRO_HOLD = 12000; // logo holds visible until 13.5s
+const HOLD_START = 7500, HOLD_DUR = 2500;
+const OUTRO_START = 10000;        // phrase fades, logo starts
+const OUTRO_ANIM_DUR = 1200;     // letters fly in over 1.2s
+const LOGO_VISIBLE_AT = 11200;   // logo fully formed
+const LOGO_HOLD_END = 15500;     // holds for ~4.3s
 const HIGHLIGHT_FADEOUT_START = 7200;
 
 function genDelays(len: number): number[] {
@@ -61,11 +63,11 @@ export default function LetterReel({ letter, phrase, bgVariant: _, theme = paste
   // Approximate cursor X position (chars typed * avg char width)
   const cursorProgress = (1 + chars) / (1 + restPhrase.length); // 0→1
 
-  // Phrase fades out starting 500ms before logo starts
-  const mainFade = t < OUTRO_START - 500 ? 1 : Math.max(0, 1 - (t - (OUTRO_START - 500)) / 800);
-  // Logo animates in, then holds, then fades in last 0.5s
-  const outroP = ease(Math.max(0, Math.min(1, (t - (OUTRO_START - 300)) / OUTRO_DUR)));
-  const outroFade = t >= LOOP - 500 ? Math.max(0, 1 - (t - (LOOP - 500)) / 500) : 1;
+  // Phrase fades out as logo starts
+  const mainFade = t < OUTRO_START ? 1 : Math.max(0, 1 - (t - OUTRO_START) / 600);
+  // Logo: flies in over 1.2s, then holds 4+ seconds, fades in last 0.5s
+  const outroP = ease(Math.max(0, Math.min(1, (t - OUTRO_START) / OUTRO_ANIM_DUR)));
+  const outroFade = t >= LOGO_HOLD_END ? Math.max(0, 1 - (t - LOGO_HOLD_END) / 500) : 1;
   const showBigLetter = t < SHRINK_START + SHRINK_DUR && t >= 0;
 
   const logoLetters = "CascadX".split("");
