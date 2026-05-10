@@ -61,12 +61,11 @@ export default function LetterReel({ letter, phrase, bgVariant: _, theme = paste
   // Approximate cursor X position (chars typed * avg char width)
   const cursorProgress = (1 + chars) / (1 + restPhrase.length); // 0→1
 
-  // Outro — logo animates in over OUTRO_DUR, then HOLDS until loop end
-  const outroP = ease(Math.max(0, Math.min(1, (t - OUTRO_START) / OUTRO_DUR)));
-  // Fade out the logo only in the last 0.5s before loop resets
+  // Phrase fades out starting 500ms before logo starts
+  const mainFade = t < OUTRO_START - 500 ? 1 : Math.max(0, 1 - (t - (OUTRO_START - 500)) / 800);
+  // Logo animates in, then holds, then fades in last 0.5s
+  const outroP = ease(Math.max(0, Math.min(1, (t - (OUTRO_START - 300)) / OUTRO_DUR)));
   const outroFade = t >= LOOP - 500 ? Math.max(0, 1 - (t - (LOOP - 500)) / 500) : 1;
-  // Main content (letter + phrase) fades out as outro starts
-  const mainFade = t < OUTRO_START - 500 ? 1 : Math.max(0, 1 - (t - (OUTRO_START - 500)) / 500);
   const showBigLetter = t < SHRINK_START + SHRINK_DUR && t >= 0;
 
   const logoLetters = "CascadX".split("");
