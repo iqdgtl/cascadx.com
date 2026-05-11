@@ -1,1 +1,0 @@
-"use client"; import { lightTheme } from "@/lib/themes"; import PaymentNetwork from "@/components/reels/PaymentNetwork"; export default function Page() { return <PaymentNetwork theme={lightTheme} />; }

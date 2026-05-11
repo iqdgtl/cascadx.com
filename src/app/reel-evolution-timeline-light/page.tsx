@@ -1,1 +1,0 @@
-"use client"; import { lightTheme } from "@/lib/themes"; import EvolutionTimeline from "@/components/reels/EvolutionTimeline"; export default function Page() { return <EvolutionTimeline theme={lightTheme} />; }
