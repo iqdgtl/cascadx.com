@@ -2,57 +2,59 @@
 import { pastel } from "@/lib/pastelTheme";
 
 /**
- * CoverFrameLogoSlice — renders the full "CascadX." wordmark at 3-frame width
- * and clips to show only the requested portion.
+ * CoverFrameLogoSlice — renders the full "CascadX." wordmark
+ * and clips to show only the requested third.
  *
- * portion: 1 = "CAS" (first third), 2 = "CAD" (middle third), 3 = "X." (last third)
- *
- * The wordmark is positioned so that each portion fills exactly one 9:16 frame width.
+ * portion: 1 = "CAS", 2 = "CAD", 3 = "X."
  */
 export default function CoverFrameLogoSlice({ portion, progress }: { portion: 1 | 2 | 3; progress: number }) {
-  // The wordmark spans 3x frame width. Each frame shows 1/3.
-  // We shift the wordmark left by (portion - 1) * 100% of frame width.
-  const shiftPercent = (portion - 1) * 100;
-
   const spring = (p: number) => p <= 0 ? 0 : p >= 1 ? 1 : 1 - Math.pow(1 - p, 3) * Math.cos(p * Math.PI * 0.5);
   const sp = spring(progress);
 
+  // Shift: portion 1 shows left third, portion 2 shows middle, portion 3 shows right
+  // The wordmark is 300% of frame width. To show portion N, shift left by (N-1) * 100%.
+  const shift = (portion - 1) * 100;
+
   return (
     <div
-      className="absolute inset-0 flex items-center overflow-hidden"
+      className="absolute inset-0 flex items-center justify-center overflow-hidden"
       style={{ opacity: sp }}
     >
-      {/* Full wordmark container — 300% width of frame, shifted to show correct portion */}
+      {/* Scale wrapper — scales around frame center */}
       <div
-        className="relative flex items-baseline whitespace-nowrap"
-        style={{
-          width: "300%",
-          transform: `translateX(-${shiftPercent}%) scale(${0.95 + 0.05 * sp})`,
-          transformOrigin: `${shiftPercent + 50}% 50%`,
-          paddingLeft: "5%",
-        }}
+        className="absolute inset-0 flex items-center"
+        style={{ transform: `scale(${0.95 + 0.05 * sp})` }}
       >
-        {/* "CascadX" rendered as one continuous text block */}
-        <span
-          className="font-display font-[800] tracking-[-0.04em] leading-none"
+        {/* Wordmark — 300% wide, shifted to show the correct portion */}
+        <div
+          className="flex items-baseline whitespace-nowrap"
           style={{
-            fontSize: "min(28vw, 320px)", // sized to fill ~3 frames at this size within 9:16
-            color: pastel.ink,
+            width: "300%",
+            marginLeft: `-${shift}%`,
+            paddingLeft: "3%",
           }}
         >
-          CascadX
-        </span>
-        {/* Terracotta dot */}
-        <span
-          className="inline-block rounded-full ml-[0.5%]"
-          style={{
-            width: "min(2.5vw, 28px)",
-            height: "min(2.5vw, 28px)",
-            background: pastel.accent,
-            verticalAlign: "baseline",
-            marginBottom: "min(1vw, 12px)",
-          }}
-        />
+          <span
+            className="font-display font-[800] tracking-[-0.04em] leading-none"
+            style={{
+              fontSize: "min(28vw, 320px)",
+              color: pastel.ink,
+            }}
+          >
+            CascadX
+          </span>
+          <span
+            className="inline-block rounded-full"
+            style={{
+              width: "min(2.2vw, 24px)",
+              height: "min(2.2vw, 24px)",
+              background: pastel.accent,
+              marginLeft: "min(0.8vw, 8px)",
+              marginBottom: "min(0.5vw, 6px)",
+              verticalAlign: "baseline",
+            }}
+          />
+        </div>
       </div>
     </div>
   );
