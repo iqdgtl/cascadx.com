@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
 import { pastel } from "@/lib/pastelTheme";
+import CoverFrameLogoSlice from "@/components/reels/CoverFrameLogoSlice";
 
 const LOOP = 11000;
 const COVER_IN = 0, COVER_DUR = 1500;
@@ -41,12 +42,10 @@ export default function Page() {
     <div style={{ width: "100vw", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "#1a1a1a", overflow: "hidden", cursor: "none" }}>
       <div style={{ width: "min(1080px, 56.25vh)", height: "min(1920px, 100vh)", aspectRatio: "9/16", position: "relative", overflow: "hidden", background: pastel.bg }}>
 
-        {/* Cover frame: "Casca" portion */}
+        {/* Cover frame: "CAS" portion (first third of wordmark) */}
         {t < TRANS_START + TRANS_DUR && (
-          <div className="absolute inset-0 flex items-center justify-center" style={{ opacity: 1 - transP }}>
-            <span className="font-display font-[800] tracking-[-0.04em]" style={{ fontSize: "min(140px, 15vh)", color: pastel.ink, transform: `scale(${0.95 + 0.05 * coverP})`, opacity: coverP }}>
-              Casca
-            </span>
+          <div style={{ opacity: 1 - transP }}>
+            <CoverFrameLogoSlice portion={1} progress={coverP} />
           </div>
         )}
 

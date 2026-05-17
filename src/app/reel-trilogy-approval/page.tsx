@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
 import { pastel } from "@/lib/pastelTheme";
+import CoverFrameLogoSlice from "@/components/reels/CoverFrameLogoSlice";
 
 const LOOP = 10000;
 const COVER_IN = 0, COVER_DUR = 1500;
@@ -50,12 +51,10 @@ export default function Page() {
     <div style={{ width: "100vw", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "#1a1a1a", overflow: "hidden", cursor: "none" }}>
       <div style={{ width: "min(1080px, 56.25vh)", height: "min(1920px, 100vh)", aspectRatio: "9/16", position: "relative", overflow: "hidden", background: pastel.bg }}>
 
-        {/* Cover frame: tagline */}
+        {/* Cover frame: "X." portion (last third of wordmark) */}
         {t < TRANS_START + TRANS_DUR && (
-          <div className="absolute inset-0 flex items-center justify-center px-10" style={{ opacity: 1 - transP }}>
-            <p className="font-display font-[800] text-[36px] tracking-[-0.03em] leading-[1.15] text-center" style={{ color: pastel.ink, transform: `scale(${0.95 + 0.05 * coverP})`, opacity: coverP }}>
-              Payments that <span style={{ color: pastel.accent }}>think</span> before they fall.
-            </p>
+          <div style={{ opacity: 1 - transP }}>
+            <CoverFrameLogoSlice portion={3} progress={coverP} />
           </div>
         )}
 
