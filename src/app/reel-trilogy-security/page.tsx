@@ -64,7 +64,7 @@ export default function Page() {
   const cardTilt = Math.max(0, 15 * (1 - cardP));
 
   // Simple typewriter — digit by digit
-  const finalDigits = "4242424242424242";
+  const finalDigits = "4718920356147283";
   const typeElapsedNum = Math.max(0, t - NUM_START);
   let digitsTyped = 0;
   for (let i = 0; i < digitCumulative.length; i++) {
