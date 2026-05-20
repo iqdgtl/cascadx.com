@@ -215,14 +215,14 @@ export default function ChatWidget() {
         <button
           onClick={() => setOpen(true)}
           aria-label="Open chat with CascadX assistant"
-          className="fixed z-50 flex items-center gap-3 h-14 pl-2 pr-5 bg-surface-el border border-[rgba(255,255,255,0.12)] rounded-full shadow-[0_12px_30px_-10px_rgba(0,0,0,0.6),0_0_0_1px_rgba(217,119,87,0.2)] transition-all duration-200 hover:bg-[#2e3533] hover:border-accent hover:scale-[1.03] animate-[float_3s_ease-in-out_infinite] max-[600px]:w-14 max-[600px]:pl-0 max-[600px]:pr-0 max-[600px]:justify-center"
-          style={{ bottom: "calc(24px + env(safe-area-inset-bottom, 0px))", right: "24px" }}
+          className="fixed z-50 flex items-center gap-2 h-10 pl-1.5 pr-3.5 bg-surface-el border border-[rgba(255,255,255,0.12)] rounded-full shadow-[0_8px_20px_-8px_rgba(0,0,0,0.5),0_0_0_1px_rgba(217,119,87,0.15)] transition-all duration-200 hover:bg-[#2e3533] hover:border-accent hover:scale-[1.03] max-[600px]:w-10 max-[600px]:pl-0 max-[600px]:pr-0 max-[600px]:justify-center"
+          style={{ bottom: "calc(20px + env(safe-area-inset-bottom, 0px))", right: "20px" }}
         >
-          <div className="relative w-10 h-10 rounded-full bg-surface grid place-items-center shrink-0">
-            <RobotMascot size={32} />
-            <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-accent animate-[pulse_2s_ease-in-out_infinite]" />
+          <div className="relative w-7 h-7 rounded-full bg-surface grid place-items-center shrink-0">
+            <RobotMascot size={22} />
+            <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-accent animate-[pulse_2s_ease-in-out_infinite]" />
           </div>
-          <span className="font-display font-medium text-sm text-ink max-[600px]:hidden">Speak with us</span>
+          <span className="font-display font-medium text-[12px] text-ink max-[600px]:hidden">Speak with us</span>
         </button>
       )}
 

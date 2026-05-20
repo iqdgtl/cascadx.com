@@ -71,7 +71,7 @@ const trustBadges = [
 const socials = [
   {
     label: "CascadX on Instagram",
-    href: "https://www.instagram.com/cascadx.app/",
+    href: "https://www.instagram.com/cascadx_official/",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="2" width="20" height="20" rx="5" />
@@ -82,7 +82,7 @@ const socials = [
   },
   {
     label: "CascadX on Facebook",
-    href: "#",
+    href: "https://www.facebook.com/cascadx",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
@@ -193,7 +193,7 @@ export default function Footer() {
           <span className="text-center">&copy; 2026 CascadX · AI Payment Orchestration</span>
           <div className="flex items-center gap-6">
             {socials.map((s) => (
-              <a key={s.label} href={s.href} aria-label={s.label}
+              <a key={s.label} href={s.href} aria-label={s.label} target="_blank" rel="noopener noreferrer"
                 className="text-white/50 hover:text-accent transition-all duration-250 hover:scale-110 [&_svg]:w-[22px] [&_svg]:h-[22px] p-2 -m-2">
                 {s.icon}
               </a>
