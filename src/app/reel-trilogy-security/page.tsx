@@ -1,20 +1,54 @@
 "use client";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 import { pastel } from "@/lib/pastelTheme";
 import CoverFrameLogoSlice from "@/components/reels/CoverFrameLogoSlice";
+import LivingGlobe from "@/components/reels/LivingGlobe";
 
 const LOOP = 11000;
+
+// Timeline
 const COVER_IN = 0, COVER_DUR = 1500;
-const TRANS_START = 1500, TRANS_DUR = 1000;
-const CARD_IN = 2500, CARD_DUR = 1000;
-const SHIELDS_START = 3500, SHIELD_STAGGER = 400;
-const LABELS_START = 5500, LABEL_STAGGER = 800;
-const SCAN_START = 7500, SCAN_DUR = 1000;
-const OUTRO_START = 9000, OUTRO_DUR = 1200;
+const TRANS_START = 1500, TRANS_DUR = 800;
+// Scene 1: Card entry
+const CARD_IN = 2300, CARD_DUR = 800;
+const TYPE_START = 3100;
+const DIGITS = "4242424242424242";
+const DIGIT_MS = 140; // typing speed per digit
+const MASK_DELAY = 400; // delay after 12th digit before masking
+// Scene 2: Encryption (hex stream activates)
+const HEX_START = 5200;
+const NAR_LEFT_1 = 5400; // "→ Encrypting card data"
+const NAR_RIGHT_1 = 5900; // "← AES-256 applied"
+// Scene 3: Tokenization
+const NAR_LEFT_2 = 6600; // "→ Generating token"
+const TOKEN_IN = 7000, TOKEN_DUR = 600;
+const NAR_RIGHT_2 = 7400; // "← PCI scope eliminated"
+// Scene 4: Approval
+const APPROVE_AT = 8200, APPROVE_DUR = 500;
+const CONFETTI_AT = 8700;
+// Outro
+const OUTRO_START = 9200, OUTRO_DUR = 1200;
 const OUTRO_HOLD_END = 10500;
 
-const shields = ["🛡️", "🔒", "✓", "🛡️", "🔒", "✓", "🛡️", "🔒"];
-const labels = ["256-bit encryption", "PCI DSS Level 1", "Tokenization"];
+// Narration text config
+const narrations = [
+  { t: 5400, side: "left" as const, text: "→ Encrypting card data" },
+  { t: 5900, side: "right" as const, text: "← AES-256 applied" },
+  { t: 6600, side: "left" as const, text: "→ Generating token" },
+  { t: 7400, side: "right" as const, text: "← PCI scope eliminated" },
+];
+const NAR_TYPE_MS = 50;
+const NAR_HOLD = 1200;
+
+// Hex stream generator
+function genHexLine(seed: number, len: number): string {
+  let s = "";
+  for (let i = 0; i < len; i++) {
+    const v = ((seed * 1103515245 + 12345 + i * 7919) >>> 0) % 65536;
+    s += `0x${v.toString(16).toUpperCase().padStart(4, "0")}  `;
+  }
+  return s;
+}
 
 const logoLetters = "CascadX".split("");
 const logoStarts = [
@@ -33,7 +67,38 @@ export default function Page() {
   const coverP = spring(Math.max(0, Math.min(1, (t - COVER_IN) / COVER_DUR)));
   const transP = ease(Math.max(0, Math.min(1, (t - TRANS_START) / TRANS_DUR)));
   const cardP = spring(Math.max(0, Math.min(1, (t - CARD_IN) / CARD_DUR)));
-  const scanP = ease(Math.max(0, Math.min(1, (t - SCAN_START) / SCAN_DUR)));
+
+  // Digit typing
+  const typeElapsed = Math.max(0, t - TYPE_START);
+  const digitsTyped = Math.min(16, Math.floor(typeElapsed / DIGIT_MS));
+  // Masking: after 12th digit typed + delay, first 12 become dots
+  const maskActive = digitsTyped >= 12 && typeElapsed > 12 * DIGIT_MS + MASK_DELAY;
+
+  let displayNum = "";
+  for (let i = 0; i < 16; i++) {
+    if (i > 0 && i % 4 === 0) displayNum += " ";
+    if (i < digitsTyped) {
+      if (maskActive && i < 12) displayNum += "•";
+      else displayNum += DIGITS[i];
+    } else {
+      displayNum += "_";
+    }
+  }
+
+  // Hex stream active
+  const hexActive = t >= HEX_START && t < OUTRO_START;
+  const hexLines = useMemo(() => Array.from({ length: 5 }, (_, i) => genHexLine(i * 42 + 7, 12)), []);
+
+  // Token appearance
+  const tokenP = spring(Math.max(0, Math.min(1, (t - TOKEN_IN) / TOKEN_DUR)));
+  const tokenVisible = t >= TOKEN_IN;
+
+  // Approval
+  const approved = t >= APPROVE_AT;
+  const approveP = spring(Math.max(0, Math.min(1, (t - APPROVE_AT) / APPROVE_DUR)));
+  const showConfetti = t >= CONFETTI_AT && t < CONFETTI_AT + 1500;
+
+  // Outro
   const outroP = ease(Math.max(0, Math.min(1, (t - OUTRO_START) / OUTRO_DUR)));
   const outroFade = t >= OUTRO_HOLD_END ? Math.max(0, 1 - (t - OUTRO_HOLD_END) / 500) : 1;
   const contentFade = t < OUTRO_START - 400 ? 1 : Math.max(0, 1 - (t - (OUTRO_START - 400)) / 400);
@@ -42,77 +107,147 @@ export default function Page() {
     <div style={{ width: "100vw", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "#1a1a1a", overflow: "hidden", cursor: "none" }}>
       <div style={{ width: "min(1080px, 56.25vh)", height: "min(1920px, 100vh)", aspectRatio: "9/16", position: "relative", overflow: "hidden", background: pastel.bg }}>
 
-        {/* Cover frame: "CAS" portion (first third of wordmark) */}
+        {/* z=2: Globe background — muted */}
+        <div style={{ opacity: 0.12 }}><LivingGlobe t={Math.max(0, t)} /></div>
+
+        {/* z=4: Hex stream */}
+        {hexActive && (
+          <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 4, opacity: contentFade }}>
+            {hexLines.map((line, i) => {
+              const speed = 10 + i * 5; // 10s, 15s, 20s, 25s, 30s
+              const offset = ((t / (speed * 1000)) % 1) * 100;
+              return (
+                <div key={i} className="absolute whitespace-nowrap font-mono" style={{
+                  top: `${38 + i * 3}%`,
+                  left: `-${offset}%`,
+                  fontSize: "min(14px, 1.5vh)",
+                  color: pastel.accent,
+                  opacity: 0.5,
+                  letterSpacing: "1px",
+                }}>
+                  {line}{line}
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        {/* Cover frame: "CAS" */}
         {t < TRANS_START + TRANS_DUR && (
-          <div style={{ opacity: 1 - transP }}>
+          <div style={{ opacity: 1 - transP, zIndex: 10 }}>
             <CoverFrameLogoSlice portion={1} progress={coverP} />
           </div>
         )}
 
-        {/* Main content */}
-        {t >= TRANS_START && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center px-8" style={{ opacity: contentFade }}>
-            {/* Small brand mark top */}
-            <div className="absolute top-[6%] left-1/2 -translate-x-1/2" style={{ opacity: transP * 0.6 }}>
-              <span className="font-display font-[800] text-[20px] tracking-[-0.035em]" style={{ color: pastel.ink }}>CascadX</span>
-              <span className="inline-block w-[4px] h-[4px] rounded-full ml-[2px]" style={{ background: pastel.accent }} />
-            </div>
-
-            {/* Credit card mockup */}
-            <div className="relative w-[320px] h-[200px] rounded-[16px] overflow-hidden" style={{ background: "linear-gradient(135deg, #1a1a1a 0%, #2a2520 100%)", transform: `scale(${cardP}) rotateY(${5 - 5 * cardP}deg)`, opacity: cardP, boxShadow: "0 20px 60px rgba(0,0,0,0.2)" }}>
-              <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: pastel.accent }} />
-              <div className="p-6 flex flex-col justify-between h-full">
-                <div className="flex justify-between items-start">
-                  <div className="w-12 h-8 rounded bg-gradient-to-br from-[#d4a853] to-[#c49a3a]" />
-                  <span className="font-mono text-[10px] text-white/40">VISA</span>
+        {/* z=6: Cashier card */}
+        {t >= CARD_IN && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center px-6" style={{ zIndex: 6, opacity: contentFade }}>
+            {/* Card */}
+            <div className="w-full max-w-[340px] rounded-[14px] overflow-hidden" style={{
+              background: pastel.surface,
+              border: `1px solid ${pastel.line}`,
+              boxShadow: "0 20px 60px rgba(0,0,0,0.08)",
+              transform: `scale(${cardP})`,
+              opacity: cardP,
+            }}>
+              {/* Card header */}
+              <div className="px-5 py-3 flex items-center justify-between" style={{ borderBottom: `1px solid ${pastel.line}` }}>
+                <span className="font-display font-[600] text-[14px]" style={{ color: pastel.ink }}>Checkout</span>
+                <div className="flex items-center gap-1.5">
+                  <span className="w-[6px] h-[6px] rounded-full" style={{ background: "#4ade80" }} />
+                  <span className="font-mono text-[10px]" style={{ color: pastel.inkSoft }}>Secure</span>
                 </div>
-                <div className="font-mono text-[18px] text-white/80 tracking-[0.12em]">•••• •••• •••• 4242</div>
-                <div className="flex justify-between text-[11px] text-white/50 font-mono"><span>CARDHOLDER</span><span>12/28</span></div>
               </div>
-              {/* Scan beam */}
-              {scanP > 0 && (
-                <div className="absolute inset-0" style={{ background: `linear-gradient(180deg, transparent ${(1 - scanP) * 100}%, rgba(217,119,87,0.15) ${(1 - scanP) * 100 + 5}%, transparent ${(1 - scanP) * 100 + 10}%)` }} />
+
+              {/* Amount */}
+              <div className="px-5 pt-4 pb-2">
+                <span className="font-mono text-[11px] uppercase tracking-[0.08em]" style={{ color: pastel.inkSoft }}>Amount</span>
+                <div className="font-display font-[700] text-[28px] mt-1" style={{ color: pastel.ink }}>€49.99</div>
+              </div>
+
+              {/* Card input */}
+              <div className="px-5 pb-4">
+                <span className="font-mono text-[10px] uppercase tracking-[0.08em]" style={{ color: pastel.inkSoft }}>Card number</span>
+                <div className="mt-2 px-4 py-3 rounded-lg" style={{ background: `${pastel.bg}`, border: `1px solid ${pastel.line}` }}>
+                  <span className="font-mono text-[16px] tracking-[0.08em]" style={{ color: pastel.ink }}>
+                    {displayNum}
+                  </span>
+                  {digitsTyped < 16 && t >= TYPE_START && (
+                    <span className="inline-block w-[1.5px] h-[16px] ml-[1px] align-middle" style={{ background: pastel.accent, animation: "pulse 0.8s step-end infinite" }} />
+                  )}
+                </div>
+              </div>
+
+              {/* Token display (replaces card after tokenization) */}
+              {tokenVisible && (
+                <div className="px-5 pb-4" style={{ opacity: tokenP }}>
+                  <div className="flex items-center gap-2 px-4 py-3 rounded-lg" style={{ background: `${pastel.accent}10`, border: `1px solid ${pastel.accent}30` }}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={pastel.accent} strokeWidth="2" strokeLinecap="round"><path d="M12 2L3 7v7c0 6.5 4 10.5 9 13 5-2.5 9-6.5 9-13V7z" /></svg>
+                    <span className="font-mono text-[12px]" style={{ color: pastel.accent }}>tok_1A2B3C4D5E6F7G</span>
+                  </div>
+                </div>
               )}
+
+              {/* Approve button / status */}
+              <div className="px-5 pb-5">
+                {approved ? (
+                  <div className="flex items-center justify-center gap-2 py-3 rounded-lg" style={{ background: pastel.accent, transform: `scale(${approveP})` }}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={pastel.bg} strokeWidth="3" strokeLinecap="round"><path d="M20 6L9 17l-5-5" /></svg>
+                    <span className="font-display font-[600] text-[15px]" style={{ color: pastel.bg }}>Approved</span>
+                  </div>
+                ) : (
+                  <div className="py-3 rounded-lg text-center" style={{ background: `${pastel.ink}08`, border: `1px solid ${pastel.line}` }}>
+                    <span className="font-display font-[500] text-[14px]" style={{ color: pastel.inkSoft }}>Processing...</span>
+                  </div>
+                )}
+              </div>
             </div>
 
-            {/* Security shields around card */}
-            <div className="absolute" style={{ width: "380px", height: "260px", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}>
-              {shields.map((s, i) => {
-                const sp = spring(Math.max(0, Math.min(1, (t - SHIELDS_START - i * SHIELD_STAGGER) / 500)));
-                const angle = (i / shields.length) * 360;
-                const rad = (angle * Math.PI) / 180;
-                const x = 50 + 45 * Math.cos(rad);
-                const y = 50 + 42 * Math.sin(rad);
-                return (
-                  <div key={i} className="absolute text-[24px]" style={{ left: `${x}%`, top: `${y}%`, transform: "translate(-50%,-50%)", opacity: sp, filter: `scale(${sp})` }}>
-                    {s}
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Labels */}
-            <div className="mt-10 flex flex-col items-center gap-3">
-              {labels.map((label, i) => {
-                const lp = ease(Math.max(0, Math.min(1, (t - LABELS_START - i * LABEL_STAGGER) / 500)));
-                return (
-                  <div key={label} className="px-4 py-2 rounded-full border font-mono text-[13px]" style={{ borderColor: pastel.line, color: pastel.ink, opacity: lp, transform: `translateY(${10 * (1 - lp)}px)`, background: pastel.surface }}>
-                    {label}
-                  </div>
-                );
-              })}
-            </div>
+            {/* Confetti */}
+            {showConfetti && Array.from({ length: 10 }).map((_, i) => {
+              const angle = (i / 10) * 360 + 18;
+              const rad = (angle * Math.PI) / 180;
+              const dist = 50 + ((t - CONFETTI_AT) / 1500) * 70;
+              const fade = Math.max(0, 1 - (t - CONFETTI_AT) / 1200);
+              return <div key={i} className="absolute w-[5px] h-[5px] rounded-full" style={{ left: `calc(50% + ${Math.cos(rad) * dist}px)`, top: `calc(48% + ${Math.sin(rad) * dist}px)`, background: pastel.accent, opacity: fade * 0.6, zIndex: 7 }} />;
+            })}
           </div>
         )}
 
-        {/* Logo outro */}
+        {/* z=8: Narration text on margins */}
+        {narrations.map((nar, i) => {
+          const elapsed = Math.max(0, t - nar.t);
+          const charsShown = Math.min(nar.text.length, Math.floor(elapsed / NAR_TYPE_MS));
+          const fadeOut = elapsed > NAR_TYPE_MS * nar.text.length + NAR_HOLD ? Math.max(0, 1 - (elapsed - NAR_TYPE_MS * nar.text.length - NAR_HOLD) / 400) : 1;
+          if (elapsed <= 0 || fadeOut <= 0) return null;
+          const isLeft = nar.side === "left";
+          return (
+            <div key={i} className="absolute px-4" style={{
+              [isLeft ? "left" : "right"]: "3%",
+              top: `${42 + i * 5}%`,
+              zIndex: 8,
+              opacity: fadeOut * contentFade,
+              textAlign: isLeft ? "left" : "right",
+            }}>
+              <span className="font-mono font-medium whitespace-nowrap" style={{
+                fontSize: "min(13px, 1.4vh)",
+                color: isLeft ? pastel.accent : `${pastel.ink}b3`,
+                letterSpacing: "0.3px",
+              }}>
+                {nar.text.slice(0, charsShown)}
+              </span>
+            </div>
+          );
+        })}
+
+        {/* z=50: Logo outro */}
         {outroP > 0 && (
           <div className="absolute inset-0 flex flex-col items-center justify-center" style={{ opacity: outroP * outroFade, zIndex: 50, background: `${pastel.bg}e6` }}>
             <div className="flex items-baseline">
-              {logoLetters.map((char, i) => { const p = Math.max(0, Math.min(1, (outroP * 7 - i * 0.5) / 1.2)); const sp2 = spring(p); const ls = logoStarts[i]; return (<span key={i} className="font-display font-[800] tracking-[-0.035em] inline-block" style={{ fontSize: "48px", color: pastel.ink, transform: `translate(${ls.x*(1-sp2)}px,${ls.y*(1-sp2)}px) rotate(${ls.r*(1-sp2)}deg)`, opacity: p > 0 ? Math.min(1, p*3) : 0 }}>{char}</span>); })}
-              <span className="inline-block w-[8px] h-[8px] rounded-full ml-[3px]" style={{ background: pastel.accent, transform: `scale(${spring(Math.max(0, (outroP-0.7)/0.15))})` }} />
+              {logoLetters.map((char, i) => { const p = Math.max(0, Math.min(1, (outroP*7-i*0.5)/1.2)); const sp = spring(p); const ls = logoStarts[i]; return (<span key={i} className="font-display font-[800] tracking-[-0.035em] inline-block" style={{ fontSize: "48px", color: pastel.ink, transform: `translate(${ls.x*(1-sp)}px,${ls.y*(1-sp)}px) rotate(${ls.r*(1-sp)}deg)`, opacity: p>0?Math.min(1,p*3):0 }}>{char}</span>); })}
+              <span className="inline-block w-[8px] h-[8px] rounded-full ml-[3px]" style={{ background: pastel.accent, transform: `scale(${spring(Math.max(0,(outroP-0.7)/0.15))})` }} />
             </div>
-            <p className="font-display font-[400] mt-4 text-[20px] tracking-[-0.01em]" style={{ color: pastel.inkSoft, opacity: Math.max(0, (outroP-0.8)/0.2) }}>Payments that think.</p>
+            <p className="font-display font-[400] mt-4 text-[20px]" style={{ color: pastel.inkSoft, opacity: Math.max(0,(outroP-0.8)/0.2) }}>Payments that think.</p>
           </div>
         )}
       </div>
