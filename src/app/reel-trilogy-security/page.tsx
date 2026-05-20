@@ -9,8 +9,8 @@ const LOOP = 11000;
 // Timeline
 const COVER_DUR = 1500;
 const CARD_IN = 1500, CARD_DUR = 1000;
-// Number reveal: 4 groups, each takes ~600ms (cycle then lock)
-const NUM_START = 2500, GROUP_DUR = 600;
+// Number typewriter: 16 digits, ~145ms each with variance
+const NUM_START = 2500;
 // Status texts
 const STATUS_1 = 2500;  // "Processing card details..."
 const STATUS_2 = 4000;  // "Tokenizing card data..."
@@ -43,10 +43,9 @@ const logoStarts = [
   { x: 100, y: 40, r: 15 }, { x: -60, y: -25, r: -6 }, { x: 40, y: 80, r: 9 }, { x: -55, y: -65, r: -14 },
 ];
 
-// Deterministic "random" digit for cycling effect
-function cycleDigit(t: number, seed: number): string {
-  return String(((Math.floor(t / 50) * 7 + seed * 13) % 10));
-}
+// Typewriter delays per digit (130-160ms natural variance)
+const digitDelays = [142, 155, 133, 148, 138, 160, 135, 152, 140, 157, 130, 145, 150, 136, 158, 143];
+const digitCumulative = digitDelays.reduce((acc: number[], d) => { acc.push((acc[acc.length - 1] || 0) + d); return acc; }, [0]);
 
 export default function Page() {
   const [t, setT] = useState(-1);
@@ -64,23 +63,14 @@ export default function Page() {
   const cardP = spring(Math.max(0, Math.min(1, (t - CARD_IN) / CARD_DUR)));
   const cardTilt = Math.max(0, 15 * (1 - cardP));
 
-  // Number generation per group
+  // Simple typewriter — digit by digit
   const finalDigits = "4242424242424242";
-  const getGroupDisplay = (groupIdx: number): string => {
-    const groupStart = NUM_START + groupIdx * GROUP_DUR;
-    const elapsed = t - groupStart;
-    if (elapsed < 0) return "XXXX"; // not started
-    if (elapsed >= GROUP_DUR) {
-      // locked
-      return finalDigits.slice(groupIdx * 4, groupIdx * 4 + 4);
-    }
-    // cycling
-    return Array.from({ length: 4 }, (_, i) => cycleDigit(t, groupIdx * 4 + i)).join("");
-  };
-  const groupFlash = (groupIdx: number): boolean => {
-    const lockTime = NUM_START + groupIdx * GROUP_DUR + GROUP_DUR;
-    return t >= lockTime && t < lockTime + 200;
-  };
+  const typeElapsedNum = Math.max(0, t - NUM_START);
+  let digitsTyped = 0;
+  for (let i = 0; i < digitCumulative.length; i++) {
+    if (typeElapsedNum >= digitCumulative[i]) digitsTyped = i;
+  }
+  digitsTyped = Math.min(digitsTyped, 16);
 
   // Token transform
   const tokenP = ease(Math.max(0, Math.min(1, (t - TOKEN_START) / TOKEN_DUR)));
@@ -186,16 +176,20 @@ export default function Page() {
                     </div>
                   </div>
                 ) : (
-                  /* Card number with cycling/locking groups */
+                  /* Card number — simple typewriter, digit by digit */
                   <div className="font-mono font-medium" style={{ fontSize: "min(28px, 3vh)", color: "#fafaf7", letterSpacing: "0.05em" }}>
-                    {[0, 1, 2, 3].map((g) => (
-                      <span key={g}>
-                        <span style={{ color: groupFlash(g) ? pastel.accent : "#fafaf7", transition: "color 200ms" }}>
-                          {getGroupDisplay(g)}
+                    {Array.from({ length: 16 }).map((_, i) => {
+                      const isSpace = i > 0 && i % 4 === 0;
+                      return (
+                        <span key={i}>
+                          {isSpace && <span style={{ opacity: 0.4 }}>{" "}</span>}
+                          <span>{i < digitsTyped ? finalDigits[i] : "•"}</span>
                         </span>
-                        {g < 3 && <span style={{ opacity: 0.4 }}> </span>}
-                      </span>
-                    ))}
+                      );
+                    })}
+                    {digitsTyped < 16 && t >= NUM_START && (
+                      <span className="inline-block w-[2px] h-[24px] ml-[1px] align-middle" style={{ background: pastel.accent, animation: "pulse 0.8s step-end infinite" }} />
+                    )}
                   </div>
                 )}
               </div>
