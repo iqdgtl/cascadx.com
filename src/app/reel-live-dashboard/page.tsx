@@ -3,11 +3,17 @@ import { useEffect, useState, useRef, useMemo } from "react";
 import ReelLogoOutro from "@/components/ReelLogoOutro";
 import { darkTheme } from "@/lib/themes";
 
-const LOOP = 18000;
+const LOOP = 20500;
+// Intro
+const INTRO_LINE1 = 0, INTRO_LINE2 = 400, INTRO_SUB = 1200;
+const INTRO_HOLD_END = 2500, INTRO_FADE = 500;
+// Dashboard
+const BOOT_START = 2500;
 const BOOT_DUR = 1000;
-const DAY_START = 1000, DAY_END = 12000;
-const SUMMARY_IN = 12000, SUMMARY_DUR = 800;
-const OUTRO_START = 16500, OUTRO_DUR = 1500;
+const DAY_START = 4000, DAY_END = 15000;
+const SUMMARY_IN = 15000, SUMMARY_DUR = 800;
+const SUMMARY_HOLD_END = 19000;
+const OUTRO_START = 19000, OUTRO_DUR = 1500;
 
 // Transaction templates
 const txTemplates = [
@@ -93,8 +99,16 @@ export default function Page() {
   // Approval rate: starts 87%, climbs to 94.2%
   const approvalRate = 87 + dayProgress * 7.2;
 
-  // Boot
-  const bootP = ease(Math.max(0, Math.min(1, t / BOOT_DUR)));
+  // Intro text
+  const introLine1P = ease(Math.max(0, Math.min(1, (t - INTRO_LINE1) / 400)));
+  const introLine2P = ease(Math.max(0, Math.min(1, (t - INTRO_LINE2) / 400)));
+  const introSubP = ease(Math.max(0, Math.min(1, (t - INTRO_SUB) / 500)));
+  const introFade = t < INTRO_HOLD_END ? 1 : Math.max(0, 1 - (t - INTRO_HOLD_END) / INTRO_FADE);
+  const introVisible = t < INTRO_HOLD_END + INTRO_FADE;
+
+  // Boot (dashboard appears after intro)
+  const bootP = ease(Math.max(0, Math.min(1, (t - BOOT_START) / BOOT_DUR)));
+  const dashboardVisible = t >= BOOT_START;
 
   // Summary
   const summaryP = ease(Math.max(0, Math.min(1, (t - SUMMARY_IN) / SUMMARY_DUR)));
@@ -108,6 +122,29 @@ export default function Page() {
     <div style={{ width: "100vw", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "#000", overflow: "hidden", cursor: "none" }}>
       <div style={{ width: "min(1080px, 56.25vh)", height: "min(1920px, 100vh)", aspectRatio: "9/16", position: "relative", overflow: "hidden", background: "#0d0f0e" }}>
 
+        {/* INTRO title card */}
+        {introVisible && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center px-8" style={{ opacity: introFade, zIndex: 20 }}>
+            <div className="text-center">
+              <div style={{ opacity: introLine1P, transform: `translateY(${8 * (1 - introLine1P)}px)` }}>
+                <span className="font-display font-[800] text-[52px] tracking-[-0.03em] leading-[1.1] text-[#fafaf7]">
+                  What a single day looks like
+                </span>
+              </div>
+              <div style={{ opacity: introLine2P, transform: `translateY(${8 * (1 - introLine2P)}px)` }}>
+                <span className="font-display font-[800] text-[52px] tracking-[-0.03em] leading-[1.1] text-[#fafaf7]">
+                  inside <span className="text-[#d97757]">CascadX.</span>
+                </span>
+              </div>
+            </div>
+            <p className="text-center mt-6 text-[22px] font-medium leading-relaxed" style={{ color: "#b8bcb6", opacity: introSubP, transform: `translateY(${6 * (1 - introSubP)}px)`, maxWidth: "85%" }}>
+              Every decline. Every reroute. Every recovery — in real time.
+            </p>
+          </div>
+        )}
+
+        {/* Dashboard content — appears after intro */}
+        {dashboardVisible && (<>
         {/* Header */}
         <div className="absolute top-0 left-0 right-0 px-5 py-4 flex items-center justify-between" style={{ opacity: bootP, zIndex: 5 }}>
           <div className="flex items-center gap-2">
@@ -175,6 +212,8 @@ export default function Page() {
             );
           })}
         </div>
+
+        </>)}
 
         {/* End of day summary */}
         {summaryP > 0 && (
