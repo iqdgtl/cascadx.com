@@ -37,7 +37,7 @@ function WaterfallInner({ theme }: { theme: ReelTheme }) {
   const softColor = isDark ? "#b8bcb6" : "#5a4a42";
   const mutedColor = isDark ? "#7a8178" : "#8a7a72";
   const cardGrad = isDark ? "linear-gradient(135deg, #2a1f1c, #3d2520)" : "linear-gradient(135deg, #e8a98e, #d97757)";
-  const cardText = isDark ? "#fafaf7" : "#2a1f1c";
+  const cardText = "#fafaf7"; // white on both — readable on dark card AND terracotta card
   const declineColor = isDark ? "#c4564a" : "#d4756a";
   const overlayBg = isDark ? "rgba(13,15,14,0.8)" : "rgba(245,239,230,0.85)";
   const outroBg = isDark ? "rgba(13,15,14,0.92)" : "rgba(245,239,230,0.92)";
