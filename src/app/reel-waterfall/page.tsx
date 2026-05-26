@@ -173,7 +173,7 @@ function WaterfallInner({ theme }: { theme: ReelTheme }) {
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.5" strokeLinecap="round"><path d="M8.5 16.5a5 5 0 0 1 0-9" /><path d="M12 19a9 9 0 0 0 0-14" /></svg>
                 </div>
                 {/* Card number — typewriter */}
-                <div className="font-mono font-medium text-center" style={{ fontSize: "min(20px, 2.2vh)", color: textColor, letterSpacing: "0.06em", position: "relative", zIndex: 1 }}>
+                <div className="font-mono font-medium text-center" style={{ fontSize: "min(20px, 2.2vh)", color: cardText, letterSpacing: "0.06em", position: "relative", zIndex: 1 }}>
                   {numDisplay}
                   {numTyping && <span className="inline-block w-[1.5px] h-[18px] ml-[1px] align-middle" style={{ background: "#d97757", animation: "pulse 0.7s step-end infinite" }} />}
                 </div>
