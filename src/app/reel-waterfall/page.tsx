@@ -59,6 +59,31 @@ function WaterfallInner({ theme }: { theme: ReelTheme }) {
   const subtitleP = ease(Math.max(0, Math.min(1, (t - 800) / 500)));
   const subtitleFade = t < SHRINK_AT - 300 ? 1 : Math.max(0, 1 - (t - (SHRINK_AT - 300)) / 300);
 
+  // Card field typing
+  const cardNum = "4718920356147283";
+  const numTypeStart = 500, numTypeMs = 95; // 16 digits over ~1.5s
+  const numElapsed = Math.max(0, t - numTypeStart);
+  const numDigits = Math.min(16, Math.floor(numElapsed / numTypeMs));
+
+  const expiryStr = "03/29";
+  const expTypeStart = 2000, expTypeMs = 110;
+  const expElapsed = Math.max(0, t - expTypeStart);
+  const expChars = Math.min(5, Math.floor(expElapsed / expTypeMs));
+
+  const nameStr = "JOHN DOE";
+  const nameStart = 2500;
+  const nameP = ease(Math.max(0, Math.min(1, (t - nameStart) / 400)));
+
+  const bankLogoP = ease(Math.max(0, Math.min(1, (t - 2800) / 300)));
+
+  // Format card number display
+  let numDisplay = "";
+  for (let i = 0; i < 16; i++) {
+    if (i > 0 && i % 4 === 0) numDisplay += " ";
+    numDisplay += i < numDigits ? cardNum[i] : "•";
+  }
+  const numTyping = t >= numTypeStart && numDigits < 16;
+
   // Falling mini-card position
   const approaches = [
     { start: L1_APPROACH, hit: L1_HIT, fromY: 10, toY: layers[0].y - 7 },
@@ -137,14 +162,32 @@ function WaterfallInner({ theme }: { theme: ReelTheme }) {
                 padding: "20px", display: "flex", flexDirection: "column" as const, justifyContent: "space-between", overflow: "hidden",
               }}>
                 <div style={{ position: "absolute", inset: 0, background: `linear-gradient(${135 + rotY * 2}deg, transparent 30%, rgba(255,255,255,0.08) 45%, rgba(255,255,255,0.14) 50%, rgba(255,255,255,0.08) 55%, transparent 70%)`, pointerEvents: "none", borderRadius: "inherit" }} />
-                <div style={{ display: "flex", justifyContent: "space-between", position: "relative", zIndex: 1 }}>
+                {/* Top row: chip + generic bank logo (fades in) + contactless */}
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", position: "relative", zIndex: 1 }}>
                   <svg width="44" height="34" viewBox="0 0 56 44"><rect x="2" y="2" width="52" height="40" rx="6" fill="none" stroke="#c49a3a" strokeWidth="1.5" /><rect x="6" y="6" width="44" height="32" rx="3" fill="#d4a853" opacity="0.3" /><line x1="28" y1="6" x2="28" y2="38" stroke="#c49a3a" strokeWidth="0.7" opacity="0.4" /><line x1="6" y1="22" x2="50" y2="22" stroke="#c49a3a" strokeWidth="0.7" opacity="0.4" /></svg>
+                  {/* Generic bank logo */}
+                  <div style={{ opacity: bankLogoP, display: "flex", alignItems: "center", gap: "4px" }}>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3" /></svg>
+                    <span className="font-mono" style={{ fontSize: "8px", color: "rgba(255,255,255,0.4)", letterSpacing: "0.06em" }}>MERIDIAN</span>
+                  </div>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.5" strokeLinecap="round"><path d="M8.5 16.5a5 5 0 0 1 0-9" /><path d="M12 19a9 9 0 0 0 0-14" /></svg>
                 </div>
-                <div className="font-mono font-medium text-center" style={{ fontSize: "min(20px, 2.2vh)", color: textColor, letterSpacing: "0.06em", position: "relative", zIndex: 1 }}>•••• •••• •••• 4242</div>
-                <div style={{ display: "flex", justifyContent: "space-between", position: "relative", zIndex: 1 }}>
-                  <div><div className="font-mono" style={{ fontSize: "8px", color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em" }}>CARDHOLDER</div><div className="font-mono" style={{ fontSize: "11px", color: "rgba(255,255,255,0.75)" }}>JOHN DOE</div></div>
-                  <div className="font-mono" style={{ fontSize: "9px", color: "#d97757", opacity: 0.6, alignSelf: "flex-end" }}>CascadX.</div>
+                {/* Card number — typewriter */}
+                <div className="font-mono font-medium text-center" style={{ fontSize: "min(20px, 2.2vh)", color: textColor, letterSpacing: "0.06em", position: "relative", zIndex: 1 }}>
+                  {numDisplay}
+                  {numTyping && <span className="inline-block w-[1.5px] h-[18px] ml-[1px] align-middle" style={{ background: "#d97757", animation: "pulse 0.7s step-end infinite" }} />}
+                </div>
+                {/* Bottom: cardholder (typed) + expiry (typed) + CascadX brand */}
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", position: "relative", zIndex: 1 }}>
+                  <div>
+                    <div className="font-mono" style={{ fontSize: "8px", color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em" }}>CARDHOLDER</div>
+                    <div className="font-mono" style={{ fontSize: "11px", color: "rgba(255,255,255,0.75)", opacity: nameP }}>{nameStr.slice(0, Math.ceil(nameStr.length * nameP))}</div>
+                  </div>
+                  <div style={{ textAlign: "center" }}>
+                    <div className="font-mono" style={{ fontSize: "8px", color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em" }}>EXPIRES</div>
+                    <div className="font-mono" style={{ fontSize: "11px", color: "rgba(255,255,255,0.75)" }}>{expiryStr.slice(0, expChars) || "—"}</div>
+                  </div>
+                  <div className="font-mono" style={{ fontSize: "9px", color: "#d97757", opacity: 0.6 }}>CascadX.</div>
                 </div>
               </div>
               <div style={{ position: "absolute", inset: 0, backfaceVisibility: "hidden" as const, transform: "rotateY(180deg)", borderRadius: "18px", background: "linear-gradient(135deg, #1a1512, #2a1f1c)", border: "1px solid rgba(255,255,255,0.05)" }}>
