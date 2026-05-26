@@ -3,11 +3,11 @@ import { useEffect, useState, useRef, useMemo } from "react";
 import ReelLogoOutro from "@/components/ReelLogoOutro";
 import { darkTheme } from "@/lib/themes";
 
-const LOOP = 15000;
+const LOOP = 18000;
 const BOOT_DUR = 1000;
-const DAY_START = 1000, DAY_END = 12000; // 11s of "day"
+const DAY_START = 1000, DAY_END = 12000;
 const SUMMARY_IN = 12000, SUMMARY_DUR = 800;
-const OUTRO_START = 13500, OUTRO_DUR = 1500;
+const OUTRO_START = 16500, OUTRO_DUR = 1500;
 
 // Transaction templates
 const txTemplates = [
