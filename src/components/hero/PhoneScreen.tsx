@@ -2,124 +2,188 @@
 import React, { useEffect, useState } from "react";
 
 // ── APM data ──────────────────────────────────────────────────────────────────
-const APMS = [
-  { name: "Alipay",    flag: "🇨🇳", country: "CN", color: "#1677FF" },
-  { name: "WeChat Pay",flag: "🇨🇳", country: "CN", color: "#07C160" },
-  { name: "GrabPay",   flag: "🇸🇬", country: "SG", color: "#00B14F" },
-  { name: "GCash",     flag: "🇵🇭", country: "PH", color: "#007DFF" },
-  { name: "PayPay",    flag: "🇯🇵", country: "JP", color: "#FF0033" },
-  { name: "OVO",       flag: "🇮🇩", country: "ID", color: "#4C3494" },
-  { name: "DANA",      flag: "🇮🇩", country: "ID", color: "#118EEA" },
-  { name: "TrueMoney", flag: "🇹🇭", country: "TH", color: "#FF6600" },
-  { name: "MoMo",      flag: "🇻🇳", country: "VN", color: "#A50064" },
-  { name: "Paytm",     flag: "🇮🇳", country: "IN", color: "#00BAF2" },
-  { name: "Kakao Pay", flag: "🇰🇷", country: "KR", color: "#FFCD00" },
-  { name: "PromptPay", flag: "🇹🇭", country: "TH", color: "#1A3C8F" },
-  { name: "Apple Pay", flag: "🌐", country: "Global", color: "#1a1a1a" },
-  { name: "Google Pay",flag: "🌐", country: "Global", color: "#4285F4" },
-  { name: "PayPal",    flag: "🌐", country: "Global", color: "#003087" },
-  { name: "Stripe",    flag: "🌐", country: "Global", color: "#635BFF" },
+const APMS: Array<{ name: string; bg: string; dark?: boolean }> = [
+  { name: "Alipay",     bg: "#1677FF" },
+  { name: "WeChat Pay", bg: "#07C160" },
+  { name: "PayPay",     bg: "#FF0033" },
+  { name: "GrabPay",    bg: "#00B14F" },
+  { name: "GCash",      bg: "#007DFE" },
+  { name: "OVO",        bg: "#4C3494" },
+  { name: "DANA",       bg: "#118EEA" },
+  { name: "TrueMoney",  bg: "#FF6B00" },
+  { name: "MoMo",       bg: "#A50064" },
+  { name: "Paytm",      bg: "#002E6E" },
+  { name: "Kakao Pay",  bg: "#FEE500", dark: true },
+  { name: "PromptPay",  bg: "#003D7E" },
+  { name: "Apple Pay",  bg: "#FFFFFF", dark: true },
+  { name: "Google Pay", bg: "#FFFFFF", dark: true },
+  { name: "PayPal",     bg: "#FFFFFF", dark: true },
+  { name: "Stripe",     bg: "#635BFF" },
 ];
 
-// ── SVG logos — brand color via currentColor on wrapper ───────────────────────
+// ── App-icon logos (viewBox 0 0 40 40) ───────────────────────────────────────
 const APM_LOGOS: Record<string, React.ReactElement> = {
+
+  // Bold "a" + swoosh underline — Alipay's lettermark
   "Alipay": (
-    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-      <rect x="1.5" y="1.5" width="25" height="25" rx="6" stroke="currentColor" strokeWidth="1.5"/>
-      <path d="M9 20L14 8L19 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M11 15.5H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-    </svg>
-  ),
-  "WeChat Pay": (
-    <svg width="32" height="28" viewBox="0 0 32 28" fill="none" aria-hidden="true">
-      <path d="M11.5 3C6.253 3 2 6.91 2 11.75C2 14.3 3.24 16.58 5.23 18.13L4 22L8.7 19.72C9.6 19.93 10.54 20.05 11.5 20.05C16.747 20.05 21 16.14 21 11.3C21 6.46 16.747 2.55 11.5 2.55Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
-      <path d="M19.5 12C15.358 12 12 14.91 12 18.5C12 20.42 13.01 22.13 14.64 23.28L14 26L17.1 24.34C17.87 24.53 18.67 24.63 19.5 24.63C23.642 24.63 27 21.72 27 18.13C27 14.54 23.642 11.63 19.5 11.63Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
-    </svg>
-  ),
-  "GrabPay": (
-    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-      <path d="M22 10C20.245 6.477 16.896 4 13 4C7.477 4 3 8.477 3 14C3 19.523 7.477 24 13 24C18.523 24 23 19.523 23 14V13H16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  ),
-  "GCash": (
-    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-      <path d="M21 9C19 6 16 4 13 4C7.477 4 3 8.477 3 14C3 19.523 7.477 24 13 24C18 24 22 20.5 22.5 16H15V13H25V16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  ),
-  "PayPay": (
-    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-      <rect x="1.5" y="1.5" width="25" height="25" rx="6" stroke="currentColor" strokeWidth="1.5"/>
-      <path d="M8 22V6H17C20.314 6 23 8.686 23 12C23 15.314 20.314 18 17 18H8" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  ),
-  "OVO": (
-    <svg width="32" height="24" viewBox="0 0 32 24" fill="none" aria-hidden="true">
-      <ellipse cx="16" cy="12" rx="15" ry="10" stroke="currentColor" strokeWidth="1.5"/>
-      <ellipse cx="16" cy="12" rx="9" ry="6" stroke="currentColor" strokeWidth="1.5"/>
-      <ellipse cx="16" cy="12" rx="3.5" ry="2.5" fill="currentColor"/>
-    </svg>
-  ),
-  "DANA": (
-    <svg width="26" height="28" viewBox="0 0 26 28" fill="none" aria-hidden="true">
-      <path d="M3 4H12C18.627 4 24 9.373 24 16C24 19.314 21.314 22 18 22H3V4Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
-    </svg>
-  ),
-  "TrueMoney": (
-    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-      <path d="M4 7H24M14 7V23" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
-      <circle cx="14" cy="17" r="5" stroke="currentColor" strokeWidth="1.5"/>
-    </svg>
-  ),
-  "MoMo": (
-    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-      <circle cx="14" cy="14" r="12" stroke="currentColor" strokeWidth="1.5"/>
-      <path d="M7 19V9L11 15L14 9L17 15L21 9V19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  ),
-  "Paytm": (
-    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-      <circle cx="14" cy="14" r="12" stroke="currentColor" strokeWidth="1.5"/>
-      <path d="M8 14L12 18L20 10" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  ),
-  "Kakao Pay": (
-    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-      <path d="M14 3C8.477 3 4 6.91 4 11.75C4 14.87 5.84 17.62 8.64 19.3L7.5 24L12.5 21.1C12.99 21.17 13.49 21.2 14 21.2C19.523 21.2 24 17.29 24 12.45C24 7.61 19.523 3 14 3Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
-      <path d="M11 9V15" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-      <path d="M11 12L14.5 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M11 12L14.5 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  ),
-  "PromptPay": (
-    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-      <path d="M3 9V3H9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M19 3H25V9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M25 19V25H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M9 25H3V19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-      <rect x="11" y="11" width="6" height="6" rx="1" fill="currentColor"/>
-    </svg>
-  ),
-  "Apple Pay": (
-    <svg width="26" height="30" viewBox="0 0 26 30" fill="none" aria-hidden="true">
-      <path d="M13 5.5C13 5.5 14.5 2.5 18 3C18 5.5 16 7 13 5.5Z" fill="currentColor"/>
-      <path d="M6 14.5C7 11.5 9.5 10 12.5 10C14 10 15 10.5 16.5 10.5C18 10.5 19.5 10 21 10C23 10 24.5 11.5 24.5 14.5C22 16 21.5 20 24.5 22C23.5 24.5 22 27.5 19.5 27.5C18 27.5 17 26.5 15.5 26.5C14 26.5 13 27.5 11.5 27.5C9 27.5 7.5 24.5 6 22C4.5 19.5 4.5 14.5 6 14.5Z" fill="currentColor"/>
+    <svg viewBox="0 0 40 40" width="100%" height="100%" aria-hidden="true">
+      <text x="20" y="26" textAnchor="middle"
+        fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
+        fontSize="24" fontWeight="900" fill="white">a</text>
+      <path d="M11 32 Q20 28.5 29 32" stroke="white" strokeWidth="2.5"
+        fill="none" strokeLinecap="round"/>
     </svg>
   ),
 
+  // Two overlapping speech bubbles — WeChat's iconic mark
+  "WeChat Pay": (
+    <svg viewBox="0 0 40 40" fill="none" width="100%" height="100%" aria-hidden="true">
+      <rect x="3" y="7" width="22" height="15" rx="7" fill="white"/>
+      <polygon points="6,22 4,29 15,22" fill="white"/>
+      <rect x="14" y="17" width="20" height="13" rx="6" fill="white" fillOpacity="0.6"/>
+      <polygon points="30,30 34,36 23,30" fill="white" fillOpacity="0.6"/>
+    </svg>
+  ),
+
+  // Stacked "Pay / Pay" wordmark
+  "PayPay": (
+    <svg viewBox="0 0 40 40" width="100%" height="100%" aria-hidden="true">
+      <text x="20" y="19" textAnchor="middle"
+        fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
+        fontSize="14" fontWeight="900" fill="white">Pay</text>
+      <text x="20" y="31" textAnchor="middle"
+        fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
+        fontSize="14" fontWeight="900" fill="white">Pay</text>
+    </svg>
+  ),
+
+  // Bold "Grab" wordmark
+  "GrabPay": (
+    <svg viewBox="0 0 40 40" width="100%" height="100%" aria-hidden="true">
+      <text x="20" y="25" textAnchor="middle"
+        fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
+        fontSize="16" fontWeight="900" fill="white">Grab</text>
+    </svg>
+  ),
+
+  // Large "G" + small "Cash"
+  "GCash": (
+    <svg viewBox="0 0 40 40" width="100%" height="100%" aria-hidden="true">
+      <text x="20" y="22" textAnchor="middle"
+        fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
+        fontSize="20" fontWeight="900" fill="white">G</text>
+      <text x="20" y="31" textAnchor="middle"
+        fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
+        fontSize="8" fontWeight="700" fill="white">Cash</text>
+    </svg>
+  ),
+
+  // Bold "OVO" on purple
+  "OVO": (
+    <svg viewBox="0 0 40 40" width="100%" height="100%" aria-hidden="true">
+      <text x="20" y="26" textAnchor="middle"
+        fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
+        fontSize="18" fontWeight="900" fill="white">OVO</text>
+    </svg>
+  ),
+
+  // Lowercase "dana" wordmark
+  "DANA": (
+    <svg viewBox="0 0 40 40" width="100%" height="100%" aria-hidden="true">
+      <text x="20" y="26" textAnchor="middle"
+        fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
+        fontSize="17" fontWeight="900" fill="white">dana</text>
+    </svg>
+  ),
+
+  // "True / Money" stacked
+  "TrueMoney": (
+    <svg viewBox="0 0 40 40" width="100%" height="100%" aria-hidden="true">
+      <text x="20" y="21" textAnchor="middle"
+        fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
+        fontSize="15" fontWeight="900" fill="white">True</text>
+      <text x="20" y="31" textAnchor="middle"
+        fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
+        fontSize="9" fontWeight="600" fill="white">Money</text>
+    </svg>
+  ),
+
+  // Bold "MoMo" wordmark on pink
+  "MoMo": (
+    <svg viewBox="0 0 40 40" width="100%" height="100%" aria-hidden="true">
+      <text x="20" y="26" textAnchor="middle"
+        fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
+        fontSize="17" fontWeight="900" fill="white">MoMo</text>
+    </svg>
+  ),
+
+  // "Paytm" wordmark on dark blue
+  "Paytm": (
+    <svg viewBox="0 0 40 40" width="100%" height="100%" aria-hidden="true">
+      <text x="20" y="26" textAnchor="middle"
+        fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
+        fontSize="15" fontWeight="900" fill="white">Paytm</text>
+    </svg>
+  ),
+
+  // Dark "Kakao / Pay" on yellow
+  "Kakao Pay": (
+    <svg viewBox="0 0 40 40" width="100%" height="100%" aria-hidden="true">
+      <text x="20" y="21" textAnchor="middle"
+        fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
+        fontSize="13" fontWeight="900" fill="#3C1E1E">Kakao</text>
+      <text x="20" y="32" textAnchor="middle"
+        fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
+        fontSize="12" fontWeight="700" fill="#3C1E1E">Pay</text>
+    </svg>
+  ),
+
+  // Lightning bolt — PromptPay's transfer symbol
+  "PromptPay": (
+    <svg viewBox="0 0 40 40" fill="none" width="100%" height="100%" aria-hidden="true">
+      <path d="M24 8L12 22H20L16 32L28 18H20L24 8Z" fill="white"/>
+    </svg>
+  ),
+
+  // Apple silhouette + "Pay"
+  "Apple Pay": (
+    <svg viewBox="0 0 40 40" fill="none" width="100%" height="100%" aria-hidden="true">
+      <path d="M22 8C22 8 20 5.5 21.5 3.5C23 1.5 25.5 3 24 5.5C23 7 22 8 22 8Z" fill="#111"/>
+      <path d="M20.5 9.5C17 9.5 13.5 11.5 12 15.5C10.5 19.5 11 25 13.5 28C15 30 16.5 31 18.5 31C19.5 31 20.5 30.5 21.5 30.5C22.5 30.5 23.5 31 24.5 31C26.5 31 28 30 29.5 28C31 26 31.5 22.5 30 19.5C28.5 16.5 26 15.5 24 15.5C23 15.5 22 16 21 15.5C20 15 18.5 12.5 15.5 12C17 10.5 18.5 9.5 20.5 9.5Z" fill="#111"/>
+      <text x="20" y="38" textAnchor="middle"
+        fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
+        fontSize="7" fontWeight="600" fill="#111">Pay</text>
+    </svg>
+  ),
+
+  // Google blue "G" + "Pay"
   "Google Pay": (
-    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-      <path d="M14 4C8.5 4 4 8.5 4 14C4 19.5 8.5 24 14 24C19.5 24 24 19.5 24 14H14V12H26C26 19.6 20.6 26 14 26C7.4 26 2 20.6 2 14C2 7.4 7.4 2 14 2C17.3 2 20.2 3.4 22.3 5.6L20.2 7.7C18.7 6.1 16.5 5 14 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+    <svg viewBox="0 0 40 40" width="100%" height="100%" aria-hidden="true">
+      <text x="20" y="23" textAnchor="middle"
+        fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
+        fontSize="22" fontWeight="900" fill="#4285F4">G</text>
+      <text x="20" y="33" textAnchor="middle"
+        fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
+        fontSize="8" fontWeight="600" fill="#5f6368">Pay</text>
     </svg>
   ),
+
+  // PP double-P overlap mark — PayPal's iconic mark
   "PayPal": (
-    <svg width="24" height="28" viewBox="0 0 24 28" fill="none" aria-hidden="true">
-      <path d="M17 5C19.5 5 21 6.5 21 9C21 12.5 18.5 14.5 15 14.5H13L12 19H8.5L11 5H17Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
-      <path d="M14.5 8.5C16.5 8.5 18 10 18 12C18 15 16 17 13 17H11L10 22H6.5L9 8.5H14.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+    <svg viewBox="0 0 40 40" fill="none" width="100%" height="100%" aria-hidden="true">
+      <path d="M13 8H21C24.5 8 26.5 10.5 26.5 13.5C26.5 17 24 19.5 21 19.5H17L15.5 27H11L13 8Z"
+        fill="#003087"/>
+      <path d="M16.5 13H24.5C28 13 30 15.5 30 18.5C30 22 27.5 24.5 24.5 24.5H20.5L19 32H14.5L16.5 13Z"
+        fill="#009CDE"/>
     </svg>
   ),
+
+  // Italic "stripe" wordmark on purple
   "Stripe": (
-    <svg width="22" height="28" viewBox="0 0 22 28" fill="none" aria-hidden="true">
-      <path d="M10.5 10C10.5 8.5 11.8 8 13 8C15 8 17 8.8 18.5 10L19.5 7C18 5.8 15.5 5 13 5C9 5 7 7.5 7 10C7 16.5 16 15 16 18C16 19.5 14.8 20 13 20C10.5 20 8.5 19 7 17.5L6 21C7.5 22.5 10.5 23 13 23C17.5 23 20 20.5 20 18C20 11.5 10.5 13 10.5 10Z" fill="currentColor"/>
+    <svg viewBox="0 0 40 40" width="100%" height="100%" aria-hidden="true">
+      <text x="20" y="25" textAnchor="middle"
+        fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
+        fontSize="14" fontWeight="800" fontStyle="italic" fill="white">stripe</text>
     </svg>
   ),
 };
@@ -127,81 +191,40 @@ const APM_LOGOS: Record<string, React.ReactElement> = {
 // Doubled for seamless loop
 const DOUBLED = [...APMS, ...APMS];
 
-// ── APM Tile ──────────────────────────────────────────────────────────────────
-function APMTile({
-  apm, highlighted,
-}: {
-  apm: typeof APMS[0];
-  highlighted: boolean;
-}) {
+// ── App-Icon Tile ─────────────────────────────────────────────────────────────
+function APMTile({ apm, highlighted }: { apm: typeof APMS[number]; highlighted: boolean }) {
   return (
-    <div
-      style={{
-        background: "#fff",
-        borderRadius: "12px",
-        padding: "10px 8px 9px",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: "4px",
-        minHeight: "90px",
-        justifyContent: "center",
-        border: highlighted
-          ? "1.5px solid #d97757"
-          : "1px solid rgba(0,0,0,0.07)",
-        boxShadow: highlighted
-          ? "0 0 12px rgba(217,119,87,0.28), 0 2px 6px rgba(0,0,0,0.06)"
-          : "0 1px 4px rgba(0,0,0,0.05)",
-        transition: "border 0.3s ease, box-shadow 0.35s ease",
-        position: "relative",
-        overflow: "hidden",
-        boxSizing: "border-box",
-      }}
-    >
-      {/* Highlight terracotta glow tint */}
-      {highlighted && (
-        <div style={{
-          position: "absolute", inset: 0,
-          background: "rgba(217,119,87,0.05)",
-          borderRadius: "inherit",
-          pointerEvents: "none",
-        }} />
-      )}
-
-      {/* Brand logo SVG */}
-      <div
-        style={{
-          height: 32,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          color: apm.color,
-          flexShrink: 0,
-        }}
-      >
+    <div style={{
+      background: apm.bg,
+      borderRadius: "16px",
+      aspectRatio: "1",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      outline: highlighted ? "2px solid #d97757" : "none",
+      outlineOffset: "1px",
+      boxShadow: highlighted
+        ? "0 0 14px rgba(217,119,87,0.5), 0 3px 10px rgba(0,0,0,0.2)"
+        : "0 2px 8px rgba(0,0,0,0.18)",
+      transition: "outline 0.3s ease, box-shadow 0.3s ease",
+      position: "relative",
+      overflow: "hidden",
+      flexShrink: 0,
+    }}>
+      {/* iOS icon top-gloss highlight */}
+      <div style={{
+        position: "absolute", top: 0, left: "8%", right: "8%", height: "45%",
+        background: "linear-gradient(180deg, rgba(255,255,255,0.2) 0%, transparent 100%)",
+        borderRadius: "0 0 50% 50%",
+        pointerEvents: "none", zIndex: 2,
+      }}/>
+      {/* Logo */}
+      <div style={{
+        width: "68%", height: "68%",
+        display: "flex", alignItems: "center", justifyContent: "center",
+        position: "relative", zIndex: 3,
+      }}>
         {APM_LOGOS[apm.name]}
-      </div>
-
-      {/* APM name */}
-      <div
-        style={{
-          fontSize: "9px",
-          fontWeight: 600,
-          color: "#111827",
-          lineHeight: 1,
-          textAlign: "center",
-          maxWidth: "100%",
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          whiteSpace: "nowrap",
-        }}
-      >
-        {apm.name}
-      </div>
-
-      {/* Flag + country */}
-      <div style={{ fontSize: "7.5px", color: "#9ca3af", lineHeight: 1 }}>
-        {apm.flag} {apm.country}
       </div>
     </div>
   );
@@ -211,77 +234,44 @@ function APMTile({
 export default function PhoneScreen() {
   const [highlightIdx, setHighlightIdx] = useState<number | null>(null);
 
-  // Random tile highlight every 6–8 seconds
   useEffect(() => {
+    let timer: ReturnType<typeof setTimeout>;
     const fire = () => {
       const idx = Math.floor(Math.random() * APMS.length);
       setHighlightIdx(idx);
-      const clear = setTimeout(() => setHighlightIdx(null), 900);
-      return clear;
+      setTimeout(() => setHighlightIdx(null), 900);
+      timer = setTimeout(fire, 5000 + Math.random() * 3000);
     };
-
-    // First highlight after 2s, then every 6–8s
-    let clearPrev: ReturnType<typeof setTimeout>;
-    const schedule = () => {
-      const delay = 6000 + Math.random() * 2000;
-      return setTimeout(() => {
-        clearPrev = fire();
-        schedule();
-      }, delay);
-    };
-
-    const init = setTimeout(() => { clearPrev = fire(); }, 2200);
-    const recurring = schedule();
-
-    return () => {
-      clearTimeout(init);
-      clearTimeout(recurring);
-      clearTimeout(clearPrev);
-    };
+    const init = setTimeout(() => fire(), 2200);
+    return () => { clearTimeout(init); clearTimeout(timer); };
   }, []);
 
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "100%",
-        background: "#fafafa",
-        borderRadius: "inherit",
-        display: "flex",
-        flexDirection: "column",
-        fontFamily: "-apple-system, BlinkMacSystemFont, 'Inter', sans-serif",
-        overflow: "hidden",
-        position: "relative",
-        boxSizing: "border-box",
-      }}
-    >
-      {/* Glass overlay — subtle diagonal reflection */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: "linear-gradient(138deg, rgba(255,255,255,0.09) 0%, transparent 52%)",
-          pointerEvents: "none",
-          zIndex: 50,
-          borderRadius: "inherit",
-        }}
-      />
+    <div style={{
+      width: "100%", height: "100%",
+      background: "#f2f2f7",
+      borderRadius: "inherit",
+      display: "flex", flexDirection: "column",
+      fontFamily: "-apple-system, BlinkMacSystemFont, 'Inter', sans-serif",
+      overflow: "hidden",
+      position: "relative", boxSizing: "border-box",
+    }}>
+      {/* Glass reflection */}
+      <div style={{
+        position: "absolute", inset: 0,
+        background: "linear-gradient(138deg, rgba(255,255,255,0.09) 0%, transparent 52%)",
+        pointerEvents: "none", zIndex: 50, borderRadius: "inherit",
+      }}/>
 
-      {/* ── Fixed top bar — tall enough to clear Dynamic Island ─── */}
-      <div
-        style={{
-          height: 56,
-          background: "#f8f8f8",
-          borderBottom: "1px solid rgba(0,0,0,0.07)",
-          display: "flex",
-          alignItems: "flex-end",
-          justifyContent: "space-between",
-          padding: "0 14px 10px",
-          flexShrink: 0,
-          position: "relative",
-          zIndex: 5,
-        }}
-      >
+      {/* Top bar */}
+      <div style={{
+        height: 56, background: "#f8f8f8",
+        borderBottom: "1px solid rgba(0,0,0,0.07)",
+        display: "flex", alignItems: "flex-end",
+        justifyContent: "space-between",
+        padding: "0 14px 10px",
+        flexShrink: 0, position: "relative", zIndex: 5,
+      }}>
         <span style={{ fontSize: "14px", color: "#007AFF", lineHeight: 1 }}>←</span>
         <span style={{ fontSize: "13px", fontWeight: 600, color: "#111827", letterSpacing: "-0.3px", lineHeight: 1 }}>
           Checkout
@@ -291,50 +281,31 @@ export default function PhoneScreen() {
         </span>
       </div>
 
-      {/* ── "Select payment method" label ─────────────── */}
-      <div
-        style={{
-          padding: "10px 14px 5px",
-          flexShrink: 0,
-          position: "relative",
-          zIndex: 5,
-        }}
-      >
-        <span
-          style={{
-            fontSize: "9px",
-            fontWeight: 600,
-            color: "#6b7280",
-            textTransform: "uppercase",
-            letterSpacing: "0.7px",
-            whiteSpace: "nowrap",
-          }}
-        >
+      {/* Section heading */}
+      <div style={{ padding: "12px 14px 6px", flexShrink: 0, position: "relative", zIndex: 5 }}>
+        <span style={{
+          fontSize: "9px", fontWeight: 600, color: "#6b7280",
+          textTransform: "uppercase", letterSpacing: "0.7px",
+        }}>
           Select payment method
         </span>
       </div>
 
-      {/* ── Scrolling APM grid ────────────────────────── */}
-      <div
-        style={{
-          flex: 1,
-          overflow: "hidden",
-          padding: "4px 12px 0",
-          position: "relative",
-          zIndex: 3,
-          maskImage: "linear-gradient(to bottom, transparent 0%, black 6%, black 88%, transparent 100%)",
-          WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 6%, black 88%, transparent 100%)",
-        }}
-      >
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "8px",
-            animation: "apm-grid-scroll 36s linear infinite",
-            paddingBottom: "8px",
-          }}
-        >
+      {/* Scrolling icon grid */}
+      <div style={{
+        flex: 1, overflow: "hidden",
+        padding: "2px 12px 0",
+        position: "relative", zIndex: 3,
+        maskImage: "linear-gradient(to bottom, transparent 0%, black 8%, black 86%, transparent 100%)",
+        WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 8%, black 86%, transparent 100%)",
+      }}>
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr 1fr 1fr",
+          gap: "10px",
+          animation: "apm-grid-scroll 20s linear infinite",
+          paddingBottom: "10px",
+        }}>
           {DOUBLED.map((apm, i) => (
             <APMTile
               key={i}
@@ -345,33 +316,19 @@ export default function PhoneScreen() {
         </div>
       </div>
 
-      {/* ── Fixed bottom CTA ──────────────────────────── */}
-      <div
-        style={{
-          padding: "10px 12px 12px",
-          flexShrink: 0,
-          background: "#fafafa",
-          borderTop: "1px solid rgba(0,0,0,0.06)",
-          position: "relative",
-          zIndex: 5,
-        }}
-      >
-        <div
-          style={{
-            width: "100%",
-            height: 50,
-            background: "#d97757",
-            borderRadius: 14,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            color: "white",
-            fontSize: "13px",
-            fontWeight: 700,
-            letterSpacing: "-0.2px",
-            gap: "6px",
-          }}
-        >
+      {/* Bottom CTA */}
+      <div style={{
+        padding: "10px 12px 12px", flexShrink: 0,
+        background: "#f8f8f8",
+        borderTop: "1px solid rgba(0,0,0,0.06)",
+        position: "relative", zIndex: 5,
+      }}>
+        <div style={{
+          width: "100%", height: 50,
+          background: "#d97757", borderRadius: 14,
+          display: "flex", alignItems: "center", justifyContent: "center",
+          color: "white", fontSize: "13px", fontWeight: 700, letterSpacing: "-0.2px",
+        }}>
           Continue · $129.00
         </div>
       </div>
