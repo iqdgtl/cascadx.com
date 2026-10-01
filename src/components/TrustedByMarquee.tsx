@@ -138,10 +138,11 @@ const logos: { name: string; color: string; icon: React.ReactNode }[] = [
     name: "Apple Pay",
     color: "#ffffff",
     icon: (
-      <svg width="28" height="32" viewBox="0 0 28 32" fill="none" aria-hidden="true">
-        <path d="M18.5 4C18.5 4 19.5 1 22 1C22 3.5 20 5 18.5 4Z" fill="currentColor"/>
-        <path d="M10 9C11.5 7 13.5 6 15.5 6.5C15.5 9 13.5 10.5 11.5 10.5C9.5 10.5 8 9 10 9Z" fill="currentColor"/>
-        <path d="M7 14C8 11.5 10.5 10.5 12 10.5C13.5 10.5 14.5 11 16 11C17.5 11 19 10.5 20.5 10.5C22 10.5 24 11.5 25 14C22 15.5 22 19.5 25 21.5C23.5 24.5 22 27 20 27C18.5 27 17.5 26 16 26C14.5 26 13 27 11.5 27C9.5 27 8 24 6.5 21C5 18 5 14.5 7 14Z" fill="currentColor"/>
+      <svg width="26" height="30" viewBox="0 0 26 30" fill="none" aria-hidden="true">
+        {/* Leaf */}
+        <path d="M13 5.5C13 5.5 14.5 2.5 18 3C18 5.5 16 7 13 5.5Z" fill="currentColor"/>
+        {/* Apple body — rounded organic shape with right-side bite */}
+        <path d="M6 14.5C7 11.5 9.5 10 12.5 10C14 10 15 10.5 16.5 10.5C18 10.5 19.5 10 21 10C23 10 24.5 11.5 24.5 14.5C22 16 21.5 20 24.5 22C23.5 24.5 22 27.5 19.5 27.5C18 27.5 17 26.5 15.5 26.5C14 26.5 13 27.5 11.5 27.5C9 27.5 7.5 24.5 6 22C4.5 19.5 4.5 14.5 6 14.5Z" fill="currentColor"/>
       </svg>
     ),
   },
@@ -149,10 +150,9 @@ const logos: { name: string; color: string; icon: React.ReactNode }[] = [
     name: "Google Pay",
     color: "#4285F4",
     icon: (
-      <svg width="36" height="24" viewBox="0 0 36 24" fill="none" aria-hidden="true">
-        <path d="M18 11.5V13.5H22.5C22.2 14.8 21.1 16.5 18 16.5C15.2 16.5 13 14.3 13 11.5C13 8.7 15.2 6.5 18 6.5C19.6 6.5 20.7 7.2 21.4 7.9L22.8 6.5C21.7 5.4 20.1 4.5 18 4.5C14.1 4.5 11 7.6 11 11.5C11 15.4 14.1 18.5 18 18.5C22.1 18.5 24.8 15.7 24.8 11.7C24.8 11.3 24.8 11 24.7 10.7L18 10.7V11.5Z" fill="currentColor"/>
-        <path d="M5 9.5V12.5H8V14H5V17H3.5V8H9V9.5H5Z" fill="currentColor"/>
-        <path d="M29 8L31.5 15H29.8L29.2 13.2H26.8L26.2 15H24.5L27 8H29ZM28 9.8L27.2 12H28.8L28 9.8Z" fill="currentColor"/>
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        {/* Google G-mark — open circle with horizontal cut and inner shelf */}
+        <path d="M14 4C8.5 4 4 8.5 4 14C4 19.5 8.5 24 14 24C19.5 24 24 19.5 24 14H14V12H26C26 19.6 20.6 26 14 26C7.4 26 2 20.6 2 14C2 7.4 7.4 2 14 2C17.3 2 20.2 3.4 22.3 5.6L20.2 7.7C18.7 6.1 16.5 5 14 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
     ),
   },
@@ -256,19 +256,6 @@ export default function TrustedByMarquee() {
         </div>
       </div>
 
-      {/* Footnote */}
-      <p
-        style={{
-          textAlign: "center",
-          fontFamily: "var(--font-mono)",
-          fontSize: "10px",
-          color: "rgba(255,255,255,0.35)",
-          marginTop: "24px",
-          letterSpacing: "0.5px",
-        }}
-      >
-        Integration partners for orchestration and routing
-      </p>
     </section>
   )
 }

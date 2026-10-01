@@ -15,6 +15,10 @@ const APMS = [
   { name: "Paytm",     flag: "🇮🇳", country: "IN", color: "#00BAF2" },
   { name: "Kakao Pay", flag: "🇰🇷", country: "KR", color: "#FFCD00" },
   { name: "PromptPay", flag: "🇹🇭", country: "TH", color: "#1A3C8F" },
+  { name: "Apple Pay", flag: "🌐", country: "Global", color: "#1a1a1a" },
+  { name: "Google Pay",flag: "🌐", country: "Global", color: "#4285F4" },
+  { name: "PayPal",    flag: "🌐", country: "Global", color: "#003087" },
+  { name: "Stripe",    flag: "🌐", country: "Global", color: "#635BFF" },
 ];
 
 // ── SVG logos — brand color via currentColor on wrapper ───────────────────────
@@ -93,6 +97,29 @@ const APM_LOGOS: Record<string, React.ReactElement> = {
       <path d="M25 19V25H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
       <path d="M9 25H3V19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
       <rect x="11" y="11" width="6" height="6" rx="1" fill="currentColor"/>
+    </svg>
+  ),
+  "Apple Pay": (
+    <svg width="26" height="30" viewBox="0 0 26 30" fill="none" aria-hidden="true">
+      <path d="M13 5.5C13 5.5 14.5 2.5 18 3C18 5.5 16 7 13 5.5Z" fill="currentColor"/>
+      <path d="M6 14.5C7 11.5 9.5 10 12.5 10C14 10 15 10.5 16.5 10.5C18 10.5 19.5 10 21 10C23 10 24.5 11.5 24.5 14.5C22 16 21.5 20 24.5 22C23.5 24.5 22 27.5 19.5 27.5C18 27.5 17 26.5 15.5 26.5C14 26.5 13 27.5 11.5 27.5C9 27.5 7.5 24.5 6 22C4.5 19.5 4.5 14.5 6 14.5Z" fill="currentColor"/>
+    </svg>
+  ),
+
+  "Google Pay": (
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+      <path d="M14 4C8.5 4 4 8.5 4 14C4 19.5 8.5 24 14 24C19.5 24 24 19.5 24 14H14V12H26C26 19.6 20.6 26 14 26C7.4 26 2 20.6 2 14C2 7.4 7.4 2 14 2C17.3 2 20.2 3.4 22.3 5.6L20.2 7.7C18.7 6.1 16.5 5 14 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  ),
+  "PayPal": (
+    <svg width="24" height="28" viewBox="0 0 24 28" fill="none" aria-hidden="true">
+      <path d="M17 5C19.5 5 21 6.5 21 9C21 12.5 18.5 14.5 15 14.5H13L12 19H8.5L11 5H17Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+      <path d="M14.5 8.5C16.5 8.5 18 10 18 12C18 15 16 17 13 17H11L10 22H6.5L9 8.5H14.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+    </svg>
+  ),
+  "Stripe": (
+    <svg width="22" height="28" viewBox="0 0 22 28" fill="none" aria-hidden="true">
+      <path d="M10.5 10C10.5 8.5 11.8 8 13 8C15 8 17 8.8 18.5 10L19.5 7C18 5.8 15.5 5 13 5C9 5 7 7.5 7 10C7 16.5 16 15 16 18C16 19.5 14.8 20 13 20C10.5 20 8.5 19 7 17.5L6 21C7.5 22.5 10.5 23 13 23C17.5 23 20 20.5 20 18C20 11.5 10.5 13 10.5 10Z" fill="currentColor"/>
     </svg>
   ),
 };
@@ -304,7 +331,7 @@ export default function PhoneScreen() {
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
             gap: "8px",
-            animation: "apm-grid-scroll 26s linear infinite",
+            animation: "apm-grid-scroll 36s linear infinite",
             paddingBottom: "8px",
           }}
         >
