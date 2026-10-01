@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Button from "./ui/Button";
 import dynamic from "next/dynamic";
 
 // Lazy-load the heavy 3D scene — only initialises when the hero is in viewport
@@ -87,18 +86,6 @@ export default function Hero() {
       >
         {/* ── LEFT: Text content ───────────────────────────── */}
         <div>
-          {/* Kicker */}
-          <div style={{
-            fontFamily: "var(--font-mono)",
-            fontSize: "12px",
-            textTransform: "uppercase",
-            letterSpacing: "4px",
-            color: "var(--accent)",
-            marginBottom: "20px",
-          }}>
-            Payment Orchestration
-          </div>
-
           {/* Headline */}
           <h1 style={{
             fontFamily: "var(--font-display)",
@@ -129,17 +116,44 @@ export default function Hero() {
           </p>
 
           {/* CTAs */}
-          <div style={{ display: "flex", gap: "12px", flexWrap: "wrap", marginBottom: "36px" }}>
-            <Button
-              variant="primary"
-              icon="arrow"
-              onClick={() => window.dispatchEvent(new Event("open-chat"))}
-            >
-              Book a demo
-            </Button>
-            <Button variant="ghost" icon="play" href="#how-it-works">
-              See it in action
-            </Button>
+          <div style={{ marginBottom: "36px" }}>
+            {/* Button row */}
+            <div className="hero-cta-row">
+              {/* Primary — Start routing smarter */}
+              <div style={{ position: "relative", display: "inline-flex" }}>
+                <button
+                  className="hero-btn-primary"
+                  onClick={() => window.dispatchEvent(new Event("open-chat"))}
+                >
+                  Start routing smarter
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                    <path d="M7 6l5 4-5 4" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M12 6l5 4-5 4" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.55"/>
+                  </svg>
+                </button>
+                <div className="hero-btn-pulse" aria-hidden="true" />
+              </div>
+
+              {/* Secondary — Talk to our team */}
+              <button
+                className="hero-btn-secondary"
+                onClick={() => window.dispatchEvent(new Event("open-chat"))}
+              >
+                Talk to our team
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M3 4h14a1.5 1.5 0 011.5 1.5v7A1.5 1.5 0 0117 14H8l-4.5 3V14H3A1.5 1.5 0 011.5 12.5v-7A1.5 1.5 0 013 4z" stroke="white" strokeWidth="1.5" strokeLinejoin="round"/>
+                </svg>
+              </button>
+            </div>
+
+            {/* Friction reducer */}
+            <div className="hero-cta-footnote">
+              <span>Free 30-day trial</span>
+              <span className="hero-cta-dot" aria-hidden="true">·</span>
+              <span>No credit card</span>
+              <span className="hero-cta-dot" aria-hidden="true">·</span>
+              <span>Live in 48 hours</span>
+            </div>
           </div>
 
           {/* Trust signals / metrics */}
@@ -194,8 +208,108 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Mobile stack override */}
       <style>{`
+        /* ── CTA buttons ─────────────────────────────────── */
+        .hero-cta-row {
+          display: flex;
+          gap: 16px;
+          flex-wrap: wrap;
+          align-items: center;
+        }
+        .hero-btn-primary {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          background: #d97757;
+          color: white;
+          font-family: var(--font-display);
+          font-weight: 600;
+          font-size: 17px;
+          padding: 20px 36px;
+          border-radius: 14px;
+          border: none;
+          cursor: pointer;
+          letter-spacing: -0.01em;
+          white-space: nowrap;
+          transition: background 250ms ease-out, transform 250ms ease-out, box-shadow 250ms ease-out;
+        }
+        .hero-btn-primary svg {
+          transition: transform 250ms ease-out;
+          flex-shrink: 0;
+        }
+        .hero-btn-primary:hover {
+          background: #c86847;
+          transform: scale(1.02);
+          box-shadow: 0 0 40px rgba(217,119,87,0.4);
+        }
+        .hero-btn-primary:hover svg { transform: translateX(4px); }
+        .hero-btn-primary:active    { transform: scale(0.98); }
+
+        /* Pulse ring */
+        .hero-btn-pulse {
+          position: absolute;
+          inset: 0;
+          border-radius: 14px;
+          border: 1.5px solid rgba(217,119,87,0.6);
+          pointer-events: none;
+          animation: hero-ring-pulse 4s ease-out infinite;
+        }
+        @keyframes hero-ring-pulse {
+          0%   { transform: scale(1);    opacity: 0.35; }
+          65%  { transform: scale(1.15); opacity: 0;    }
+          100% { transform: scale(1.15); opacity: 0;    }
+        }
+
+        /* Secondary button */
+        .hero-btn-secondary {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          background: transparent;
+          color: #fafaf7;
+          font-family: var(--font-display);
+          font-weight: 600;
+          font-size: 17px;
+          padding: 20px 36px;
+          border-radius: 14px;
+          border: 1.5px solid rgba(255,255,255,0.2);
+          cursor: pointer;
+          letter-spacing: -0.01em;
+          white-space: nowrap;
+          transition: border-color 250ms ease-out, background 250ms ease-out, transform 250ms ease-out;
+        }
+        .hero-btn-secondary svg {
+          transition: transform 250ms ease-out;
+          flex-shrink: 0;
+        }
+        .hero-btn-secondary:hover {
+          border-color: rgba(255,255,255,0.6);
+          background: rgba(255,255,255,0.05);
+          transform: scale(1.02);
+        }
+        .hero-btn-secondary:hover svg { transform: translateX(4px); }
+        .hero-btn-secondary:active    { transform: scale(0.98); }
+
+        /* Friction-reducer line */
+        .hero-cta-footnote {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-top: 20px;
+          font-family: var(--font-display);
+          font-weight: 500;
+          font-size: 14px;
+          color: rgba(255,255,255,0.5);
+          flex-wrap: wrap;
+        }
+        .hero-cta-dot {
+          color: #d97757;
+          font-size: 16px;
+          line-height: 1;
+          opacity: 0.7;
+        }
+
+        /* ── Mobile ──────────────────────────────────────── */
         @media (max-width: 900px) {
           .hero-grid {
             grid-template-columns: 1fr !important;
@@ -206,13 +320,23 @@ export default function Hero() {
             margin-left: auto;
             margin-right: auto;
           }
-          .hero-grid > div:first-child > div:nth-child(4) {
-            justify-content: center;
-          }
           .hero-grid > div:last-child {
             height: clamp(320px, 80vw, 440px) !important;
             width: 100%;
           }
+          .hero-cta-row { justify-content: center; }
+          .hero-cta-footnote { justify-content: center; }
+        }
+        @media (max-width: 540px) {
+          .hero-cta-row { flex-direction: column; gap: 12px; }
+          .hero-btn-primary, .hero-btn-secondary {
+            width: 100%;
+            justify-content: center;
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .hero-btn-pulse { animation: none; }
         }
       `}</style>
     </header>
