@@ -125,7 +125,7 @@ export default function Hero() {
                   className="hero-btn-primary"
                   onClick={() => window.dispatchEvent(new Event("open-chat"))}
                 >
-                  Start routing smarter
+                  Get started
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
                     <path d="M7 6l5 4-5 4" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     <path d="M12 6l5 4-5 4" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.55"/>
@@ -139,7 +139,7 @@ export default function Hero() {
                 className="hero-btn-secondary"
                 onClick={() => window.dispatchEvent(new Event("open-chat"))}
               >
-                Talk to our team
+                Speak with sales
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
                   <path d="M3 4h14a1.5 1.5 0 011.5 1.5v7A1.5 1.5 0 0117 14H8l-4.5 3V14H3A1.5 1.5 0 011.5 12.5v-7A1.5 1.5 0 013 4z" stroke="white" strokeWidth="1.5" strokeLinejoin="round"/>
                 </svg>
@@ -212,20 +212,23 @@ export default function Hero() {
         /* ── CTA buttons ─────────────────────────────────── */
         .hero-cta-row {
           display: flex;
+          flex-direction: row;
           gap: 16px;
-          flex-wrap: wrap;
           align-items: center;
         }
         .hero-btn-primary {
           display: inline-flex;
           align-items: center;
+          justify-content: center;
           gap: 10px;
+          width: 220px;
+          height: 56px;
           background: #d97757;
           color: white;
           font-family: var(--font-display);
           font-weight: 600;
           font-size: 17px;
-          padding: 20px 36px;
+          padding: 0 28px;
           border-radius: 14px;
           border: none;
           cursor: pointer;
@@ -264,13 +267,16 @@ export default function Hero() {
         .hero-btn-secondary {
           display: inline-flex;
           align-items: center;
+          justify-content: center;
           gap: 10px;
+          width: 220px;
+          height: 56px;
           background: transparent;
           color: #fafaf7;
           font-family: var(--font-display);
           font-weight: 600;
           font-size: 17px;
-          padding: 20px 36px;
+          padding: 0 28px;
           border-radius: 14px;
           border: 1.5px solid rgba(255,255,255,0.2);
           cursor: pointer;
@@ -329,10 +335,7 @@ export default function Hero() {
         }
         @media (max-width: 540px) {
           .hero-cta-row { flex-direction: column; gap: 12px; }
-          .hero-btn-primary, .hero-btn-secondary {
-            width: 100%;
-            justify-content: center;
-          }
+          .hero-btn-primary, .hero-btn-secondary { width: 100%; }
         }
 
         @media (prefers-reduced-motion: reduce) {
