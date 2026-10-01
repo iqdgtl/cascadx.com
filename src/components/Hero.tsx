@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 
 // Lazy-load the heavy 3D scene — only initialises when the hero is in viewport
@@ -29,6 +29,15 @@ export default function Hero() {
   const sceneRef   = useRef<HTMLDivElement>(null);
   const [metricVisible, setMetricVisible] = useState(false);
   const [sceneVisible,  setSceneVisible]  = useState(false);
+  const [textAnimate,   setTextAnimate]   = useState(false);
+
+  useEffect(() => {
+    const played  = sessionStorage.getItem("hx-entrance") === "1";
+    const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    if (!played && !reduced) {
+      requestAnimationFrame(() => requestAnimationFrame(() => setTextAnimate(true)));
+    }
+  }, []);
 
   useEffect(() => {
     const io = new IntersectionObserver(
@@ -52,6 +61,10 @@ export default function Hero() {
   const approval = useCountUp(18,   1500, metricVisible);
   const psps     = useCountUp(1000, 1500, metricVisible);
   const latency  = useCountUp(40,   1200, metricVisible);
+
+  // Text cascade helper — only animates on first-time visitors
+  const ta = (delay: number): React.CSSProperties =>
+    textAnimate ? { animation: `hero-text-in 400ms ease-out ${delay}ms both` } : {};
 
   return (
     <header
@@ -95,6 +108,7 @@ export default function Hero() {
             letterSpacing: "-0.04em",
             color: "#fafaf7",
             margin: "0 0 22px",
+            ...ta(200),
           }}>
             Payments that{" "}
             <em style={{ fontStyle: "normal", color: "var(--accent)" }}>think</em>
@@ -110,13 +124,14 @@ export default function Hero() {
             color: "rgba(255,255,255,0.68)",
             maxWidth: "520px",
             margin: "0 0 32px",
+            ...ta(500),
           }}>
             AI-powered payment orchestration cascading through 1,000+ PSPs in under 40 milliseconds.
             Turn declined transactions into approved revenue — across every provider, every country, every card.
           </p>
 
           {/* CTAs */}
-          <div style={{ marginBottom: "36px" }}>
+          <div style={{ marginBottom: "36px", ...ta(800) }}>
             {/* Button row */}
             <div className="hero-cta-row">
               {/* Primary — Start routing smarter */}
@@ -163,6 +178,7 @@ export default function Hero() {
               display: "flex",
               gap: "clamp(20px, 3vw, 36px)",
               flexWrap: "wrap",
+              ...ta(1100),
             }}
           >
             {[

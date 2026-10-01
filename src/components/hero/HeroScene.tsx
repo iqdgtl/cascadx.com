@@ -62,6 +62,22 @@ export default function HeroScene() {
   const startRef = useRef<number | null>(null);
   const rafRef = useRef<number>(0);
 
+  // Entrance animation — play once per session, respect reduced-motion
+  const [entered, setEntered] = useState(() => {
+    const hasPlayed = sessionStorage.getItem("hx-entrance") === "1";
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    return hasPlayed || prefersReduced;
+  });
+
+  useEffect(() => {
+    if (entered) return;
+    const id = setTimeout(() => {
+      setEntered(true);
+      sessionStorage.setItem("hx-entrance", "1");
+    }, 1800);
+    return () => clearTimeout(id);
+  }, [entered]);
+
   // rAF loop — drives globe rotation
   useEffect(() => {
     const tick = (ts: number) => {
@@ -125,9 +141,19 @@ export default function HeroScene() {
 
       {/* ── iPhone position wrapper (z=10) ────────────────── */}
       <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%,-50%)", zIndex: 10 }}>
+        {/* Entrance glow — DOM-order stacking puts it behind phone */}
+        {!entered && (
+          <div aria-hidden="true" style={{
+            position: "absolute", inset: 0,
+            transform: "scale(1.4)", borderRadius: "77px",
+            background: "radial-gradient(ellipse at center, rgba(217,119,87,0.45) 0%, transparent 70%)",
+            animation: "phone-entrance-glow 1.8s ease-in-out both",
+            pointerEvents: "none",
+          }} />
+        )}
         {/* Phone body — titanium finish, breathing animation via CSS */}
         <div
-          className="hero-phone-frame"
+          className={entered ? "hero-phone-frame" : "hero-phone-entering"}
           style={{
             width: "280px",
             height: "580px",
