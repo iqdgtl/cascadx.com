@@ -1,191 +1,136 @@
-import React from "react"
+import { Fragment } from "react";
 
-const logos: { name: string; color: string; icon: React.ReactNode }[] = [
+// ── Industry categories ────────────────────────────────────────────────────────
+const INDUSTRIES = [
   {
-    name: "Alipay",
-    color: "#1677FF",
+    label: "iGaming & Betting",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <rect x="1.5" y="1.5" width="25" height="25" rx="6" stroke="currentColor" strokeWidth="1.5" />
-        <path d="M9 20L14 8L19 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M11 15.5H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+        <rect x="2.5" y="2.5" width="17" height="17" rx="3.5" stroke="currentColor" strokeWidth="1.5"/>
+        <circle cx="7.5" cy="7.5" r="1.3" fill="currentColor"/>
+        <circle cx="14.5" cy="7.5" r="1.3" fill="currentColor"/>
+        <circle cx="7.5" cy="14.5" r="1.3" fill="currentColor"/>
+        <circle cx="14.5" cy="14.5" r="1.3" fill="currentColor"/>
+        <circle cx="11" cy="11" r="1.3" fill="currentColor"/>
       </svg>
     ),
   },
   {
-    name: "WeChat Pay",
-    color: "#07C160",
+    label: "eCommerce & Retail",
     icon: (
-      <svg width="32" height="28" viewBox="0 0 32 28" fill="none" aria-hidden="true">
-        <path d="M11.5 3C6.253 3 2 6.91 2 11.75C2 14.3 3.24 16.58 5.23 18.13L4 22L8.7 19.72C9.6 19.93 10.54 20.05 11.5 20.05C16.747 20.05 21 16.14 21 11.3C21 6.46 16.747 2.55 11.5 2.55Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
-        <path d="M19.5 12C15.358 12 12 14.91 12 18.5C12 20.42 13.01 22.13 14.64 23.28L14 26L17.1 24.34C17.87 24.53 18.67 24.63 19.5 24.63C23.642 24.63 27 21.72 27 18.13C27 14.54 23.642 11.63 19.5 11.63Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+        <path d="M4 8h14l-1.8 9.5H5.8L4 8z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+        <path d="M8.5 8V6.5a2.5 2.5 0 015 0V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
       </svg>
     ),
   },
   {
-    name: "PayPay",
-    color: "#FF0033",
+    label: "Dating & Social Apps",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <rect x="1.5" y="1.5" width="25" height="25" rx="6" stroke="currentColor" strokeWidth="1.5" />
-        <path d="M8 22V6H17C20.314 6 23 8.686 23 12C23 15.314 20.314 18 17 18H8" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+        <path d="M11 18.5S3 13 3 7.5a4.5 4.5 0 019 0 4.5 4.5 0 019 0c0 5.5-8 11-8 11z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
       </svg>
     ),
   },
   {
-    name: "GrabPay",
-    color: "#00B14F",
+    label: "Food & Delivery",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <path d="M22 10C20.245 6.477 16.896 4 13 4C7.477 4 3 8.477 3 14C3 19.523 7.477 24 13 24C18.523 24 23 19.523 23 14V13H16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+        <path d="M6 2v5.5c0 1.8 1.8 3 3.5 3V20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M6 2l2.5 3.5M7.5 2V7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+        <path d="M14 2c2.5 0 4.5 2.5 4.5 5v.5h-4.5V20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
     ),
   },
   {
-    name: "GCash",
-    color: "#007DFF",
+    label: "Travel & Hospitality",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <path d="M21 9C19 6 16 4 13 4C7.477 4 3 8.477 3 14C3 19.523 7.477 24 13 24C18 24 22 20.5 22.5 16H15V13H25V16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+        <path d="M2 15l4-4 3 3 7-7 3 3-9.5 9.5L2 15z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+        <path d="M15 3l2 2-2 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M2 19.5h18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
       </svg>
     ),
   },
   {
-    name: "DANA",
-    color: "#118EEA",
+    label: "Hotels & Bookings",
     icon: (
-      <svg width="26" height="28" viewBox="0 0 26 28" fill="none" aria-hidden="true">
-        <path d="M3 4H12C18.627 4 24 9.373 24 16C24 19.314 21.314 22 18 22H3V4Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+        <path d="M3 19V9l8-6 8 6v10" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+        <rect x="8" y="13" width="6" height="6" rx="1" stroke="currentColor" strokeWidth="1.5"/>
+        <path d="M3 19h16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
       </svg>
     ),
   },
   {
-    name: "OVO",
-    color: "#4C3494",
+    label: "Mobile Gaming",
     icon: (
-      <svg width="32" height="24" viewBox="0 0 32 24" fill="none" aria-hidden="true">
-        <ellipse cx="16" cy="12" rx="15" ry="10" stroke="currentColor" strokeWidth="1.5" />
-        <ellipse cx="16" cy="12" rx="9" ry="6" stroke="currentColor" strokeWidth="1.5" />
-        <ellipse cx="16" cy="12" rx="3.5" ry="2.5" fill="currentColor" />
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+        <rect x="2" y="6.5" width="18" height="9" rx="4" stroke="currentColor" strokeWidth="1.5"/>
+        <path d="M7.5 11h3M9 9.5v3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+        <circle cx="13.5" cy="11" r="1.1" fill="currentColor"/>
+        <circle cx="15.8" cy="11" r="1.1" fill="currentColor"/>
       </svg>
     ),
   },
   {
-    name: "TrueMoney",
-    color: "#FF6600",
+    label: "Streaming & Subscriptions",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <path d="M4 7H24M14 7V23" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-        <circle cx="14" cy="17" r="5" stroke="currentColor" strokeWidth="1.5" />
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+        <circle cx="11" cy="11" r="8.5" stroke="currentColor" strokeWidth="1.5"/>
+        <path d="M9 8.2l6 2.8-6 2.8V8.2z" fill="currentColor"/>
       </svg>
     ),
   },
   {
-    name: "MoMo",
-    color: "#A50064",
+    label: "Crypto & Trading",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <circle cx="14" cy="14" r="12" stroke="currentColor" strokeWidth="1.5" />
-        <path d="M7 19V9L11 15L14 9L17 15L21 9V19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+        <circle cx="11" cy="11" r="8.5" stroke="currentColor" strokeWidth="1.5"/>
+        <path d="M11 6.5v9M9 9h2.8a1.8 1.8 0 010 3.6H9m0 0h3.2a1.8 1.8 0 010 3.6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
       </svg>
     ),
   },
   {
-    name: "PromptPay",
-    color: "#1A3C8F",
+    label: "Marketplaces",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <path d="M3 9V3H9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M19 3H25V9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M25 19V25H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M9 25H3V19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        <rect x="11" y="11" width="6" height="6" rx="1" fill="currentColor" />
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+        <path d="M3 9.5l8-6.5 8 6.5V19H3V9.5z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+        <path d="M3 9.5h16" stroke="currentColor" strokeWidth="1.5"/>
+        <rect x="8.5" y="13" width="5" height="6" rx="1" stroke="currentColor" strokeWidth="1.5"/>
       </svg>
     ),
   },
   {
-    name: "PayNow",
-    color: "#E70000",
+    label: "SaaS & Digital Services",
     icon: (
-      <svg width="22" height="28" viewBox="0 0 22 28" fill="none" aria-hidden="true">
-        <path d="M15 3L6 15H11.5L7 25L20 13H14L19 3H15Z" fill="currentColor" />
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+        <path d="M17.5 14a5 5 0 00-4.5-8 5 5 0 00-9 3A4 4 0 105 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M9 17l-1.5 1.5L9 20M13 17l1.5 1.5L13 20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M9 18.5h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
       </svg>
     ),
   },
   {
-    name: "Paytm",
-    color: "#00BAF2",
+    label: "Health & Wellness",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <circle cx="14" cy="14" r="12" stroke="currentColor" strokeWidth="1.5" />
-        <path d="M8 14L12 18L20 10" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+        <path d="M2 11h3.5l2-5 3 10 2.5-6.5 2 3H20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
     ),
   },
-  {
-    name: "Kakao Pay",
-    color: "#FFCD00",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <path d="M14 3C8.477 3 4 6.91 4 11.75C4 14.87 5.84 17.62 8.64 19.3L7.5 24L12.5 21.1C12.99 21.17 13.49 21.2 14 21.2C19.523 21.2 24 17.29 24 12.45C24 7.61 19.523 3 14 3Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
-        <path d="M11 9V15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-        <path d="M11 12L14.5 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M11 12L14.5 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-  },
-  {
-    name: "Apple Pay",
-    color: "#ffffff",
-    icon: (
-      <svg width="26" height="30" viewBox="0 0 26 30" fill="none" aria-hidden="true">
-        {/* Leaf */}
-        <path d="M13 5.5C13 5.5 14.5 2.5 18 3C18 5.5 16 7 13 5.5Z" fill="currentColor"/>
-        {/* Apple body — rounded organic shape with right-side bite */}
-        <path d="M6 14.5C7 11.5 9.5 10 12.5 10C14 10 15 10.5 16.5 10.5C18 10.5 19.5 10 21 10C23 10 24.5 11.5 24.5 14.5C22 16 21.5 20 24.5 22C23.5 24.5 22 27.5 19.5 27.5C18 27.5 17 26.5 15.5 26.5C14 26.5 13 27.5 11.5 27.5C9 27.5 7.5 24.5 6 22C4.5 19.5 4.5 14.5 6 14.5Z" fill="currentColor"/>
-      </svg>
-    ),
-  },
-  {
-    name: "Google Pay",
-    color: "#4285F4",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        {/* Google G-mark — open circle with horizontal cut and inner shelf */}
-        <path d="M14 4C8.5 4 4 8.5 4 14C4 19.5 8.5 24 14 24C19.5 24 24 19.5 24 14H14V12H26C26 19.6 20.6 26 14 26C7.4 26 2 20.6 2 14C2 7.4 7.4 2 14 2C17.3 2 20.2 3.4 22.3 5.6L20.2 7.7C18.7 6.1 16.5 5 14 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-    ),
-  },
-  {
-    name: "PayPal",
-    color: "#003087",
-    icon: (
-      <svg width="24" height="28" viewBox="0 0 24 28" fill="none" aria-hidden="true">
-        <path d="M18 5C20.5 5 22 6.5 22 9C22 12.5 19.5 14.5 16 14.5H14L13 19H9.5L12 5H18Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
-        <path d="M15.5 8.5C17.5 8.5 19 10 19 12C19 15 17 17 14 17H12L11 22H7.5L10 8.5H15.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
-      </svg>
-    ),
-  },
-  {
-    name: "Stripe",
-    color: "#635BFF",
-    icon: (
-      <svg width="24" height="32" viewBox="0 0 24 32" fill="none" aria-hidden="true">
-        <path d="M11 10C11 8.5 12.2 8 13.5 8C15.5 8 17.5 8.8 19 10L20.5 6.5C18.5 5 16 4 13.5 4C9 4 6.5 6.5 6.5 10C6.5 16.5 15.5 15 15.5 18C15.5 19.5 14.2 20 12.5 20C10 20 7.5 19 6 17.5L4.5 21C6.5 22.5 9.5 24 12.5 24C17.5 24 20 21.5 20 18C20 11.5 11 13 11 10Z" fill="currentColor"/>
-      </svg>
-    ),
-  },
-]
+];
 
-const doubled = [...logos, ...logos]
+const DOUBLED = [...INDUSTRIES, ...INDUSTRIES];
 
+// ── IndustriesMarquee ──────────────────────────────────────────────────────────
 export default function TrustedByMarquee() {
   return (
     <section
       style={{
         background: "var(--bg)",
         paddingTop: "80px",
-        paddingBottom: "80px",
+        paddingBottom: "100px",
         overflow: "hidden",
       }}
     >
@@ -194,68 +139,101 @@ export default function TrustedByMarquee() {
         style={{
           textAlign: "center",
           fontFamily: "var(--font-mono)",
-          fontSize: "12px",
+          fontSize: "11px",
           textTransform: "uppercase",
           letterSpacing: "3px",
-          color: "rgba(255,255,255,0.5)",
+          color: "rgba(255,255,255,0.4)",
           marginBottom: "40px",
+          padding: "0 20px",
         }}
       >
-        Integration partners across global payments
+        Built for operators across industries
       </p>
 
-      {/* Scrolling strip */}
+      {/* Marquee */}
       <div className="marquee-container" style={{ position: "relative" }}>
         {/* Left fade */}
         <div
           style={{
-            position: "absolute",
-            left: 0,
-            top: 0,
-            bottom: 0,
-            width: "120px",
+            position: "absolute", left: 0, top: 0, bottom: 0,
+            width: "100px",
             background: "linear-gradient(to right, var(--bg), transparent)",
-            zIndex: 2,
-            pointerEvents: "none",
+            zIndex: 2, pointerEvents: "none",
           }}
         />
         {/* Right fade */}
         <div
           style={{
-            position: "absolute",
-            right: 0,
-            top: 0,
-            bottom: 0,
-            width: "120px",
+            position: "absolute", right: 0, top: 0, bottom: 0,
+            width: "100px",
             background: "linear-gradient(to left, var(--bg), transparent)",
-            zIndex: 2,
-            pointerEvents: "none",
+            zIndex: 2, pointerEvents: "none",
           }}
         />
 
-        <div className="marquee-track">
-          {doubled.map((logo, i) => (
-            <div
-              key={i}
-              className="logo-item"
-              style={{ "--brand": logo.color } as React.CSSProperties}
-            >
-              {logo.icon}
-              <span
+        <div
+          className="marquee-track industries-track"
+          style={{ animation: "slide 50s linear infinite" }}
+        >
+          {DOUBLED.map((industry, i) => (
+            <Fragment key={i}>
+              {/* Industry item */}
+              <div className="industry-item">
+                <div style={{ width: 22, height: 22, flexShrink: 0 }}>
+                  {industry.icon}
+                </div>
+                <span className="industry-label">{industry.label}</span>
+              </div>
+
+              {/* Separator dot */}
+              <div
+                aria-hidden="true"
                 style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "13px",
-                  letterSpacing: "1.5px",
-                  whiteSpace: "nowrap",
+                  padding: "0 36px",
+                  display: "flex",
+                  alignItems: "center",
+                  color: "#d97757",
+                  opacity: 0.45,
+                  fontSize: "20px",
+                  lineHeight: 1,
+                  flexShrink: 0,
+                  userSelect: "none",
                 }}
               >
-                {logo.name}
-              </span>
-            </div>
+                ·
+              </div>
+            </Fragment>
           ))}
         </div>
       </div>
 
+      <style>{`
+        .industry-item {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          color: rgba(255, 255, 255, 0.65);
+          flex-shrink: 0;
+          transition: color 0.3s ease;
+          cursor: default;
+        }
+        .industry-label {
+          font-family: var(--font-display);
+          font-weight: 500;
+          font-size: 15px;
+          white-space: nowrap;
+          color: rgba(255, 255, 255, 0.72);
+          transition: color 0.3s ease;
+        }
+        @media (hover: hover) {
+          .industry-item:hover {
+            color: rgba(255, 255, 255, 0.95);
+          }
+          .industry-item:hover .industry-label {
+            color: rgba(255, 255, 255, 0.95);
+          }
+        }
+      `}</style>
     </section>
-  )
+  );
 }
