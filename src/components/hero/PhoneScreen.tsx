@@ -1,0 +1,353 @@
+"use client";
+import React, { useEffect, useState } from "react";
+
+// ── APM data ──────────────────────────────────────────────────────────────────
+const APMS = [
+  { name: "Alipay",    flag: "🇨🇳", country: "CN", color: "#1677FF" },
+  { name: "WeChat Pay",flag: "🇨🇳", country: "CN", color: "#07C160" },
+  { name: "GrabPay",   flag: "🇸🇬", country: "SG", color: "#00B14F" },
+  { name: "GCash",     flag: "🇵🇭", country: "PH", color: "#007DFF" },
+  { name: "PayPay",    flag: "🇯🇵", country: "JP", color: "#FF0033" },
+  { name: "OVO",       flag: "🇮🇩", country: "ID", color: "#4C3494" },
+  { name: "DANA",      flag: "🇮🇩", country: "ID", color: "#118EEA" },
+  { name: "TrueMoney", flag: "🇹🇭", country: "TH", color: "#FF6600" },
+  { name: "MoMo",      flag: "🇻🇳", country: "VN", color: "#A50064" },
+  { name: "Paytm",     flag: "🇮🇳", country: "IN", color: "#00BAF2" },
+  { name: "Kakao Pay", flag: "🇰🇷", country: "KR", color: "#FFCD00" },
+  { name: "PromptPay", flag: "🇹🇭", country: "TH", color: "#1A3C8F" },
+];
+
+// ── SVG logos — brand color via currentColor on wrapper ───────────────────────
+const APM_LOGOS: Record<string, React.ReactElement> = {
+  "Alipay": (
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+      <rect x="1.5" y="1.5" width="25" height="25" rx="6" stroke="currentColor" strokeWidth="1.5"/>
+      <path d="M9 20L14 8L19 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M11 15.5H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+    </svg>
+  ),
+  "WeChat Pay": (
+    <svg width="32" height="28" viewBox="0 0 32 28" fill="none" aria-hidden="true">
+      <path d="M11.5 3C6.253 3 2 6.91 2 11.75C2 14.3 3.24 16.58 5.23 18.13L4 22L8.7 19.72C9.6 19.93 10.54 20.05 11.5 20.05C16.747 20.05 21 16.14 21 11.3C21 6.46 16.747 2.55 11.5 2.55Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+      <path d="M19.5 12C15.358 12 12 14.91 12 18.5C12 20.42 13.01 22.13 14.64 23.28L14 26L17.1 24.34C17.87 24.53 18.67 24.63 19.5 24.63C23.642 24.63 27 21.72 27 18.13C27 14.54 23.642 11.63 19.5 11.63Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+    </svg>
+  ),
+  "GrabPay": (
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+      <path d="M22 10C20.245 6.477 16.896 4 13 4C7.477 4 3 8.477 3 14C3 19.523 7.477 24 13 24C18.523 24 23 19.523 23 14V13H16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  ),
+  "GCash": (
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+      <path d="M21 9C19 6 16 4 13 4C7.477 4 3 8.477 3 14C3 19.523 7.477 24 13 24C18 24 22 20.5 22.5 16H15V13H25V16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  ),
+  "PayPay": (
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+      <rect x="1.5" y="1.5" width="25" height="25" rx="6" stroke="currentColor" strokeWidth="1.5"/>
+      <path d="M8 22V6H17C20.314 6 23 8.686 23 12C23 15.314 20.314 18 17 18H8" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  ),
+  "OVO": (
+    <svg width="32" height="24" viewBox="0 0 32 24" fill="none" aria-hidden="true">
+      <ellipse cx="16" cy="12" rx="15" ry="10" stroke="currentColor" strokeWidth="1.5"/>
+      <ellipse cx="16" cy="12" rx="9" ry="6" stroke="currentColor" strokeWidth="1.5"/>
+      <ellipse cx="16" cy="12" rx="3.5" ry="2.5" fill="currentColor"/>
+    </svg>
+  ),
+  "DANA": (
+    <svg width="26" height="28" viewBox="0 0 26 28" fill="none" aria-hidden="true">
+      <path d="M3 4H12C18.627 4 24 9.373 24 16C24 19.314 21.314 22 18 22H3V4Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
+    </svg>
+  ),
+  "TrueMoney": (
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+      <path d="M4 7H24M14 7V23" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
+      <circle cx="14" cy="17" r="5" stroke="currentColor" strokeWidth="1.5"/>
+    </svg>
+  ),
+  "MoMo": (
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+      <circle cx="14" cy="14" r="12" stroke="currentColor" strokeWidth="1.5"/>
+      <path d="M7 19V9L11 15L14 9L17 15L21 9V19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  ),
+  "Paytm": (
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+      <circle cx="14" cy="14" r="12" stroke="currentColor" strokeWidth="1.5"/>
+      <path d="M8 14L12 18L20 10" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  ),
+  "Kakao Pay": (
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+      <path d="M14 3C8.477 3 4 6.91 4 11.75C4 14.87 5.84 17.62 8.64 19.3L7.5 24L12.5 21.1C12.99 21.17 13.49 21.2 14 21.2C19.523 21.2 24 17.29 24 12.45C24 7.61 19.523 3 14 3Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+      <path d="M11 9V15" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+      <path d="M11 12L14.5 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M11 12L14.5 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  ),
+  "PromptPay": (
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+      <path d="M3 9V3H9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M19 3H25V9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M25 19V25H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M9 25H3V19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <rect x="11" y="11" width="6" height="6" rx="1" fill="currentColor"/>
+    </svg>
+  ),
+};
+
+// Doubled for seamless loop
+const DOUBLED = [...APMS, ...APMS];
+
+// ── APM Tile ──────────────────────────────────────────────────────────────────
+function APMTile({
+  apm, highlighted,
+}: {
+  apm: typeof APMS[0];
+  highlighted: boolean;
+}) {
+  return (
+    <div
+      style={{
+        background: "#fff",
+        borderRadius: "12px",
+        padding: "10px 8px 9px",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: "4px",
+        minHeight: "90px",
+        justifyContent: "center",
+        border: highlighted
+          ? "1.5px solid #d97757"
+          : "1px solid rgba(0,0,0,0.07)",
+        boxShadow: highlighted
+          ? "0 0 12px rgba(217,119,87,0.28), 0 2px 6px rgba(0,0,0,0.06)"
+          : "0 1px 4px rgba(0,0,0,0.05)",
+        transition: "border 0.3s ease, box-shadow 0.35s ease",
+        position: "relative",
+        overflow: "hidden",
+        boxSizing: "border-box",
+      }}
+    >
+      {/* Highlight terracotta glow tint */}
+      {highlighted && (
+        <div style={{
+          position: "absolute", inset: 0,
+          background: "rgba(217,119,87,0.05)",
+          borderRadius: "inherit",
+          pointerEvents: "none",
+        }} />
+      )}
+
+      {/* Brand logo SVG */}
+      <div
+        style={{
+          height: 32,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: apm.color,
+          flexShrink: 0,
+        }}
+      >
+        {APM_LOGOS[apm.name]}
+      </div>
+
+      {/* APM name */}
+      <div
+        style={{
+          fontSize: "9px",
+          fontWeight: 600,
+          color: "#111827",
+          lineHeight: 1,
+          textAlign: "center",
+          maxWidth: "100%",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap",
+        }}
+      >
+        {apm.name}
+      </div>
+
+      {/* Flag + country */}
+      <div style={{ fontSize: "7.5px", color: "#9ca3af", lineHeight: 1 }}>
+        {apm.flag} {apm.country}
+      </div>
+    </div>
+  );
+}
+
+// ── PhoneScreen ───────────────────────────────────────────────────────────────
+export default function PhoneScreen() {
+  const [highlightIdx, setHighlightIdx] = useState<number | null>(null);
+
+  // Random tile highlight every 6–8 seconds
+  useEffect(() => {
+    const fire = () => {
+      const idx = Math.floor(Math.random() * APMS.length);
+      setHighlightIdx(idx);
+      const clear = setTimeout(() => setHighlightIdx(null), 900);
+      return clear;
+    };
+
+    // First highlight after 2s, then every 6–8s
+    let clearPrev: ReturnType<typeof setTimeout>;
+    const schedule = () => {
+      const delay = 6000 + Math.random() * 2000;
+      return setTimeout(() => {
+        clearPrev = fire();
+        schedule();
+      }, delay);
+    };
+
+    const init = setTimeout(() => { clearPrev = fire(); }, 2200);
+    const recurring = schedule();
+
+    return () => {
+      clearTimeout(init);
+      clearTimeout(recurring);
+      clearTimeout(clearPrev);
+    };
+  }, []);
+
+  return (
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        background: "#fafafa",
+        borderRadius: "inherit",
+        display: "flex",
+        flexDirection: "column",
+        fontFamily: "-apple-system, BlinkMacSystemFont, 'Inter', sans-serif",
+        overflow: "hidden",
+        position: "relative",
+        boxSizing: "border-box",
+      }}
+    >
+      {/* Glass overlay — subtle diagonal reflection */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: "linear-gradient(138deg, rgba(255,255,255,0.09) 0%, transparent 52%)",
+          pointerEvents: "none",
+          zIndex: 50,
+          borderRadius: "inherit",
+        }}
+      />
+
+      {/* ── Fixed top bar — tall enough to clear Dynamic Island ─── */}
+      <div
+        style={{
+          height: 56,
+          background: "#f8f8f8",
+          borderBottom: "1px solid rgba(0,0,0,0.07)",
+          display: "flex",
+          alignItems: "flex-end",
+          justifyContent: "space-between",
+          padding: "0 14px 10px",
+          flexShrink: 0,
+          position: "relative",
+          zIndex: 5,
+        }}
+      >
+        <span style={{ fontSize: "14px", color: "#007AFF", lineHeight: 1 }}>←</span>
+        <span style={{ fontSize: "13px", fontWeight: 600, color: "#111827", letterSpacing: "-0.3px", lineHeight: 1 }}>
+          Checkout
+        </span>
+        <span style={{ fontSize: "12px", fontWeight: 600, color: "#111827", lineHeight: 1 }}>
+          $129.00
+        </span>
+      </div>
+
+      {/* ── "Select payment method" label ─────────────── */}
+      <div
+        style={{
+          padding: "10px 14px 5px",
+          flexShrink: 0,
+          position: "relative",
+          zIndex: 5,
+        }}
+      >
+        <span
+          style={{
+            fontSize: "9px",
+            fontWeight: 600,
+            color: "#6b7280",
+            textTransform: "uppercase",
+            letterSpacing: "0.7px",
+            whiteSpace: "nowrap",
+          }}
+        >
+          Select payment method
+        </span>
+      </div>
+
+      {/* ── Scrolling APM grid ────────────────────────── */}
+      <div
+        style={{
+          flex: 1,
+          overflow: "hidden",
+          padding: "4px 12px 0",
+          position: "relative",
+          zIndex: 3,
+          maskImage: "linear-gradient(to bottom, transparent 0%, black 6%, black 88%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 6%, black 88%, transparent 100%)",
+        }}
+      >
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "8px",
+            animation: "apm-grid-scroll 26s linear infinite",
+            paddingBottom: "8px",
+          }}
+        >
+          {DOUBLED.map((apm, i) => (
+            <APMTile
+              key={i}
+              apm={apm}
+              highlighted={highlightIdx === i % APMS.length}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* ── Fixed bottom CTA ──────────────────────────── */}
+      <div
+        style={{
+          padding: "10px 12px 12px",
+          flexShrink: 0,
+          background: "#fafafa",
+          borderTop: "1px solid rgba(0,0,0,0.06)",
+          position: "relative",
+          zIndex: 5,
+        }}
+      >
+        <div
+          style={{
+            width: "100%",
+            height: 50,
+            background: "#d97757",
+            borderRadius: 14,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            color: "white",
+            fontSize: "13px",
+            fontWeight: 700,
+            letterSpacing: "-0.2px",
+            gap: "6px",
+          }}
+        >
+          Continue · $129.00
+        </div>
+      </div>
+    </div>
+  );
+}

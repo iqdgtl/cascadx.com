@@ -137,6 +137,97 @@ body::before {
 }
 
 /* =========================================================
+   Hero — phone screen + scene animations
+   ========================================================= */
+@keyframes hero-cursor-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.hero-cursor { animation: hero-cursor-blink 1s step-end infinite; }
+
+@keyframes hero-particle-drift {
+  0%   { opacity: 0; transform: translate(0, 0) scale(1); }
+  12%  { opacity: 0.2; }
+  88%  { opacity: 0.15; }
+  100% { opacity: 0; transform: translate(var(--pdx, 20px), var(--pdy, -40px)) scale(1.8); }
+}
+
+/* Spinner used in PhoneScreen */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* APM grid scrolls upward continuously — -50% on doubled list = one full set */
+@keyframes apm-grid-scroll {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-50%); }
+}
+
+/* iPhone breathing tilt — subtle life */
+@keyframes phone-breathe {
+  0%, 100% { transform: perspective(1400px) rotateY(-18deg) rotateX(10deg); }
+  50%       { transform: perspective(1400px) rotateY(-15deg) rotateX(8deg); }
+}
+
+.hero-phone-frame {
+  animation: phone-breathe 8s ease-in-out infinite;
+}
+
+/* Mobile overrides for hero scene */
+@media (max-width: 767px) {
+  .hero-phone-frame {
+    width: 168px !important;
+    height: 347px !important;
+    border-radius: 33px !important;
+    padding: 6px !important;
+  }
+  .hero-phone-island {
+    width: 69px !important;
+    height: 22px !important;
+    top: 13px !important;
+  }
+  .hero-icon-badge { width: 36px !important; height: 36px !important; }
+  .hero-icon-label { font-size: 7px !important; }
+  .hero-scene { min-height: 360px !important; }
+}
+
+/* =========================================================
+   Trusted-by marquee
+   ========================================================= */
+.marquee-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: slide 40s linear infinite;
+}
+
+.marquee-container:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (max-width: 767px) {
+  .marquee-track { animation-duration: 30s; }
+}
+
+.logo-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255,255,255,0.7);
+  flex-shrink: 0;
+  margin-right: 90px;
+  transition: color 0.35s ease, opacity 0.35s ease;
+}
+
+@media (hover: hover) {
+  .logo-item:hover {
+    color: var(--brand);
+    opacity: 1;
+  }
+}
+
+/* =========================================================
    Accessibility — reduced motion
    ========================================================= */
 @media (prefers-reduced-motion: reduce) {
