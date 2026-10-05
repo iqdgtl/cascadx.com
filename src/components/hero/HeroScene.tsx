@@ -6,6 +6,9 @@ import type { Topology } from "topojson-specification";
 import worldTopoRaw from "world-atlas/land-110m.json";
 import PhoneScreen from "./PhoneScreen";
 
+// Resets on hard refresh (JS module unloads), persists during soft navigation
+let entrancePlayed = false;
+
 // ── World data (module-level, loaded once) ────────────────────────────────────
 const worldTopo = worldTopoRaw as unknown as Topology;
 const land = feature(worldTopo, worldTopo.objects.land);
@@ -62,18 +65,19 @@ export default function HeroScene() {
   const startRef = useRef<number | null>(null);
   const rafRef = useRef<number>(0);
 
-  // Entrance animation — play once per session, respect reduced-motion
+  // Entrance animation — play once per page load, skip on soft navigation.
+  // Module-level var resets on hard refresh (JS module unloads) but persists
+  // during client-side navigation (module stays in memory). No sessionStorage.
   const [entered, setEntered] = useState(() => {
-    const hasPlayed = sessionStorage.getItem("hx-entrance") === "1";
-    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    return hasPlayed || prefersReduced;
+    const prefersReduced = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
+    return entrancePlayed || prefersReduced;
   });
 
   useEffect(() => {
     if (entered) return;
     const id = setTimeout(() => {
       setEntered(true);
-      sessionStorage.setItem("hx-entrance", "1");
+      entrancePlayed = true;
     }, 1550); // 150ms delay + 1200ms animation + 200ms buffer
     return () => clearTimeout(id);
   }, [entered]);

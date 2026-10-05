@@ -201,10 +201,11 @@ body::before {
   }
 }
 
-/* iPhone breathing — gentle float after entrance */
+/* iPhone breathing — three-point cinematic loop after entrance */
 @keyframes phone-breathe {
-  0%, 100% { transform: perspective(1400px) rotateY(-18deg) rotateX(8deg) translateY(0); }
-  50%       { transform: perspective(1400px) rotateY(-15deg) rotateX(10deg) translateY(-4px); }
+  0%, 100% { transform: perspective(1400px) rotateY(-18deg) rotateX(8deg)  translateY(0)   scale(1);     }
+  33%      { transform: perspective(1400px) rotateY(-15deg) rotateX(10deg) translateY(-6px) scale(1.005); }
+  66%      { transform: perspective(1400px) rotateY(-20deg) rotateX(7deg)  translateY(-3px) scale(1);     }
 }
 
 .hero-phone-frame {

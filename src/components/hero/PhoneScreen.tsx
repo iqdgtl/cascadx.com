@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from "react";
 
 // ─── Scene durations (ms) ─────────────────────────────────────────────────────
-const SCENE_DURATIONS = [6000, 8000, 4000, 4000];
+// Scene 1 is 10s: 6s scroll → select Credit card → 7s tap → 10s fade to Scene 2
+const SCENE_DURATIONS = [10000, 8000, 4000, 4000];
 
 // ─── Confetti (16 particles) ──────────────────────────────────────────────────
 const CONFETTI = [
@@ -28,16 +29,9 @@ const CONFETTI = [
 
 function VisaLogo() {
   return (
-    <div style={{
-      width: 34, height: 22, borderRadius: 4, background: "#1A1F71",
-      display: "flex", alignItems: "center", justifyContent: "center",
-      boxShadow: "0 1px 3px rgba(0,0,0,0.25)", flexShrink: 0,
-    }}>
+    <div style={{ width: 34, height: 22, borderRadius: 4, background: "#1A1F71", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 1px 3px rgba(0,0,0,0.25)", flexShrink: 0 }}>
       <svg viewBox="0 0 34 14" width="30" height="11">
-        <text x="17" y="11" textAnchor="middle"
-          fontFamily="-apple-system,system-ui,sans-serif"
-          fontSize="13" fontWeight="900" fontStyle="italic" fill="white"
-        >VISA</text>
+        <text x="17" y="11" textAnchor="middle" fontFamily="-apple-system,system-ui,sans-serif" fontSize="13" fontWeight="900" fontStyle="italic" fill="white">VISA</text>
       </svg>
     </div>
   );
@@ -45,12 +39,7 @@ function VisaLogo() {
 
 function MastercardLogo() {
   return (
-    <div style={{
-      width: 34, height: 22, borderRadius: 4, background: "#1a1a1a",
-      display: "flex", alignItems: "center", justifyContent: "center",
-      boxShadow: "0 1px 3px rgba(0,0,0,0.25)", flexShrink: 0,
-      overflow: "hidden",
-    }}>
+    <div style={{ width: 34, height: 22, borderRadius: 4, background: "#1a1a1a", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 1px 3px rgba(0,0,0,0.25)", flexShrink: 0, overflow: "hidden" }}>
       <svg viewBox="0 0 24 16" width="22" height="15">
         <circle cx="9"  cy="8" r="8" fill="#EB001B"/>
         <circle cx="15" cy="8" r="8" fill="#F79E1B" opacity="0.9"/>
@@ -62,16 +51,9 @@ function MastercardLogo() {
 
 function AmexLogo() {
   return (
-    <div style={{
-      width: 34, height: 22, borderRadius: 4, background: "#006FCF",
-      display: "flex", alignItems: "center", justifyContent: "center",
-      boxShadow: "0 1px 3px rgba(0,0,0,0.25)", flexShrink: 0,
-    }}>
+    <div style={{ width: 34, height: 22, borderRadius: 4, background: "#006FCF", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 1px 3px rgba(0,0,0,0.25)", flexShrink: 0 }}>
       <svg viewBox="0 0 34 14" width="30" height="11">
-        <text x="17" y="10.5" textAnchor="middle"
-          fontFamily="-apple-system,system-ui,sans-serif"
-          fontSize="9" fontWeight="800" fill="white" letterSpacing="0.5"
-        >AMEX</text>
+        <text x="17" y="10.5" textAnchor="middle" fontFamily="-apple-system,system-ui,sans-serif" fontSize="9" fontWeight="800" fill="white" letterSpacing="0.5">AMEX</text>
       </svg>
     </div>
   );
@@ -79,25 +61,12 @@ function AmexLogo() {
 
 function UnionPayLogo() {
   return (
-    <div style={{
-      width: 34, height: 22, borderRadius: 4, display: "flex",
-      overflow: "hidden", boxShadow: "0 1px 3px rgba(0,0,0,0.25)", flexShrink: 0,
-    }}>
+    <div style={{ width: 34, height: 22, borderRadius: 4, display: "flex", overflow: "hidden", boxShadow: "0 1px 3px rgba(0,0,0,0.25)", flexShrink: 0 }}>
       <div style={{ flex: 1, background: "#E31837", display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <svg viewBox="0 0 17 14" width="17" height="14">
-          <text x="8.5" y="11" textAnchor="middle"
-            fontFamily="-apple-system,system-ui,sans-serif"
-            fontSize="8" fontWeight="800" fill="white"
-          >UP</text>
-        </svg>
+        <svg viewBox="0 0 17 14" width="17" height="14"><text x="8.5" y="11" textAnchor="middle" fontFamily="-apple-system,system-ui,sans-serif" fontSize="8" fontWeight="800" fill="white">UP</text></svg>
       </div>
       <div style={{ flex: 1, background: "#00447C", display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <svg viewBox="0 0 17 14" width="17" height="14">
-          <text x="8.5" y="11" textAnchor="middle"
-            fontFamily="-apple-system,system-ui,sans-serif"
-            fontSize="7" fontWeight="600" fill="white"
-          >银联</text>
-        </svg>
+        <svg viewBox="0 0 17 14" width="17" height="14"><text x="8.5" y="11" textAnchor="middle" fontFamily="-apple-system,system-ui,sans-serif" fontSize="7" fontWeight="600" fill="white">银联</text></svg>
       </div>
     </div>
   );
@@ -105,13 +74,7 @@ function UnionPayLogo() {
 
 function PayPalLogo() {
   return (
-    <div style={{
-      height: 22, borderRadius: 4, background: "#f0f5ff",
-      border: "1px solid #c8dcf5",
-      display: "flex", alignItems: "center", justifyContent: "center",
-      padding: "0 9px",
-      boxShadow: "0 1px 3px rgba(0,0,0,0.08)", flexShrink: 0,
-    }}>
+    <div style={{ height: 22, borderRadius: 4, background: "#f0f5ff", border: "1px solid #c8dcf5", display: "flex", alignItems: "center", justifyContent: "center", padding: "0 9px", boxShadow: "0 1px 3px rgba(0,0,0,0.08)", flexShrink: 0 }}>
       <span style={{ fontFamily: "-apple-system,system-ui,sans-serif", fontSize: 11, fontWeight: 800, color: "#003087" }}>Pay</span>
       <span style={{ fontFamily: "-apple-system,system-ui,sans-serif", fontSize: 11, fontWeight: 800, color: "#009cde" }}>Pal</span>
     </div>
@@ -120,12 +83,7 @@ function PayPalLogo() {
 
 function ApplePayLogo() {
   return (
-    <div style={{
-      height: 22, borderRadius: 4, background: "#000",
-      display: "flex", alignItems: "center", justifyContent: "center",
-      padding: "0 9px", gap: 4,
-      boxShadow: "0 1px 3px rgba(0,0,0,0.35)", flexShrink: 0,
-    }}>
+    <div style={{ height: 22, borderRadius: 4, background: "#000", display: "flex", alignItems: "center", justifyContent: "center", padding: "0 9px", gap: 4, boxShadow: "0 1px 3px rgba(0,0,0,0.35)", flexShrink: 0 }}>
       <svg viewBox="0 0 10 12" width="8" height="10" fill="white" aria-hidden="true">
         <path d="M7.5 0C7.5 1.5 6.5 2.3 5.5 2.3 5.5 1 6.5.2 7.5 0z"/>
         <path d="M5.2 3.2C3.2 3.2 1 4.8 1 7.5 1 10.5 3 13 5 13c.8 0 1.5-.5 2.2-.5.7 0 1.4.5 2.2.5C11.4 13 12 10.5 12 7.5c0-2.4-1.7-4-3-4-.8 0-1.5.5-2.2.5-.7 0-1.3-.8-1.6-.8z"/>
@@ -137,19 +95,8 @@ function ApplePayLogo() {
 
 function GooglePayLogo() {
   return (
-    <div style={{
-      height: 22, borderRadius: 4, background: "#fff",
-      border: "1px solid #e0ddd8",
-      display: "flex", alignItems: "center", justifyContent: "center",
-      padding: "0 8px", gap: 3,
-      boxShadow: "0 1px 3px rgba(0,0,0,0.10)", flexShrink: 0,
-    }}>
-      <svg viewBox="0 0 10 12" width="9" height="10" aria-hidden="true">
-        <text x="5" y="10" textAnchor="middle"
-          fontFamily="-apple-system,system-ui,sans-serif"
-          fontSize="11" fontWeight="700" fill="#4285F4"
-        >G</text>
-      </svg>
+    <div style={{ height: 22, borderRadius: 4, background: "#fff", border: "1px solid #e0ddd8", display: "flex", alignItems: "center", justifyContent: "center", padding: "0 8px", gap: 3, boxShadow: "0 1px 3px rgba(0,0,0,0.10)", flexShrink: 0 }}>
+      <svg viewBox="0 0 10 12" width="9" height="10" aria-hidden="true"><text x="5" y="10" textAnchor="middle" fontFamily="-apple-system,system-ui,sans-serif" fontSize="11" fontWeight="700" fill="#4285F4">G</text></svg>
       <span style={{ fontFamily: "-apple-system,system-ui,sans-serif", fontSize: 10, fontWeight: 600, color: "#5f5752" }}>Pay</span>
     </div>
   );
@@ -157,12 +104,7 @@ function GooglePayLogo() {
 
 function AlipayLogo() {
   return (
-    <div style={{
-      height: 22, borderRadius: 4, background: "#1677FF",
-      display: "flex", alignItems: "center", justifyContent: "center",
-      padding: "0 9px",
-      boxShadow: "0 1px 3px rgba(0,0,0,0.2)", flexShrink: 0,
-    }}>
+    <div style={{ height: 22, borderRadius: 4, background: "#1677FF", display: "flex", alignItems: "center", justifyContent: "center", padding: "0 9px", boxShadow: "0 1px 3px rgba(0,0,0,0.2)", flexShrink: 0 }}>
       <span style={{ fontFamily: "-apple-system,system-ui,sans-serif", fontSize: 11, fontWeight: 800, color: "white" }}>Alipay</span>
     </div>
   );
@@ -170,12 +112,7 @@ function AlipayLogo() {
 
 function WeChatPayLogo() {
   return (
-    <div style={{
-      height: 22, borderRadius: 4, background: "#07C160",
-      display: "flex", alignItems: "center", justifyContent: "center",
-      padding: "0 7px",
-      boxShadow: "0 1px 3px rgba(0,0,0,0.2)", flexShrink: 0,
-    }}>
+    <div style={{ height: 22, borderRadius: 4, background: "#07C160", display: "flex", alignItems: "center", justifyContent: "center", padding: "0 7px", boxShadow: "0 1px 3px rgba(0,0,0,0.2)", flexShrink: 0 }}>
       <span style={{ fontFamily: "-apple-system,system-ui,sans-serif", fontSize: 9, fontWeight: 800, color: "white", whiteSpace: "nowrap" }}>WeChat Pay</span>
     </div>
   );
@@ -183,12 +120,7 @@ function WeChatPayLogo() {
 
 function GrabPayLogo() {
   return (
-    <div style={{
-      height: 22, borderRadius: 4, background: "#00B14F",
-      display: "flex", alignItems: "center", justifyContent: "center",
-      padding: "0 8px",
-      boxShadow: "0 1px 3px rgba(0,0,0,0.2)", flexShrink: 0,
-    }}>
+    <div style={{ height: 22, borderRadius: 4, background: "#00B14F", display: "flex", alignItems: "center", justifyContent: "center", padding: "0 8px", boxShadow: "0 1px 3px rgba(0,0,0,0.2)", flexShrink: 0 }}>
       <span style={{ fontFamily: "-apple-system,system-ui,sans-serif", fontSize: 11, fontWeight: 800, color: "white" }}>GrabPay</span>
     </div>
   );
@@ -196,12 +128,7 @@ function GrabPayLogo() {
 
 function GCashLogo() {
   return (
-    <div style={{
-      height: 22, borderRadius: 4, background: "#007DFE",
-      display: "flex", alignItems: "center", justifyContent: "center",
-      padding: "0 8px",
-      boxShadow: "0 1px 3px rgba(0,0,0,0.2)", flexShrink: 0,
-    }}>
+    <div style={{ height: 22, borderRadius: 4, background: "#007DFE", display: "flex", alignItems: "center", justifyContent: "center", padding: "0 8px", boxShadow: "0 1px 3px rgba(0,0,0,0.2)", flexShrink: 0 }}>
       <span style={{ fontFamily: "-apple-system,system-ui,sans-serif", fontSize: 11, fontWeight: 800, color: "white" }}>GCash</span>
     </div>
   );
@@ -209,22 +136,68 @@ function GCashLogo() {
 
 function PayPayLogo() {
   return (
-    <div style={{
-      height: 22, borderRadius: 4, background: "#FF0033",
-      display: "flex", alignItems: "center", justifyContent: "center",
-      padding: "0 8px",
-      boxShadow: "0 1px 3px rgba(0,0,0,0.2)", flexShrink: 0,
-    }}>
+    <div style={{ height: 22, borderRadius: 4, background: "#FF0033", display: "flex", alignItems: "center", justifyContent: "center", padding: "0 8px", boxShadow: "0 1px 3px rgba(0,0,0,0.2)", flexShrink: 0 }}>
       <span style={{ fontFamily: "-apple-system,system-ui,sans-serif", fontSize: 11, fontWeight: 800, color: "white" }}>PayPay</span>
     </div>
   );
 }
 
-// ─── Payment method list data ─────────────────────────────────────────────────
-const PAY_METHODS: Array<{ id: string; name: string; logos: React.ReactNode }> = [
+function OVOLogo() {
+  return (
+    <div style={{ height: 22, borderRadius: 4, background: "#4C3494", display: "flex", alignItems: "center", justifyContent: "center", padding: "0 9px", boxShadow: "0 1px 3px rgba(0,0,0,0.2)", flexShrink: 0 }}>
+      <span style={{ fontFamily: "-apple-system,system-ui,sans-serif", fontSize: 11, fontWeight: 800, color: "white" }}>OVO</span>
+    </div>
+  );
+}
+
+function DANALogo() {
+  return (
+    <div style={{ height: 22, borderRadius: 4, background: "#118EEA", display: "flex", alignItems: "center", justifyContent: "center", padding: "0 9px", boxShadow: "0 1px 3px rgba(0,0,0,0.2)", flexShrink: 0 }}>
+      <span style={{ fontFamily: "-apple-system,system-ui,sans-serif", fontSize: 11, fontWeight: 800, color: "white" }}>dana</span>
+    </div>
+  );
+}
+
+function TrueMoneyLogo() {
+  return (
+    <div style={{ height: 22, borderRadius: 4, background: "#FF6B00", display: "flex", alignItems: "center", justifyContent: "center", padding: "0 7px", boxShadow: "0 1px 3px rgba(0,0,0,0.2)", flexShrink: 0 }}>
+      <span style={{ fontFamily: "-apple-system,system-ui,sans-serif", fontSize: 8.5, fontWeight: 800, color: "white", whiteSpace: "nowrap" }}>TrueMoney</span>
+    </div>
+  );
+}
+
+function MoMoLogo() {
+  return (
+    <div style={{ height: 22, borderRadius: 4, background: "#A50064", display: "flex", alignItems: "center", justifyContent: "center", padding: "0 8px", boxShadow: "0 1px 3px rgba(0,0,0,0.2)", flexShrink: 0 }}>
+      <span style={{ fontFamily: "-apple-system,system-ui,sans-serif", fontSize: 11, fontWeight: 800, color: "white" }}>MoMo</span>
+    </div>
+  );
+}
+
+function PaytmLogo() {
+  return (
+    <div style={{ height: 22, borderRadius: 4, background: "#002E6E", display: "flex", alignItems: "center", justifyContent: "center", padding: "0 8px", boxShadow: "0 1px 3px rgba(0,0,0,0.2)", flexShrink: 0 }}>
+      <span style={{ fontFamily: "-apple-system,system-ui,sans-serif", fontSize: 11, fontWeight: 800, color: "white" }}>Paytm</span>
+    </div>
+  );
+}
+
+function KakaoPayLogo() {
+  return (
+    <div style={{ height: 22, borderRadius: 4, background: "#FEE500", display: "flex", alignItems: "center", justifyContent: "center", padding: "0 8px", boxShadow: "0 1px 3px rgba(0,0,0,0.12)", flexShrink: 0 }}>
+      <span style={{ fontFamily: "-apple-system,system-ui,sans-serif", fontSize: 10, fontWeight: 800, color: "#3C1E1E" }}>Kakao Pay</span>
+    </div>
+  );
+}
+
+// ─── Full 15-item payment method list ─────────────────────────────────────────
+// 15 items × 56px = 840px per copy. Doubled list = 1680px.
+// CSS animation scrolls -840px (one full copy) over 27s = 56px/1.8s (1 row per 1.8s).
+// animation-delay: -14s → starts mid-animation so Credit card (copy 2, y=840)
+// enters visible area from bottom at t=0 and reaches center (~217px) at t≈6s.
+const PAY_METHODS_FULL: Array<{ id: string; name: string; logos: React.ReactNode }> = [
   {
-    id: "credit_card",
-    name: "Credit card",
+    id: "credit_card", name: "Credit card",
     logos: (
       <div style={{ display: "flex", gap: 3, alignItems: "center" }}>
         <VisaLogo /><MastercardLogo /><AmexLogo /><UnionPayLogo />
@@ -239,7 +212,16 @@ const PAY_METHODS: Array<{ id: string; name: string; logos: React.ReactNode }> =
   { id: "grabpay",    name: "GrabPay",    logos: <GrabPayLogo /> },
   { id: "gcash",      name: "GCash",      logos: <GCashLogo /> },
   { id: "paypay",     name: "PayPay",     logos: <PayPayLogo /> },
+  { id: "ovo",        name: "OVO",        logos: <OVOLogo /> },
+  { id: "dana",       name: "DANA",       logos: <DANALogo /> },
+  { id: "truemoney",  name: "TrueMoney",  logos: <TrueMoneyLogo /> },
+  { id: "momo",       name: "MoMo",       logos: <MoMoLogo /> },
+  { id: "paytm",      name: "Paytm",      logos: <PaytmLogo /> },
+  { id: "kakaopay",   name: "Kakao Pay",  logos: <KakaoPayLogo /> },
 ];
+
+// Doubled for seamless loop
+const PAY_METHODS_DOUBLED = [...PAY_METHODS_FULL, ...PAY_METHODS_FULL];
 
 // ─── Shared components ────────────────────────────────────────────────────────
 function TopBar({ left, center, right, processing }: {
@@ -269,15 +251,18 @@ function SectionLabel({ children }: { children: string }) {
   );
 }
 
-// ─── SCENE 1: Vertical payment method list ────────────────────────────────────
+// ─── SCENE 1: Scrolling payment method list ───────────────────────────────────
 function Scene1_PaymentList() {
-  const [selected, setSelected] = useState<string | null>(null);
-  const [tapping,  setTapping]  = useState(false);
+  const [selected,     setSelected]     = useState<string | null>(null);
+  const [tapping,      setTapping]      = useState(false);
+  const [scrollPaused, setScrollPaused] = useState(false);
 
   useEffect(() => {
-    const t1 = setTimeout(() => setSelected("credit_card"), 3000);
-    const t2 = setTimeout(() => setTapping(true),  4000);
-    const t3 = setTimeout(() => setTapping(false), 4300);
+    // 6s: pause scroll + select Credit card
+    const t1 = setTimeout(() => { setScrollPaused(true); setSelected("credit_card"); }, 6000);
+    // 7s: tap
+    const t2 = setTimeout(() => setTapping(true),  7000);
+    const t3 = setTimeout(() => setTapping(false), 7300);
     return () => [t1, t2, t3].forEach(clearTimeout);
   }, []);
 
@@ -285,64 +270,75 @@ function Scene1_PaymentList() {
     <div style={{ display: "flex", flexDirection: "column", height: "100%", background: "#faf7f4" }}>
       <TopBar left="←" center="Checkout" right="$129.00"/>
       <SectionLabel>Select payment method</SectionLabel>
-      <div
-        className="phone-list"
-        style={{ flex: 1, overflowY: "auto", overflowX: "hidden" }}
-      >
-        {PAY_METHODS.map((method) => {
-          const isSelected = selected === method.id;
-          const isTapping  = tapping && isSelected;
-          return (
-            <div
-              key={method.id}
-              style={{
-                height: 56,
-                display: "flex",
-                alignItems: "center",
-                paddingLeft: isSelected ? 13 : 16,
-                paddingRight: 16,
-                gap: 12,
-                background: isSelected ? "#fef9f3" : "white",
-                borderBottom: "1px solid #ede6db",
-                borderLeft: isSelected ? "3px solid #d97757" : "3px solid transparent",
-                transform: isTapping ? "scale(0.99)" : "scale(1)",
-                transition: "background 350ms ease, border-color 350ms ease, transform 100ms ease",
-                boxSizing: "border-box",
-              }}
-            >
-              {/* Radio */}
-              <div style={{
-                width: 20, height: 20, borderRadius: "50%", flexShrink: 0,
-                border: `2px solid ${isSelected ? "#d97757" : "#c7c7cc"}`,
-                display: "flex", alignItems: "center", justifyContent: "center",
-                transition: "border-color 350ms ease",
-                boxSizing: "border-box",
-              }}>
-                {isSelected && (
-                  <div style={{
-                    width: 10, height: 10, borderRadius: "50%",
-                    background: "#d97757",
-                    animation: "phone-pop 250ms cubic-bezier(0.175,0.885,0.32,1.275) both",
-                  }} />
-                )}
+      {/* Overflow container — clips the scrolling list */}
+      <div style={{ flex: 1, overflow: "hidden" }}>
+        {/*
+          Scrolling inner list.
+          27s to scroll 840px (-50% of 1680px total = one full copy of 15 items).
+          -14s delay starts animation mid-loop: Credit card (copy 2, y=840) enters
+          from the bottom at t=0 and reaches ~217px from top at t=6s (center area).
+        */}
+        <div style={{
+          animation: "payment-list-scroll 27s linear infinite",
+          animationDelay: "-14s",
+          animationPlayState: scrollPaused ? "paused" : "running",
+          willChange: "transform",
+        }}>
+          {PAY_METHODS_DOUBLED.map((method, i) => {
+            const isSelected = selected === method.id && i >= PAY_METHODS_FULL.length;
+            const isTapping  = tapping && isSelected;
+            return (
+              <div
+                key={i}
+                style={{
+                  height: 56,
+                  display: "flex",
+                  alignItems: "center",
+                  paddingLeft: isSelected ? 13 : 16,
+                  paddingRight: 16,
+                  gap: 12,
+                  background: isSelected ? "#fef9f3" : "white",
+                  borderBottom: "1px solid #ede6db",
+                  borderLeft: isSelected ? "3px solid #d97757" : "3px solid transparent",
+                  transform: isTapping ? "scale(0.99)" : "scale(1)",
+                  transition: "background 350ms ease, border-color 350ms ease, transform 100ms ease",
+                  boxSizing: "border-box",
+                }}
+              >
+                {/* Radio button */}
+                <div style={{
+                  width: 20, height: 20, borderRadius: "50%", flexShrink: 0,
+                  border: `2px solid ${isSelected ? "#d97757" : "#c7c7cc"}`,
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  transition: "border-color 350ms ease",
+                  boxSizing: "border-box",
+                }}>
+                  {isSelected && (
+                    <div style={{
+                      width: 10, height: 10, borderRadius: "50%",
+                      background: "#d97757",
+                      animation: "phone-pop 250ms cubic-bezier(0.175,0.885,0.32,1.275) both",
+                    }} />
+                  )}
+                </div>
+                {/* Name */}
+                <span style={{
+                  flex: 1,
+                  fontSize: 15, fontWeight: isSelected ? 600 : 500,
+                  color: "#1a1a1a",
+                  fontFamily: "-apple-system, BlinkMacSystemFont, system-ui, sans-serif",
+                  letterSpacing: "-0.2px",
+                }}>
+                  {method.name}
+                </span>
+                {/* Logos */}
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  {method.logos}
+                </div>
               </div>
-              {/* Name */}
-              <span style={{
-                flex: 1,
-                fontSize: 15, fontWeight: isSelected ? 600 : 500,
-                color: "#1a1a1a",
-                fontFamily: "-apple-system, BlinkMacSystemFont, system-ui, sans-serif",
-                letterSpacing: "-0.2px",
-              }}>
-                {method.name}
-              </span>
-              {/* Logos */}
-              <div style={{ display: "flex", alignItems: "center" }}>
-                {method.logos}
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </div>
   );
@@ -371,10 +367,8 @@ function Field({ label, value, mono, right, cursor, placeholder, active }: {
   return (
     <div>
       <div style={{
-        fontSize: 9, fontWeight: 700,
-        color: "#6b5d54",
-        textTransform: "uppercase", letterSpacing: "0.7px",
-        marginBottom: 5,
+        fontSize: 9, fontWeight: 700, color: "#6b5d54",
+        textTransform: "uppercase", letterSpacing: "0.7px", marginBottom: 5,
         fontFamily: "var(--font-mono, 'SF Mono', monospace, system-ui)",
       }}>
         {label}
@@ -426,8 +420,6 @@ function Scene2_CardForm() {
     expiry.length > 0  ? "cvv" :
     cardNum.length > 0 ? "expiry" : "card";
 
-  const showVisa = cardNum.length >= 1;
-
   return (
     <div style={{
       display: "flex", flexDirection: "column", height: "100%",
@@ -437,36 +429,22 @@ function Scene2_CardForm() {
       <div style={{ flex: 1, padding: "6px 14px 12px", display: "flex", flexDirection: "column", gap: 10, overflow: "hidden" }}>
         <SectionLabel>Card details</SectionLabel>
 
-        {/* Card number */}
         <Field
           label="Card number"
           value={formatCardNum(cardNum)}
-          mono
-          cursor={activeField === "card"}
-          active={activeField === "card"}
+          mono cursor={activeField === "card"} active={activeField === "card"}
           placeholder="1234 5678 9012 3456"
-          right={showVisa ? (
-            <div style={{
-              flexShrink: 0, marginLeft: 6,
-              animation: "phone-pop 300ms ease both",
-            }}>
-              <div style={{
-                width: 28, height: 18, borderRadius: 3, background: "#1A1F71",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                boxShadow: "0 1px 3px rgba(0,0,0,0.2)",
-              }}>
+          right={cardNum.length >= 1 ? (
+            <div style={{ flexShrink: 0, marginLeft: 6, animation: "phone-pop 300ms ease both" }}>
+              <div style={{ width: 28, height: 18, borderRadius: 3, background: "#1A1F71", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 1px 3px rgba(0,0,0,0.2)" }}>
                 <svg viewBox="0 0 28 12" width="26" height="10">
-                  <text x="14" y="9.5" textAnchor="middle"
-                    fontFamily="-apple-system,system-ui,sans-serif"
-                    fontSize="10" fontWeight="900" fontStyle="italic" fill="white"
-                  >VISA</text>
+                  <text x="14" y="9.5" textAnchor="middle" fontFamily="-apple-system,system-ui,sans-serif" fontSize="10" fontWeight="900" fontStyle="italic" fill="white">VISA</text>
                 </svg>
               </div>
             </div>
           ) : undefined}
         />
 
-        {/* Expiry + CVV */}
         <div style={{ display: "flex", gap: 10 }}>
           <div style={{ flex: 1 }}>
             <Field label="Expiry" value={expiry} mono cursor={activeField === "expiry"} active={activeField === "expiry"} placeholder="MM/YY"/>
@@ -476,20 +454,15 @@ function Scene2_CardForm() {
           </div>
         </div>
 
-        {/* Name */}
         <Field
           label="Cardholder name"
-          value={name}
-          cursor={activeField === "name"}
-          active={activeField === "name"}
+          value={name} cursor={activeField === "name"} active={activeField === "name"}
           placeholder="Full name"
         />
 
-        {/* Pay button */}
         <div style={{ marginTop: "auto", paddingTop: 4 }}>
           <div style={{
-            position: "relative",
-            height: 50,
+            position: "relative", height: 50,
             background: "linear-gradient(180deg, #e88f6d 0%, #d97757 55%, #c86847 100%)",
             borderRadius: 12,
             display: "flex", alignItems: "center", justifyContent: "center",
@@ -517,7 +490,7 @@ function Scene2_CardForm() {
   );
 }
 
-// ─── SCENE 3: Processing / Routing — warm ────────────────────────────────────
+// ─── SCENE 3: Processing / Routing ────────────────────────────────────────────
 interface PspRowProps { name: string; status: "fail" | "success"; delay: number }
 
 function PspRow({ name, status, delay }: PspRowProps) {
@@ -559,16 +532,9 @@ function PspRow({ name, status, delay }: PspRowProps) {
 
 function Scene3_Processing() {
   return (
-    <div style={{
-      display: "flex", flexDirection: "column", height: "100%",
-      background: "linear-gradient(180deg, #faf7f4 0%, #ffffff 70%)",
-    }}>
+    <div style={{ display: "flex", flexDirection: "column", height: "100%", background: "linear-gradient(180deg, #faf7f4 0%, #ffffff 70%)" }}>
       <TopBar center="Processing..." right="$129.00" processing/>
-      <div style={{
-        flex: 1, display: "flex", flexDirection: "column",
-        alignItems: "center", justifyContent: "center", gap: 12, padding: "0 20px",
-      }}>
-        {/* Spinner — terracotta with glow */}
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 12, padding: "0 20px" }}>
         <div style={{
           width: 50, height: 50, borderRadius: "50%",
           border: "3px solid rgba(217,119,87,0.15)",
@@ -577,14 +543,8 @@ function Scene3_Processing() {
           marginBottom: 8,
           boxShadow: "0 0 20px rgba(217,119,87,0.35)",
         }} />
-
-        <p style={{ fontSize: 15, fontWeight: 600, color: "#1a1a1a", margin: 0, textAlign: "center" }}>
-          Processing payment
-        </p>
-        <p style={{ fontSize: 12, color: "#8e7d75", margin: 0, textAlign: "center", lineHeight: 1.4 }}>
-          Routing through optimal PSP...
-        </p>
-
+        <p style={{ fontSize: 15, fontWeight: 600, color: "#1a1a1a", margin: 0, textAlign: "center" }}>Processing payment</p>
+        <p style={{ fontSize: 12, color: "#8e7d75", margin: 0, textAlign: "center", lineHeight: 1.4 }}>Routing through optimal PSP...</p>
         <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 8, alignSelf: "stretch" }}>
           <PspRow name="Stripe"   status="fail"    delay={1400} />
           <PspRow name="Adyen"    status="fail"    delay={2100} />
@@ -595,7 +555,7 @@ function Scene3_Processing() {
   );
 }
 
-// ─── SCENE 4: Approved — celebration ─────────────────────────────────────────
+// ─── SCENE 4: Approved ────────────────────────────────────────────────────────
 function Scene4_Success() {
   const [v, setV] = useState(0);
 
@@ -614,11 +574,7 @@ function Scene4_Success() {
   });
 
   return (
-    <div style={{
-      display: "flex", flexDirection: "column", height: "100%",
-      background: "#faf7f4", position: "relative",
-    }}>
-      {/* Radial warm glow behind checkmark */}
+    <div style={{ display: "flex", flexDirection: "column", height: "100%", background: "#faf7f4", position: "relative" }}>
       {v >= 1 && (
         <div style={{
           position: "absolute", left: "50%", top: "38%",
@@ -629,15 +585,8 @@ function Scene4_Success() {
           animation: "phone-fade-up 800ms ease both",
         }} />
       )}
-
-      <div style={{
-        flex: 1, display: "flex", flexDirection: "column",
-        alignItems: "center", justifyContent: "center",
-        padding: "0 20px 24px", position: "relative",
-      }}>
-        {/* Checkmark + confetti wrapper */}
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "0 20px 24px", position: "relative" }}>
         <div style={{ position: "relative", marginBottom: 22 }}>
-          {/* Confetti */}
           {v >= 1 && CONFETTI.map((p, i) => (
             <div key={i} style={{
               position: "absolute", left: "50%", top: "50%",
@@ -648,16 +597,12 @@ function Scene4_Success() {
               animation: `phone-confetti 950ms ease-out ${p.delay}ms both`,
             } as React.CSSProperties} />
           ))}
-
-          {/* Checkmark circle — 90px */}
           <div style={{
             width: 90, height: 90, borderRadius: "50%",
             background: "radial-gradient(circle at 38% 38%, rgba(232,143,109,0.28) 0%, rgba(217,119,87,0.13) 55%, rgba(180,80,50,0.06) 100%)",
             border: "2px solid rgba(217,119,87,0.4)",
             display: "flex", alignItems: "center", justifyContent: "center",
-            boxShadow: v >= 1
-              ? "0 0 48px rgba(217,119,87,0.32), 0 0 12px rgba(217,119,87,0.2), inset 0 1px 0 rgba(255,255,255,0.3)"
-              : "none",
+            boxShadow: v >= 1 ? "0 0 48px rgba(217,119,87,0.32), 0 0 12px rgba(217,119,87,0.2), inset 0 1px 0 rgba(255,255,255,0.3)" : "none",
             animation: v >= 1 ? "phone-check-bounce 620ms cubic-bezier(0.175,0.885,0.32,1.275) both" : "none",
             transition: "box-shadow 600ms ease",
           }}>
@@ -666,19 +611,10 @@ function Scene4_Success() {
             </svg>
           </div>
         </div>
-
-        <p style={{ fontSize: 18, fontWeight: 700, color: "#1a1a1a", margin: "0 0 6px", letterSpacing: "-0.4px", ...fade(2) }}>
-          Payment approved
-        </p>
-
-        <p style={{ fontSize: 34, fontWeight: 800, color: "#1a1a1a", margin: "0 0 20px", letterSpacing: "-1.5px", ...fade(3) }}>
-          $129.00
-        </p>
-
+        <p style={{ fontSize: 18, fontWeight: 700, color: "#1a1a1a", margin: "0 0 6px", letterSpacing: "-0.4px", ...fade(2) }}>Payment approved</p>
+        <p style={{ fontSize: 34, fontWeight: 800, color: "#1a1a1a", margin: "0 0 20px", letterSpacing: "-1.5px", ...fade(3) }}>$129.00</p>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 6, ...fade(4) }}>
-          <p style={{ fontSize: 12, color: "#8e7d75", margin: 0, letterSpacing: "0.3px" }}>
-            Charged to •••• •••• •••• 4242
-          </p>
+          <p style={{ fontSize: 12, color: "#8e7d75", margin: 0, letterSpacing: "0.3px" }}>Charged to •••• •••• •••• 4242</p>
           <p style={{ fontSize: 11, color: "#8e7d75", margin: 0, fontFamily: "'SF Mono', monospace, system-ui", textAlign: "center", lineHeight: 1.4 }}>
             Routed via Worldpay in{" "}
             <span style={{ color: "#d97757", fontWeight: 700 }}>38ms</span>
@@ -734,9 +670,10 @@ export default function PhoneScreen() {
       </div>
 
       <style>{`
-        .phone-list { -ms-overflow-style: none; scrollbar-width: none; }
-        .phone-list::-webkit-scrollbar { display: none; }
-
+        @keyframes payment-list-scroll {
+          from { transform: translateY(0); }
+          to   { transform: translateY(-840px); }
+        }
         @keyframes phone-fade-up {
           from { opacity: 0; transform: translateY(6px); }
           to   { opacity: 1; transform: translateY(0); }
