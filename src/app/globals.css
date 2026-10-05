@@ -201,14 +201,14 @@ body::before {
   }
 }
 
-/* iPhone breathing tilt — subtle life */
+/* iPhone breathing — gentle float after entrance */
 @keyframes phone-breathe {
-  0%, 100% { transform: perspective(1400px) rotateY(-18deg) rotateX(10deg); }
-  50%       { transform: perspective(1400px) rotateY(-15deg) rotateX(8deg); }
+  0%, 100% { transform: perspective(1400px) rotateY(-18deg) rotateX(8deg) translateY(0); }
+  50%       { transform: perspective(1400px) rotateY(-15deg) rotateX(10deg) translateY(-4px); }
 }
 
 .hero-phone-frame {
-  animation: phone-breathe 8s ease-in-out infinite;
+  animation: phone-breathe 6s ease-in-out infinite;
 }
 
 /* Mobile overrides for hero scene */

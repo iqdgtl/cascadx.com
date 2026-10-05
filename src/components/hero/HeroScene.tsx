@@ -62,14 +62,21 @@ export default function HeroScene() {
   const startRef = useRef<number | null>(null);
   const rafRef = useRef<number>(0);
 
-  // Entrance animation — always plays on every page load
-  const [entered, setEntered] = useState(false);
+  // Entrance animation — play once per session, respect reduced-motion
+  const [entered, setEntered] = useState(() => {
+    const hasPlayed = sessionStorage.getItem("hx-entrance") === "1";
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    return hasPlayed || prefersReduced;
+  });
 
   useEffect(() => {
-    // 150ms delay + 1200ms animation + 200ms buffer = 1550ms total
-    const id = setTimeout(() => setEntered(true), 1550);
+    if (entered) return;
+    const id = setTimeout(() => {
+      setEntered(true);
+      sessionStorage.setItem("hx-entrance", "1");
+    }, 1550); // 150ms delay + 1200ms animation + 200ms buffer
     return () => clearTimeout(id);
-  }, []);
+  }, [entered]);
 
   // rAF loop — drives globe rotation
   useEffect(() => {
