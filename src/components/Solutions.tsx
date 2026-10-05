@@ -188,13 +188,6 @@ export default function Solutions() {
 
         {/* ── Section header ──────────────────────────────────────── */}
         <div style={{ textAlign: "center", marginBottom: 80, ...headerAnim }}>
-          <p style={{
-            fontFamily: "var(--font-mono)",
-            fontSize: 12, textTransform: "uppercase", letterSpacing: "4px",
-            color: ACCENT, margin: "0 0 20px",
-          }}>
-            Built for your team
-          </p>
           <h2 style={{
             fontFamily: "var(--font-display)",
             fontWeight: 800, fontSize: "clamp(36px, 4.5vw, 56px)",
@@ -237,21 +230,12 @@ export default function Solutions() {
               {/* Icon */}
               <block.Icon hovered={entered && hovered === i} />
 
-              {/* Eyebrow */}
-              <p style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: 10, textTransform: "uppercase", letterSpacing: "2px",
-                color: ACCENT, margin: "20px 0 6px",
-              }}>
-                {block.eyebrow}
-              </p>
-
               {/* Headline */}
               <h3 style={{
                 fontFamily: "var(--font-display)",
                 fontWeight: 800, fontSize: "clamp(22px, 1.8vw, 28px)",
                 letterSpacing: "-0.02em", lineHeight: 1.2,
-                color: "#fafaf7", margin: "0 0 16px",
+                color: "#fafaf7", margin: "24px 0 16px",
               }}>
                 {block.headline}
               </h3>
@@ -348,13 +332,6 @@ export default function Solutions() {
 
             {/* Left — headline */}
             <div style={{ position: "relative", zIndex: 1 }}>
-              <p style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: 10, textTransform: "uppercase", letterSpacing: "3px",
-                color: ACCENT, margin: "0 0 8px",
-              }}>
-                Ready to start?
-              </p>
               <h3 style={{
                 fontFamily: "var(--font-display)",
                 fontWeight: 800, fontSize: "clamp(18px, 1.8vw, 24px)",

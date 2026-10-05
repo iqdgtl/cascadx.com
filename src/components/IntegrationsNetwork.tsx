@@ -1,4 +1,3 @@
-import Kicker from "./ui/Kicker";
 import Logo from "./ui/Logo";
 
 const chips = [
@@ -32,7 +31,6 @@ export default function IntegrationsNetwork() {
       <div className="max-w-[var(--max)] mx-auto">
         {/* Header */}
         <div className="text-center mb-14">
-          <Kicker className="justify-center">04 · The Network</Kicker>
           <h2 className="font-display font-[800] text-[clamp(32px,4vw,52px)] tracking-[-0.04em] leading-[1.05] mx-auto max-w-[700px]">
             One API. <em className="not-italic font-[800] text-accent-deep">1,000+</em> providers. Any geography.
           </h2>

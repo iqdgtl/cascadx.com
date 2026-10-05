@@ -28,7 +28,6 @@ export default function AIChat() {
     <section id="intelligence" className="relative z-[2] py-[120px] px-7">
       <div className="max-w-[var(--max)] mx-auto">
         <SectionHead
-          kicker="01 · Intelligence Layer"
           title={
             <>
               An analyst <em className="not-italic font-[800] text-accent-deep">lives</em> inside your payments dashboard.

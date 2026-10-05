@@ -12,7 +12,6 @@ export default function CascadeEngine() {
     <section id="cascading" className="relative z-[2] py-[120px] px-7">
       <div className="max-w-[var(--max)] mx-auto">
         <SectionHead
-          kicker="03 · Cascading Engine"
           title={
             <>
               One transaction. <em className="not-italic font-[800] text-accent-deep">Many</em> paths to yes.

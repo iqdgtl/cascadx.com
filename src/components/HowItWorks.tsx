@@ -372,7 +372,6 @@ export default function HowItWorks() {
     <section className="relative z-[2] py-[120px] px-7 bg-bg-alt border-t border-b border-line">
       <div className="max-w-[var(--max)] mx-auto" ref={sectionRef}>
         <SectionHead
-          kicker="How It Works"
           title={
             <>
               Three steps. <em className="not-italic font-[800] text-accent-deep">One outcome</em>: revenue recovered.

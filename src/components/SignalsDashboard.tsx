@@ -1,5 +1,4 @@
 import SectionHead from "./ui/SectionHead";
-import Kicker from "./ui/Kicker";
 
 const metrics = [
   { k: "Approval", v: "87.4%", d: "▲ 2.1% vs yest.", down: false },
@@ -40,7 +39,6 @@ export default function SignalsDashboard() {
     <section id="signals" className="relative z-[2] py-[120px] px-7 bg-bg-alt">
       <div className="max-w-[var(--max)] mx-auto">
         <SectionHead
-          kicker="02 · Signals & Forecasting"
           title={
             <>
               See a decline <em className="not-italic font-[800] text-accent-deep">before</em> it becomes a trend.
@@ -119,8 +117,7 @@ export default function SignalsDashboard() {
 
           {/* Copy side */}
           <div>
-            <Kicker className="!text-ink-soft">What CascadX watches</Kicker>
-            <h3 className="font-display font-[700] text-[36px] leading-[1.1] tracking-[-0.035em] mt-3.5 mb-[22px]">
+            <h3 className="font-display font-[700] text-[36px] leading-[1.1] tracking-[-0.035em] mb-[22px]">
               Every dimension of your{" "}
               <em className="not-italic font-[700] text-accent-deep">payment surface</em>, in parallel.
             </h3>
