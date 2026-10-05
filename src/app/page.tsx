@@ -34,12 +34,11 @@ export default function Home() {
       <Nav />
       <Hero />
       <TrustedByMarquee />
-      <HowItWorks />
-      <AIChat />
-      <SignalsDashboard />
-      <CascadeEngine />
-      <IntegrationsNetwork />
-      <CTA />
+      <section id="solutions"><HowItWorks /></section>
+      <section id="payment-network"><AIChat /></section>
+      <section id="features"><SignalsDashboard /><CascadeEngine /></section>
+      <section id="testimonials"><IntegrationsNetwork /></section>
+      <section id="cta"><CTA /></section>
       <Footer />
     </>
   );

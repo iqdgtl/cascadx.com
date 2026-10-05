@@ -84,6 +84,25 @@ export default function Hero() {
         background: "radial-gradient(ellipse 70% 60% at 65% 50%, rgba(217,119,87,0.09) 0%, transparent 70%)",
       }} />
 
+      {/* Hero film grain — very subtle, adds cinematic depth */}
+      <div aria-hidden="true" style={{
+        position: "absolute", inset: 0, pointerEvents: "none", zIndex: 1,
+        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+        opacity: 0.04,
+        mixBlendMode: "overlay",
+      }} />
+
+      {/* Headline area glow — desktop only, soft terracotta sunrise behind the copy */}
+      <div className="hero-headline-glow" aria-hidden="true" style={{
+        position: "absolute",
+        width: 700, height: 520,
+        left: "clamp(-60px, 2vw, 20px)", top: "12%",
+        background: "radial-gradient(ellipse at center, rgba(217,119,87,0.10) 0%, rgba(217,119,87,0.04) 40%, transparent 70%)",
+        pointerEvents: "none",
+        zIndex: 1,
+        filter: "blur(60px)",
+      }} />
+
       <div style={{
         maxWidth: "var(--max)",
         width: "100%",
@@ -332,11 +351,22 @@ export default function Hero() {
           opacity: 0.7;
         }
 
-        /* ── Mobile ──────────────────────────────────────── */
+        /* Touch — no 300ms tap delay */
+        .hero-btn-primary, .hero-btn-secondary { touch-action: manipulation; }
+
+        /* Scroll indicator bounce */
+        @keyframes hero-scroll-bounce {
+          0%, 100% { transform: translateY(0);   opacity: 0.4; }
+          50%       { transform: translateY(4px); opacity: 0.7; }
+        }
+        .hero-scroll-indicator:hover path { stroke: rgba(255,255,255,0.65) !important; }
+
+        /* ── Mobile — stacks at 900px ────────────────────── */
         @media (max-width: 900px) {
           .hero-grid {
             grid-template-columns: 1fr !important;
             text-align: center;
+            gap: 24px !important;
           }
           .hero-grid > div:first-child p,
           .hero-grid > div:first-child > div:last-child {
@@ -344,21 +374,56 @@ export default function Hero() {
             margin-right: auto;
           }
           .hero-grid > div:last-child {
-            height: clamp(320px, 80vw, 440px) !important;
+            height: clamp(400px, 105vw, 500px) !important;
             width: 100%;
           }
           .hero-cta-row { justify-content: center; }
           .hero-cta-footnote { justify-content: center; }
+          .hero-headline-glow { display: none !important; }
+          .hero-scroll-indicator { display: none !important; }
         }
+        /* ── Mobile 768px — button layout ───────────────── */
+        @media (max-width: 768px) {
+          .hero-btn-primary, .hero-btn-secondary {
+            height: 52px !important;
+            font-size: 16px !important;
+          }
+        }
+        /* ── Mobile 540px — full-width stacked buttons ──── */
         @media (max-width: 540px) {
-          .hero-cta-row { flex-direction: column; gap: 12px; }
-          .hero-btn-primary, .hero-btn-secondary { width: 100%; }
+          .hero-cta-row { flex-direction: column; gap: 10px; }
+          .hero-btn-primary, .hero-btn-secondary { width: 100%; max-width: 380px; }
         }
 
         @media (prefers-reduced-motion: reduce) {
           .hero-btn-pulse { animation: none; }
+          .hero-scroll-indicator svg { animation: none !important; }
         }
       `}</style>
+
+      {/* Scroll indicator — desktop only, bounces gently to invite scrolling */}
+      <button
+        className="hero-scroll-indicator"
+        aria-label="Scroll to explore"
+        onClick={() => document.querySelector("#solutions")?.scrollIntoView({ behavior: "smooth" })}
+        style={{
+          position: "absolute", bottom: 32, left: "50%",
+          transform: "translateX(-50%)",
+          display: "flex", flexDirection: "column", alignItems: "center", gap: 7,
+          background: "none", border: "none", cursor: "pointer",
+          zIndex: 3, padding: 8,
+        }}
+      >
+        <span style={{
+          fontFamily: "var(--font-mono)", fontSize: 9, textTransform: "uppercase",
+          letterSpacing: "3px", color: "rgba(255,255,255,0.3)", userSelect: "none",
+          pointerEvents: "none",
+        }}>Scroll to explore</span>
+        <svg width="20" height="12" viewBox="0 0 20 12" fill="none" aria-hidden="true"
+          style={{ animation: "hero-scroll-bounce 2s ease-in-out infinite" }}>
+          <path d="M2 2l8 8 8-8" stroke="rgba(255,255,255,0.4)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </button>
     </header>
   );
 }
