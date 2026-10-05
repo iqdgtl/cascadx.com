@@ -21,169 +21,146 @@ const APMS: Array<{ name: string; bg: string; dark?: boolean }> = [
   { name: "Stripe",     bg: "#635BFF" },
 ];
 
-// ── App-icon logos (viewBox 0 0 40 40) ───────────────────────────────────────
-const APM_LOGOS: Record<string, React.ReactElement> = {
+// ── Icon badge logos (viewBox 0 0 36 36, drawn for 36×36 badge) ──────────────
+// White marks on colored bg; dark marks for light-bg brands (Apple/Google/PayPal)
+const APM_ICONS: Record<string, React.ReactElement> = {
 
-  // Bold "a" + swoosh underline — Alipay's lettermark
   "Alipay": (
-    <svg viewBox="0 0 40 40" width="100%" height="100%" aria-hidden="true">
-      <text x="20" y="26" textAnchor="middle"
+    <svg viewBox="0 0 36 36" width="22" height="22" aria-hidden="true">
+      <text x="18" y="24" textAnchor="middle"
         fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
-        fontSize="24" fontWeight="900" fill="white">a</text>
-      <path d="M11 32 Q20 28.5 29 32" stroke="white" strokeWidth="2.5"
+        fontSize="22" fontWeight="900" fill="white">a</text>
+      <path d="M9 29 Q18 26 27 29" stroke="white" strokeWidth="2"
         fill="none" strokeLinecap="round"/>
     </svg>
   ),
 
-  // Two overlapping speech bubbles — WeChat's iconic mark
   "WeChat Pay": (
-    <svg viewBox="0 0 40 40" fill="none" width="100%" height="100%" aria-hidden="true">
-      <rect x="3" y="7" width="22" height="15" rx="7" fill="white"/>
-      <polygon points="6,22 4,29 15,22" fill="white"/>
-      <rect x="14" y="17" width="20" height="13" rx="6" fill="white" fillOpacity="0.6"/>
-      <polygon points="30,30 34,36 23,30" fill="white" fillOpacity="0.6"/>
+    <svg viewBox="0 0 36 36" width="22" height="22" fill="none" aria-hidden="true">
+      <rect x="2" y="5" width="19" height="13" rx="6" fill="white"/>
+      <polygon points="5,18 3,24 13,18" fill="white"/>
+      <rect x="12" y="14" width="17" height="11" rx="5" fill="white" fillOpacity="0.6"/>
+      <polygon points="26,25 29,30 20,25" fill="white" fillOpacity="0.6"/>
     </svg>
   ),
 
-  // Stacked "Pay / Pay" wordmark
   "PayPay": (
-    <svg viewBox="0 0 40 40" width="100%" height="100%" aria-hidden="true">
-      <text x="20" y="19" textAnchor="middle"
+    <svg viewBox="0 0 36 36" width="22" height="22" aria-hidden="true">
+      <text x="18" y="16" textAnchor="middle"
         fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
-        fontSize="14" fontWeight="900" fill="white">Pay</text>
-      <text x="20" y="31" textAnchor="middle"
+        fontSize="12" fontWeight="900" fill="white">Pay</text>
+      <text x="18" y="28" textAnchor="middle"
         fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
-        fontSize="14" fontWeight="900" fill="white">Pay</text>
+        fontSize="12" fontWeight="900" fill="white">Pay</text>
     </svg>
   ),
 
-  // Bold "Grab" wordmark
   "GrabPay": (
-    <svg viewBox="0 0 40 40" width="100%" height="100%" aria-hidden="true">
-      <text x="20" y="25" textAnchor="middle"
+    <svg viewBox="0 0 36 36" width="22" height="22" aria-hidden="true">
+      <text x="18" y="23" textAnchor="middle"
         fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
-        fontSize="16" fontWeight="900" fill="white">Grab</text>
+        fontSize="14" fontWeight="900" fill="white">Grab</text>
     </svg>
   ),
 
-  // Large "G" + small "Cash"
   "GCash": (
-    <svg viewBox="0 0 40 40" width="100%" height="100%" aria-hidden="true">
-      <text x="20" y="22" textAnchor="middle"
+    <svg viewBox="0 0 36 36" width="22" height="22" aria-hidden="true">
+      <text x="18" y="21" textAnchor="middle"
         fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
-        fontSize="20" fontWeight="900" fill="white">G</text>
-      <text x="20" y="31" textAnchor="middle"
+        fontSize="18" fontWeight="900" fill="white">G</text>
+      <text x="18" y="29" textAnchor="middle"
         fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
-        fontSize="8" fontWeight="700" fill="white">Cash</text>
+        fontSize="7" fontWeight="700" fill="white">Cash</text>
     </svg>
   ),
 
-  // Bold "OVO" on purple
   "OVO": (
-    <svg viewBox="0 0 40 40" width="100%" height="100%" aria-hidden="true">
-      <text x="20" y="26" textAnchor="middle"
+    <svg viewBox="0 0 36 36" width="22" height="22" aria-hidden="true">
+      <text x="18" y="24" textAnchor="middle"
         fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
-        fontSize="18" fontWeight="900" fill="white">OVO</text>
+        fontSize="16" fontWeight="900" fill="white">OVO</text>
     </svg>
   ),
 
-  // Lowercase "dana" wordmark
   "DANA": (
-    <svg viewBox="0 0 40 40" width="100%" height="100%" aria-hidden="true">
-      <text x="20" y="26" textAnchor="middle"
+    <svg viewBox="0 0 36 36" width="22" height="22" aria-hidden="true">
+      <text x="18" y="23" textAnchor="middle"
         fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
-        fontSize="17" fontWeight="900" fill="white">dana</text>
+        fontSize="15" fontWeight="900" fill="white">dana</text>
     </svg>
   ),
 
-  // "True / Money" stacked
   "TrueMoney": (
-    <svg viewBox="0 0 40 40" width="100%" height="100%" aria-hidden="true">
-      <text x="20" y="21" textAnchor="middle"
+    <svg viewBox="0 0 36 36" width="22" height="22" aria-hidden="true">
+      <text x="18" y="19" textAnchor="middle"
         fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
-        fontSize="15" fontWeight="900" fill="white">True</text>
-      <text x="20" y="31" textAnchor="middle"
+        fontSize="13" fontWeight="900" fill="white">True</text>
+      <text x="18" y="28" textAnchor="middle"
         fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
-        fontSize="9" fontWeight="600" fill="white">Money</text>
+        fontSize="8" fontWeight="600" fill="white">Money</text>
     </svg>
   ),
 
-  // Bold "MoMo" wordmark on pink
   "MoMo": (
-    <svg viewBox="0 0 40 40" width="100%" height="100%" aria-hidden="true">
-      <text x="20" y="26" textAnchor="middle"
+    <svg viewBox="0 0 36 36" width="22" height="22" aria-hidden="true">
+      <text x="18" y="23" textAnchor="middle"
         fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
-        fontSize="17" fontWeight="900" fill="white">MoMo</text>
+        fontSize="15" fontWeight="900" fill="white">MoMo</text>
     </svg>
   ),
 
-  // "Paytm" wordmark on dark blue
   "Paytm": (
-    <svg viewBox="0 0 40 40" width="100%" height="100%" aria-hidden="true">
-      <text x="20" y="26" textAnchor="middle"
+    <svg viewBox="0 0 36 36" width="22" height="22" aria-hidden="true">
+      <text x="18" y="23" textAnchor="middle"
         fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
-        fontSize="15" fontWeight="900" fill="white">Paytm</text>
+        fontSize="13" fontWeight="900" fill="white">Paytm</text>
     </svg>
   ),
 
-  // Dark "Kakao / Pay" on yellow
   "Kakao Pay": (
-    <svg viewBox="0 0 40 40" width="100%" height="100%" aria-hidden="true">
-      <text x="20" y="21" textAnchor="middle"
+    <svg viewBox="0 0 36 36" width="22" height="22" aria-hidden="true">
+      <text x="18" y="19" textAnchor="middle"
         fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
-        fontSize="13" fontWeight="900" fill="#3C1E1E">Kakao</text>
-      <text x="20" y="32" textAnchor="middle"
+        fontSize="11" fontWeight="900" fill="#3C1E1E">Kakao</text>
+      <text x="18" y="29" textAnchor="middle"
         fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
-        fontSize="12" fontWeight="700" fill="#3C1E1E">Pay</text>
+        fontSize="11" fontWeight="700" fill="#3C1E1E">Pay</text>
     </svg>
   ),
 
-  // Lightning bolt — PromptPay's transfer symbol
   "PromptPay": (
-    <svg viewBox="0 0 40 40" fill="none" width="100%" height="100%" aria-hidden="true">
-      <path d="M24 8L12 22H20L16 32L28 18H20L24 8Z" fill="white"/>
+    <svg viewBox="0 0 36 36" width="22" height="22" fill="none" aria-hidden="true">
+      <path d="M21 6L11 19H18L15 30L26 16H19L21 6Z" fill="white"/>
     </svg>
   ),
 
-  // Apple silhouette + "Pay"
   "Apple Pay": (
-    <svg viewBox="0 0 40 40" fill="none" width="100%" height="100%" aria-hidden="true">
-      <path d="M22 8C22 8 20 5.5 21.5 3.5C23 1.5 25.5 3 24 5.5C23 7 22 8 22 8Z" fill="#111"/>
-      <path d="M20.5 9.5C17 9.5 13.5 11.5 12 15.5C10.5 19.5 11 25 13.5 28C15 30 16.5 31 18.5 31C19.5 31 20.5 30.5 21.5 30.5C22.5 30.5 23.5 31 24.5 31C26.5 31 28 30 29.5 28C31 26 31.5 22.5 30 19.5C28.5 16.5 26 15.5 24 15.5C23 15.5 22 16 21 15.5C20 15 18.5 12.5 15.5 12C17 10.5 18.5 9.5 20.5 9.5Z" fill="#111"/>
-      <text x="20" y="38" textAnchor="middle"
-        fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
-        fontSize="7" fontWeight="600" fill="#111">Pay</text>
+    <svg viewBox="0 0 36 36" width="22" height="22" fill="none" aria-hidden="true">
+      <path d="M19.5 7C19.5 7 18 5 19 3.5C20 2 22 3 21.5 5C21 6.5 19.5 7 19.5 7Z" fill="#111"/>
+      <path d="M18.5 8.5C16 8.5 13.5 10 12.5 13.5C11.5 17 12 21 14 23.5C15 25 16 26 17.5 26C18.5 26 19 25.5 20 25.5C21 25.5 21.5 26 22.5 26C24 26 25 25 26.5 23.5C27.5 22 28 19.5 27 17.5C26 15.5 24 14.5 22.5 14.5C21.5 14.5 21 15 20 14.5C19 14 18 12 15.5 11.5C16.5 9.5 17.5 8.5 18.5 8.5Z" fill="#111"/>
     </svg>
   ),
 
-  // Google blue "G" + "Pay"
   "Google Pay": (
-    <svg viewBox="0 0 40 40" width="100%" height="100%" aria-hidden="true">
-      <text x="20" y="23" textAnchor="middle"
+    <svg viewBox="0 0 36 36" width="22" height="22" aria-hidden="true">
+      <text x="18" y="23" textAnchor="middle"
         fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
-        fontSize="22" fontWeight="900" fill="#4285F4">G</text>
-      <text x="20" y="33" textAnchor="middle"
-        fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
-        fontSize="8" fontWeight="600" fill="#5f6368">Pay</text>
+        fontSize="20" fontWeight="900" fill="#4285F4">G</text>
     </svg>
   ),
 
-  // PP double-P overlap mark — PayPal's iconic mark
   "PayPal": (
-    <svg viewBox="0 0 40 40" fill="none" width="100%" height="100%" aria-hidden="true">
-      <path d="M13 8H21C24.5 8 26.5 10.5 26.5 13.5C26.5 17 24 19.5 21 19.5H17L15.5 27H11L13 8Z"
-        fill="#003087"/>
-      <path d="M16.5 13H24.5C28 13 30 15.5 30 18.5C30 22 27.5 24.5 24.5 24.5H20.5L19 32H14.5L16.5 13Z"
-        fill="#009CDE"/>
+    <svg viewBox="0 0 36 36" width="22" height="22" fill="none" aria-hidden="true">
+      <path d="M11 7H18C21 7 23 9 23 12C23 15 21 17 18 17H15L13.5 24H10L11 7Z" fill="#003087"/>
+      <path d="M14 11H21C24 11 26 13 26 16C26 19 24 21 21 21H18L16.5 28H13L14 11Z" fill="#009CDE"/>
     </svg>
   ),
 
-  // Italic "stripe" wordmark on purple
   "Stripe": (
-    <svg viewBox="0 0 40 40" width="100%" height="100%" aria-hidden="true">
-      <text x="20" y="25" textAnchor="middle"
+    <svg viewBox="0 0 36 36" width="22" height="22" aria-hidden="true">
+      <text x="18" y="22" textAnchor="middle"
         fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
-        fontSize="14" fontWeight="800" fontStyle="italic" fill="white">stripe</text>
+        fontSize="12" fontWeight="800" fontStyle="italic" fill="white">stripe</text>
     </svg>
   ),
 };
@@ -191,41 +168,57 @@ const APM_LOGOS: Record<string, React.ReactElement> = {
 // Doubled for seamless loop
 const DOUBLED = [...APMS, ...APMS];
 
-// ── App-Icon Tile ─────────────────────────────────────────────────────────────
-function APMTile({ apm, highlighted }: { apm: typeof APMS[number]; highlighted: boolean }) {
+// ── Payment Method Button ─────────────────────────────────────────────────────
+function APMButton({ apm, highlighted }: { apm: typeof APMS[number]; highlighted: boolean }) {
   return (
     <div style={{
-      background: apm.bg,
-      borderRadius: "16px",
-      aspectRatio: "1",
+      height: 60,
+      background: highlighted ? "#fef5f0" : "#ffffff",
+      borderRadius: "12px",
+      border: highlighted ? "1.5px solid #d97757" : "1.5px solid #e5e5e7",
+      boxShadow: highlighted
+        ? "0 0 10px rgba(217,119,87,0.25), 0 1px 4px rgba(0,0,0,0.06)"
+        : "0 1px 3px rgba(0,0,0,0.06)",
       display: "flex",
       alignItems: "center",
-      justifyContent: "center",
-      outline: highlighted ? "2px solid #d97757" : "none",
-      outlineOffset: "1px",
-      boxShadow: highlighted
-        ? "0 0 14px rgba(217,119,87,0.5), 0 3px 10px rgba(0,0,0,0.2)"
-        : "0 2px 8px rgba(0,0,0,0.18)",
-      transition: "outline 0.3s ease, box-shadow 0.3s ease",
-      position: "relative",
-      overflow: "hidden",
+      gap: "10px",
+      padding: "0 10px",
+      transition: "background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease",
       flexShrink: 0,
+      boxSizing: "border-box",
     }}>
-      {/* iOS icon top-gloss highlight */}
+      {/* Colored icon badge */}
       <div style={{
-        position: "absolute", top: 0, left: "8%", right: "8%", height: "45%",
-        background: "linear-gradient(180deg, rgba(255,255,255,0.2) 0%, transparent 100%)",
-        borderRadius: "0 0 50% 50%",
-        pointerEvents: "none", zIndex: 2,
-      }}/>
-      {/* Logo */}
-      <div style={{
-        width: "68%", height: "68%",
-        display: "flex", alignItems: "center", justifyContent: "center",
-        position: "relative", zIndex: 3,
+        width: 36, height: 36, flexShrink: 0,
+        borderRadius: "10px",
+        background: apm.bg,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        boxShadow: "inset 0 1px 0 rgba(255,255,255,0.15)",
       }}>
-        {APM_LOGOS[apm.name]}
+        {APM_ICONS[apm.name]}
       </div>
+
+      {/* Brand name */}
+      <span style={{
+        flex: 1,
+        fontSize: "12px",
+        fontWeight: 600,
+        color: "#1a1a1a",
+        letterSpacing: "-0.2px",
+        lineHeight: 1,
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        whiteSpace: "nowrap",
+      }}>
+        {apm.name}
+      </span>
+
+      {/* iOS-style chevron */}
+      <svg width="7" height="11" viewBox="0 0 7 11" fill="none" aria-hidden="true" style={{ flexShrink: 0 }}>
+        <path d="M1 1L6 5.5L1 10" stroke="#c7c7cc" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
     </div>
   );
 }
@@ -239,7 +232,7 @@ export default function PhoneScreen() {
     const fire = () => {
       const idx = Math.floor(Math.random() * APMS.length);
       setHighlightIdx(idx);
-      setTimeout(() => setHighlightIdx(null), 900);
+      setTimeout(() => setHighlightIdx(null), 800);
       timer = setTimeout(fire, 5000 + Math.random() * 3000);
     };
     const init = setTimeout(() => fire(), 2200);
@@ -282,16 +275,16 @@ export default function PhoneScreen() {
       </div>
 
       {/* Section heading */}
-      <div style={{ padding: "12px 14px 6px", flexShrink: 0, position: "relative", zIndex: 5 }}>
+      <div style={{ padding: "10px 14px 6px", flexShrink: 0, position: "relative", zIndex: 5 }}>
         <span style={{
-          fontSize: "9px", fontWeight: 600, color: "#6b7280",
-          textTransform: "uppercase", letterSpacing: "0.7px",
+          fontSize: "9px", fontWeight: 600, color: "#8e8e93",
+          textTransform: "uppercase", letterSpacing: "0.5px",
         }}>
           Select payment method
         </span>
       </div>
 
-      {/* Scrolling icon grid */}
+      {/* Scrolling button grid */}
       <div style={{
         flex: 1, overflow: "hidden",
         padding: "2px 12px 0",
@@ -301,13 +294,13 @@ export default function PhoneScreen() {
       }}>
         <div style={{
           display: "grid",
-          gridTemplateColumns: "1fr 1fr 1fr 1fr",
-          gap: "10px",
-          animation: "apm-grid-scroll 20s linear infinite",
-          paddingBottom: "10px",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "8px",
+          animation: "apm-grid-scroll 28s linear infinite",
+          paddingBottom: "8px",
         }}>
           {DOUBLED.map((apm, i) => (
-            <APMTile
+            <APMButton
               key={i}
               apm={apm}
               highlighted={highlightIdx === i % APMS.length}
