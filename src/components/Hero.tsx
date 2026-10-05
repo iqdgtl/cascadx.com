@@ -24,14 +24,6 @@ function useCountUp(end: number, duration = 1500, trigger = false) {
   return value;
 }
 
-// ── Rotating headline phrases ─────────────────────────────────────────────────
-const PHRASES = [
-  { prefix: "Payments that", highlight: "think",   suffix: "before they fall." },
-  { prefix: "Payments that", highlight: "cascade",  suffix: "across every PSP." },
-  { prefix: "Payments that", highlight: "approve",  suffix: "when others decline." },
-  { prefix: "Payments that", highlight: "learn",    suffix: "from every transaction." },
-] as const;
-
 export default function Hero() {
   const metricsRef = useRef<HTMLDivElement>(null);
   const sceneRef   = useRef<HTMLDivElement>(null);
@@ -39,28 +31,12 @@ export default function Hero() {
   const [sceneVisible,  setSceneVisible]  = useState(false);
   const [textAnimate,   setTextAnimate]   = useState(false);
 
-  // Headline cycling
-  const [phraseIdx,     setPhraseIdx]     = useState(0);
-  const [phraseVisible, setPhraseVisible] = useState(true);
-
   useEffect(() => {
     const played  = sessionStorage.getItem("hx-entrance") === "1";
     const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
     if (!played && !reduced) {
       requestAnimationFrame(() => requestAnimationFrame(() => setTextAnimate(true)));
     }
-  }, []);
-
-  // Cycle phrases: 3.5s display → 400ms fade out → swap → 400ms fade in
-  useEffect(() => {
-    const id = setInterval(() => {
-      setPhraseVisible(false);
-      setTimeout(() => {
-        setPhraseIdx(i => (i + 1) % PHRASES.length);
-        setPhraseVisible(true);
-      }, 400);
-    }, 3500);
-    return () => clearInterval(id);
   }, []);
 
   useEffect(() => {
@@ -123,7 +99,7 @@ export default function Hero() {
       >
         {/* ── LEFT: Text content ───────────────────────────── */}
         <div>
-          {/* Headline — rotates through 4 phrases */}
+          {/* Headline — static */}
           <h1 style={{
             fontFamily: "var(--font-display)",
             fontWeight: 800,
@@ -132,24 +108,12 @@ export default function Hero() {
             letterSpacing: "-0.04em",
             color: "#fafaf7",
             margin: "0 0 22px",
-            minHeight: "clamp(90px, 11.5vw, 155px)",
-            display: "flex",
-            alignItems: "flex-start",
             ...ta(200),
           }}>
-            <span style={{
-              display: "block",
-              opacity: phraseVisible ? 1 : 0,
-              transform: phraseVisible ? "translateY(0)" : "translateY(-10px)",
-              transition: "opacity 400ms ease, transform 400ms ease",
-              willChange: "opacity, transform",
-            }}>
-              {PHRASES[phraseIdx].prefix}{" "}
-              <em style={{ fontStyle: "normal", color: "var(--accent)" }}>
-                {PHRASES[phraseIdx].highlight}
-              </em>
-              {" "}{PHRASES[phraseIdx].suffix}
-            </span>
+            Payments that{" "}
+            <em style={{ fontStyle: "normal", color: "var(--accent)" }}>think</em>
+            <br />
+            before they fall.
           </h1>
 
           {/* Subtitle */}
