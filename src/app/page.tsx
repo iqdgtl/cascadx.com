@@ -1,6 +1,7 @@
 import Script from "next/script";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
+import Solutions from "@/components/Solutions";
 import HowItWorks from "@/components/HowItWorks";
 import AIChat from "@/components/AIChat";
 import SignalsDashboard from "@/components/SignalsDashboard";
@@ -34,7 +35,8 @@ export default function Home() {
       <Nav />
       <Hero />
       <TrustedByMarquee />
-      <section id="solutions"><HowItWorks /></section>
+      <Solutions />
+      <section id="how-it-works"><HowItWorks /></section>
       <section id="payment-network"><AIChat /></section>
       <section id="features"><SignalsDashboard /><CascadeEngine /></section>
       <section id="testimonials"><IntegrationsNetwork /></section>
