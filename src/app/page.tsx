@@ -8,6 +8,7 @@ import CascadeEngine from "@/components/CascadeEngine";
 import IntegrationsNetwork from "@/components/IntegrationsNetwork";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import TrustedByMarquee from "@/components/TrustedByMarquee";
 
 export default function Home() {
   return (
@@ -32,6 +33,7 @@ export default function Home() {
       />
       <Nav />
       <Hero />
+      <TrustedByMarquee />
       <HowItWorks />
       <AIChat />
       <SignalsDashboard />
