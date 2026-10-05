@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 
 // ─── Scene durations (ms) ─────────────────────────────────────────────────────
-// Scene 1 is 10s: 6s scroll → select Credit card → 7s tap → 10s fade to Scene 2
 const SCENE_DURATIONS = [10000, 8000, 4000, 4000];
 
 // ─── Confetti (16 particles) ──────────────────────────────────────────────────
@@ -190,11 +189,7 @@ function KakaoPayLogo() {
   );
 }
 
-// ─── Full 15-item payment method list ─────────────────────────────────────────
-// 15 items × 56px = 840px per copy. Doubled list = 1680px.
-// CSS animation scrolls -840px (one full copy) over 27s = 56px/1.8s (1 row per 1.8s).
-// animation-delay: -14s → starts mid-animation so Credit card (copy 2, y=840)
-// enters visible area from bottom at t=0 and reaches center (~217px) at t≈6s.
+// ─── 15-item payment method list (doubled for seamless scroll) ────────────────
 const PAY_METHODS_FULL: Array<{ id: string; name: string; logos: React.ReactNode }> = [
   {
     id: "credit_card", name: "Credit card",
@@ -220,7 +215,6 @@ const PAY_METHODS_FULL: Array<{ id: string; name: string; logos: React.ReactNode
   { id: "kakaopay",   name: "Kakao Pay",  logos: <KakaoPayLogo /> },
 ];
 
-// Doubled for seamless loop
 const PAY_METHODS_DOUBLED = [...PAY_METHODS_FULL, ...PAY_METHODS_FULL];
 
 // ─── Shared components ────────────────────────────────────────────────────────
@@ -229,8 +223,7 @@ function TopBar({ left, center, right, processing }: {
 }) {
   return (
     <div style={{
-      height: 56, background: "#f8f4f1",
-      borderBottom: "1px solid #ede6db",
+      height: 56, background: "#f8f4f1", borderBottom: "1px solid #ede6db",
       display: "flex", alignItems: "flex-end", justifyContent: "space-between",
       padding: "0 14px 10px", flexShrink: 0,
     }}>
@@ -258,9 +251,7 @@ function Scene1_PaymentList() {
   const [scrollPaused, setScrollPaused] = useState(false);
 
   useEffect(() => {
-    // 6s: pause scroll + select Credit card
     const t1 = setTimeout(() => { setScrollPaused(true); setSelected("credit_card"); }, 6000);
-    // 7s: tap
     const t2 = setTimeout(() => setTapping(true),  7000);
     const t3 = setTimeout(() => setTapping(false), 7300);
     return () => [t1, t2, t3].forEach(clearTimeout);
@@ -270,14 +261,7 @@ function Scene1_PaymentList() {
     <div style={{ display: "flex", flexDirection: "column", height: "100%", background: "#faf7f4" }}>
       <TopBar left="←" center="Checkout" right="$129.00"/>
       <SectionLabel>Select payment method</SectionLabel>
-      {/* Overflow container — clips the scrolling list */}
       <div style={{ flex: 1, overflow: "hidden" }}>
-        {/*
-          Scrolling inner list.
-          27s to scroll 840px (-50% of 1680px total = one full copy of 15 items).
-          -14s delay starts animation mid-loop: Credit card (copy 2, y=840) enters
-          from the bottom at t=0 and reaches ~217px from top at t=6s (center area).
-        */}
         <div style={{
           animation: "payment-list-scroll 27s linear infinite",
           animationDelay: "-14s",
@@ -288,53 +272,30 @@ function Scene1_PaymentList() {
             const isSelected = selected === method.id && i >= PAY_METHODS_FULL.length;
             const isTapping  = tapping && isSelected;
             return (
-              <div
-                key={i}
-                style={{
-                  height: 56,
-                  display: "flex",
-                  alignItems: "center",
-                  paddingLeft: isSelected ? 13 : 16,
-                  paddingRight: 16,
-                  gap: 12,
-                  background: isSelected ? "#fef9f3" : "white",
-                  borderBottom: "1px solid #ede6db",
-                  borderLeft: isSelected ? "3px solid #d97757" : "3px solid transparent",
-                  transform: isTapping ? "scale(0.99)" : "scale(1)",
-                  transition: "background 350ms ease, border-color 350ms ease, transform 100ms ease",
-                  boxSizing: "border-box",
-                }}
-              >
-                {/* Radio button */}
+              <div key={i} style={{
+                height: 56, display: "flex", alignItems: "center",
+                paddingLeft: isSelected ? 13 : 16, paddingRight: 16, gap: 12,
+                background: isSelected ? "#fef9f3" : "white",
+                borderBottom: "1px solid #ede6db",
+                borderLeft: isSelected ? "3px solid #d97757" : "3px solid transparent",
+                transform: isTapping ? "scale(0.99)" : "scale(1)",
+                transition: "background 350ms ease, border-color 350ms ease, transform 100ms ease",
+                boxSizing: "border-box",
+              }}>
                 <div style={{
                   width: 20, height: 20, borderRadius: "50%", flexShrink: 0,
                   border: `2px solid ${isSelected ? "#d97757" : "#c7c7cc"}`,
                   display: "flex", alignItems: "center", justifyContent: "center",
-                  transition: "border-color 350ms ease",
-                  boxSizing: "border-box",
+                  transition: "border-color 350ms ease", boxSizing: "border-box",
                 }}>
                   {isSelected && (
-                    <div style={{
-                      width: 10, height: 10, borderRadius: "50%",
-                      background: "#d97757",
-                      animation: "phone-pop 250ms cubic-bezier(0.175,0.885,0.32,1.275) both",
-                    }} />
+                    <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#d97757", animation: "phone-pop 250ms cubic-bezier(0.175,0.885,0.32,1.275) both" }} />
                   )}
                 </div>
-                {/* Name */}
-                <span style={{
-                  flex: 1,
-                  fontSize: 15, fontWeight: isSelected ? 600 : 500,
-                  color: "#1a1a1a",
-                  fontFamily: "-apple-system, BlinkMacSystemFont, system-ui, sans-serif",
-                  letterSpacing: "-0.2px",
-                }}>
+                <span style={{ flex: 1, fontSize: 15, fontWeight: isSelected ? 600 : 500, color: "#1a1a1a", fontFamily: "-apple-system, BlinkMacSystemFont, system-ui, sans-serif", letterSpacing: "-0.2px" }}>
                   {method.name}
                 </span>
-                {/* Logos */}
-                <div style={{ display: "flex", alignItems: "center" }}>
-                  {method.logos}
-                </div>
+                <div style={{ display: "flex", alignItems: "center" }}>{method.logos}</div>
               </div>
             );
           })}
@@ -356,120 +317,180 @@ function useTyping(target: string, startMs: number, rateMs: number) {
   return typed;
 }
 
-function formatCardNum(digits: string) {
-  return digits.replace(/(.{4})/g, "$1 ").trimEnd();
+// Formats 16 raw digits into "XXXX XXXX XXXX XXXX" with bullet placeholders
+function formatCardDisplay(typed: string): string {
+  const padded = typed.padEnd(16, "•");
+  return [padded.slice(0, 4), padded.slice(4, 8), padded.slice(8, 12), padded.slice(12, 16)].join(" ");
 }
 
-function Field({ label, value, mono, right, cursor, placeholder, active }: {
-  label: string; value: string; mono?: boolean; right?: React.ReactNode;
-  cursor?: boolean; placeholder?: string; active?: boolean;
-}) {
-  return (
-    <div>
-      <div style={{
-        fontSize: 9, fontWeight: 700, color: "#6b5d54",
-        textTransform: "uppercase", letterSpacing: "0.7px", marginBottom: 5,
-        fontFamily: "var(--font-mono, 'SF Mono', monospace, system-ui)",
-      }}>
-        {label}
-      </div>
-      <div style={{
-        height: 44, background: "white", borderRadius: 10,
-        border: active ? "1.5px solid rgba(217,119,87,0.65)" : "1.5px solid #ede6db",
-        boxShadow: active
-          ? "0 0 0 3px rgba(217,119,87,0.12), inset 0 1px 3px rgba(0,0,0,0.04)"
-          : "inset 0 1px 3px rgba(0,0,0,0.04)",
-        display: "flex", alignItems: "center",
-        padding: "0 11px",
-        fontFamily: mono ? "'SF Mono', monospace, system-ui" : "-apple-system, system-ui, sans-serif",
-        fontSize: 14, color: value ? "#1a1a1a" : "#c0b8b0",
-        position: "relative", overflow: "hidden",
-        transition: "border-color 250ms ease, box-shadow 250ms ease",
-        boxSizing: "border-box",
-      }}>
-        <span style={{ flex: 1 }}>
-          {value || placeholder}
-          {cursor && value && <span className="hero-cursor" style={{ color: "#d97757", marginLeft: 1 }}>|</span>}
-        </span>
-        {right}
-      </div>
-    </div>
-  );
-}
-
-// ─── SCENE 2: Card form — warm premium ───────────────────────────────────────
+// ─── SCENE 2: Visual credit card ─────────────────────────────────────────────
 function Scene2_CardForm() {
-  const cardNum = useTyping("4242424242424242", 400,  105);
-  const expiry  = useTyping("03/29",            2700, 130);
-  const cvv     = useTyping("123",              3900, 120);
-  const name    = useTyping("J. MARTINEZ",      4900, 85);
+  // Typing sequence:
+  // 0.5-2.7s:  card number (500ms start, 140ms/char × 16 chars)
+  // 3.5-4.5s:  expiry      (3500ms start, 200ms/char × 5 chars)
+  // 4.5-4.9s:  CVV         (4500ms start, 130ms/char × 3 chars)
+  // 5.0-6.2s:  name        (5000ms start, 85ms/char × 14 chars)
+  const cardNum = useTyping("4242424242424242", 500, 140);
+  const expiry  = useTyping("03/29",            3500, 200);
+  const cvv     = useTyping("123",              4500, 130);
+  const name    = useTyping("JAMES MARTINEZ",   5000, 85);
+
   const [payPulse, setPayPulse] = useState(false);
   const [payTap,   setPayTap]   = useState(false);
   const [shimmer,  setShimmer]  = useState(false);
 
   useEffect(() => {
-    const t1 = setTimeout(() => { setPayPulse(true); setShimmer(true); }, 6800);
-    const t2 = setTimeout(() => setPayTap(true),  7200);
-    const t3 = setTimeout(() => setPayTap(false), 7450);
+    const t1 = setTimeout(() => { setPayPulse(true); setShimmer(true); }, 7000);
+    const t2 = setTimeout(() => setPayTap(true),  7300);
+    const t3 = setTimeout(() => setPayTap(false), 7550);
     return () => [t1, t2, t3].forEach(clearTimeout);
   }, []);
 
-  const activeField =
-    name.length > 0    ? null :
-    cvv.length > 0     ? "name" :
-    expiry.length > 0  ? "cvv" :
-    cardNum.length > 0 ? "expiry" : "card";
+  const showVisa = cardNum.length >= 2;
 
   return (
     <div style={{
       display: "flex", flexDirection: "column", height: "100%",
-      background: "linear-gradient(180deg, #ffffff 0%, #faf7f4 100%)",
+      background: "linear-gradient(180deg, #f8f4f1 0%, #ede8e3 100%)",
     }}>
       <TopBar left="←" center="Payment" right="$129.00"/>
-      <div style={{ flex: 1, padding: "6px 14px 12px", display: "flex", flexDirection: "column", gap: 10, overflow: "hidden" }}>
+
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", padding: "6px 14px 14px" }}>
         <SectionLabel>Card details</SectionLabel>
 
-        <Field
-          label="Card number"
-          value={formatCardNum(cardNum)}
-          mono cursor={activeField === "card"} active={activeField === "card"}
-          placeholder="1234 5678 9012 3456"
-          right={cardNum.length >= 1 ? (
-            <div style={{ flexShrink: 0, marginLeft: 6, animation: "phone-pop 300ms ease both" }}>
-              <div style={{ width: 28, height: 18, borderRadius: 3, background: "#1A1F71", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 1px 3px rgba(0,0,0,0.2)" }}>
-                <svg viewBox="0 0 28 12" width="26" height="10">
-                  <text x="14" y="9.5" textAnchor="middle" fontFamily="-apple-system,system-ui,sans-serif" fontSize="10" fontWeight="900" fontStyle="italic" fill="white">VISA</text>
+        {/* ── Visual Credit Card ──────────────────────────────────── */}
+        <div style={{ flex: 1, display: "flex", alignItems: "center" }}>
+          <div style={{
+            width: "100%",
+            borderRadius: 16,
+            background: "linear-gradient(135deg, #1a1a1c 0%, #2a1f1c 38%, #3d2b25 68%, #c86847 100%)",
+            boxShadow: "0 20px 48px rgba(0,0,0,0.32), 0 8px 20px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.12), inset 0 -1px 0 rgba(0,0,0,0.2)",
+            position: "relative",
+            overflow: "hidden",
+            padding: "14px 16px 14px",
+            boxSizing: "border-box",
+            aspectRatio: "1.586 / 1",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            animation: "phone-pop 500ms cubic-bezier(0.22,1,0.36,1) both",
+          }}>
+            {/* Ambient card shimmer — sweeps every ~5s */}
+            <div style={{
+              position: "absolute", inset: 0, pointerEvents: "none",
+              background: "linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.07) 48%, transparent 66%)",
+              animation: "card-shimmer 5s ease-in-out 1.5s infinite",
+            }} />
+            {/* Subtle inner radial highlight (top-left light source) */}
+            <div style={{
+              position: "absolute", inset: 0, pointerEvents: "none",
+              background: "radial-gradient(ellipse 60% 50% at 20% 15%, rgba(255,255,255,0.08) 0%, transparent 100%)",
+            }} />
+
+            {/* Row 1: EMV Chip + Contactless */}
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", position: "relative", zIndex: 1 }}>
+              {/* EMV Chip */}
+              <svg width="30" height="22" viewBox="0 0 30 22" fill="none" aria-hidden="true">
+                <rect width="30" height="22" rx="3" fill="#c8a244"/>
+                <rect width="30" height="22" rx="3" fill="url(#chipG)"/>
+                <line x1="10" y1="0"  x2="10" y2="22" stroke="#8a6a1a" strokeWidth="0.7" opacity="0.8"/>
+                <line x1="20" y1="0"  x2="20" y2="22" stroke="#8a6a1a" strokeWidth="0.7" opacity="0.8"/>
+                <line x1="0"  y1="7.5" x2="30" y2="7.5" stroke="#8a6a1a" strokeWidth="0.7" opacity="0.8"/>
+                <line x1="0"  y1="14.5" x2="30" y2="14.5" stroke="#8a6a1a" strokeWidth="0.7" opacity="0.8"/>
+                <rect x="10" y="7.5" width="10" height="7" rx="1" fill="rgba(255,210,80,0.22)"/>
+                <rect x="1"  y="1"   width="28" height="4" rx="1.5" fill="rgba(255,255,255,0.22)"/>
+                <defs>
+                  <linearGradient id="chipG" x1="0" y1="0" x2="30" y2="22" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%"   stopColor="#e8c05a" stopOpacity="0.7"/>
+                    <stop offset="50%"  stopColor="#c8942a" stopOpacity="0.4"/>
+                    <stop offset="100%" stopColor="#a07020" stopOpacity="0.2"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+
+              {/* Contactless */}
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" opacity="0.72">
+                <circle cx="10" cy="14" r="1.6" fill="white"/>
+                <path d="M7 11.5a4.2 4.2 0 0 1 6 0" stroke="white" strokeWidth="1.4" strokeLinecap="round"/>
+                <path d="M5 9a7 7 0 0 1 10 0" stroke="white" strokeWidth="1.4" strokeLinecap="round" opacity="0.65"/>
+                <path d="M3 6.5a9.8 9.8 0 0 1 14 0" stroke="white" strokeWidth="1.4" strokeLinecap="round" opacity="0.35"/>
+              </svg>
+            </div>
+
+            {/* Row 2: Card number */}
+            <div style={{
+              fontFamily: "'SF Mono','JetBrains Mono','Courier New',monospace",
+              fontSize: 13,
+              letterSpacing: "2.2px",
+              color: "rgba(255,255,255,0.95)",
+              textShadow: "0 1px 6px rgba(0,0,0,0.5)",
+              position: "relative", zIndex: 1,
+              userSelect: "none",
+            }}>
+              {formatCardDisplay(cardNum)}
+            </div>
+
+            {/* Row 3: Bottom info */}
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", position: "relative", zIndex: 1 }}>
+              {/* Left: name + expiry + cvv */}
+              <div style={{ display: "flex", gap: 12, alignItems: "flex-end" }}>
+                {/* Cardholder name */}
+                <div>
+                  <div style={{ fontSize: 6, fontWeight: 700, color: "rgba(255,255,255,0.48)", textTransform: "uppercase", letterSpacing: "0.8px", marginBottom: 3, fontFamily: "monospace" }}>
+                    Card Holder
+                  </div>
+                  <div style={{ fontSize: 9.5, fontWeight: 500, color: name ? "rgba(255,255,255,0.92)" : "rgba(255,255,255,0.28)", letterSpacing: "0.6px", minWidth: 74, fontFamily: "-apple-system,system-ui,sans-serif" }}>
+                    {name || "FULL NAME"}
+                  </div>
+                </div>
+
+                {/* Expiry */}
+                <div>
+                  <div style={{ fontSize: 6, fontWeight: 700, color: "rgba(255,255,255,0.48)", textTransform: "uppercase", letterSpacing: "0.8px", marginBottom: 3, fontFamily: "monospace" }}>
+                    Expires
+                  </div>
+                  <div style={{ fontSize: 9.5, fontWeight: 500, color: expiry ? "rgba(255,255,255,0.92)" : "rgba(255,255,255,0.28)", letterSpacing: "0.6px", minWidth: 26, fontFamily: "-apple-system,system-ui,sans-serif" }}>
+                    {expiry || "MM/YY"}
+                  </div>
+                </div>
+
+                {/* CVV */}
+                <div>
+                  <div style={{ fontSize: 6, fontWeight: 700, color: "rgba(255,255,255,0.48)", textTransform: "uppercase", letterSpacing: "0.8px", marginBottom: 3, fontFamily: "monospace" }}>
+                    CVV
+                  </div>
+                  <div style={{ fontSize: 9.5, fontWeight: 500, color: cvv ? "rgba(255,255,255,0.92)" : "rgba(255,255,255,0.28)", letterSpacing: "0.6px", minWidth: 20, fontFamily: "-apple-system,system-ui,sans-serif" }}>
+                    {cvv || "•••"}
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: Visa logo */}
+              <div style={{
+                opacity: showVisa ? 1 : 0,
+                transform: showVisa ? "scale(1)" : "scale(0.85)",
+                transition: "opacity 500ms ease, transform 500ms ease",
+              }}>
+                <svg viewBox="0 0 44 14" width="44" height="14" aria-label="Visa">
+                  <text x="22" y="12" textAnchor="middle" fontFamily="-apple-system,system-ui,sans-serif" fontSize="14" fontWeight="900" fontStyle="italic" fill="rgba(255,255,255,0.9)">VISA</text>
                 </svg>
               </div>
             </div>
-          ) : undefined}
-        />
-
-        <div style={{ display: "flex", gap: 10 }}>
-          <div style={{ flex: 1 }}>
-            <Field label="Expiry" value={expiry} mono cursor={activeField === "expiry"} active={activeField === "expiry"} placeholder="MM/YY"/>
-          </div>
-          <div style={{ flex: 1 }}>
-            <Field label="CVV" value={cvv} mono cursor={activeField === "cvv"} active={activeField === "cvv"} placeholder="•••"/>
           </div>
         </div>
 
-        <Field
-          label="Cardholder name"
-          value={name} cursor={activeField === "name"} active={activeField === "name"}
-          placeholder="Full name"
-        />
-
-        <div style={{ marginTop: "auto", paddingTop: 4 }}>
+        {/* ── Pay button ───────────────────────────────────────────── */}
+        <div style={{ paddingTop: 12 }}>
           <div style={{
-            position: "relative", height: 50,
+            position: "relative", height: 52,
             background: "linear-gradient(180deg, #e88f6d 0%, #d97757 55%, #c86847 100%)",
-            borderRadius: 12,
-            display: "flex", alignItems: "center", justifyContent: "center",
+            borderRadius: 14,
+            display: "flex", alignItems: "center", justifyContent: "space-between",
+            padding: "0 20px",
             color: "white", fontSize: 15, fontWeight: 700, letterSpacing: "-0.3px",
             boxShadow: payPulse
-              ? "0 6px 24px rgba(217,119,87,0.55), 0 2px 8px rgba(217,119,87,0.3), inset 0 1px 0 rgba(255,255,255,0.2), inset 0 -1px 0 rgba(0,0,0,0.12)"
-              : "0 3px 12px rgba(217,119,87,0.35), inset 0 1px 0 rgba(255,255,255,0.2), inset 0 -1px 0 rgba(0,0,0,0.12)",
+              ? "0 6px 28px rgba(217,119,87,0.6), 0 2px 8px rgba(217,119,87,0.3), inset 0 1px 0 rgba(255,255,255,0.2), inset 0 -1px 0 rgba(0,0,0,0.12)"
+              : "0 4px 16px rgba(217,119,87,0.4), inset 0 1px 0 rgba(255,255,255,0.2), inset 0 -1px 0 rgba(0,0,0,0.12)",
             transform: payTap ? "scale(0.97)" : "scale(1)",
             transition: "box-shadow 400ms ease, transform 120ms ease",
             overflow: "hidden",
@@ -482,7 +503,10 @@ function Scene2_CardForm() {
                 pointerEvents: "none",
               }} />
             )}
-            Pay $129.00
+            <span>Pay $129.00</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </div>
         </div>
       </div>
@@ -616,8 +640,7 @@ function Scene4_Success() {
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 6, ...fade(4) }}>
           <p style={{ fontSize: 12, color: "#8e7d75", margin: 0, letterSpacing: "0.3px" }}>Charged to •••• •••• •••• 4242</p>
           <p style={{ fontSize: 11, color: "#8e7d75", margin: 0, fontFamily: "'SF Mono', monospace, system-ui", textAlign: "center", lineHeight: 1.4 }}>
-            Routed via Worldpay in{" "}
-            <span style={{ color: "#d97757", fontWeight: 700 }}>38ms</span>
+            Routed via Worldpay in <span style={{ color: "#d97757", fontWeight: 700 }}>38ms</span>
           </p>
         </div>
       </div>
@@ -656,7 +679,6 @@ export default function PhoneScreen() {
         borderRadius: "inherit",
       }} />
 
-      {/* Scene wrapper */}
       <div style={{
         position: "absolute", inset: 0,
         opacity: visible ? 1 : 0,
@@ -673,6 +695,11 @@ export default function PhoneScreen() {
         @keyframes payment-list-scroll {
           from { transform: translateY(0); }
           to   { transform: translateY(-840px); }
+        }
+        @keyframes card-shimmer {
+          0%, 100% { transform: translateX(-160%) skewX(-12deg); opacity: 0; }
+          8%        { opacity: 1; }
+          22%       { transform: translateX(180%)  skewX(-12deg); opacity: 0; }
         }
         @keyframes phone-fade-up {
           from { opacity: 0; transform: translateY(6px); }
