@@ -6,10 +6,10 @@ import HowItWorks from "@/components/HowItWorks";
 import AIChat from "@/components/AIChat";
 import SignalsDashboard from "@/components/SignalsDashboard";
 import CascadeEngine from "@/components/CascadeEngine";
-import IntegrationsNetwork from "@/components/IntegrationsNetwork";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import TrustedByMarquee from "@/components/TrustedByMarquee";
+import PaymentNetworkMap from "@/components/PaymentNetworkMap";
 
 export default function Home() {
   return (
@@ -36,10 +36,9 @@ export default function Home() {
       <Hero />
       <TrustedByMarquee />
       <Solutions />
+      <PaymentNetworkMap />
       <section id="how-it-works"><HowItWorks /></section>
-      <section id="payment-network"><AIChat /></section>
-      <section id="features"><SignalsDashboard /><CascadeEngine /></section>
-      <section id="testimonials"><IntegrationsNetwork /></section>
+      <section id="features"><AIChat /><SignalsDashboard /><CascadeEngine /></section>
       <section id="cta"><CTA /></section>
       <Footer />
     </>

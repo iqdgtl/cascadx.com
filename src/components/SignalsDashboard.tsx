@@ -49,13 +49,13 @@ export default function SignalsDashboard() {
 
         <div className="alert-grid grid grid-cols-[1.1fr_1fr] gap-[60px] items-stretch">
           {/* Dashboard */}
-          <div className="bg-surface-el border border-line rounded-[var(--radius-lg)] p-[26px] shadow-[0_1px_0_rgba(255,255,255,0.08)_inset,0_30px_60px_-40px_rgba(0,0,0,0.4)] flex flex-col gap-5">
+          <div className="rounded-[var(--radius-lg)] p-[26px] flex flex-col gap-5" style={{ background: "#f5efe6", border: "1px solid rgba(42,31,28,0.08)", boxShadow: "0 20px 40px -10px rgba(0,0,0,0.3), 0 8px 20px -5px rgba(0,0,0,0.2)" }}>
             {/* Head */}
-            <div className="flex items-center justify-between pb-4 border-b border-line">
-              <h4 className="m-0 font-display font-[700] text-[18px] tracking-[-0.02em]">
+            <div className="flex items-center justify-between pb-4" style={{ borderBottom: "1px solid rgba(42,31,28,0.12)" }}>
+              <h4 className="m-0 font-display font-[700] text-[18px] tracking-[-0.02em]" style={{ color: "#2a1f1c" }}>
                 Approval Rate · Last 24h
               </h4>
-              <div className="font-mono text-[11px] text-ink-muted tracking-[0.08em] uppercase">LIVE</div>
+              <div className="font-mono text-[11px] tracking-[0.08em] uppercase" style={{ color: "#8a7468" }}>LIVE</div>
             </div>
 
             {/* Metrics */}

@@ -385,8 +385,11 @@ export default function HowItWorks() {
             <div key={card.step} className="contents">
               {/* Card */}
               <div
-                className="relative flex-1 bg-surface-el rounded-[var(--radius-lg)] border border-line shadow-[0_1px_0_rgba(255,255,255,0.08)_inset,0_30px_60px_-30px_rgba(0,0,0,0.4)] p-6 flex flex-col gap-4 min-h-[380px] opacity-0 translate-y-3 overflow-hidden"
+                className="relative flex-1 rounded-[var(--radius-lg)] p-6 flex flex-col gap-4 min-h-[380px] opacity-0 translate-y-3 overflow-hidden"
                 style={{
+                  background: "#f5efe6",
+                  border: "1px solid rgba(42,31,28,0.08)",
+                  boxShadow: "0 20px 40px -10px rgba(0,0,0,0.3), 0 8px 20px -5px rgba(0,0,0,0.2)",
                   animation: visible
                     ? `msgIn 0.5s cubic-bezier(0.2,0.8,0.2,1) ${card.delay} forwards`
                     : "none",
@@ -398,7 +401,7 @@ export default function HowItWorks() {
                 </span>
 
                 {/* Step label */}
-                <div className="font-mono text-[10px] tracking-[0.1em] uppercase text-ink-muted">
+                <div className="font-mono text-[10px] tracking-[0.1em] uppercase" style={{ color: "#8a7468" }}>
                   {card.stepLabel}
                 </div>
 
@@ -408,10 +411,10 @@ export default function HowItWorks() {
                 </div>
 
                 {/* Bottom: title + chip */}
-                <div className="flex items-center justify-between gap-3 pt-3 border-t border-line">
+                <div className="flex items-center justify-between gap-3 pt-3" style={{ borderTop: "1px solid rgba(42,31,28,0.12)" }}>
                   <div>
-                    <h4 className="font-display font-[700] text-[22px] tracking-[-0.02em] mb-0.5">{card.title}</h4>
-                    <p className="text-sm text-ink-muted m-0">{card.desc}</p>
+                    <h4 className="font-display font-[700] text-[22px] tracking-[-0.02em] mb-0.5" style={{ color: "#2a1f1c" }}>{card.title}</h4>
+                    <p className="text-sm m-0" style={{ color: "#8a7468" }}>{card.desc}</p>
                   </div>
                   {card.chip}
                 </div>

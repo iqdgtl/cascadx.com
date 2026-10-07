@@ -155,7 +155,21 @@ export default function HeroScene() {
             pointerEvents: "none",
           }} />
         )}
-        {/* Phone body — titanium finish, breathing animation via CSS */}
+        {/* Ground shadow — dims/spreads independently as phone floats up */}
+        <div aria-hidden="true" style={{
+          position: "absolute",
+          bottom: -24,
+          left: "calc(50% - 100px)",
+          width: 200,
+          height: 44,
+          background: "rgba(0,0,0,0.52)",
+          borderRadius: "50%",
+          animation: "iphone-shadow-float 8s cubic-bezier(0.42, 0, 0.58, 1) infinite",
+          pointerEvents: "none",
+          zIndex: -1,
+        }} />
+
+        {/* Phone body — titanium finish, 3D float animation via CSS */}
         <div
           className={entered ? "hero-phone-frame" : "hero-phone-entering"}
           style={{
@@ -191,6 +205,16 @@ export default function HeroScene() {
             width: "1px",
             background: "linear-gradient(180deg, transparent, rgba(255,255,255,0.18) 30%, rgba(255,255,255,0.12) 70%, transparent)",
             zIndex: 20,
+          }} />
+
+          {/* Animated frame highlight — light sweeping across titanium as phone rotates */}
+          <div aria-hidden="true" style={{
+            position: "absolute", inset: 0,
+            borderRadius: "55px",
+            background: "linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.11) 50%, transparent 70%)",
+            pointerEvents: "none",
+            zIndex: 21,
+            animation: "edge-highlight-shift 8s cubic-bezier(0.42, 0, 0.58, 1) infinite",
           }} />
 
           {/* Dynamic Island */}
@@ -258,6 +282,15 @@ export default function HeroScene() {
             background: "#fafafa",
             position: "relative",
           }}>
+            {/* Screen glass reflection — shifts subtly as phone rotates in 3D */}
+            <div aria-hidden="true" style={{
+              position: "absolute", inset: 0,
+              borderRadius: "46px",
+              background: "linear-gradient(120deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 30%, transparent 60%)",
+              pointerEvents: "none",
+              zIndex: 55,
+              animation: "screen-glass-reflect 8s cubic-bezier(0.42, 0, 0.58, 1) infinite",
+            }} />
             <PhoneScreen />
           </div>
         </div>

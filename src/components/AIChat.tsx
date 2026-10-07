@@ -57,63 +57,75 @@ export default function AIChat() {
             </ul>
           </div>
 
-          {/* Chat card */}
-          <div className="bg-surface-el rounded-[var(--radius-lg)] border border-line shadow-[0_1px_0_rgba(255,255,255,0.08)_inset,0_30px_60px_-30px_rgba(0,0,0,0.4),0_10px_30px_-20px_rgba(217,119,87,0.15)] p-6 relative overflow-hidden">
-            {/* Gradient overlay */}
-            <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(600px_200px_at_100%_0%,var(--accent-glow),transparent_60%),radial-gradient(400px_180px_at_0%_100%,rgba(217,119,87,0.08),transparent_60%)]" />
-
+          {/* Chat card — cream outer shell */}
+          <div
+            style={{
+              background: "#f5efe6",
+              border: "1px solid rgba(42,31,28,0.08)",
+              borderRadius: "var(--radius-lg)",
+              boxShadow: "0 20px 40px -10px rgba(0,0,0,0.3), 0 8px 20px -5px rgba(0,0,0,0.2)",
+              padding: 24,
+              position: "relative",
+              overflow: "hidden",
+            }}
+          >
             {/* Header */}
-            <div className="flex items-center justify-between pb-[18px] border-b border-line mb-5 relative z-[1]">
-              <div className="flex items-center gap-3 font-display font-[700] text-[18px] tracking-[-0.02em]">
-                <div className="relative w-[42px] h-[42px] rounded-[12px] bg-surface-el border border-line grid place-items-center">
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingBottom: 16, borderBottom: "1px solid rgba(42,31,28,0.12)", marginBottom: 16 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                <div className="relative w-[42px] h-[42px] rounded-[12px] bg-[#0d0f0e] border border-line grid place-items-center">
                   <RobotMascot size={36} variant="thinking" />
                 </div>
                 <div>
-                  CascadX Copilot
-                  <div className="font-mono text-[11px] text-ink-muted tracking-[0.05em] mt-0.5 font-normal">
+                  <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 18, letterSpacing: "-0.02em", color: "#2a1f1c" }}>
+                    CascadX Copilot
+                  </div>
+                  <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "#8a7468", letterSpacing: "0.05em", marginTop: 2 }}>
                     trained on your live flow
                   </div>
                 </div>
               </div>
-              <div className="flex items-center gap-[7px] font-mono text-[11px] tracking-[0.08em] uppercase text-ink-muted">
+              <div className="flex items-center gap-[7px] font-mono text-[11px] tracking-[0.08em] uppercase" style={{ color: "#8a7468" }}>
                 <span className="w-1.5 h-1.5 rounded-full bg-accent shadow-[0_0_8px_var(--accent)] animate-[pulse_1.6s_ease-in-out_infinite]" />
                 Online
               </div>
             </div>
 
-            {/* Messages */}
-            <div className="flex flex-col gap-3.5 relative z-[1] min-h-[360px]">
-              <div className="self-end max-w-[88%] px-4 py-[13px] rounded-[14px] rounded-br-[4px] text-[14.5px] leading-[1.5] bg-accent text-[#0d0f0e] opacity-0 translate-y-2 animate-[msgIn_0.5s_cubic-bezier(0.2,0.8,0.2,1)_0.2s_forwards]">
-                Why is our EU card approval down this morning?
-              </div>
-              <div className="self-start max-w-[88%] px-4 py-[13px] rounded-[14px] rounded-bl-[4px] text-[14.5px] leading-[1.5] bg-surface border border-line text-ink opacity-0 translate-y-2 animate-[msgIn_0.5s_cubic-bezier(0.2,0.8,0.2,1)_1.3s_forwards]">
-                I&apos;m seeing a <strong>4.2%</strong> drop in DE &amp; NL approvals since 06:40 UTC — traced to Stripe issuer responses on Visa consumer credit.
-                <div className="flex gap-[10px] items-center p-[10px_12px] mt-[10px] bg-warn-soft rounded-lg text-[#b44324] font-mono text-xs">
-                  <span className="w-1.5 h-1.5 rounded-full bg-warn shrink-0" />
-                  12 declines / min on BIN range 445692 · likely issuer soft-decline
+            {/* Dark product screen — messages + input */}
+            <div style={{ background: "#0d0f0e", borderRadius: 12, padding: 16, border: "1px solid rgba(255,255,255,0.06)" }}>
+              {/* Messages */}
+              <div className="flex flex-col gap-3.5 min-h-[320px]">
+                <div className="self-end max-w-[88%] px-4 py-[13px] rounded-[14px] rounded-br-[4px] text-[14.5px] leading-[1.5] bg-accent text-[#0d0f0e] opacity-0 translate-y-2 animate-[msgIn_0.5s_cubic-bezier(0.2,0.8,0.2,1)_0.2s_forwards]">
+                  Why is our EU card approval down this morning?
                 </div>
-                <div className="mt-[10px] p-[10px_12px] bg-[rgba(217,119,87,0.1)] border-l-2 border-accent rounded text-[13.5px] text-accent-deep">
-                  → Recommend cascading these BINs to Adyen first. Projected recovery: <strong>+$8.4K</strong> today.
+                <div className="self-start max-w-[88%] px-4 py-[13px] rounded-[14px] rounded-bl-[4px] text-[14.5px] leading-[1.5] bg-surface border border-line text-ink opacity-0 translate-y-2 animate-[msgIn_0.5s_cubic-bezier(0.2,0.8,0.2,1)_1.3s_forwards]">
+                  I&apos;m seeing a <strong>4.2%</strong> drop in DE &amp; NL approvals since 06:40 UTC — traced to Stripe issuer responses on Visa consumer credit.
+                  <div className="flex gap-[10px] items-center p-[10px_12px] mt-[10px] bg-warn-soft rounded-lg text-[#b44324] font-mono text-xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-warn shrink-0" />
+                    12 declines / min on BIN range 445692 · likely issuer soft-decline
+                  </div>
+                  <div className="mt-[10px] p-[10px_12px] bg-[rgba(217,119,87,0.1)] border-l-2 border-accent rounded text-[13.5px] text-accent-deep">
+                    → Recommend cascading these BINs to Adyen first. Projected recovery: <strong>+$8.4K</strong> today.
+                  </div>
+                </div>
+                <div className="self-end max-w-[88%] px-4 py-[13px] rounded-[14px] rounded-br-[4px] text-[14.5px] leading-[1.5] bg-accent text-[#0d0f0e] opacity-0 translate-y-2 animate-[msgIn_0.5s_cubic-bezier(0.2,0.8,0.2,1)_2.4s_forwards]">
+                  Apply it to the EU route.
                 </div>
               </div>
-              <div className="self-end max-w-[88%] px-4 py-[13px] rounded-[14px] rounded-br-[4px] text-[14.5px] leading-[1.5] bg-accent text-[#0d0f0e] opacity-0 translate-y-2 animate-[msgIn_0.5s_cubic-bezier(0.2,0.8,0.2,1)_2.4s_forwards]">
-                Apply it to the EU route.
-              </div>
-            </div>
 
-            {/* Input */}
-            <div className="mt-5 flex items-center gap-[10px] px-[18px] py-[10px] border border-line rounded-full bg-bg relative z-[1]">
-              <input
-                type="text"
-                placeholder="Ask about any transaction, route or PSP…"
-                className="flex-1 bg-transparent border-none outline-none font-sans text-sm text-ink placeholder:text-ink-muted"
-                readOnly
-              />
-              <button className="w-[38px] h-[38px] rounded-full bg-ink text-bg grid place-items-center transition-colors hover:bg-accent-deep">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                  <path d="M5 12h14M13 5l7 7-7 7" />
-                </svg>
-              </button>
+              {/* Input */}
+              <div className="mt-4 flex items-center gap-[10px] px-[18px] py-[10px] border border-line rounded-full bg-bg">
+                <input
+                  type="text"
+                  placeholder="Ask about any transaction, route or PSP…"
+                  className="flex-1 bg-transparent border-none outline-none font-sans text-sm text-ink placeholder:text-ink-muted"
+                  readOnly
+                />
+                <button className="w-[38px] h-[38px] rounded-full bg-ink text-bg grid place-items-center transition-colors hover:bg-accent-deep">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                    <path d="M5 12h14M13 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
         </div>

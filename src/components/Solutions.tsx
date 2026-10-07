@@ -15,7 +15,6 @@ function CascadeIcon({ hovered }: { hovered: boolean }) {
       }}
       aria-hidden="true"
     >
-      {/* Three downward chevrons — waterfall / cascade */}
       <path d="M10 14l14 10 14-10" stroke={ACCENT} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
       <path d="M15 24l9 8 9-8"    stroke={ACCENT} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
       <path d="M20 32l4 4 4-4"   stroke={ACCENT} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
@@ -33,11 +32,9 @@ function DashboardIcon({ hovered }: { hovered: boolean }) {
       }}
       aria-hidden="true"
     >
-      {/* Three bars of varying heights */}
       <rect x="7"  y="27" width="8" height="14" rx="2" stroke={ACCENT} strokeWidth="1.7"/>
       <rect x="20" y="20" width="8" height="21" rx="2" stroke={ACCENT} strokeWidth="1.7"/>
       <rect x="33" y="23" width="8" height="18" rx="2" stroke={ACCENT} strokeWidth="1.7"/>
-      {/* Upward trend line */}
       <path d="M9 23l12-9 9 4 11-11" stroke={ACCENT} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
       <circle cx="41" cy="7" r="2.2" fill={ACCENT}/>
     </svg>
@@ -54,10 +51,8 @@ function ApiIcon({ hovered }: { hovered: boolean }) {
       }}
       aria-hidden="true"
     >
-      {/* < > brackets */}
       <path d="M18 15l-8 9 8 9" stroke={ACCENT} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
       <path d="M30 15l8 9-8 9"  stroke={ACCENT} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-      {/* / slash between */}
       <line x1="27" y1="12" x2="21" y2="36" stroke={ACCENT} strokeWidth="1.7" strokeLinecap="round"/>
     </svg>
   );
@@ -66,7 +61,6 @@ function ApiIcon({ hovered }: { hovered: boolean }) {
 // ── Data ───────────────────────────────────────────────────────────────────────
 
 interface BlockDef {
-  eyebrow: string;
   headline: string;
   description: string;
   bullets: string[];
@@ -76,7 +70,6 @@ interface BlockDef {
 
 const BLOCKS: BlockDef[] = [
   {
-    eyebrow: "For your merchants",
     headline: "Accept every payment, lose none.",
     description:
       "Cascading intelligence that recovers 18% of transactions your current PSP declines — automatically, invisibly, in 38ms.",
@@ -90,7 +83,6 @@ const BLOCKS: BlockDef[] = [
     Icon: CascadeIcon,
   },
   {
-    eyebrow: "For your operations team",
     headline: "See everything. Act instantly.",
     description:
       "Unified visibility across your entire payment stack. Spot declines before they trend, trigger routing changes without a single engineer.",
@@ -104,7 +96,6 @@ const BLOCKS: BlockDef[] = [
     Icon: DashboardIcon,
   },
   {
-    eyebrow: "For your engineering team",
     headline: "One API. Every provider.",
     description:
       "Stop maintaining 15 PSP integrations. One clean REST API gives you the whole payment ecosystem — plus the orchestration intelligence to use it well.",
@@ -127,7 +118,6 @@ export default function Solutions() {
   const [entered,   setEntered]   = useState(false);
   const [hovered,   setHovered]   = useState<number | null>(null);
 
-  // Scroll-triggered entrance — fires once
   useEffect(() => {
     const io = new IntersectionObserver(
       ([e]) => { if (e.isIntersecting) { setVisible(true); io.disconnect(); } },
@@ -137,22 +127,21 @@ export default function Solutions() {
     return () => io.disconnect();
   }, []);
 
-  // Mark entrance complete so hover transitions can take over
-  // (last block: 150 + 2×150 delay + 600ms anim = 1050ms)
   useEffect(() => {
     if (!visible) return;
     const t = setTimeout(() => setEntered(true), 1250);
     return () => clearTimeout(t);
   }, [visible]);
 
-  // ── Header fade-up
   const headerAnim: React.CSSProperties = {
     opacity: visible ? 1 : 0,
     transform: visible ? "translateY(0)" : "translateY(30px)",
     transition: visible ? "opacity 500ms ease-out, transform 500ms ease-out" : "none",
   };
 
-  // ── Block animation — entrance then hover
+  const DEFAULT_SHADOW = "0 20px 40px -10px rgba(0,0,0,0.3), 0 8px 20px -5px rgba(0,0,0,0.2)";
+  const HOVER_SHADOW   = "0 30px 60px -15px rgba(217,119,87,0.25), 0 15px 30px -10px rgba(0,0,0,0.3)";
+
   const blockAnim = (i: number): React.CSSProperties => {
     if (!visible) return { opacity: 0, transform: "translateY(40px)" };
     const delay = 150 + i * 150;
@@ -160,6 +149,7 @@ export default function Solutions() {
       return {
         opacity: 1,
         transform: "translateY(0)",
+        boxShadow: DEFAULT_SHADOW,
         transition: `opacity 600ms cubic-bezier(0.22,1,0.36,1) ${delay}ms, transform 600ms cubic-bezier(0.22,1,0.36,1) ${delay}ms`,
       };
     }
@@ -167,15 +157,13 @@ export default function Solutions() {
     return {
       opacity: 1,
       transform: isH ? "translateY(-6px)" : "translateY(0)",
-      boxShadow: isH
-        ? "0 20px 60px -20px rgba(217,119,87,0.3), 0 10px 30px -10px rgba(217,119,87,0.2)"
-        : "none",
+      boxShadow: isH ? HOVER_SHADOW : DEFAULT_SHADOW,
       transition: "transform 300ms ease-out, border-color 300ms ease-out, box-shadow 300ms ease-out",
     };
   };
 
   const borderColor = (i: number) =>
-    entered && hovered === i ? "rgba(255,255,255,0.20)" : "rgba(255,255,255,0.08)";
+    entered && hovered === i ? "rgba(217,119,87,0.3)" : "rgba(42,31,28,0.08)";
 
   return (
     <section
@@ -211,10 +199,10 @@ export default function Solutions() {
         <div className="solutions-grid">
           {BLOCKS.map((block, i) => (
             <div
-              key={block.eyebrow}
+              key={block.headline}
               className="solutions-block"
               style={{
-                background: "var(--surface)",
+                background: "#f5efe6",
                 borderWidth: "1px",
                 borderStyle: "solid",
                 borderColor: borderColor(i),
@@ -235,7 +223,7 @@ export default function Solutions() {
                 fontFamily: "var(--font-display)",
                 fontWeight: 800, fontSize: "clamp(22px, 1.8vw, 28px)",
                 letterSpacing: "-0.02em", lineHeight: 1.2,
-                color: "#fafaf7", margin: "24px 0 16px",
+                color: "#2a1f1c", margin: "24px 0 16px",
               }}>
                 {block.headline}
               </h3>
@@ -244,13 +232,13 @@ export default function Solutions() {
               <p style={{
                 fontFamily: "var(--font-display)",
                 fontWeight: 500, fontSize: 15, lineHeight: 1.6,
-                color: "rgba(255,255,255,0.7)", margin: 0,
+                color: "#5a4a42", margin: 0,
               }}>
                 {block.description}
               </p>
 
               {/* Divider */}
-              <div style={{ height: 1, background: "rgba(217,119,87,0.2)", margin: "32px 0" }} />
+              <div style={{ height: 1, background: "rgba(42,31,28,0.15)", margin: "32px 0" }} />
 
               {/* Bullet list */}
               <ul style={{
@@ -259,11 +247,11 @@ export default function Solutions() {
               }}>
                 {block.bullets.map(b => (
                   <li key={b} style={{ display: "flex", alignItems: "baseline", gap: 10 }}>
-                    <span style={{ color: ACCENT, fontSize: 16, lineHeight: 1, flexShrink: 0 }}>·</span>
+                    <span style={{ color: ACCENT, fontSize: 14, lineHeight: 1, flexShrink: 0 }}>·</span>
                     <span style={{
                       fontFamily: "var(--font-display)",
                       fontWeight: 500, fontSize: 14,
-                      color: "rgba(255,255,255,0.85)", lineHeight: 1.5,
+                      color: "#3a2d26", lineHeight: 1.5,
                     }}>
                       {b}
                     </span>
@@ -312,8 +300,8 @@ export default function Solutions() {
           <div
             className="solutions-strip-card"
             style={{
-              background: "var(--surface)",
-              border: "1px solid rgba(255,255,255,0.08)",
+              background: "#f5efe6",
+              border: "1px solid rgba(42,31,28,0.08)",
               borderRadius: 20,
               padding: "40px 48px",
               display: "flex",
@@ -322,12 +310,13 @@ export default function Solutions() {
               gap: 32,
               position: "relative",
               overflow: "hidden",
+              boxShadow: DEFAULT_SHADOW,
             }}
           >
             {/* Soft terracotta glow, left side */}
             <div aria-hidden="true" style={{
               position: "absolute", inset: 0, pointerEvents: "none",
-              background: "radial-gradient(ellipse 50% 100% at 15% 50%, rgba(217,119,87,0.07) 0%, transparent 70%)",
+              background: "radial-gradient(ellipse 50% 100% at 15% 50%, rgba(217,119,87,0.06) 0%, transparent 70%)",
             }} />
 
             {/* Left — headline */}
@@ -336,7 +325,7 @@ export default function Solutions() {
                 fontFamily: "var(--font-display)",
                 fontWeight: 800, fontSize: "clamp(18px, 1.8vw, 24px)",
                 letterSpacing: "-0.02em", lineHeight: 1.2,
-                color: "#fafaf7", margin: 0,
+                color: "#2a1f1c", margin: 0,
               }}>
                 Stop losing approvals. Start routing smarter.
               </h3>
@@ -367,8 +356,8 @@ export default function Solutions() {
                 className="solutions-strip-secondary"
                 style={{
                   height: 48, padding: "0 24px",
-                  background: "transparent", color: "#fafaf7",
-                  border: "1.5px solid rgba(255,255,255,0.2)",
+                  background: "transparent", color: "#2a1f1c",
+                  border: "1.5px solid rgba(42,31,28,0.2)",
                   borderRadius: 12,
                   fontFamily: "var(--font-display)",
                   fontWeight: 600, fontSize: 15,
@@ -387,39 +376,30 @@ export default function Solutions() {
       </div>
 
       <style>{`
-        /* ── Grid ─────────────────────────────────────────────── */
         .solutions-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: 24px;
           align-items: stretch;
         }
-
-        /* ── Block hover (desktop) ────────────────────────────── */
         @media (hover: hover) {
           .solutions-block:hover .solutions-cta-arrow { transform: translateX(4px) !important; }
           .solutions-strip-primary:hover  { background: #c86847 !important; transform: scale(1.02); }
           .solutions-strip-secondary:hover {
-            border-color: rgba(255,255,255,0.45) !important;
-            background: rgba(255,255,255,0.05) !important;
+            border-color: rgba(42,31,28,0.4) !important;
+            background: rgba(42,31,28,0.04) !important;
             transform: scale(1.02);
           }
         }
-
-        /* ── Touch tap feedback ───────────────────────────────── */
         @media (hover: none) {
           .solutions-block:active { transform: scale(0.98) !important; transition: transform 120ms ease !important; }
           .solutions-strip-primary:active,
           .solutions-strip-secondary:active { transform: scale(0.97) !important; }
         }
-
-        /* ── 1024px — stack blocks ────────────────────────────── */
         @media (max-width: 1024px) {
           .solutions-section { padding-top: 100px !important; padding-bottom: 100px !important; }
           .solutions-grid    { grid-template-columns: 1fr !important; gap: 20px !important; }
         }
-
-        /* ── 767px — compact block padding, stack CTA strip ───── */
         @media (max-width: 767px) {
           .solutions-block       { padding: 32px !important; }
           .solutions-strip-card  {
@@ -432,8 +412,6 @@ export default function Solutions() {
           .solutions-strip-primary,
           .solutions-strip-secondary { width: 100% !important; }
         }
-
-        /* ── Reduced motion ───────────────────────────────────── */
         @media (prefers-reduced-motion: reduce) {
           .solutions-block,
           .solutions-cta-arrow { transition: none !important; }

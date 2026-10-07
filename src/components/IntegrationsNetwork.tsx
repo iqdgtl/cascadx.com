@@ -66,7 +66,8 @@ export default function IntegrationsNetwork() {
           {chips.map((c) => (
             <div
               key={c.name}
-              className={`absolute px-4 py-[10px] bg-surface border border-line rounded-full font-mono text-xs tracking-[0.04em] text-ink-soft shadow-[0_8px_20px_-10px_rgba(0,0,0,0.3)] transition-all duration-300 cursor-default hover:border-accent hover:text-accent-deep hover:-translate-y-1 before:content-[''] before:inline-block before:w-1.5 before:h-1.5 before:rounded-full before:bg-accent before:mr-2 before:align-middle ${c.cls}`}
+              className={`absolute px-4 py-[10px] rounded-full font-mono text-xs tracking-[0.04em] shadow-[0_8px_20px_-10px_rgba(0,0,0,0.4)] transition-all duration-300 cursor-default hover:border-accent hover:text-accent-deep hover:-translate-y-1 before:content-[''] before:inline-block before:w-1.5 before:h-1.5 before:rounded-full before:bg-accent before:mr-2 before:align-middle ${c.cls}`}
+              style={{ background: "#f5efe6", border: "1px solid rgba(42,31,28,0.1)", color: "#5a4a42" }}
             >
               {c.name}
             </div>
