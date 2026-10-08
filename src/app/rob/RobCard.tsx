@@ -9,35 +9,6 @@ import { QRCodeSVG } from "qrcode.react";
 // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-explicit-any
 const worldData = require("world-atlas/land-110m.json") as any;
 
-// ─── vCard ────────────────────────────────────────────────────────────────────
-const VCARD = [
-  "BEGIN:VCARD",
-  "VERSION:3.0",
-  "FN:Robi Guetta",
-  "N:Guetta;Robi;;;",
-  "ORG:CascadX",
-  "TITLE:Founder & CEO",
-  "EMAIL;TYPE=INTERNET:hello@cascadx.com",
-  "TEL;TYPE=CELL:+447459166788",
-  "TEL;TYPE=WORK:+447459166788",
-  "URL:https://cascadx.com",
-  "URL;TYPE=LinkedIn:https://linkedin.com/in/robiguetta",
-  "NOTE:AI payment cascading | Turning declined transactions into approved revenue",
-  "END:VCARD",
-].join("\r\n");
-
-function downloadVCard() {
-  const blob = new Blob([VCARD], { type: "text/vcard;charset=utf-8" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "robi-guetta.vcf";
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-}
-
 // ─── Globe background ─────────────────────────────────────────────────────────
 function GlobeBackground() {
   const landRef      = useRef<SVGPathElement>(null);
@@ -123,10 +94,10 @@ function IconArrow() {
     </svg>
   );
 }
-function IconDownload() {
+function IconTelegram() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(255,255,255,0.9)">
+      <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
     </svg>
   );
 }
@@ -186,18 +157,11 @@ function ActionButton({ icon, label, href, delay, visible }: ActionButtonProps) 
 // ─── Main component ───────────────────────────────────────────────────────────
 export default function RobCard() {
   const [visible, setVisible] = useState(false);
-  const [btnPressed, setBtnPressed] = useState(false);
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 80);
     return () => clearTimeout(t);
   }, []);
-
-  function handleSave() {
-    setBtnPressed(true);
-    setTimeout(() => setBtnPressed(false), 150);
-    downloadVCard();
-  }
 
   const fadeIn = (delay: number): React.CSSProperties => ({
     opacity: visible ? 1 : 0,
@@ -310,43 +274,53 @@ export default function RobCard() {
           marginBottom: 32, ...fadeIn(1100),
         }}/>
 
-        {/* Save to contacts — primary CTA */}
-        <div style={{ width: "100%", position: "relative", marginBottom: 14, ...slideUp(1200) }}>
-          {/* Pulse rings */}
-          <div aria-hidden style={{
-            position: "absolute", inset: -7, borderRadius: 23,
-            border: "1.5px solid rgba(217,119,87,0.4)",
-            animation: "rob-btn-pulse 4s ease-out 2.5s infinite",
-            pointerEvents: "none",
-          }}/>
-          <div aria-hidden style={{
-            position: "absolute", inset: -7, borderRadius: 23,
-            border: "1.5px solid rgba(217,119,87,0.4)",
-            animation: "rob-btn-pulse 4s ease-out 4.5s infinite",
-            pointerEvents: "none",
-          }}/>
-
-          <button
-            type="button"
-            onClick={handleSave}
+        {/* Primary CTAs — WhatsApp + Telegram */}
+        <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: 12, marginBottom: 12, ...slideUp(1200) }}>
+          {/* WhatsApp — green */}
+          <a
+            href="https://wa.me/447459166788"
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
-              width: "100%", height: 60, borderRadius: 16, border: "none",
-              background: "linear-gradient(180deg, #e68a67 0%, #d97757 55%, #c86847 100%)",
-              boxShadow: "0 0 30px rgba(217,119,87,0.4), 0 10px 30px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.18)",
+              width: "100%", height: 60, borderRadius: 16,
+              background: "linear-gradient(180deg, #2ecc71 0%, #25D366 55%, #1da851 100%)",
+              boxShadow: "0 0 30px rgba(37,211,102,0.35), 0 10px 30px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.18)",
               display: "flex", alignItems: "center", justifyContent: "space-between",
-              padding: "0 22px", cursor: "pointer",
-              transform: btnPressed ? "scale(0.97)" : "scale(1)",
-              transition: "transform 150ms ease",
+              padding: "0 22px", textDecoration: "none",
+              boxSizing: "border-box",
             }}
           >
             <span style={{
               fontFamily: "var(--font-inter,sans-serif)", fontWeight: 600,
               fontSize: 17, color: "#fff", letterSpacing: "-0.01em",
             }}>
-              Save to contacts
+              WhatsApp
             </span>
-            <IconDownload />
-          </button>
+            <IconWhatsApp />
+          </a>
+
+          {/* Telegram — orange */}
+          <a
+            href="https://t.me/robiguetta"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              width: "100%", height: 60, borderRadius: 16,
+              background: "linear-gradient(180deg, #ff8c42 0%, #ff6b35 55%, #e85520 100%)",
+              boxShadow: "0 0 30px rgba(255,107,53,0.35), 0 10px 30px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.18)",
+              display: "flex", alignItems: "center", justifyContent: "space-between",
+              padding: "0 22px", textDecoration: "none",
+              boxSizing: "border-box",
+            }}
+          >
+            <span style={{
+              fontFamily: "var(--font-inter,sans-serif)", fontWeight: 600,
+              fontSize: 17, color: "#fff", letterSpacing: "-0.01em",
+            }}>
+              Telegram
+            </span>
+            <IconTelegram />
+          </a>
         </div>
 
         {/* Secondary action buttons */}
@@ -359,24 +333,17 @@ export default function RobCard() {
             visible={visible}
           />
           <ActionButton
-            icon={<IconWhatsApp />}
-            label="WhatsApp"
-            href="https://wa.me/447459166788"
-            delay={1380}
-            visible={visible}
-          />
-          <ActionButton
             icon={<IconLinkedIn />}
             label="LinkedIn"
             href="https://linkedin.com/in/robiguetta"
-            delay={1460}
+            delay={1380}
             visible={visible}
           />
           <ActionButton
             icon={<IconGlobe />}
             label="Visit cascadx.com"
             href="https://cascadx.com"
-            delay={1540}
+            delay={1460}
             visible={visible}
           />
         </div>
@@ -500,10 +467,6 @@ export default function RobCard() {
         @keyframes rob-glow2 {
           0%   { transform: translate(0,0) scale(1); opacity: 0.6; }
           100% { transform: translate(75px,-95px) scale(1.18); opacity: 1; }
-        }
-        @keyframes rob-btn-pulse {
-          0%   { opacity: 0.4; transform: scale(1); }
-          100% { opacity: 0;   transform: scale(1.22); }
         }
         .rob-contact-link:hover {
           background: rgba(255,255,255,0.05) !important;
