@@ -175,13 +175,17 @@ export default function Footer() {
         <div className="max-w-[var(--max)] mx-auto border-t border-white/[0.08]" />
       </div>
 
-      {/* Bottom bar: logo + copyright + socials */}
-      <div className="px-5 md:px-7 py-8 pb-10">
-        <div className="max-w-[var(--max)] mx-auto flex flex-col md:flex-row justify-between items-center gap-5 font-mono text-xs tracking-[0.04em]">
-          <Link href="/" className="text-white">
-            <Logo className="text-[18px]" dotSize={5} />
-          </Link>
-          <span className="text-center">&copy; 2026 CascadX · AI Payment Orchestration</span>
+      {/* Bottom bar: logo + disclaimer + socials */}
+      <div className="px-5 md:px-7 pt-8 pb-5">
+        <div className="max-w-[var(--max)] mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+          <div className="flex flex-col gap-2">
+            <Link href="/" className="text-white">
+              <Logo className="text-[18px]" dotSize={5} />
+            </Link>
+            <p className="text-[12px] font-medium text-white/50 max-w-[320px] leading-relaxed">
+              Our services do not include transaction processing and/or handling clients&apos; funds.
+            </p>
+          </div>
           <div className="flex items-center gap-6">
             {socials.map((s) => (
               <a key={s.label} href={s.href} aria-label={s.label} target="_blank" rel="noopener noreferrer"
@@ -189,6 +193,20 @@ export default function Footer() {
                 {s.icon}
               </a>
             ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Legal bottom strip */}
+      <div className="px-5 md:px-7 pb-8">
+        <div className="max-w-[var(--max)] mx-auto border-t border-white/[0.06] pt-5 flex flex-col md:flex-row justify-between items-center gap-3 font-mono text-[11px] tracking-[0.04em] text-white/35">
+          <span>&copy; 2026 IQDGTL LTD. All rights reserved.</span>
+          <div className="flex items-center gap-4">
+            <Link href="/privacy" className="hover:text-white/60 transition-colors">Privacy Policy</Link>
+            <span className="text-white/20">·</span>
+            <Link href="/terms" className="hover:text-white/60 transition-colors">Terms of Service</Link>
+            <span className="text-white/20">·</span>
+            <Link href="/cookies" className="hover:text-white/60 transition-colors">Cookie Policy</Link>
           </div>
         </div>
       </div>
