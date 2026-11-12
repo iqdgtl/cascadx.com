@@ -78,6 +78,11 @@ export default function Hero() {
         padding: "80px 28px 60px",
       }}
     >
+      {/* Animated gradient orbs */}
+      <div className="hero-orb hero-orb-1" aria-hidden="true" />
+      <div className="hero-orb hero-orb-2" aria-hidden="true" />
+      <div className="hero-orb hero-orb-3" aria-hidden="true" />
+
       {/* Terracotta radial glow */}
       <div style={{
         position: "absolute", inset: 0, pointerEvents: "none",
@@ -122,7 +127,7 @@ export default function Hero() {
           <h1 style={{
             fontFamily: "var(--font-display)",
             fontWeight: 800,
-            fontSize: "clamp(42px, 5.5vw, 72px)",
+            fontSize: "clamp(36px, 5.5vw, 72px)",
             lineHeight: 1.05,
             letterSpacing: "-0.04em",
             color: "#fafaf7",
@@ -245,6 +250,50 @@ export default function Hero() {
       </div>
 
       <style>{`
+        /* ── Animated gradient orbs ────────────────────── */
+        .hero-orb {
+          position: absolute;
+          width: 440px;
+          height: 440px;
+          border-radius: 50%;
+          filter: blur(80px);
+          pointer-events: none;
+          z-index: 0;
+        }
+        .hero-orb-1 {
+          background: rgba(217,119,87,0.28);
+          top: -120px; right: 8%;
+          animation: orb-float-1 20s ease-in-out infinite;
+        }
+        .hero-orb-2 {
+          background: rgba(139,92,246,0.22);
+          bottom: -80px; right: 28%;
+          animation: orb-float-2 24s ease-in-out infinite;
+        }
+        .hero-orb-3 {
+          background: rgba(0,212,181,0.18);
+          top: 25%; left: -120px;
+          animation: orb-float-3 18s ease-in-out infinite;
+        }
+        @keyframes orb-float-1 {
+          0%,100% { transform: translate(0,0) scale(1); }
+          33%     { transform: translate(40px,-30px) scale(1.1); }
+          66%     { transform: translate(-20px,30px) scale(0.9); }
+        }
+        @keyframes orb-float-2 {
+          0%,100% { transform: translate(0,0) scale(1); }
+          40%     { transform: translate(-50px,-40px) scale(1.08); }
+          70%     { transform: translate(30px,20px) scale(0.95); }
+        }
+        @keyframes orb-float-3 {
+          0%,100% { transform: translate(0,0) scale(1); }
+          30%     { transform: translate(60px,30px) scale(1.05); }
+          70%     { transform: translate(-30px,-50px) scale(0.92); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .hero-orb { animation: none !important; }
+        }
+
         /* ── CTA buttons ─────────────────────────────────── */
         .hero-cta-row {
           display: flex;
@@ -360,6 +409,11 @@ export default function Hero() {
           50%       { transform: translateY(4px); opacity: 0.7; }
         }
         .hero-scroll-indicator:hover path { stroke: rgba(255,255,255,0.65) !important; }
+
+        /* ── Mobile padding ─────────────────────────────── */
+        @media (max-width: 640px) {
+          header { padding-left: 20px !important; padding-right: 20px !important; }
+        }
 
         /* ── Mobile — stacks at 900px ────────────────────── */
         @media (max-width: 900px) {
