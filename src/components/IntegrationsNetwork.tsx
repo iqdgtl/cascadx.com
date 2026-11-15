@@ -58,7 +58,7 @@ export default function IntegrationsNetwork() {
           </svg>
 
           {/* Center hub */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140px] h-[140px] rounded-full bg-surface-el border border-line-strong grid place-items-center shadow-[0_0_0_10px_rgba(255,255,255,0.05),0_0_0_20px_rgba(255,255,255,0.02),0_0_60px_rgba(217,119,87,0.2)] z-[3] before:content-[''] before:absolute before:inset-[-1px] before:rounded-full before:border before:border-accent before:opacity-40 before:animate-[pulse_2.6s_ease-in-out_infinite]">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140px] h-[140px] rounded-full bg-surface-el border border-line-strong grid place-items-center shadow-[0_0_0_10px_rgba(26,15,10,0.05),0_0_0_20px_rgba(26,15,10,0.02),0_0_60px_rgba(217,119,87,0.2)] z-[3] before:content-[''] before:absolute before:inset-[-1px] before:rounded-full before:border before:border-accent before:opacity-40 before:animate-[pulse_2.6s_ease-in-out_infinite]">
             <Logo className="text-[20px]" dotSize={5} />
           </div>
 
@@ -67,7 +67,7 @@ export default function IntegrationsNetwork() {
             <div
               key={c.name}
               className={`absolute px-4 py-[10px] rounded-full font-mono text-xs tracking-[0.04em] shadow-[0_8px_20px_-10px_rgba(0,0,0,0.4)] transition-all duration-300 cursor-default hover:border-accent hover:text-accent-deep hover:-translate-y-1 before:content-[''] before:inline-block before:w-1.5 before:h-1.5 before:rounded-full before:bg-accent before:mr-2 before:align-middle ${c.cls}`}
-              style={{ background: "#f5efe6", border: "1px solid rgba(42,31,28,0.1)", color: "#5a4a42" }}
+              style={{ background: "#1a0f0a", border: "1px solid rgba(42,31,28,0.1)", color: "#5a4a42" }}
             >
               {c.name}
             </div>

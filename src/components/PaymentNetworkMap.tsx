@@ -348,7 +348,7 @@ export default function PaymentNetworkMap() {
     <section
       ref={sectionRef}
       id="payment-network"
-      style={{ background: "#f5efe6", position: "relative", padding: "120px 28px 0", overflow: "hidden" }}
+      style={{ background: "#1a0f0a", position: "relative", padding: "120px 28px 0", overflow: "hidden" }}
     >
       {/* Heading */}
       <div style={{
@@ -360,7 +360,7 @@ export default function PaymentNetworkMap() {
         <h2 style={{
           fontFamily: "var(--font-display)", fontWeight: 800,
           fontSize: "clamp(36px, 5vw, 58px)", lineHeight: 1.07,
-          letterSpacing: "-0.035em", color: "#0d0f0e", margin: "0 0 20px",
+          letterSpacing: "-0.035em", color: "#faf8f2", margin: "0 0 20px",
         }}>
           Every provider.{" "}
           <em style={{ fontStyle: "normal", color: "#d97757" }}>One orchestration layer.</em>
@@ -447,7 +447,7 @@ export default function PaymentNetworkMap() {
           </circle>
 
           {/* Hub disc */}
-          <circle cx={CX} cy={CY} r={46} fill="#0d0f0e" stroke="#d97757" strokeWidth="1.5"/>
+          <circle cx={CX} cy={CY} r={46} fill="#faf8f2" stroke="#d97757" strokeWidth="1.5"/>
           <text x={CX} y={CY + 1} textAnchor="middle" dominantBaseline="middle"
             fill="#d97757" fontFamily="var(--font-display,sans-serif)" fontWeight="800" fontSize="19" letterSpacing="-1">
             CX
@@ -546,7 +546,7 @@ export default function PaymentNetworkMap() {
               display: "block",
               fontFamily: "var(--font-display,sans-serif)", fontWeight: 800,
               fontSize: "clamp(38px, 5vw, 52px)", letterSpacing: "-0.03em",
-              color: "#0d0f0e", lineHeight: 1,
+              color: "#faf8f2", lineHeight: 1,
             }}>
               <span ref={(el) => { statRefs.current[i] = el; }}>
                 {STATS[i].decimal ? `0.0${STATS[i].suffix}` : `0${STATS[i].suffix}`}
@@ -582,7 +582,7 @@ export default function PaymentNetworkMap() {
       {/* Bottom gradient: cream → dark */}
       <div aria-hidden="true" style={{
         position: "absolute", bottom: 0, left: 0, right: 0, height: 120,
-        background: "linear-gradient(to bottom, transparent, #0d0f0e)",
+        background: "linear-gradient(to bottom, transparent, #faf8f2)",
         pointerEvents: "none",
       }}/>
 

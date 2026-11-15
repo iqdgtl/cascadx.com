@@ -54,7 +54,7 @@ export default function LiveCounter() {
         background: "rgba(13,15,14,0.92)",
         backdropFilter: "blur(16px)",
         WebkitBackdropFilter: "blur(16px)",
-        border: "1px solid rgba(255,255,255,0.1)",
+        border: "1px solid rgba(26,15,10,0.1)",
         borderRadius: 16,
         padding: "14px 18px",
         display: "flex",
@@ -71,7 +71,7 @@ export default function LiveCounter() {
         style={{
           position: "absolute", top: 8, right: 8,
           background: "none", border: "none", cursor: "pointer",
-          color: "rgba(255,255,255,0.3)", fontSize: 16, lineHeight: 1,
+          color: "rgba(26,15,10,0.3)", fontSize: 16, lineHeight: 1,
           padding: 2,
         }}
       >
@@ -89,7 +89,7 @@ export default function LiveCounter() {
         <span style={{
           fontFamily: "var(--font-mono)", fontSize: 10,
           letterSpacing: "2px", textTransform: "uppercase",
-          color: "rgba(255,255,255,0.45)",
+          color: "rgba(26,15,10,0.45)",
         }}>
           LIVE · Today&apos;s recovered revenue
         </span>
@@ -100,7 +100,7 @@ export default function LiveCounter() {
         style={{
           fontFamily: "var(--font-display)", fontWeight: 800,
           fontSize: 24, letterSpacing: "-0.03em",
-          color: bump ? "#d97757" : "#fafaf7",
+          color: bump ? "#d97757" : "#1a0f0a",
           transition: "color 400ms ease",
           lineHeight: 1,
         }}
@@ -111,7 +111,7 @@ export default function LiveCounter() {
       {/* Last minute */}
       <div style={{
         fontFamily: "var(--font-mono)", fontSize: 11,
-        color: "rgba(255,255,255,0.4)",
+        color: "rgba(26,15,10,0.4)",
         letterSpacing: "0.02em",
       }}>
         +{fmt(lastMin)} last minute

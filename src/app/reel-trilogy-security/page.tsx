@@ -119,7 +119,7 @@ export default function Page() {
               aspectRatio: "1.586 / 1",
               borderRadius: "min(24px, 3vh)",
               background: "linear-gradient(135deg, #2a1f1c 0%, #3d2520 60%, #2a1f1c 100%)",
-              border: "1px solid rgba(255,255,255,0.08)",
+              border: "1px solid rgba(26,15,10,0.08)",
               boxShadow: `0 30px 80px -20px rgba(0,0,0,0.25), 0 0 ${pulseP * 40}px rgba(217,119,87,${pulseP * 0.3})`,
               transform: `scale(${0.85 + 0.15 * cardP}) perspective(800px) rotateY(${cardTilt}deg)`,
               opacity: cardP,
@@ -133,7 +133,7 @@ export default function Page() {
               {/* Metallic sheen */}
               <div style={{
                 position: "absolute", inset: 0,
-                background: "linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.06) 45%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0.06) 55%, transparent 70%)",
+                background: "linear-gradient(135deg, transparent 30%, rgba(26,15,10,0.06) 45%, rgba(26,15,10,0.12) 50%, rgba(26,15,10,0.06) 55%, transparent 70%)",
                 pointerEvents: "none",
               }} />
 
@@ -158,7 +158,7 @@ export default function Page() {
                   <line x1="38" y1="6" x2="38" y2="38" stroke="#c49a3a" strokeWidth="0.5" opacity="0.3" />
                 </svg>
                 {/* Contactless */}
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth="1.5" strokeLinecap="round">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(26,15,10,0.6)" strokeWidth="1.5" strokeLinecap="round">
                   <path d="M8.5 16.5a5 5 0 0 1 0-9" /><path d="M12 19a9 9 0 0 0 0-14" /><path d="M5 14a2 2 0 0 0 0-4" />
                 </svg>
               </div>
@@ -177,7 +177,7 @@ export default function Page() {
                   </div>
                 ) : (
                   /* Card number — simple typewriter, digit by digit */
-                  <div className="font-mono font-medium" style={{ fontSize: "min(28px, 3vh)", color: "#fafaf7", letterSpacing: "0.05em" }}>
+                  <div className="font-mono font-medium" style={{ fontSize: "min(28px, 3vh)", color: "#1a0f0a", letterSpacing: "0.05em" }}>
                     {Array.from({ length: 16 }).map((_, i) => {
                       const isSpace = i > 0 && i % 4 === 0;
                       return (
@@ -197,12 +197,12 @@ export default function Page() {
               {/* Bottom row: name + expiry */}
               <div style={{ display: "flex", justifyContent: "space-between", position: "relative", zIndex: 2 }}>
                 <div>
-                  <div className="font-mono" style={{ fontSize: "min(9px, 1vh)", color: "rgba(255,255,255,0.4)", letterSpacing: "0.1em", marginBottom: "4px" }}>CARDHOLDER</div>
-                  <div className="font-mono" style={{ fontSize: "min(14px, 1.5vh)", color: "rgba(255,255,255,0.85)", letterSpacing: "0.05em" }}>JOHN DOE</div>
+                  <div className="font-mono" style={{ fontSize: "min(9px, 1vh)", color: "rgba(26,15,10,0.4)", letterSpacing: "0.1em", marginBottom: "4px" }}>CARDHOLDER</div>
+                  <div className="font-mono" style={{ fontSize: "min(14px, 1.5vh)", color: "rgba(26,15,10,0.85)", letterSpacing: "0.05em" }}>JOHN DOE</div>
                 </div>
                 <div style={{ textAlign: "right" }}>
-                  <div className="font-mono" style={{ fontSize: "min(9px, 1vh)", color: "rgba(255,255,255,0.4)", letterSpacing: "0.1em", marginBottom: "4px" }}>EXPIRES</div>
-                  <div className="font-mono" style={{ fontSize: "min(14px, 1.5vh)", color: "rgba(255,255,255,0.85)", letterSpacing: "0.05em" }}>03/29</div>
+                  <div className="font-mono" style={{ fontSize: "min(9px, 1vh)", color: "rgba(26,15,10,0.4)", letterSpacing: "0.1em", marginBottom: "4px" }}>EXPIRES</div>
+                  <div className="font-mono" style={{ fontSize: "min(14px, 1.5vh)", color: "rgba(26,15,10,0.85)", letterSpacing: "0.05em" }}>03/29</div>
                 </div>
               </div>
 

@@ -30,14 +30,14 @@ const layers = [
 
 function WaterfallInner({ theme }: { theme: ReelTheme }) {
   const isDark = theme === darkTheme;
-  const bg = isDark ? "linear-gradient(180deg, #111310 0%, #0d0f0e 40%, #080a09 100%)" : "linear-gradient(180deg, #faf6ef 0%, #f5efe6 40%, #ede6db 100%)";
-  const panelBg = isDark ? "#1e2423" : "#ffffff";
-  const panelBorder = isDark ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.08)";
-  const textColor = isDark ? "#fafaf7" : "#2a1f1c";
+  const bg = isDark ? "linear-gradient(180deg, #111310 0%, #faf8f2 40%, #080a09 100%)" : "linear-gradient(180deg, #faf6ef 0%, #1a0f0a 40%, #ede6db 100%)";
+  const panelBg = isDark ? "#f0ebe0" : "#1a0f0a";
+  const panelBorder = isDark ? "rgba(26,15,10,0.07)" : "rgba(0,0,0,0.08)";
+  const textColor = isDark ? "#1a0f0a" : "#2a1f1c";
   const softColor = isDark ? "#b8bcb6" : "#5a4a42";
   const mutedColor = isDark ? "#7a8178" : "#8a7a72";
   const cardGrad = isDark ? "linear-gradient(135deg, #2a1f1c, #3d2520)" : "linear-gradient(135deg, #e8a98e, #d97757)";
-  const cardText = "#fafaf7"; // white on both — readable on dark card AND terracotta card
+  const cardText = "#1a0f0a"; // white on both — readable on dark card AND terracotta card
   const declineColor = isDark ? "#c4564a" : "#d4756a";
   const overlayBg = isDark ? "rgba(13,15,14,0.8)" : "rgba(245,239,230,0.85)";
   const outroBg = isDark ? "rgba(13,15,14,0.92)" : "rgba(245,239,230,0.92)";
@@ -157,20 +157,20 @@ function WaterfallInner({ theme }: { theme: ReelTheme }) {
                 position: "absolute", inset: 0, backfaceVisibility: "hidden" as const,
                 borderRadius: "18px",
                 background: "linear-gradient(135deg, #2a1f1c 0%, #3d2520 60%, #2a1f1c 100%)",
-                border: "1px solid rgba(255,255,255,0.08)",
+                border: "1px solid rgba(26,15,10,0.08)",
                 boxShadow: "0 25px 50px -15px rgba(0,0,0,0.5), 0 0 35px rgba(217,119,87,0.12)",
                 padding: "20px", display: "flex", flexDirection: "column" as const, justifyContent: "space-between", overflow: "hidden",
               }}>
-                <div style={{ position: "absolute", inset: 0, background: `linear-gradient(${135 + rotY * 2}deg, transparent 30%, rgba(255,255,255,0.08) 45%, rgba(255,255,255,0.14) 50%, rgba(255,255,255,0.08) 55%, transparent 70%)`, pointerEvents: "none", borderRadius: "inherit" }} />
+                <div style={{ position: "absolute", inset: 0, background: `linear-gradient(${135 + rotY * 2}deg, transparent 30%, rgba(26,15,10,0.08) 45%, rgba(26,15,10,0.14) 50%, rgba(26,15,10,0.08) 55%, transparent 70%)`, pointerEvents: "none", borderRadius: "inherit" }} />
                 {/* Top row: chip + generic bank logo (fades in) + contactless */}
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", position: "relative", zIndex: 1 }}>
                   <svg width="44" height="34" viewBox="0 0 56 44"><rect x="2" y="2" width="52" height="40" rx="6" fill="none" stroke="#c49a3a" strokeWidth="1.5" /><rect x="6" y="6" width="44" height="32" rx="3" fill="#d4a853" opacity="0.3" /><line x1="28" y1="6" x2="28" y2="38" stroke="#c49a3a" strokeWidth="0.7" opacity="0.4" /><line x1="6" y1="22" x2="50" y2="22" stroke="#c49a3a" strokeWidth="0.7" opacity="0.4" /></svg>
                   {/* Generic bank logo */}
                   <div style={{ opacity: bankLogoP, display: "flex", alignItems: "center", gap: "4px" }}>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3" /></svg>
-                    <span className="font-mono" style={{ fontSize: "8px", color: "rgba(255,255,255,0.4)", letterSpacing: "0.06em" }}>MERIDIAN</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(26,15,10,0.5)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3" /></svg>
+                    <span className="font-mono" style={{ fontSize: "8px", color: "rgba(26,15,10,0.4)", letterSpacing: "0.06em" }}>MERIDIAN</span>
                   </div>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.5" strokeLinecap="round"><path d="M8.5 16.5a5 5 0 0 1 0-9" /><path d="M12 19a9 9 0 0 0 0-14" /></svg>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(26,15,10,0.45)" strokeWidth="1.5" strokeLinecap="round"><path d="M8.5 16.5a5 5 0 0 1 0-9" /><path d="M12 19a9 9 0 0 0 0-14" /></svg>
                 </div>
                 {/* Card number — typewriter */}
                 <div className="font-mono font-medium text-center" style={{ fontSize: "min(20px, 2.2vh)", color: cardText, letterSpacing: "0.06em", position: "relative", zIndex: 1 }}>
@@ -180,17 +180,17 @@ function WaterfallInner({ theme }: { theme: ReelTheme }) {
                 {/* Bottom: cardholder (typed) + expiry (typed) + CascadX brand */}
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", position: "relative", zIndex: 1 }}>
                   <div>
-                    <div className="font-mono" style={{ fontSize: "8px", color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em" }}>CARDHOLDER</div>
-                    <div className="font-mono" style={{ fontSize: "11px", color: "rgba(255,255,255,0.75)", opacity: nameP }}>{nameStr.slice(0, Math.ceil(nameStr.length * nameP))}</div>
+                    <div className="font-mono" style={{ fontSize: "8px", color: "rgba(26,15,10,0.3)", letterSpacing: "0.1em" }}>CARDHOLDER</div>
+                    <div className="font-mono" style={{ fontSize: "11px", color: "rgba(26,15,10,0.75)", opacity: nameP }}>{nameStr.slice(0, Math.ceil(nameStr.length * nameP))}</div>
                   </div>
                   <div style={{ textAlign: "center" }}>
-                    <div className="font-mono" style={{ fontSize: "8px", color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em" }}>EXPIRES</div>
-                    <div className="font-mono" style={{ fontSize: "11px", color: "rgba(255,255,255,0.75)" }}>{expiryStr.slice(0, expChars) || "—"}</div>
+                    <div className="font-mono" style={{ fontSize: "8px", color: "rgba(26,15,10,0.3)", letterSpacing: "0.1em" }}>EXPIRES</div>
+                    <div className="font-mono" style={{ fontSize: "11px", color: "rgba(26,15,10,0.75)" }}>{expiryStr.slice(0, expChars) || "—"}</div>
                   </div>
                   <div className="font-mono" style={{ fontSize: "9px", color: "#d97757", opacity: 0.6 }}>CascadX.</div>
                 </div>
               </div>
-              <div style={{ position: "absolute", inset: 0, backfaceVisibility: "hidden" as const, transform: "rotateY(180deg)", borderRadius: "18px", background: "linear-gradient(135deg, #1a1512, #2a1f1c)", border: "1px solid rgba(255,255,255,0.05)" }}>
+              <div style={{ position: "absolute", inset: 0, backfaceVisibility: "hidden" as const, transform: "rotateY(180deg)", borderRadius: "18px", background: "linear-gradient(135deg, #1a1512, #2a1f1c)", border: "1px solid rgba(26,15,10,0.05)" }}>
                 <div style={{ height: "14%", marginTop: "12%", background: "rgba(0,0,0,0.35)" }} />
               </div>
             </div>
@@ -220,7 +220,7 @@ function WaterfallInner({ theme }: { theme: ReelTheme }) {
               <div className="rounded-xl flex items-center justify-center" style={{
                 width: "min(160px, 28vw)", height: "min(100px, 11vh)",
                 background: cardGrad,
-                border: "1px solid rgba(255,255,255,0.1)",
+                border: "1px solid rgba(26,15,10,0.1)",
                 boxShadow: catchGlow
                   ? "0 0 40px rgba(217,119,87,0.5), 0 15px 40px -10px rgba(0,0,0,0.4)"
                   : "0 15px 40px -10px rgba(0,0,0,0.4), 0 0 20px rgba(217,119,87,0.15)",
@@ -253,17 +253,17 @@ function WaterfallInner({ theme }: { theme: ReelTheme }) {
               transition: "opacity 500ms",
             }}>
               <div className="rounded-2xl px-5 py-4 flex items-center justify-between" style={{
-                background: approved ? "rgba(217,119,87,0.1)" : "#1e2423",
-                border: `1.5px solid ${hitFlash ? (approved ? "#d97757" : "rgba(196,86,74,0.6)") : approved ? "rgba(217,119,87,0.3)" : "rgba(255,255,255,0.07)"}`,
+                background: approved ? "rgba(217,119,87,0.1)" : "#f0ebe0",
+                border: `1.5px solid ${hitFlash ? (approved ? "#d97757" : "rgba(196,86,74,0.6)") : approved ? "rgba(217,119,87,0.3)" : "rgba(26,15,10,0.07)"}`,
                 boxShadow: approved ? "0 0 30px rgba(217,119,87,0.2)" : hitFlash && !approved ? "0 0 20px rgba(196,86,74,0.15)" : "none",
                 minHeight: "min(64px, 7vh)",
               }}>
                 <div className="flex items-center gap-3">
                   {/* PSP logo circle */}
-                  <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.08)" }}>
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style={{ background: "rgba(26,15,10,0.06)", border: "1px solid rgba(26,15,10,0.08)" }}>
                     <span className="font-mono text-[10px] font-bold" style={{ color: layer.color }}>{layer.name.slice(0, 2).toUpperCase()}</span>
                   </div>
-                  <span className="font-display font-[600] text-[16px]" style={{ color: dimmed ? "#7a8178" : "#fafaf7" }}>{layer.name}</span>
+                  <span className="font-display font-[600] text-[16px]" style={{ color: dimmed ? "#7a8178" : "#1a0f0a" }}>{layer.name}</span>
                 </div>
                 {hit && (
                   <span className="font-mono text-[12px] font-medium" style={{ color: approved ? "#d97757" : "#c4564a" }}>

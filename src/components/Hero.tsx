@@ -3,7 +3,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 
-// Lazy-load the heavy 3D scene — only initialises when the hero is in viewport
 const HeroScene = dynamic(() => import("./hero/HeroScene"), { ssr: false });
 
 function useCountUp(end: number, duration = 1500, trigger = false) {
@@ -25,9 +24,7 @@ function useCountUp(end: number, duration = 1500, trigger = false) {
 }
 
 export default function Hero() {
-  const metricsRef = useRef<HTMLDivElement>(null);
   const sceneRef   = useRef<HTMLDivElement>(null);
-  const [metricVisible, setMetricVisible] = useState(false);
   const [sceneVisible,  setSceneVisible]  = useState(false);
   const [textAnimate,   setTextAnimate]   = useState(false);
 
@@ -41,16 +38,6 @@ export default function Hero() {
 
   useEffect(() => {
     const io = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setMetricVisible(true); io.disconnect(); } },
-      { threshold: 0.2 }
-    );
-    if (metricsRef.current) io.observe(metricsRef.current);
-    return () => io.disconnect();
-  }, []);
-
-  // Lazy-init scene when visible
-  useEffect(() => {
-    const io = new IntersectionObserver(
       ([e]) => { if (e.isIntersecting) { setSceneVisible(true); io.disconnect(); } },
       { threshold: 0.05 }
     );
@@ -58,11 +45,14 @@ export default function Hero() {
     return () => io.disconnect();
   }, []);
 
-  const approval = useCountUp(18,   1500, metricVisible);
-  const psps     = useCountUp(1000, 1500, metricVisible);
-  const latency  = useCountUp(40,   1200, metricVisible);
+  useEffect(() => {
+    const io = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setMetricVisible(true); io.disconnect(); } },
+      { threshold: 0.2 }
+    );
+    return () => io.disconnect();
+  }, []);
 
-  // Text cascade helper — only animates on first-time visitors
   const ta = (delay: number): React.CSSProperties =>
     textAnimate ? { animation: `hero-text-in 400ms ease-out ${delay}ms both` } : {};
 
@@ -78,18 +68,16 @@ export default function Hero() {
         padding: "80px 28px 60px",
       }}
     >
-      {/* Animated gradient orbs */}
+      {/* Single on-brand terracotta orb — no rainbow */}
       <div className="hero-orb hero-orb-1" aria-hidden="true" />
-      <div className="hero-orb hero-orb-2" aria-hidden="true" />
-      <div className="hero-orb hero-orb-3" aria-hidden="true" />
 
-      {/* Terracotta radial glow */}
+      {/* Terracotta radial glow behind scene */}
       <div style={{
         position: "absolute", inset: 0, pointerEvents: "none",
         background: "radial-gradient(ellipse 70% 60% at 65% 50%, rgba(217,119,87,0.09) 0%, transparent 70%)",
       }} />
 
-      {/* Hero film grain — very subtle, adds cinematic depth */}
+      {/* Film grain — cinematic depth */}
       <div aria-hidden="true" style={{
         position: "absolute", inset: 0, pointerEvents: "none", zIndex: 1,
         backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
@@ -97,7 +85,7 @@ export default function Hero() {
         mixBlendMode: "overlay",
       }} />
 
-      {/* Headline area glow — desktop only, soft terracotta sunrise behind the copy */}
+      {/* Headline glow — desktop only */}
       <div className="hero-headline-glow" aria-hidden="true" style={{
         position: "absolute",
         width: 700, height: 520,
@@ -108,141 +96,89 @@ export default function Hero() {
         filter: "blur(60px)",
       }} />
 
-      <div style={{
-        maxWidth: "var(--max)",
-        width: "100%",
-        margin: "0 auto",
-        display: "grid",
-        gridTemplateColumns: "clamp(320px, 40%, 480px) 1fr",
-        gap: "clamp(32px, 4vw, 64px)",
-        alignItems: "center",
-        position: "relative",
-        zIndex: 2,
-      }}
+      <div
+        style={{
+          maxWidth: "var(--max)",
+          width: "100%",
+          margin: "0 auto",
+          display: "grid",
+          gridTemplateColumns: "clamp(320px, 40%, 480px) 1fr",
+          gap: "clamp(32px, 4vw, 64px)",
+          alignItems: "center",
+          position: "relative",
+          zIndex: 2,
+        }}
         className="hero-grid"
       >
-        {/* ── LEFT: Text content ───────────────────────────── */}
-        <div>
-          {/* Headline — static */}
+        {/* ── LEFT: Copy ───────────────────────────────────── */}
+        <div className="hero-text-col">
+
+          {/* Editorial headline — refined, elegant, one accent */}
           <h1 style={{
             fontFamily: "var(--font-display)",
-            fontWeight: 800,
-            fontSize: "clamp(36px, 5.5vw, 72px)",
-            lineHeight: 1.05,
-            letterSpacing: "-0.04em",
-            color: "#fafaf7",
-            margin: "0 0 22px",
+            fontWeight: 600,
+            fontSize: "clamp(36px, 4.8vw, 56px)",
+            lineHeight: 1.15,
+            letterSpacing: "-0.028em",
+            color: "#1a0f0a",
+            margin: "0 0 28px",
+            maxWidth: "640px",
             ...ta(200),
           }}>
-            Payments that{" "}
-            <em style={{ fontStyle: "normal", color: "var(--accent)" }}>think</em>
-            <br />
-            before they fall.
+            One API to route every payment through the{" "}
+            <span style={{
+              color: "#d97757",
+              fontWeight: 600,
+              fontStyle: "italic",
+            }}>best acquirer</span>.
           </h1>
 
-          {/* Subtitle */}
           <p style={{
             fontFamily: "var(--font-display)",
-            fontWeight: 500,
-            fontSize: "clamp(16px, 1.6vw, 20px)",
+            fontWeight: 400,
+            fontSize: "clamp(16px, 1.4vw, 19px)",
             lineHeight: 1.6,
-            color: "rgba(255,255,255,0.68)",
-            maxWidth: "520px",
-            margin: "0 0 32px",
+            color: "rgba(26,15,10,0.65)",
+            maxWidth: "540px",
+            margin: "0 0 40px",
+            letterSpacing: "-0.005em",
             ...ta(500),
           }}>
-            AI-powered payment orchestration cascading through 1,000+ PSPs in under 40 milliseconds.
-            Turn declined transactions into approved revenue — across every provider, every country, every card.
+            CascadX cascades declined transactions through 1,000+ acquirers
+            automatically — recovering payments your current provider would lose.
+            Live in 48 hours. Zero setup fees.
           </p>
 
-          {/* CTAs */}
-          <div style={{ marginBottom: "36px", ...ta(800) }}>
-            {/* Button row */}
+          {/* Single CTA — clean, confident */}
+          <div style={{ marginBottom: "28px", ...ta(700) }}>
             <div className="hero-cta-row">
-              {/* Primary — Start routing smarter */}
               <div style={{ position: "relative", display: "inline-flex" }}>
                 <button
                   className="hero-btn-primary"
-                  onClick={() => window.dispatchEvent(new Event("open-chat"))}
+                  onClick={() => {
+                    document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" });
+                  }}
                 >
-                  Get started
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                    <path d="M7 6l5 4-5 4" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M12 6l5 4-5 4" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.55"/>
+                  Learn more
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                    <path d="M4 9h10M10 5l4 4-4 4" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </button>
                 <div className="hero-btn-pulse" aria-hidden="true" />
               </div>
-
-              {/* Secondary — Talk to our team */}
-              <button
-                className="hero-btn-secondary"
-                onClick={() => window.dispatchEvent(new Event("open-chat"))}
-              >
-                Speak with sales
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                  <path d="M3 4h14a1.5 1.5 0 011.5 1.5v7A1.5 1.5 0 0117 14H8l-4.5 3V14H3A1.5 1.5 0 011.5 12.5v-7A1.5 1.5 0 013 4z" stroke="white" strokeWidth="1.5" strokeLinejoin="round"/>
-                </svg>
-              </button>
-            </div>
-
-            {/* Friction reducer */}
-            <div className="hero-cta-footnote">
-              <span>Free 30-day trial</span>
-              <span className="hero-cta-dot" aria-hidden="true">·</span>
-              <span>No credit card</span>
-              <span className="hero-cta-dot" aria-hidden="true">·</span>
-              <span>Live in 48 hours</span>
             </div>
           </div>
 
-          {/* Trust signals / metrics */}
-          <div
-            ref={metricsRef}
-            style={{
-              display: "flex",
-              gap: "clamp(20px, 3vw, 36px)",
-              flexWrap: "wrap",
-              ...ta(1100),
-            }}
-          >
-            {[
-              { value: `+${approval}%`, label: "APPROVAL" },
-              { value: `${psps.toLocaleString()}+`, label: "PSPs" },
-              { value: `< ${latency}ms`, label: "DECISION" },
-            ].map(({ value, label }) => (
-              <div key={label}>
-                <div style={{
-                  fontFamily: "var(--font-display)",
-                  fontWeight: 700,
-                  fontSize: "clamp(22px, 2.5vw, 28px)",
-                  letterSpacing: "-0.03em",
-                  color: "#fafaf7",
-                  lineHeight: 1,
-                  marginBottom: "4px",
-                }}>
-                  {value}
-                </div>
-                <div style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "10px",
-                  letterSpacing: "0.06em",
-                  color: "var(--ink-muted)",
-                }}>
-                  {label}
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
 
-        {/* ── RIGHT: 3D Scene ──────────────────────────────── */}
+        {/* ── RIGHT: Scene ─────────────────────────────────── */}
         <div
+          className="hero-scene-col"
           ref={sceneRef}
           style={{
             position: "relative",
-            height: "clamp(420px, 55vw, 600px)",
-            minHeight: "400px",
+            height: "clamp(540px, 62vw, 590px)",
+            minHeight: "540px",
           }}
         >
           {sceneVisible && <HeroScene />}
@@ -250,102 +186,86 @@ export default function Hero() {
       </div>
 
       <style>{`
-        /* ── Animated gradient orbs ────────────────────── */
+        /* ── Orb — terracotta only ─────────────────────── */
         .hero-orb {
           position: absolute;
-          width: 440px;
-          height: 440px;
+          width: 500px;
+          height: 500px;
           border-radius: 50%;
-          filter: blur(80px);
+          filter: blur(90px);
           pointer-events: none;
           z-index: 0;
         }
         .hero-orb-1 {
-          background: rgba(217,119,87,0.28);
-          top: -120px; right: 8%;
-          animation: orb-float-1 20s ease-in-out infinite;
-        }
-        .hero-orb-2 {
-          background: rgba(139,92,246,0.22);
-          bottom: -80px; right: 28%;
-          animation: orb-float-2 24s ease-in-out infinite;
-        }
-        .hero-orb-3 {
-          background: rgba(0,212,181,0.18);
-          top: 25%; left: -120px;
-          animation: orb-float-3 18s ease-in-out infinite;
+          background: rgba(217,119,87,0.22);
+          top: -140px; right: 5%;
+          animation: orb-float-1 22s ease-in-out infinite;
         }
         @keyframes orb-float-1 {
           0%,100% { transform: translate(0,0) scale(1); }
-          33%     { transform: translate(40px,-30px) scale(1.1); }
-          66%     { transform: translate(-20px,30px) scale(0.9); }
-        }
-        @keyframes orb-float-2 {
-          0%,100% { transform: translate(0,0) scale(1); }
-          40%     { transform: translate(-50px,-40px) scale(1.08); }
-          70%     { transform: translate(30px,20px) scale(0.95); }
-        }
-        @keyframes orb-float-3 {
-          0%,100% { transform: translate(0,0) scale(1); }
-          30%     { transform: translate(60px,30px) scale(1.05); }
-          70%     { transform: translate(-30px,-50px) scale(0.92); }
+          40%     { transform: translate(30px,-40px) scale(1.08); }
+          70%     { transform: translate(-15px,25px) scale(0.94); }
         }
         @media (prefers-reduced-motion: reduce) {
           .hero-orb { animation: none !important; }
         }
 
-        /* ── CTA buttons ─────────────────────────────────── */
+        /* ── CTA row ──────────────────────────────────── */
         .hero-cta-row {
           display: flex;
           flex-direction: row;
-          gap: 16px;
+          gap: 14px;
           align-items: center;
+          margin-bottom: 20px;
         }
+
+        /* Primary button */
         .hero-btn-primary {
           display: inline-flex;
           align-items: center;
           justify-content: center;
           gap: 10px;
-          width: 220px;
-          height: 56px;
-          background: #d97757;
-          color: white;
-          font-family: var(--font-display);
-          font-weight: 600;
-          font-size: 17px;
+          height: 52px;
           padding: 0 28px;
-          border-radius: 14px;
+          background: var(--accent);
+          color: #fff;
           border: none;
-          cursor: pointer;
+          border-radius: 100px;
+          font-family: var(--font-display, "Inter", sans-serif);
+          font-weight: 600;
+          font-size: 16px;
           letter-spacing: -0.01em;
+          cursor: pointer;
+          outline: none;
+          touch-action: manipulation;
+          transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+          box-shadow: 0 8px 20px rgba(217,119,87,0.35);
+          position: relative;
+          z-index: 2;
           white-space: nowrap;
-          transition: background 250ms ease-out, transform 250ms ease-out, box-shadow 250ms ease-out;
         }
-        .hero-btn-primary svg {
-          transition: transform 250ms ease-out;
-          flex-shrink: 0;
-        }
+        .hero-btn-primary svg { transition: transform 200ms ease; flex-shrink: 0; }
         .hero-btn-primary:hover {
-          background: #c86847;
-          transform: scale(1.02);
-          box-shadow: 0 0 40px rgba(217,119,87,0.4);
+          background: var(--accent-deep);
+          transform: translateY(-2px);
+          box-shadow: 0 14px 32px rgba(217,119,87,0.45);
         }
-        .hero-btn-primary:hover svg { transform: translateX(4px); }
-        .hero-btn-primary:active    { transform: scale(0.98); }
+        .hero-btn-primary:hover svg { transform: translateX(3px); }
+        .hero-btn-primary:active    { transform: scale(0.97); }
 
         /* Pulse ring */
         .hero-btn-pulse {
           position: absolute;
           inset: 0;
-          border-radius: 14px;
-          border: 1.5px solid rgba(217,119,87,0.6);
+          border-radius: 100px;
+          border: 1.5px solid rgba(217,119,87,0.55);
           pointer-events: none;
           animation: hero-ring-pulse 4s ease-out infinite;
         }
         @keyframes hero-ring-pulse {
-          0%   { transform: scale(1);    opacity: 0.35; }
-          65%  { transform: scale(1.15); opacity: 0;    }
-          100% { transform: scale(1.15); opacity: 0;    }
+          0%   { transform: scale(1);    opacity: 0.4; }
+          65%  { transform: scale(1.18); opacity: 0;   }
+          100% { transform: scale(1.18); opacity: 0;   }
         }
 
         /* Secondary button */
@@ -353,131 +273,80 @@ export default function Hero() {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          gap: 10px;
-          width: 220px;
-          height: 56px;
-          background: transparent;
-          color: #fafaf7;
-          font-family: var(--font-display);
-          font-weight: 600;
-          font-size: 17px;
-          padding: 0 28px;
-          border-radius: 14px;
-          border: 1.5px solid rgba(255,255,255,0.2);
-          cursor: pointer;
-          letter-spacing: -0.01em;
-          white-space: nowrap;
-          transition: border-color 250ms ease-out, background 250ms ease-out, transform 250ms ease-out;
-        }
-        .hero-btn-secondary svg {
-          transition: transform 250ms ease-out;
-          flex-shrink: 0;
-        }
-        .hero-btn-secondary:hover {
-          border-color: rgba(255,255,255,0.6);
+          gap: 8px;
+          height: 52px;
+          padding: 0 24px;
           background: rgba(255,255,255,0.05);
-          transform: scale(1.02);
+          color: rgba(250,250,247,0.85);
+          border: 1.5px solid rgba(255,255,255,0.14);
+          border-radius: 100px;
+          font-family: var(--font-display, "Inter", sans-serif);
+          font-weight: 500;
+          font-size: 15px;
+          letter-spacing: -0.01em;
+          cursor: pointer;
+          outline: none;
+          touch-action: manipulation;
+          white-space: nowrap;
+          transition: border-color 200ms ease, background 200ms ease, transform 200ms ease;
         }
-        .hero-btn-secondary:hover svg { transform: translateX(4px); }
-        .hero-btn-secondary:active    { transform: scale(0.98); }
+        .hero-btn-secondary svg { transition: transform 200ms ease; flex-shrink: 0; }
+        .hero-btn-secondary:hover {
+          border-color: rgba(255,255,255,0.32);
+          background: rgba(255,255,255,0.09);
+          transform: translateY(-1px);
+        }
+        .hero-btn-secondary:hover svg { transform: translateX(2px); }
+        .hero-btn-secondary:active    { transform: scale(0.97); }
 
-        /* Friction-reducer line */
+        /* Friction-reducer */
         .hero-cta-footnote {
           display: flex;
           align-items: center;
           gap: 10px;
-          margin-top: 20px;
           font-family: var(--font-display);
-          font-weight: 500;
-          font-size: 14px;
-          color: rgba(255,255,255,0.5);
+          font-weight: 400;
+          font-size: 13px;
+          color: rgba(250,250,247,0.38);
           flex-wrap: wrap;
         }
-        .hero-cta-dot {
-          color: #d97757;
-          font-size: 16px;
-          line-height: 1;
-          opacity: 0.7;
-        }
+        .hero-cta-dot { color: var(--accent); opacity: 0.6; }
 
-        /* Touch — no 300ms tap delay */
+        /* Touch */
         .hero-btn-primary, .hero-btn-secondary { touch-action: manipulation; }
 
-        /* Scroll indicator bounce */
-        @keyframes hero-scroll-bounce {
-          0%, 100% { transform: translateY(0);   opacity: 0.4; }
-          50%       { transform: translateY(4px); opacity: 0.7; }
-        }
-        .hero-scroll-indicator:hover path { stroke: rgba(255,255,255,0.65) !important; }
-
-        /* ── Mobile padding ─────────────────────────────── */
-        @media (max-width: 640px) {
-          header { padding-left: 20px !important; padding-right: 20px !important; }
-        }
-
-        /* ── Mobile — stacks at 900px ────────────────────── */
+        /* ── Mobile — stacks at 900px ──────────────────── */
         @media (max-width: 900px) {
           .hero-grid {
             grid-template-columns: 1fr !important;
             text-align: center;
             gap: 24px !important;
           }
-          .hero-grid > div:first-child p,
-          .hero-grid > div:first-child > div:last-child {
-            margin-left: auto;
-            margin-right: auto;
-          }
           .hero-grid > div:last-child {
-            height: clamp(400px, 105vw, 500px) !important;
+            height: clamp(510px, 128vw, 560px) !important;
             width: 100%;
           }
           .hero-cta-row { justify-content: center; }
           .hero-cta-footnote { justify-content: center; }
+          .hero-metrics { justify-content: center; }
           .hero-headline-glow { display: none !important; }
-          .hero-scroll-indicator { display: none !important; }
         }
-        /* ── Mobile 768px — button layout ───────────────── */
         @media (max-width: 768px) {
-          .hero-btn-primary, .hero-btn-secondary {
-            height: 52px !important;
-            font-size: 16px !important;
-          }
+          .hero-scene-col { order: -1; }
+          .hero-text-col  { order: 1; }
+          .hero-btn-secondary  { display: none !important; }
+          .hero-cta-footnote   { display: none !important; }
+          .hero-metrics        { display: none !important; }
         }
-        /* ── Mobile 540px — full-width stacked buttons ──── */
         @media (max-width: 540px) {
-          .hero-cta-row { flex-direction: column; gap: 10px; }
-          .hero-btn-primary, .hero-btn-secondary { width: 100%; max-width: 380px; }
+          .hero-cta-row { flex-direction: column; gap: 10px; margin-bottom: 0; }
+          .hero-btn-primary, .hero-btn-secondary { width: 100%; max-width: 360px; }
         }
 
         @media (prefers-reduced-motion: reduce) {
           .hero-btn-pulse { animation: none; }
-          .hero-scroll-indicator svg { animation: none !important; }
         }
       `}</style>
-
-      {/* Scroll indicator — desktop only, bounces gently to invite scrolling */}
-      <button
-        className="hero-scroll-indicator"
-        aria-label="Scroll to explore"
-        onClick={() => document.querySelector("#solutions")?.scrollIntoView({ behavior: "smooth" })}
-        style={{
-          position: "absolute", bottom: 32, left: "50%",
-          transform: "translateX(-50%)",
-          display: "flex", flexDirection: "column", alignItems: "center", gap: 7,
-          background: "none", border: "none", cursor: "pointer",
-          zIndex: 3, padding: 8,
-        }}
-      >
-        <span style={{
-          fontFamily: "var(--font-mono)", fontSize: 9, textTransform: "uppercase",
-          letterSpacing: "3px", color: "rgba(255,255,255,0.3)", userSelect: "none",
-          pointerEvents: "none",
-        }}>Scroll to explore</span>
-        <svg width="20" height="12" viewBox="0 0 20 12" fill="none" aria-hidden="true"
-          style={{ animation: "hero-scroll-bounce 2s ease-in-out infinite" }}>
-          <path d="M2 2l8 8 8-8" stroke="rgba(255,255,255,0.4)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      </button>
     </header>
   );
 }

@@ -49,7 +49,7 @@ export default function SignalsDashboard() {
 
         <div className="alert-grid grid grid-cols-[1.1fr_1fr] gap-[60px] items-stretch">
           {/* Dashboard */}
-          <div className="rounded-[var(--radius-lg)] p-[26px] flex flex-col gap-5" style={{ background: "#f5efe6", border: "1px solid rgba(42,31,28,0.08)", boxShadow: "0 20px 40px -10px rgba(0,0,0,0.3), 0 8px 20px -5px rgba(0,0,0,0.2)" }}>
+          <div className="rounded-[var(--radius-lg)] p-[26px] flex flex-col gap-5" style={{ background: "#1a0f0a", border: "1px solid rgba(42,31,28,0.08)", boxShadow: "0 20px 40px -10px rgba(0,0,0,0.3), 0 8px 20px -5px rgba(0,0,0,0.2)" }}>
             {/* Head */}
             <div className="flex items-center justify-between pb-4" style={{ borderBottom: "1px solid rgba(42,31,28,0.12)" }}>
               <h4 className="m-0 font-display font-[700] text-[18px] tracking-[-0.02em]" style={{ color: "#2a1f1c" }}>

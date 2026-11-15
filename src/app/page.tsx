@@ -1,19 +1,11 @@
 import Script from "next/script";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
-import StatsStrip from "@/components/StatsStrip";
-import Solutions from "@/components/Solutions";
-import Industries from "@/components/Industries";
+import TrustedByMarquee from "@/components/TrustedByMarquee";
 import PaymentMethods from "@/components/PaymentMethods";
 import HowItWorks from "@/components/HowItWorks";
-import AIChat from "@/components/AIChat";
-import SignalsDashboard from "@/components/SignalsDashboard";
-import CascadeEngine from "@/components/CascadeEngine";
-import CTA from "@/components/CTA";
+import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
-import TrustedByMarquee from "@/components/TrustedByMarquee";
-import PaymentNetworkMap from "@/components/PaymentNetworkMap";
-import LiveCounter from "@/components/LiveCounter";
 
 export default function Home() {
   return (
@@ -38,17 +30,11 @@ export default function Home() {
       />
       <Nav />
       <Hero />
-      <StatsStrip />
       <TrustedByMarquee />
-      <Solutions />
-      <Industries />
       <PaymentMethods />
-      <PaymentNetworkMap />
       <section id="how-it-works"><HowItWorks /></section>
-      <section id="features"><AIChat /><SignalsDashboard /><CascadeEngine /></section>
-      <section id="cta"><CTA /></section>
+      <FinalCTA />
       <Footer />
-      <LiveCounter />
     </>
   );
 }

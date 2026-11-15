@@ -50,8 +50,8 @@ export default function StatsStrip() {
       ref={ref}
       style={{
         background: "linear-gradient(180deg, var(--bg) 0%, #0a0c0b 100%)",
-        borderTop: "1px solid rgba(255,255,255,0.06)",
-        borderBottom: "1px solid rgba(255,255,255,0.06)",
+        borderTop: "1px solid rgba(26,15,10,0.06)",
+        borderBottom: "1px solid rgba(26,15,10,0.06)",
         padding: "72px 20px",
         overflow: "hidden",
         position: "relative",
@@ -79,7 +79,7 @@ export default function StatsStrip() {
             style={{
               textAlign: "center",
               padding: "0 24px",
-              borderRight: i < 2 ? "1px solid rgba(255,255,255,0.08)" : "none",
+              borderRight: i < 2 ? "1px solid rgba(26,15,10,0.08)" : "none",
               opacity: visible ? 1 : 0,
               transform: visible ? "none" : "translateY(20px)",
               transition: `opacity 600ms ease ${i * 120}ms, transform 600ms ease ${i * 120}ms`,
@@ -100,7 +100,7 @@ export default function StatsStrip() {
               fontFamily: "var(--font-display)",
               fontWeight: 600,
               fontSize: "clamp(16px,1.6vw,20px)",
-              color: "#fafaf7",
+              color: "#1a0f0a",
               marginBottom: 6,
               letterSpacing: "-0.01em",
             }}>
@@ -109,7 +109,7 @@ export default function StatsStrip() {
             <div style={{
               fontFamily: "var(--font-mono)",
               fontSize: 12,
-              color: "rgba(255,255,255,0.38)",
+              color: "rgba(26,15,10,0.38)",
               letterSpacing: "0.02em",
             }}>
               {s.sub}
@@ -126,7 +126,7 @@ export default function StatsStrip() {
           }
           .stat-item {
             border-right: none !important;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid rgba(26,15,10,0.08);
             padding-bottom: 48px !important;
           }
           .stat-item:last-child { border-bottom: none !important; padding-bottom: 0 !important; }

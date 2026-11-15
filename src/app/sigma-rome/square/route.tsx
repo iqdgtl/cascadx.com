@@ -19,7 +19,7 @@ export async function GET() {
       <div
         style={{
           width: W, height: H,
-          background: "#0d0f0e",
+          background: "#faf8f2",
           display: "flex",
           position: "relative",
           overflow: "hidden",
@@ -128,7 +128,7 @@ export async function GET() {
           {/* Logo + badge row */}
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
             <div style={{ display: "flex", alignItems: "center" }}>
-              <div style={{ color: "#fafaf7", fontSize: 28, fontWeight: 800, letterSpacing: "-0.8px", display: "flex" }}>
+              <div style={{ color: "#1a0f0a", fontSize: 28, fontWeight: 800, letterSpacing: "-0.8px", display: "flex" }}>
                 CascadX
               </div>
               <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#d97757", marginLeft: 3, marginBottom: -4, display: "flex" }} />

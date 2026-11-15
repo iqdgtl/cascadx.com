@@ -11,7 +11,7 @@ import RobotMascot from "./RobotMascot";
 
 /* --- APM logos --- */
 const GooglePayLogo = () => (<svg viewBox="0 0 56 24" className="w-[36px]"><path d="M21.4 10.5c0-.6-.1-1.2-.2-1.9h-9.7v3.5h5.6c-.2 1.2-.9 2.3-2 3v2.4h3.2c1.9-1.7 3-4.3 3.1-7z" fill="#4285F4"/><path d="M11.5 18.7c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H2.6v2.6c1.7 3.3 5.1 5.4 8.9 5.4z" fill="#34A853"/><path d="M5.9 10.7c-.4-1.2-.4-2.5 0-3.7V4.4H2.6C1.1 7.3 1.1 10.7 2.6 13.6L5.9 11v-.3z" fill="#FBBC04"/><path d="M11.5 3c1.5 0 2.8.5 3.9 1.5l2.9-2.9C16.4.6 14.1-.3 11.5-.3c-3.8 0-7.2 2.2-8.9 5.4L5.9 7.7c.8-2.3 3-4.1 5.6-4.7z" fill="#EA4335"/><text x="30" y="16" fontFamily="Inter,sans-serif" fontWeight="600" fontSize="9" fill="#b8bcb6">Pay</text></svg>);
-const ApplePayLogo = () => (<svg viewBox="0 0 56 20" className="w-[38px]"><path d="M10.3 1.5c.6-.7 1-1.7.9-2.7-.9 0-2 .6-2.6 1.4-.6.6-1.1 1.7-.9 2.6.9.1 1.9-.5 2.6-1.3zm.9 1.3c-1.4-.1-2.7.8-3.3.8-.7 0-1.7-.8-2.8-.8C3.7 2.9 2.3 3.9 1.5 5.4c-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3.1 2.4 1.2 0 1.7-.8 3.2-.8 1.5 0 1.9.8 3.2.8 1.3 0 2.2-1.2 3-2.4 1-1.4 1.3-2.7 1.4-2.8 0 0-2.6-1-2.6-4 0-2.5 2-3.7 2.1-3.8-1.2-1.7-3-1.9-3.6-2-.5 0-1 .1-1.3.1z" fill="#fafaf7" transform="translate(1,1) scale(0.95)"/><text x="24" y="14" fontFamily="Inter,sans-serif" fontWeight="600" fontSize="9" fill="#fafaf7">Pay</text></svg>);
+const ApplePayLogo = () => (<svg viewBox="0 0 56 20" className="w-[38px]"><path d="M10.3 1.5c.6-.7 1-1.7.9-2.7-.9 0-2 .6-2.6 1.4-.6.6-1.1 1.7-.9 2.6.9.1 1.9-.5 2.6-1.3zm.9 1.3c-1.4-.1-2.7.8-3.3.8-.7 0-1.7-.8-2.8-.8C3.7 2.9 2.3 3.9 1.5 5.4c-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3.1 2.4 1.2 0 1.7-.8 3.2-.8 1.5 0 1.9.8 3.2.8 1.3 0 2.2-1.2 3-2.4 1-1.4 1.3-2.7 1.4-2.8 0 0-2.6-1-2.6-4 0-2.5 2-3.7 2.1-3.8-1.2-1.7-3-1.9-3.6-2-.5 0-1 .1-1.3.1z" fill="#1a0f0a" transform="translate(1,1) scale(0.95)"/><text x="24" y="14" fontFamily="Inter,sans-serif" fontWeight="600" fontSize="9" fill="#1a0f0a">Pay</text></svg>);
 const KlarnaLogo = () => (<svg viewBox="0 0 70 22" className="w-[38px]"><text x="0" y="18" fontFamily="Inter,sans-serif" fontWeight="800" fontSize="18" fill="#FFB3C7" letterSpacing="-0.8">Klarna.</text></svg>);
 const PayPalLogo = () => (<svg viewBox="0 0 62 20" className="w-[36px]"><text x="0" y="16" fontFamily="Inter,sans-serif" fontWeight="700" fontSize="15" fill="#003087" letterSpacing="-0.4">Pay</text><text x="28" y="16" fontFamily="Inter,sans-serif" fontWeight="700" fontSize="15" fill="#009CDE" letterSpacing="-0.4">Pal</text></svg>);
 const SkrillLogo = () => (<svg viewBox="0 0 52 20" className="w-[32px]"><text x="0" y="16" fontFamily="Inter,sans-serif" fontWeight="800" fontSize="16" fill="#862165" letterSpacing="-0.4">Skrill</text></svg>);
@@ -19,7 +19,7 @@ const AlipayLogo = () => (<svg viewBox="0 0 48 22" className="w-[34px]"><text x=
 const WeChatPayLogo = () => (<svg viewBox="0 0 32 32" className="w-[28px]"><path d="M16 4C8.8 4 3 8.8 3 14.8c0 3.4 1.8 6.4 4.6 8.4l-1.2 3.6 4.2-2.1c1.7.5 3.5.7 5.4.7 7.2 0 13-4.8 13-10.8S23.2 4 16 4z" fill="#07C160"/><circle cx="12" cy="13" r="1.5" fill="#fff"/><circle cx="20" cy="13" r="1.5" fill="#fff"/></svg>);
 const PixLogo = () => (<svg viewBox="0 0 32 32" className="w-[28px]"><g transform="translate(16,16) rotate(45)"><rect x="-10" y="-10" width="20" height="20" rx="3" fill="#32BCAD"/><path d="M-4 0 L0-4 L4 0 M-4 0 L0 4 L4 0" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></g></svg>);
 const IdealLogo = () => (<svg viewBox="0 0 36 36" className="w-[28px]"><rect x="2" y="2" width="32" height="32" rx="6" fill="#CC0066"/><text x="18" y="23" textAnchor="middle" fontFamily="Inter,sans-serif" fontWeight="800" fontSize="12" fill="#fff" letterSpacing="-0.5">iDEAL</text></svg>);
-const RevolutLogo = () => (<svg viewBox="0 0 32 32" className="w-[26px]"><circle cx="16" cy="16" r="14" fill="#0d0f0e" stroke="rgba(255,255,255,0.2)" strokeWidth="1"/><text x="16" y="22" textAnchor="middle" fontFamily="Inter,sans-serif" fontWeight="800" fontSize="18" fill="#fafaf7">R</text></svg>);
+const RevolutLogo = () => (<svg viewBox="0 0 32 32" className="w-[26px]"><circle cx="16" cy="16" r="14" fill="#faf8f2" stroke="rgba(26,15,10,0.2)" strokeWidth="1"/><text x="16" y="22" textAnchor="middle" fontFamily="Inter,sans-serif" fontWeight="800" fontSize="18" fill="#1a0f0a">R</text></svg>);
 
 /* --- 3-tier orbit layout --- */
 const CX = 250, CY = 250;
@@ -216,9 +216,9 @@ export default function NeuralVisual() {
                       dur={`${5 + globalIdx * 0.4}s`} begin={`${3 + globalIdx * 0.1}s`}
                       repeatCount="indefinite" additive="sum"
                     />
-                    <circle cx={n.x} cy={n.y} r={n.badgeR} fill="#262c2b" stroke="rgba(255,255,255,0.12)" strokeWidth="1"/>
+                    <circle cx={n.x} cy={n.y} r={n.badgeR} fill="#262c2b" stroke="rgba(26,15,10,0.12)" strokeWidth="1"/>
                     <path d={`M${n.x-n.badgeR+5},${n.y-n.badgeR+2} A${n.badgeR},${n.badgeR} 0 0,1 ${n.x+n.badgeR-5},${n.y-n.badgeR+2}`}
-                      fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="1"/>
+                      fill="none" stroke="rgba(26,15,10,0.06)" strokeWidth="1"/>
                     {/* Counter-rotate logo via SVG transform (not CSS — reliable on mobile) */}
                     <g transform={`rotate(${-scrollDeg} ${n.x} ${n.y})`}>
                       <foreignObject x={n.x-n.badgeR+4} y={n.y-n.badgeR+4} width={(n.badgeR-4)*2} height={(n.badgeR-4)*2}>
@@ -253,7 +253,7 @@ export default function NeuralVisual() {
             <animate attributeName="r" values="53;65;53" dur="2.6s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values="0.3;0;0.3" dur="2.6s" repeatCount="indefinite"/>
           </circle>
-          <circle cx={CX} cy={CY} r="51" fill="#262c2b" stroke="rgba(255,255,255,0.14)" strokeWidth="1.5"/>
+          <circle cx={CX} cy={CY} r="51" fill="#262c2b" stroke="rgba(26,15,10,0.14)" strokeWidth="1.5"/>
           <foreignObject x={CX-44} y={CY-44} width="88" height="88">
             <div className="flex items-center justify-center w-full h-full">
               <RobotMascot size={80}/>

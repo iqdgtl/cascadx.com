@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{width:1200px;height:627px;overflow:hidden;background:#0d0f0e}
+.root{width:1200px;height:627px;position:relative;overflow:hidden}
+
+/* ── PHOTO PANEL ── */
+.photo-panel{
+  position:absolute;left:0;top:0;
+  width:520px;height:627px;
+  clip-path:polygon(0 0,100% 0,78% 100%,0 100%);
+  overflow:hidden
+}
+.photo-panel img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center;
+  display:block;
+  filter:brightness(.62) saturate(.8) contrast(1.05)
+}
+.photo-ov{position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,15,14,.05) 0%,rgba(13,15,14,.25) 55%,rgba(13,15,14,.9) 100%)}
+.photo-tint{position:absolute;inset:0;background:rgba(217,119,87,.07)}
+
+/* ── DIAGONAL ACCENT LINES ── */
+.diag{position:absolute;left:0;top:0;width:1200px;height:627px;pointer-events:none}
+
+/* ── TEXT PANEL ── */
+.text-panel{
+  position:absolute;top:0;left:440px;right:0;height:627px;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:44px 52px 44px 100px;
+  background:linear-gradient(90deg,transparent 0%,rgba(26,18,16,.85) 22%,#1a1210 100%)
+}
+.badge{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(217,119,87,.1);border:1px solid rgba(217,119,87,.26);
+  border-radius:5px;padding:5px 12px;margin-bottom:22px;width:fit-content
+}
+.badge-dot{width:5px;height:5px;border-radius:50%;background:#d97757;flex-shrink:0}
+.badge-text{font-family:'Inter',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;color:rgba(217,119,87,.9);text-transform:uppercase}
+.eyebrow{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;letter-spacing:6px;color:rgba(250,250,247,.55);text-transform:uppercase;margin-bottom:11px}
+.headline{font-family:'Inter',sans-serif;font-weight:800;font-size:62px;line-height:.92;letter-spacing:-2.5px;margin-bottom:24px}
+.h-w{color:#fafaf7;display:block}
+.h-t{color:#d97757;display:block}
+.divider{width:50px;height:3px;background:#d97757;margin-bottom:22px;border-radius:2px}
+.info-row{display:flex;align-items:center;gap:11px;margin-bottom:13px}
+.info-date{font-family:'Inter',sans-serif;font-size:20px;font-weight:600;color:#fafaf7;letter-spacing:.5px}
+.info-venue{font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:rgba(250,250,247,.72);letter-spacing:.5px}
+.footer-bar{
+  position:absolute;left:0;bottom:0;width:1200px;height:48px;
+  background:rgba(10,12,11,.97);border-top:1px solid rgba(217,119,87,.14);
+  display:flex;align-items:center;justify-content:space-between;padding:0 36px
+}
+.logo-w{display:flex;align-items:center;font-family:'Inter',sans-serif;font-size:18px;font-weight:800;letter-spacing:-.5px;color:#fafaf7}
+.logo-dot{width:5px;height:5px;border-radius:50%;background:#d97757;margin-left:3px;margin-bottom:-2px;display:inline-block}
+.footer-url{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;color:rgba(217,119,87,.75);letter-spacing:.3px}
+</style>
+</head>
+<body>
+<div class="root">
+
+<!-- Background -->
+<div style="position:absolute;inset:0;background:linear-gradient(140deg,#1a1210 0%,#0d0f0e 50%,#1a1613 100%)"></div>
+<div style="position:absolute;bottom:-150px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(217,119,87,.13) 0%,transparent 65%)"></div>
+
+<!-- Photo panel (left 40%, diagonal clip) -->
+<div class="photo-panel">
+  <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=85&fit=crop&crop=center" alt="" crossorigin="anonymous">
+  <div class="photo-ov"></div>
+  <div class="photo-tint"></div>
+</div>
+
+<!-- Diagonal accent lines -->
+<svg class="diag" viewBox="0 0 1200 627" xmlns="http://www.w3.org/2000/svg">
+  <!-- Primary line following photo edge (520,0)→(406,627) — 78% of 520 = 405.6 -->
+  <line x1="520" y1="0" x2="406" y2="627" stroke="#d97757" stroke-width="3" opacity=".62"/>
+  <line x1="536" y1="0" x2="422" y2="627" stroke="#d97757" stroke-width="1.5" opacity=".24"/>
+  <!-- Right corner accents -->
+  <line x1="1070" y1="28" x2="1198" y2="140" stroke="#d97757" stroke-width="2" opacity=".16"/>
+  <line x1="1120" y1="14" x2="1200" y2="80" stroke="#d97757" stroke-width="1.5" opacity=".1"/>
+</svg>
+
+<!-- Text panel -->
+<div class="text-panel">
+  <div class="badge"><span class="badge-dot"></span><span class="badge-text">SiGMA World · Rome 2026</span></div>
+  <div class="eyebrow">Meet us at</div>
+  <div class="headline">
+    <span class="h-w">SiGMA</span>
+    <span class="h-t">Rome</span>
+    <span class="h-w">2026</span>
+  </div>
+  <div class="divider"></div>
+  <div class="info-row">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="flex-shrink:0">
+      <rect x="3" y="4" width="18" height="18" rx="3" stroke="#d97757" stroke-width="2"/>
+      <path d="M3 9h18" stroke="#d97757" stroke-width="2"/>
+      <path d="M8 2v4M16 2v4" stroke="#d97757" stroke-width="2" stroke-linecap="round"/>
+      <rect x="7" y="12" width="2.5" height="2.5" rx=".5" fill="#d97757"/>
+      <rect x="11" y="12" width="2.5" height="2.5" rx=".5" fill="#d97757"/>
+      <rect x="7" y="16" width="2.5" height="2.5" rx=".5" fill="#d97757"/>
+    </svg>
+    <span class="info-date">2–5 NOV 2026</span>
+  </div>
+  <div class="info-row">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="flex-shrink:0">
+      <path d="M12 2C8.686 2 6 4.686 6 8c0 4.418 6 12 6 12s6-7.582 6-12c0-3.314-2.686-6-6-6z" stroke="#d97757" stroke-width="2"/>
+      <circle cx="12" cy="8" r="2" stroke="#d97757" stroke-width="2"/>
+    </svg>
+    <span class="info-venue">FIERA ROMA, ITALY</span>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer-bar">
+  <div class="logo-w">CascadX<span class="logo-dot"></span></div>
+  <div class="footer-url">cascadx.com/rob</div>
+</div>
+
+</div>
+</body>
+</html>

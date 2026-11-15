@@ -60,7 +60,7 @@ export default function AIChat() {
           {/* Chat card — cream outer shell */}
           <div
             style={{
-              background: "#f5efe6",
+              background: "#1a0f0a",
               border: "1px solid rgba(42,31,28,0.08)",
               borderRadius: "var(--radius-lg)",
               boxShadow: "0 20px 40px -10px rgba(0,0,0,0.3), 0 8px 20px -5px rgba(0,0,0,0.2)",
@@ -72,7 +72,7 @@ export default function AIChat() {
             {/* Header */}
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingBottom: 16, borderBottom: "1px solid rgba(42,31,28,0.12)", marginBottom: 16 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                <div className="relative w-[42px] h-[42px] rounded-[12px] bg-[#0d0f0e] border border-line grid place-items-center">
+                <div className="relative w-[42px] h-[42px] rounded-[12px] bg-[#faf8f2] border border-line grid place-items-center">
                   <RobotMascot size={36} variant="thinking" />
                 </div>
                 <div>
@@ -91,10 +91,10 @@ export default function AIChat() {
             </div>
 
             {/* Dark product screen — messages + input */}
-            <div style={{ background: "#0d0f0e", borderRadius: 12, padding: 16, border: "1px solid rgba(255,255,255,0.06)" }}>
+            <div style={{ background: "#faf8f2", borderRadius: 12, padding: 16, border: "1px solid rgba(26,15,10,0.06)" }}>
               {/* Messages */}
               <div className="flex flex-col gap-3.5 min-h-[320px]">
-                <div className="self-end max-w-[88%] px-4 py-[13px] rounded-[14px] rounded-br-[4px] text-[14.5px] leading-[1.5] bg-accent text-[#0d0f0e] opacity-0 translate-y-2 animate-[msgIn_0.5s_cubic-bezier(0.2,0.8,0.2,1)_0.2s_forwards]">
+                <div className="self-end max-w-[88%] px-4 py-[13px] rounded-[14px] rounded-br-[4px] text-[14.5px] leading-[1.5] bg-accent text-[#faf8f2] opacity-0 translate-y-2 animate-[msgIn_0.5s_cubic-bezier(0.2,0.8,0.2,1)_0.2s_forwards]">
                   Why is our EU card approval down this morning?
                 </div>
                 <div className="self-start max-w-[88%] px-4 py-[13px] rounded-[14px] rounded-bl-[4px] text-[14.5px] leading-[1.5] bg-surface border border-line text-ink opacity-0 translate-y-2 animate-[msgIn_0.5s_cubic-bezier(0.2,0.8,0.2,1)_1.3s_forwards]">
@@ -107,7 +107,7 @@ export default function AIChat() {
                     → Recommend cascading these BINs to Adyen first. Projected recovery: <strong>+$8.4K</strong> today.
                   </div>
                 </div>
-                <div className="self-end max-w-[88%] px-4 py-[13px] rounded-[14px] rounded-br-[4px] text-[14.5px] leading-[1.5] bg-accent text-[#0d0f0e] opacity-0 translate-y-2 animate-[msgIn_0.5s_cubic-bezier(0.2,0.8,0.2,1)_2.4s_forwards]">
+                <div className="self-end max-w-[88%] px-4 py-[13px] rounded-[14px] rounded-br-[4px] text-[14.5px] leading-[1.5] bg-accent text-[#faf8f2] opacity-0 translate-y-2 animate-[msgIn_0.5s_cubic-bezier(0.2,0.8,0.2,1)_2.4s_forwards]">
                   Apply it to the EU route.
                 </div>
               </div>

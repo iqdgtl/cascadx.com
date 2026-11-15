@@ -21,7 +21,7 @@ export default function CascadeEngine() {
         />
 
         {/* Visualization */}
-        <div className="relative mt-[60px] p-[40px_30px] rounded-[var(--radius-lg)] overflow-hidden" style={{ background: "#f5efe6", border: "1px solid rgba(42,31,28,0.08)", boxShadow: "0 20px 40px -10px rgba(0,0,0,0.3), 0 8px 20px -5px rgba(0,0,0,0.2)" }}>
+        <div className="relative mt-[60px] p-[40px_30px] rounded-[var(--radius-lg)] overflow-hidden" style={{ background: "#1a0f0a", border: "1px solid rgba(42,31,28,0.08)", boxShadow: "0 20px 40px -10px rgba(0,0,0,0.3), 0 8px 20px -5px rgba(0,0,0,0.2)" }}>
           {/* Background pattern */}
           <div className="absolute inset-0 opacity-40 pointer-events-none bg-[linear-gradient(90deg,transparent,rgba(217,119,87,0.06)_50%,transparent),repeating-linear-gradient(90deg,rgba(42,31,28,0.04)_0_1px,transparent_1px_80px)]" />
 
@@ -97,7 +97,7 @@ export default function CascadeEngine() {
         {/* Feature grid */}
         <div className="cascade-features-grid grid grid-cols-4 gap-5 mt-[60px]">
           {cascadeFeatures.map((f) => (
-            <div key={f.title} style={{ background: "#f5efe6", border: "1px solid rgba(42,31,28,0.08)", borderRadius: 16, padding: "24px", boxShadow: "0 8px 24px -8px rgba(0,0,0,0.18)" }}>
+            <div key={f.title} style={{ background: "#1a0f0a", border: "1px solid rgba(42,31,28,0.08)", borderRadius: 16, padding: "24px", boxShadow: "0 8px 24px -8px rgba(0,0,0,0.18)" }}>
               <h5 style={{ margin: "0 0 10px", fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 17, letterSpacing: "-0.02em", color: "#2a1f1c" }}>
                 {f.title}
               </h5>

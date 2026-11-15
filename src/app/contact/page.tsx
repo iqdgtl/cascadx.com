@@ -32,7 +32,7 @@ export default function ContactPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-16 items-start">
             {/* Form */}
-            <form className="bg-surface-el rounded-[var(--radius-lg)] border border-line p-8 shadow-[0_1px_0_rgba(255,255,255,0.08)_inset,0_30px_60px_-40px_rgba(0,0,0,0.4)]">
+            <form className="bg-surface-el rounded-[var(--radius-lg)] border border-line p-8 shadow-[0_1px_0_rgba(26,15,10,0.08)_inset,0_30px_60px_-40px_rgba(0,0,0,0.4)]">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
                 <div>
                   <label className="block font-mono text-[11px] tracking-[0.1em] uppercase text-ink-muted mb-2">
@@ -77,7 +77,7 @@ export default function ContactPage() {
               </div>
               <button
                 type="submit"
-                className="inline-flex items-center gap-[10px] px-6 py-[15px] bg-accent text-[#0d0f0e] rounded-full text-[15px] font-semibold transition-all duration-250 hover:bg-accent-deep hover:text-[#0d0f0e] hover:-translate-y-0.5 shadow-[0_6px_30px_-10px_rgba(217,119,87,0.5)] hover:shadow-[0_14px_40px_-10px_rgba(217,119,87,0.55)]"
+                className="inline-flex items-center gap-[10px] px-6 py-[15px] bg-accent text-[#faf8f2] rounded-full text-[15px] font-semibold transition-all duration-250 hover:bg-accent-deep hover:text-[#faf8f2] hover:-translate-y-0.5 shadow-[0_6px_30px_-10px_rgba(217,119,87,0.5)] hover:shadow-[0_14px_40px_-10px_rgba(217,119,87,0.55)]"
               >
                 Send message
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">

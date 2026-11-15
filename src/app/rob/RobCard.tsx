@@ -59,7 +59,7 @@ function GlobeBackground() {
 // ─── Icons ────────────────────────────────────────────────────────────────────
 function IconCalendar() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.65)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(26,15,10,0.65)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
     </svg>
   );
@@ -89,7 +89,7 @@ function IconGlobe() {
 }
 function IconArrow() {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(26,15,10,0.4)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M5 12h14M12 5l7 7-7 7"/>
     </svg>
   );
@@ -125,10 +125,10 @@ function ActionButton({ icon, label, href, delay, visible }: ActionButtonProps) 
         style={{
           display: "flex", alignItems: "center",
           padding: "0 16px", height: 52, borderRadius: 14,
-          border: `1px solid ${hovered ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.1)"}`,
-          background: hovered ? "rgba(255,255,255,0.05)" : "transparent",
+          border: `1px solid ${hovered ? "rgba(26,15,10,0.2)" : "rgba(26,15,10,0.1)"}`,
+          background: hovered ? "rgba(26,15,10,0.05)" : "transparent",
           cursor: "pointer", textDecoration: "none",
-          color: "#fafaf7", gap: 12,
+          color: "#1a0f0a", gap: 12,
           transform: hovered ? "scale(1.01)" : "scale(1)",
           transition: "transform 200ms ease, background 200ms ease, border-color 200ms ease",
           boxSizing: "border-box",
@@ -171,7 +171,7 @@ export default function RobCard() {
   });
 
   return (
-    <div style={{ minHeight: "100vh", background: "#0d0f0e", position: "relative", overflowX: "hidden" }}>
+    <div style={{ minHeight: "100vh", background: "#faf8f2", position: "relative", overflowX: "hidden" }}>
 
       <GlobeBackground />
 
@@ -210,7 +210,7 @@ export default function RobCard() {
         <div style={{ marginBottom: 40, display: "flex", alignItems: "center", ...fadeIn(0) }}>
           <span style={{
             fontFamily: "var(--font-display,sans-serif)", fontWeight: 800,
-            fontSize: 22, letterSpacing: "-0.03em", color: "#fafaf7",
+            fontSize: 22, letterSpacing: "-0.03em", color: "#1a0f0a",
           }}>
             CascadX
           </span>
@@ -224,7 +224,7 @@ export default function RobCard() {
         <h1 style={{
           fontFamily: "var(--font-inter,sans-serif)", fontWeight: 800,
           fontSize: "clamp(26px,7vw,32px)", letterSpacing: "-0.02em",
-          color: "#fafaf7", margin: "0 0 8px", textAlign: "center",
+          color: "#1a0f0a", margin: "0 0 8px", textAlign: "center",
           ...slideUp(700),
         }}>
           ROBI GUETTA
@@ -233,7 +233,7 @@ export default function RobCard() {
         {/* Role */}
         <p style={{
           fontFamily: "var(--font-inter,sans-serif)", fontWeight: 500,
-          fontSize: 16, color: "rgba(255,255,255,0.7)",
+          fontSize: 16, color: "rgba(26,15,10,0.7)",
           margin: "0 0 8px", textAlign: "center",
           ...slideUp(820),
         }}>
@@ -253,7 +253,7 @@ export default function RobCard() {
         {/* Tagline */}
         <p style={{
           fontFamily: "var(--font-inter,sans-serif)", fontWeight: 500,
-          fontSize: 14, color: "rgba(255,255,255,0.55)",
+          fontSize: 14, color: "rgba(26,15,10,0.55)",
           maxWidth: 320, textAlign: "center", lineHeight: 1.55,
           margin: "0 0 32px",
           ...slideUp(1060),
@@ -277,7 +277,7 @@ export default function RobCard() {
             style={{
               width: "100%", height: 60, borderRadius: 16,
               background: "linear-gradient(180deg, #2ecc71 0%, #25D366 55%, #1da851 100%)",
-              boxShadow: "0 0 30px rgba(37,211,102,0.35), 0 10px 30px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.18)",
+              boxShadow: "0 0 30px rgba(37,211,102,0.35), 0 10px 30px rgba(0,0,0,0.3), inset 0 1px 0 rgba(26,15,10,0.18)",
               display: "flex", alignItems: "center", justifyContent: "space-between",
               padding: "0 22px", textDecoration: "none",
               boxSizing: "border-box",
@@ -300,7 +300,7 @@ export default function RobCard() {
             style={{
               width: "100%", height: 60, borderRadius: 16,
               background: "linear-gradient(180deg, #ff8c42 0%, #ff6b35 55%, #e85520 100%)",
-              boxShadow: "0 0 30px rgba(255,107,53,0.35), 0 10px 30px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.18)",
+              boxShadow: "0 0 30px rgba(255,107,53,0.35), 0 10px 30px rgba(0,0,0,0.3), inset 0 1px 0 rgba(26,15,10,0.18)",
               display: "flex", alignItems: "center", justifyContent: "space-between",
               padding: "0 22px", textDecoration: "none",
               boxSizing: "border-box",
@@ -312,7 +312,7 @@ export default function RobCard() {
             }}>
               Telegram
             </span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(255,255,255,0.9)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(26,15,10,0.9)">
               <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
             </svg>
           </a>
@@ -368,7 +368,7 @@ export default function RobCard() {
               display: "flex", alignItems: "center", gap: 8,
               textDecoration: "none",
               fontFamily: "var(--font-inter,sans-serif)", fontWeight: 500,
-              fontSize: 14, color: "rgba(255,255,255,0.8)",
+              fontSize: 14, color: "rgba(26,15,10,0.8)",
               padding: "8px 16px", borderRadius: 10, minHeight: 44,
             }}
           >
@@ -384,7 +384,7 @@ export default function RobCard() {
               display: "flex", alignItems: "center", gap: 8,
               textDecoration: "none",
               fontFamily: "var(--font-inter,sans-serif)", fontWeight: 500,
-              fontSize: 14, color: "rgba(255,255,255,0.8)",
+              fontSize: 14, color: "rgba(26,15,10,0.8)",
               padding: "8px 16px", borderRadius: 10, minHeight: 44,
             }}
           >
@@ -426,7 +426,7 @@ export default function RobCard() {
             }}>
               <span style={{
                 fontFamily: "var(--font-display,sans-serif)", fontWeight: 900,
-                fontSize: 11, color: "#0d0f0e", letterSpacing: "-0.5px",
+                fontSize: 11, color: "#faf8f2", letterSpacing: "-0.5px",
               }}>
                 CX
               </span>
@@ -435,7 +435,7 @@ export default function RobCard() {
           <span style={{
             fontFamily: "var(--font-mono,monospace)", fontSize: 11,
             letterSpacing: "1px", textTransform: "uppercase",
-            color: "rgba(255,255,255,0.45)",
+            color: "rgba(26,15,10,0.45)",
           }}>
             Scan to share this card
           </span>
@@ -446,7 +446,7 @@ export default function RobCard() {
           <a href="https://cascadx.com" style={{
             fontFamily: "var(--font-mono,monospace)", fontSize: 10,
             letterSpacing: "2px", textTransform: "uppercase",
-            color: "rgba(255,255,255,0.3)", textDecoration: "none",
+            color: "rgba(26,15,10,0.3)", textDecoration: "none",
           }}>
             Powered by cascadx.com
           </a>
@@ -464,7 +464,7 @@ export default function RobCard() {
           100% { transform: translate(75px,-95px) scale(1.18); opacity: 1; }
         }
         .rob-contact-link:hover {
-          background: rgba(255,255,255,0.05) !important;
+          background: rgba(26,15,10,0.05) !important;
         }
       `}</style>
     </div>

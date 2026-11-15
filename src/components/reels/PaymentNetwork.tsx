@@ -70,8 +70,8 @@ export default function PaymentNetwork({ theme }: { theme: ReelTheme }) {
   const outroP = Math.max(0, (t - OUTRO_START) / OUTRO_DUR);
 
   const isDark = theme === darkTheme;
-  const badgeBg = isDark ? "rgba(255,255,255,0.95)" : "rgba(26,26,26,0.9)";
-  const badgeTextColor = isDark ? undefined : "#fafaf7";
+  const badgeBg = isDark ? "rgba(26,15,10,0.95)" : "rgba(26,26,26,0.9)";
+  const badgeTextColor = isDark ? undefined : "#1a0f0a";
 
   return (
     <div className="fixed inset-0 overflow-hidden" style={{ cursor: "none", background: theme.bg }}>

@@ -128,27 +128,34 @@ export default function TrustedByMarquee() {
   return (
     <section
       style={{
-        background: "var(--bg)",
-        paddingTop: "80px",
-        paddingBottom: "100px",
+        background: "#faf8f2",
+        paddingTop: "70px",
+        paddingBottom: "90px",
         overflow: "hidden",
       }}
     >
-      {/* Label */}
-      <p
-        style={{
-          textAlign: "center",
-          fontFamily: "var(--font-mono)",
-          fontSize: "11px",
-          textTransform: "uppercase",
-          letterSpacing: "3px",
-          color: "rgba(255,255,255,0.4)",
-          marginBottom: "40px",
-          padding: "0 20px",
-        }}
-      >
-        Built for operators across industries
-      </p>
+      {/* Section header */}
+      <div style={{
+        maxWidth: 980,
+        margin: "0 auto 44px",
+        padding: "0 24px",
+        textAlign: "center",
+      }}>
+        <h2 style={{
+          fontFamily: "var(--font-display)",
+          fontWeight: 800,
+          fontSize: "clamp(26px, 3.5vw, 40px)",
+          letterSpacing: "-0.03em",
+          lineHeight: 1.1,
+          color: "#1a0f0a",
+          margin: 0,
+        }}>
+          Trusted across{" "}
+          <span style={{ color: "#d97757", fontStyle: "italic", fontWeight: 400 }}>
+            every industry.
+          </span>
+        </h2>
+      </div>
 
       {/* Marquee */}
       <div className="marquee-container" style={{ position: "relative" }}>
@@ -157,7 +164,7 @@ export default function TrustedByMarquee() {
           style={{
             position: "absolute", left: 0, top: 0, bottom: 0,
             width: "100px",
-            background: "linear-gradient(to right, var(--bg), transparent)",
+            background: "linear-gradient(to right, #faf8f2, transparent)",
             zIndex: 2, pointerEvents: "none",
           }}
         />
@@ -166,7 +173,7 @@ export default function TrustedByMarquee() {
           style={{
             position: "absolute", right: 0, top: 0, bottom: 0,
             width: "100px",
-            background: "linear-gradient(to left, var(--bg), transparent)",
+            background: "linear-gradient(to left, #faf8f2, transparent)",
             zIndex: 2, pointerEvents: "none",
           }}
         />
@@ -212,7 +219,7 @@ export default function TrustedByMarquee() {
           display: flex;
           align-items: center;
           gap: 10px;
-          color: rgba(255, 255, 255, 0.65);
+          color: rgba(26,15,10,0.65);
           flex-shrink: 0;
           transition: color 0.3s ease;
           cursor: default;
@@ -222,15 +229,15 @@ export default function TrustedByMarquee() {
           font-weight: 500;
           font-size: 15px;
           white-space: nowrap;
-          color: rgba(255, 255, 255, 0.72);
+          color: rgba(26,15,10,0.72);
           transition: color 0.3s ease;
         }
         @media (hover: hover) {
           .industry-item:hover {
-            color: rgba(255, 255, 255, 0.95);
+            color: rgba(26,15,10,0.95);
           }
           .industry-item:hover .industry-label {
-            color: rgba(255, 255, 255, 0.95);
+            color: rgba(26,15,10,0.95);
           }
         }
       `}</style>

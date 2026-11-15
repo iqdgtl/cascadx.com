@@ -16,13 +16,13 @@ export default async function Image() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "60px 80px",
-          backgroundColor: "#0d0f0e",
+          backgroundColor: "#faf8f2",
           fontFamily: "Inter, sans-serif",
         }}
       >
         {/* Top: logo */}
         <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
-          <span style={{ fontSize: "32px", fontWeight: 800, color: "#fafaf7", letterSpacing: "-0.035em" }}>
+          <span style={{ fontSize: "32px", fontWeight: 800, color: "#1a0f0a", letterSpacing: "-0.035em" }}>
             CascadX
           </span>
           <span
@@ -50,7 +50,7 @@ export default async function Image() {
             style={{
               fontSize: "56px",
               fontWeight: 800,
-              color: "#fafaf7",
+              color: "#1a0f0a",
               letterSpacing: "-0.04em",
               lineHeight: 1.1,
               maxWidth: "800px",

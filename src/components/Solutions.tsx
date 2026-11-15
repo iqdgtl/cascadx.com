@@ -163,7 +163,7 @@ export default function Solutions() {
   };
 
   const borderColor = (i: number) =>
-    entered && hovered === i ? "rgba(217,119,87,0.4)" : "rgba(255,255,255,0.08)";
+    entered && hovered === i ? "rgba(217,119,87,0.4)" : "rgba(26,15,10,0.08)";
 
   return (
     <section
@@ -180,14 +180,14 @@ export default function Solutions() {
             fontFamily: "var(--font-display)",
             fontWeight: 800, fontSize: "clamp(36px, 4.5vw, 56px)",
             letterSpacing: "-0.03em", lineHeight: 1.1,
-            color: "#fafaf7", margin: "0 auto 24px", maxWidth: 900,
+            color: "#1a0f0a", margin: "0 auto 24px", maxWidth: 900,
           }}>
             Everything a modern payment stack needs.
           </h2>
           <p style={{
             fontFamily: "var(--font-display)",
             fontWeight: 500, fontSize: "clamp(16px, 1.5vw, 20px)",
-            lineHeight: 1.6, color: "rgba(255,255,255,0.7)",
+            lineHeight: 1.6, color: "rgba(26,15,10,0.7)",
             maxWidth: 680, margin: "0 auto",
           }}>
             Whether you&apos;re building, operating, or scaling — CascadX gives every team
@@ -202,7 +202,7 @@ export default function Solutions() {
               key={block.headline}
               className="solutions-block"
               style={{
-                background: "rgba(255,255,255,0.04)",
+                background: "rgba(26,15,10,0.04)",
                 backdropFilter: "blur(20px)",
                 WebkitBackdropFilter: "blur(20px)",
                 borderWidth: "1px",
@@ -225,7 +225,7 @@ export default function Solutions() {
                 fontFamily: "var(--font-display)",
                 fontWeight: 800, fontSize: "clamp(22px, 1.8vw, 28px)",
                 letterSpacing: "-0.02em", lineHeight: 1.2,
-                color: "#fafaf7", margin: "24px 0 16px",
+                color: "#1a0f0a", margin: "24px 0 16px",
               }}>
                 {block.headline}
               </h3>
@@ -234,13 +234,13 @@ export default function Solutions() {
               <p style={{
                 fontFamily: "var(--font-display)",
                 fontWeight: 500, fontSize: 15, lineHeight: 1.6,
-                color: "rgba(255,255,255,0.68)", margin: 0,
+                color: "rgba(26,15,10,0.68)", margin: 0,
               }}>
                 {block.description}
               </p>
 
               {/* Divider */}
-              <div style={{ height: 1, background: "rgba(255,255,255,0.1)", margin: "32px 0" }} />
+              <div style={{ height: 1, background: "rgba(26,15,10,0.1)", margin: "32px 0" }} />
 
               {/* Bullet list */}
               <ul style={{
@@ -253,7 +253,7 @@ export default function Solutions() {
                     <span style={{
                       fontFamily: "var(--font-display)",
                       fontWeight: 500, fontSize: 14,
-                      color: "rgba(255,255,255,0.72)", lineHeight: 1.5,
+                      color: "rgba(26,15,10,0.72)", lineHeight: 1.5,
                     }}>
                       {b}
                     </span>
@@ -302,11 +302,11 @@ export default function Solutions() {
           <div
             className="solutions-strip-card"
             style={{
-              background: "rgba(255,255,255,0.04)",
+              background: "rgba(26,15,10,0.04)",
               backdropFilter: "blur(20px)",
               WebkitBackdropFilter: "blur(20px)",
-              border: "1px solid rgba(255,255,255,0.08)",
-              borderRadius: 20,
+              border: "1px solid rgba(26,15,10,0.08)",
+              borderRadius: 24,
               padding: "40px 48px",
               display: "flex",
               alignItems: "center",
@@ -329,7 +329,7 @@ export default function Solutions() {
                 fontFamily: "var(--font-display)",
                 fontWeight: 800, fontSize: "clamp(18px, 1.8vw, 24px)",
                 letterSpacing: "-0.02em", lineHeight: 1.2,
-                color: "#fafaf7", margin: 0,
+                color: "#1a0f0a", margin: 0,
               }}>
                 Stop losing approvals. Start routing smarter.
               </h3>
@@ -360,8 +360,8 @@ export default function Solutions() {
                 className="solutions-strip-secondary"
                 style={{
                   height: 48, padding: "0 24px",
-                  background: "transparent", color: "#fafaf7",
-                  border: "1.5px solid rgba(255,255,255,0.2)",
+                  background: "transparent", color: "#1a0f0a",
+                  border: "1.5px solid rgba(26,15,10,0.2)",
                   borderRadius: 12,
                   fontFamily: "var(--font-display)",
                   fontWeight: 600, fontSize: 15,
@@ -390,8 +390,8 @@ export default function Solutions() {
           .solutions-block:hover .solutions-cta-arrow { transform: translateX(4px) !important; }
           .solutions-strip-primary:hover  { background: #c86847 !important; transform: scale(1.02); }
           .solutions-strip-secondary:hover {
-            border-color: rgba(255,255,255,0.4) !important;
-            background: rgba(255,255,255,0.06) !important;
+            border-color: rgba(26,15,10,0.4) !important;
+            background: rgba(26,15,10,0.06) !important;
             transform: scale(1.02);
           }
         }

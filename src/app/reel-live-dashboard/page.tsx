@@ -120,19 +120,19 @@ export default function Page() {
 
   return (
     <div style={{ width: "100vw", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "#000", overflow: "hidden", cursor: "none" }}>
-      <div style={{ width: "min(1080px, 56.25vh)", height: "min(1920px, 100vh)", aspectRatio: "9/16", position: "relative", overflow: "hidden", background: "#0d0f0e" }}>
+      <div style={{ width: "min(1080px, 56.25vh)", height: "min(1920px, 100vh)", aspectRatio: "9/16", position: "relative", overflow: "hidden", background: "#faf8f2" }}>
 
         {/* INTRO title card */}
         {introVisible && (
           <div className="absolute inset-0 flex flex-col items-center justify-center px-8" style={{ opacity: introFade, zIndex: 20 }}>
             <div className="text-center">
               <div style={{ opacity: introLine1P, transform: `translateY(${8 * (1 - introLine1P)}px)` }}>
-                <span className="font-display font-[800] text-[52px] tracking-[-0.03em] leading-[1.1] text-[#fafaf7]">
+                <span className="font-display font-[800] text-[52px] tracking-[-0.03em] leading-[1.1] text-[#1a0f0a]">
                   What a single day looks like
                 </span>
               </div>
               <div style={{ opacity: introLine2P, transform: `translateY(${8 * (1 - introLine2P)}px)` }}>
-                <span className="font-display font-[800] text-[52px] tracking-[-0.03em] leading-[1.1] text-[#fafaf7]">
+                <span className="font-display font-[800] text-[52px] tracking-[-0.03em] leading-[1.1] text-[#1a0f0a]">
                   inside <span className="text-[#d97757]">CascadX.</span>
                 </span>
               </div>
@@ -148,7 +148,7 @@ export default function Page() {
         {/* Header */}
         <div className="absolute top-0 left-0 right-0 px-5 py-4 flex items-center justify-between" style={{ opacity: bootP, zIndex: 5 }}>
           <div className="flex items-center gap-2">
-            <span className="font-display font-[700] text-[16px] text-[#fafaf7] tracking-[-0.02em]">CascadX Live</span>
+            <span className="font-display font-[700] text-[16px] text-[#1a0f0a] tracking-[-0.02em]">CascadX Live</span>
             <span className="w-[6px] h-[6px] rounded-full bg-[#d97757]" style={{ animation: "pulse 1.5s ease-in-out infinite" }} />
           </div>
           <span className="font-mono text-[14px] text-[#7a8178]">{clockH}:{clockM}</span>
@@ -157,16 +157,16 @@ export default function Page() {
         {/* Stat cards */}
         <div className="absolute top-[6%] left-0 right-0 px-4 flex gap-3" style={{ opacity: bootP, zIndex: 5 }}>
           {/* Recovered */}
-          <div className="flex-1 rounded-xl p-4" style={{ background: "#1e2423", border: "1px solid rgba(255,255,255,0.08)" }}>
+          <div className="flex-1 rounded-xl p-4" style={{ background: "#f0ebe0", border: "1px solid rgba(26,15,10,0.08)" }}>
             <div className="font-mono text-[10px] uppercase tracking-[0.08em] text-[#7a8178] mb-2">Recovered</div>
             <div className="font-display font-[700] text-[24px] text-[#d97757] tracking-[-0.02em]">
               ${targetRecovered.toLocaleString()}
             </div>
           </div>
           {/* Approval */}
-          <div className="flex-1 rounded-xl p-4" style={{ background: "#1e2423", border: "1px solid rgba(255,255,255,0.08)" }}>
+          <div className="flex-1 rounded-xl p-4" style={{ background: "#f0ebe0", border: "1px solid rgba(26,15,10,0.08)" }}>
             <div className="font-mono text-[10px] uppercase tracking-[0.08em] text-[#7a8178] mb-2">Approval</div>
-            <div className="font-display font-[700] text-[24px] text-[#fafaf7] tracking-[-0.02em]">
+            <div className="font-display font-[700] text-[24px] text-[#1a0f0a] tracking-[-0.02em]">
               {dayProgress > 0.05 ? `${approvalRate.toFixed(1)}%` : "--"}
             </div>
             {dayProgress > 0.3 && (
@@ -186,15 +186,15 @@ export default function Page() {
 
             return (
               <div key={tx.id} className="flex items-center justify-between py-3 px-4 mb-2 rounded-lg" style={{
-                background: isGlow ? "rgba(217,119,87,0.08)" : "#1e2423",
-                border: `1px solid ${isGlow ? "rgba(217,119,87,0.2)" : "rgba(255,255,255,0.05)"}`,
+                background: isGlow ? "rgba(217,119,87,0.08)" : "#f0ebe0",
+                border: `1px solid ${isGlow ? "rgba(217,119,87,0.2)" : "rgba(26,15,10,0.05)"}`,
                 opacity: entryP * fadeP,
                 transform: `translateY(${-12 * (1 - entryP)}px)`,
                 boxShadow: isGlow ? "0 0 16px rgba(217,119,87,0.15)" : "none",
                 transition: "background 300ms, border-color 300ms, box-shadow 300ms",
               }}>
                 <div>
-                  <span className="font-mono text-[14px] text-[#fafaf7]">{tx.amount}</span>
+                  <span className="font-mono text-[14px] text-[#1a0f0a]">{tx.amount}</span>
                   <span className="font-mono text-[12px] text-[#7a8178] ml-2">{tx.country}</span>
                 </div>
                 <div className="font-mono text-[11px] font-medium">
@@ -219,12 +219,12 @@ export default function Page() {
         {summaryP > 0 && (
           <div className="absolute inset-0 flex items-center justify-center px-8" style={{ zIndex: 10, opacity: summaryP }}>
             <div className="w-full max-w-[360px] rounded-2xl p-8 text-center" style={{
-              background: "#1e2423", border: "1px solid rgba(255,255,255,0.1)",
+              background: "#f0ebe0", border: "1px solid rgba(26,15,10,0.1)",
               boxShadow: "0 20px 60px rgba(0,0,0,0.4)",
               transform: `scale(${0.95 + 0.05 * summaryP})`,
             }}>
               <div className="font-mono text-[11px] uppercase tracking-[0.1em] text-[#d97757] mb-4">End of day</div>
-              <div className="font-display font-[800] text-[56px] text-[#fafaf7] tracking-[-0.03em] leading-none">1,247</div>
+              <div className="font-display font-[800] text-[56px] text-[#1a0f0a] tracking-[-0.03em] leading-none">1,247</div>
               <div className="font-mono text-[13px] text-[#7a8178] mt-2 mb-6">transactions recovered</div>
               <div className="space-y-3 text-left">
                 <div className="flex justify-between font-mono text-[14px]">
@@ -233,7 +233,7 @@ export default function Page() {
                 </div>
                 <div className="flex justify-between font-mono text-[14px]">
                   <span className="text-[#7a8178]">Approval rate</span>
-                  <span className="text-[#fafaf7]">87% → <span className="text-[#d97757]">94.2%</span></span>
+                  <span className="text-[#1a0f0a]">87% → <span className="text-[#d97757]">94.2%</span></span>
                 </div>
               </div>
             </div>

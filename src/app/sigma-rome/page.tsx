@@ -24,21 +24,21 @@ export default function SigmaRomePage() {
     <div
       style={{
         minHeight: "100vh",
-        background: "#0d0f0e",
+        background: "#faf8f2",
         fontFamily: "sans-serif",
         padding: "60px 40px",
-        color: "#fafaf7",
+        color: "#1a0f0a",
       }}
     >
       {/* Header */}
       <div style={{ maxWidth: 960, margin: "0 auto" }}>
         <div style={{ display: "flex", alignItems: "center", marginBottom: 8 }}>
-          <span style={{ fontSize: 20, fontWeight: 800, letterSpacing: "-0.5px", color: "#fafaf7" }}>
+          <span style={{ fontSize: 20, fontWeight: 800, letterSpacing: "-0.5px", color: "#1a0f0a" }}>
             CascadX
           </span>
           <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#d97757", display: "inline-block", marginLeft: 3, marginBottom: -3 }} />
         </div>
-        <h1 style={{ fontSize: 32, fontWeight: 800, letterSpacing: "-1px", margin: "0 0 6px", color: "#fafaf7" }}>
+        <h1 style={{ fontSize: 32, fontWeight: 800, letterSpacing: "-1px", margin: "0 0 6px", color: "#1a0f0a" }}>
           SiGMA Rome 2026 — Graphics
         </h1>
         <p style={{ fontSize: 15, color: "rgba(250,250,247,0.45)", margin: "0 0 52px" }}>
@@ -49,7 +49,7 @@ export default function SigmaRomePage() {
           {graphics.map((g) => (
             <div key={g.href}>
               <div style={{ display: "flex", alignItems: "baseline", gap: 14, marginBottom: 16 }}>
-                <h2 style={{ fontSize: 18, fontWeight: 700, margin: 0, color: "#fafaf7" }}>{g.title}</h2>
+                <h2 style={{ fontSize: 18, fontWeight: 700, margin: 0, color: "#1a0f0a" }}>{g.title}</h2>
                 <span style={{ fontSize: 13, color: "rgba(217,119,87,0.7)", fontWeight: 500 }}>{g.subtitle}</span>
               </div>
               <a

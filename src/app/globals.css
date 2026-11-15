@@ -6,16 +6,26 @@
    ========================================================= */
 
 :root {
-  --bg:           #0d0f0e;
-  --bg-alt:       #1e2423;
-  --surface:      #1e2423;
-  --surface-sub:  #161a19;
-  --surface-el:   #262c2b;
-  --ink:          #fafaf7;
-  --ink-soft:     #b8bcb6;
-  --ink-muted:    #7a8178;
-  --line:         rgba(255,255,255,0.08);
-  --line-strong:  rgba(255,255,255,0.14);
+  /* LIGHT tokens (default) */
+  --bg:           #faf8f2;  /* cream — site base */
+  --bg-alt:       #f0ebe0;  /* warm beige */
+  --surface:      #ffffff;
+  --surface-sub:  #f5efe6;
+  --surface-el:   #ebe3d6;
+  --ink:          #1a0f0a;
+  --ink-soft:     #4a3f36;
+  --ink-muted:    #8a7f73;
+  --line:         rgba(26,15,10,0.08);
+  --line-strong:  rgba(26,15,10,0.14);
+
+  /* DARK tokens (for .dark-section sections) */
+  --bg-dark:      #0d0f0e;
+  --bg-dark-2:    #14181c;
+  --surface-dark: #1a1f23;
+  --ink-on-dark:       #fafaf7;
+  --ink-on-dark-soft:  rgba(250,250,247,0.65);
+  --ink-on-dark-muted: rgba(250,250,247,0.4);
+  --line-on-dark:      rgba(255,255,255,0.08);
 
   --accent:       #d97757;
   --accent-deep:  #b35a3e;
@@ -29,6 +39,171 @@
   --radius-lg: 22px;
 
   --max: 1240px;
+
+  /* ─── UNIFIED DESIGN SYSTEM ─── */
+  /* Semantic colors */
+  --success:      #10b981;
+  --success-glow: rgba(16,185,129,0.15);
+  --danger:       #ef4444;
+  --danger-glow:  rgba(239,68,68,0.15);
+
+  /* Unified radius scale */
+  --r-pill: 100px;          /* buttons, inputs, chips */
+  --r-tile: 24px;           /* all cards, tiles, sections */
+  --r-chip: 12px;           /* small elements */
+
+  /* Unified shadows — all tiles use these 3 */
+  --shadow-rest: 0 20px 40px -10px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+  --shadow-hover: 0 30px 60px -10px rgba(0,0,0,0.6), 0 0 80px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,0.06);
+  --shadow-glow: 0 0 60px var(--accent-glow);
+
+  /* Unified section padding */
+  --pad-section-mobile: 60px 20px;
+  --pad-section-desktop: 100px 32px;
+
+  /* Transition — all interactive elements */
+  --t-fast: 180ms cubic-bezier(0.22, 1, 0.36, 1);
+  --t-base: 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  --t-slow: 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   UNIFIED BUTTON SYSTEM — use these classes everywhere
+   ═══════════════════════════════════════════════════════════════════════════ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 52px;
+  padding: 0 28px;
+  border-radius: var(--r-pill);
+  font-family: var(--font-display, "Inter", sans-serif);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: background var(--t-fast), transform var(--t-fast), box-shadow var(--t-fast), border-color var(--t-fast);
+  touch-action: manipulation;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn:active { transform: scale(0.97); }
+
+/* Primary — terracotta brand */
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(217,119,87,0.25);
+}
+.btn-primary:hover {
+  background: var(--accent-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(217,119,87,0.35), 0 0 32px rgba(217,119,87,0.25);
+}
+
+/* Secondary — glass */
+.btn-secondary {
+  background: rgba(255,255,255,0.04);
+  color: #fff;
+  border: 1.5px solid rgba(255,255,255,0.14);
+}
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.3);
+  transform: translateY(-2px);
+}
+
+/* Ghost — text only */
+.btn-ghost {
+  background: transparent;
+  color: var(--accent);
+  padding: 0 12px;
+  height: 40px;
+}
+.btn-ghost:hover { background: var(--accent-ice); }
+
+/* Size modifiers */
+.btn-sm { height: 40px; padding: 0 18px; font-size: 13px; }
+.btn-lg { height: 56px; padding: 0 32px; font-size: 16px; }
+
+@media (max-width: 540px) {
+  .btn { height: 50px; width: 100%; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   UNIFIED INPUT — pill-shaped form fields
+   ═══════════════════════════════════════════════════════════════════════════ */
+.input-pill {
+  height: 52px;
+  padding: 0 24px;
+  background: rgba(255,255,255,0.04);
+  border: 1.5px solid rgba(255,255,255,0.1);
+  border-radius: var(--r-pill);
+  color: var(--ink);
+  font-family: var(--font-display, "Inter", sans-serif);
+  font-size: 15px;
+  outline: none;
+  transition: border-color var(--t-fast), background var(--t-fast), box-shadow var(--t-fast);
+  -webkit-appearance: none;
+}
+.input-pill::placeholder { color: rgba(255,255,255,0.35); }
+.input-pill:focus {
+  border-color: rgba(217,119,87,0.55);
+  background: rgba(255,255,255,0.06);
+  box-shadow: 0 0 0 3px rgba(217,119,87,0.1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   UNIFIED TILE — all tiles / cards use .tile
+   ═══════════════════════════════════════════════════════════════════════════ */
+.tile {
+  background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--r-tile);
+  box-shadow: var(--shadow-rest);
+  transition: transform var(--t-base), box-shadow var(--t-base), border-color var(--t-base);
+}
+.tile:hover {
+  transform: translateY(-4px);
+  border-color: rgba(217,119,87,0.25);
+  box-shadow: var(--shadow-hover);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   UNIFIED SECTION — all sections respect same padding
+   ═══════════════════════════════════════════════════════════════════════════ */
+.section {
+  padding: var(--pad-section-mobile);
+  position: relative;
+  overflow: hidden;
+}
+@media (min-width: 768px) {
+  .section { padding: var(--pad-section-desktop); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   UNIFIED HEADLINE styling
+   ═══════════════════════════════════════════════════════════════════════════ */
+.h-display {
+  font-family: var(--font-display, "Inter", sans-serif);
+  font-weight: 800;
+  font-size: clamp(28px, 4vw, 48px);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--ink);
+}
+.h-display .accent { color: var(--accent); }
+.h-sub {
+  font-family: var(--font-display, "Inter", sans-serif);
+  font-weight: 500;
+  font-size: clamp(15px, 1.5vw, 18px);
+  line-height: 1.6;
+  color: rgba(255,255,255,0.55);
+  max-width: 580px;
+  margin: 20px auto 0;
 }
 
 @theme inline {
@@ -55,7 +230,7 @@
 
 *,*::before,*::after { box-sizing: border-box; }
 
-body {
+body { background: var(--bg); color: var(--ink);
   margin: 0;
   padding: 0;
   background: var(--bg);
@@ -164,25 +339,7 @@ body::before {
   to   { transform: translateY(-50%); }
 }
 
-/* ── iPhone entrance: half-flip reveal ───────────────────────────────────── */
-@keyframes phone-entrance {
-  0%   { opacity: 0; transform: perspective(1800px) rotateY(-90deg) rotateX(6deg) rotateZ(-1deg) scale(0.88); }
-  22%  { opacity: 1; }
-  82%  { transform: perspective(1800px) rotateY(-22deg) rotateX(11deg) rotateZ(-1deg) scale(1.01); }
-  100% { opacity: 1; transform: perspective(1800px) rotateY(-20deg) rotateX(10deg) rotateZ(-1deg) scale(1); }
-}
-/* Smooth deceleration with slight overshoot settle */
-.hero-phone-entering {
-  animation: phone-entrance 1.2s cubic-bezier(0.22, 1, 0.36, 1) 150ms both;
-}
-
-/* Terracotta glow radiates during the flip */
-@keyframes phone-entrance-glow {
-  0%   { opacity: 0; }
-  22%  { opacity: 0; }
-  65%  { opacity: 1; }
-  100% { opacity: 0; }
-}
+/* (entrance animations removed — opacity controlled inline, no scale/size jump) */
 
 /* Hero text cascade — each element fades up */
 @keyframes hero-text-in {
@@ -190,24 +347,23 @@ body::before {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Reduced-motion: simple fade, no flip */
-@media (prefers-reduced-motion: reduce) {
-  .hero-phone-entering {
-    animation: phone-entrance-simple 300ms ease-out both !important;
-  }
-  @keyframes phone-entrance-simple {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-  }
-}
-
-/* iPhone 3D float — pronounced cinematic loop, multi-axis rotation */
+/* iPhone 3D float — gentle, stable, no scale change */
 @keyframes iphone-3d-float {
-  0%   { transform: perspective(1800px) rotateY(-20deg) rotateX(10deg) rotateZ(-1deg) translateY(0px)   translateX(0px)  scale(1);    }
-  25%  { transform: perspective(1800px) rotateY(-10deg) rotateX(12deg) rotateZ(0deg)  translateY(-8px)  translateX(4px)  scale(1.015); }
-  50%  { transform: perspective(1800px) rotateY(-5deg)  rotateX(8deg)  rotateZ(1deg)  translateY(-12px) translateX(0px)  scale(1.02);  }
-  75%  { transform: perspective(1800px) rotateY(-15deg) rotateX(6deg)  rotateZ(0deg)  translateY(-6px)  translateX(-4px) scale(1.015); }
-  100% { transform: perspective(1800px) rotateY(-20deg) rotateX(10deg) rotateZ(-1deg) translateY(0px)   translateX(0px)  scale(1);    }
+  0% {
+    transform: perspective(1800px) rotateY(-12deg) rotateX(6deg) rotateZ(-0.5deg) translateY(0px) scale(1);
+  }
+  25% {
+    transform: perspective(1800px) rotateY(-14deg) rotateX(8deg) rotateZ(-1deg) translateY(-8px) scale(1.01);
+  }
+  50% {
+    transform: perspective(1800px) rotateY(-10deg) rotateX(4deg) rotateZ(0.5deg) translateY(-12px) scale(1);
+  }
+  75% {
+    transform: perspective(1800px) rotateY(-16deg) rotateX(7deg) rotateZ(-0.8deg) translateY(-6px) scale(1.005);
+  }
+  100% {
+    transform: perspective(1800px) rotateY(-12deg) rotateX(6deg) rotateZ(-0.5deg) translateY(0px) scale(1);
+  }
 }
 
 /* Shadow beneath phone — dims and spreads as phone floats up */
@@ -230,37 +386,27 @@ body::before {
 }
 
 .hero-phone-frame {
-  animation: iphone-3d-float 8s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+  /* Base transform matches 0% keyframe — prevents jump on first animation tick */
+  transform: perspective(1800px) rotateY(-10deg) rotateX(8deg) rotateZ(-0.5deg) translateY(0px);
+  animation: iphone-3d-float 7s ease-in-out infinite;
   transform-style: preserve-3d;
   will-change: transform;
-}
-
-/* iPhone 3D float — mobile variant (40% reduced intensity) */
-@keyframes iphone-3d-float-mobile {
-  0%   { transform: perspective(1800px) rotateY(-12deg) rotateX(6deg)  rotateZ(-0.5deg) translateY(0px)  translateX(0px)  scale(1);    }
-  25%  { transform: perspective(1800px) rotateY(-6deg)  rotateX(7deg)  rotateZ(0deg)    translateY(-5px) translateX(2px)  scale(1.009); }
-  50%  { transform: perspective(1800px) rotateY(-3deg)  rotateX(5deg)  rotateZ(0.5deg)  translateY(-7px) translateX(0px)  scale(1.012); }
-  75%  { transform: perspective(1800px) rotateY(-9deg)  rotateX(4deg)  rotateZ(0deg)    translateY(-4px) translateX(-2px) scale(1.009); }
-  100% { transform: perspective(1800px) rotateY(-12deg) rotateX(6deg)  rotateZ(-0.5deg) translateY(0px)  translateX(0px)  scale(1);    }
 }
 
 /* Mobile overrides for hero scene */
 @media (max-width: 767px) {
   .hero-phone-frame {
-    width: 180px !important;
-    height: 370px !important;
-    border-radius: 36px !important;
-    padding: 7px !important;
-    animation-name: iphone-3d-float-mobile !important;
+    width: 204px !important;
+    height: 416px !important;
+    border-radius: 38px !important;
+    padding: 6px !important;
   }
   .hero-phone-island {
-    width: 78px !important;
-    height: 24px !important;
-    top: 15px !important;
+    width: 95px !important;
+    height: 32px !important;
+    top: 17px !important;
   }
-  .hero-icon-badge { width: 36px !important; height: 36px !important; }
-  .hero-icon-label { font-size: 7px !important; }
-  .hero-scene { min-height: 400px !important; }
+  .hero-scene { min-height: 540px !important; }
 }
 
 /* =========================================================

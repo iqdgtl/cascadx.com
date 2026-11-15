@@ -50,9 +50,9 @@ export default function Button({
   const base = "group inline-flex items-center gap-[10px] rounded-full text-[15px] font-semibold transition-all duration-250 ease-out";
 
   const primaryDefault =
-    "px-6 py-[15px] bg-accent text-[#0d0f0e] shadow-[0_6px_30px_-10px_rgba(217,119,87,0.5)] hover:bg-accent-deep hover:text-[#0d0f0e] hover:-translate-y-0.5 hover:shadow-[0_14px_40px_-10px_rgba(217,119,87,0.55)]";
+    "px-6 py-[15px] bg-accent text-[#faf8f2] shadow-[0_6px_30px_-10px_rgba(217,119,87,0.5)] hover:bg-accent-deep hover:text-[#faf8f2] hover:-translate-y-0.5 hover:shadow-[0_14px_40px_-10px_rgba(217,119,87,0.55)]";
   const primaryInvert =
-    "px-6 py-[15px] bg-accent text-[#0d0f0e] shadow-[0_6px_30px_-10px_rgba(217,119,87,0.5)] hover:bg-accent-deep hover:text-[#0d0f0e] hover:-translate-y-0.5";
+    "px-6 py-[15px] bg-accent text-[#faf8f2] shadow-[0_6px_30px_-10px_rgba(217,119,87,0.5)] hover:bg-accent-deep hover:text-[#faf8f2] hover:-translate-y-0.5";
   const ghostDefault =
     "px-[22px] py-[15px] border border-line-strong bg-white/[0.04] text-ink hover:border-accent hover:bg-white/[0.08]";
   const ghostInvert =

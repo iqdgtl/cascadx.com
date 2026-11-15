@@ -215,7 +215,7 @@ export default function ChatWidget() {
         <button
           onClick={() => setOpen(true)}
           aria-label="Open chat with CascadX assistant"
-          className="fixed z-50 flex items-center gap-2 h-10 pl-1.5 pr-3.5 bg-surface-el border border-[rgba(255,255,255,0.12)] rounded-full shadow-[0_8px_20px_-8px_rgba(0,0,0,0.5),0_0_0_1px_rgba(217,119,87,0.15)] transition-all duration-200 hover:bg-[#2e3533] hover:border-accent hover:scale-[1.03] max-[600px]:w-10 max-[600px]:pl-0 max-[600px]:pr-0 max-[600px]:justify-center"
+          className="fixed z-50 flex items-center gap-2 h-10 pl-1.5 pr-3.5 bg-surface-el border border-[rgba(26,15,10,0.12)] rounded-full shadow-[0_8px_20px_-8px_rgba(0,0,0,0.5),0_0_0_1px_rgba(217,119,87,0.15)] transition-all duration-200 hover:bg-[#2e3533] hover:border-accent hover:scale-[1.03] max-[600px]:w-10 max-[600px]:pl-0 max-[600px]:pr-0 max-[600px]:justify-center"
           style={{ bottom: "calc(20px + env(safe-area-inset-bottom, 0px))", right: "20px" }}
         >
           <div className="relative w-7 h-7 rounded-full bg-surface grid place-items-center shrink-0">
@@ -228,7 +228,7 @@ export default function ChatWidget() {
 
       {/* Expanded panel */}
       {open && (
-        <div className="fixed bottom-6 right-6 z-50 w-[400px] h-[600px] max-[600px]:inset-0 max-[600px]:w-full max-[600px]:h-full max-[600px]:bottom-0 max-[600px]:right-0 max-[600px]:rounded-none bg-surface-el border border-[rgba(255,255,255,0.12)] rounded-[18px] shadow-[0_20px_50px_-10px_rgba(0,0,0,0.7),0_1px_0_rgba(255,255,255,0.08)_inset] flex flex-col overflow-hidden animate-[msgIn_0.35s_cubic-bezier(0.2,0.8,0.2,1)_forwards] max-[600px]:pb-[env(safe-area-inset-bottom)]">
+        <div className="fixed bottom-6 right-6 z-50 w-[400px] h-[600px] max-[600px]:inset-0 max-[600px]:w-full max-[600px]:h-full max-[600px]:bottom-0 max-[600px]:right-0 max-[600px]:rounded-none bg-surface-el border border-[rgba(26,15,10,0.12)] rounded-[18px] shadow-[0_20px_50px_-10px_rgba(0,0,0,0.7),0_1px_0_rgba(26,15,10,0.08)_inset] flex flex-col overflow-hidden animate-[msgIn_0.35s_cubic-bezier(0.2,0.8,0.2,1)_forwards] max-[600px]:pb-[env(safe-area-inset-bottom)]">
           {/* Header */}
           <div className="flex items-center justify-between px-5 py-4 border-b border-line shrink-0">
             <div className="flex items-center gap-3">
@@ -252,7 +252,7 @@ export default function ChatWidget() {
               <div key={i} className={`flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
                 <div className={`max-w-[85%] px-4 py-2.5 rounded-2xl text-[14px] leading-relaxed ${
                   msg.from === "user"
-                    ? "bg-accent text-[#0d0f0e] rounded-br-md"
+                    ? "bg-accent text-[#faf8f2] rounded-br-md"
                     : "bg-surface border border-line text-ink rounded-bl-md"
                 }`}>
                   {msg.text}
@@ -263,7 +263,7 @@ export default function ChatWidget() {
             {/* Step 0: Quick picks */}
             {step === 0 && messages.length > 0 && (
               <div className="flex gap-2 pt-1">
-                <button onClick={handleReady} className="px-4 py-2 text-sm font-semibold bg-accent text-[#0d0f0e] rounded-full hover:bg-accent-deep transition-colors">Yes, let&apos;s go</button>
+                <button onClick={handleReady} className="px-4 py-2 text-sm font-semibold bg-accent text-[#faf8f2] rounded-full hover:bg-accent-deep transition-colors">Yes, let&apos;s go</button>
                 <button onClick={handleBrowsing} className="px-4 py-2 text-sm border border-line text-ink-soft rounded-full hover:border-ink-muted transition-colors">Just browsing</button>
               </div>
             )}
@@ -334,7 +334,7 @@ export default function ChatWidget() {
                   <div className="flex justify-between"><span className="text-ink-muted">Notes</span><span className="text-ink truncate max-w-[180px]">{notes}</span></div>
                 </div>
                 <div className="flex gap-2 mt-3">
-                  <button onClick={confirmAndSend} className="flex-1 px-4 py-2.5 text-sm font-semibold bg-accent text-[#0d0f0e] rounded-full hover:bg-accent-deep transition-colors">
+                  <button onClick={confirmAndSend} className="flex-1 px-4 py-2.5 text-sm font-semibold bg-accent text-[#faf8f2] rounded-full hover:bg-accent-deep transition-colors">
                     ✓ Confirm and send
                   </button>
                   <button onClick={() => { setStep(4); addBot("No problem — pick a new date:"); }} className="px-4 py-2.5 text-sm border border-line text-ink-soft rounded-full hover:border-ink-muted transition-colors">
@@ -377,7 +377,7 @@ export default function ChatWidget() {
                   />
                   <div className="flex items-center justify-between">
                     <button onClick={() => { setInput(""); submitNotes(); }} className="text-[12px] text-ink-muted hover:text-ink transition-colors">Skip this →</button>
-                    <button onClick={submitNotes} className="w-8 h-8 rounded-full bg-accent text-[#0d0f0e] grid place-items-center shrink-0 transition-colors hover:bg-accent-deep" aria-label="Send">
+                    <button onClick={submitNotes} className="w-8 h-8 rounded-full bg-accent text-[#faf8f2] grid place-items-center shrink-0 transition-colors hover:bg-accent-deep" aria-label="Send">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
                     </button>
                   </div>
@@ -394,7 +394,7 @@ export default function ChatWidget() {
                       placeholder={step === 1 ? "you@company.com" : step === 2 ? "Your name" : "Company name"}
                       className="flex-1 bg-transparent border-none outline-none text-sm text-ink placeholder:text-ink-muted font-sans"
                     />
-                    <button onClick={handleInputSubmit} className="w-8 h-8 rounded-full bg-accent text-[#0d0f0e] grid place-items-center shrink-0 transition-colors hover:bg-accent-deep" aria-label="Send">
+                    <button onClick={handleInputSubmit} className="w-8 h-8 rounded-full bg-accent text-[#faf8f2] grid place-items-center shrink-0 transition-colors hover:bg-accent-deep" aria-label="Send">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
                     </button>
                   </div>

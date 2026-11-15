@@ -31,7 +31,7 @@ function Toggle({ on, disabled, onToggle }: { on: boolean; disabled?: boolean; o
       className={`relative w-11 h-6 rounded-full transition-colors duration-200 ${on ? "bg-accent" : "bg-surface"} ${disabled ? "opacity-60 cursor-not-allowed" : "cursor-pointer"}`}
       aria-pressed={on}
     >
-      <span className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full transition-transform duration-200 ${on ? "translate-x-5 bg-[#0d0f0e]" : "translate-x-0 bg-ink-muted"}`} />
+      <span className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full transition-transform duration-200 ${on ? "translate-x-5 bg-[#faf8f2]" : "translate-x-0 bg-ink-muted"}`} />
     </button>
   );
 }
@@ -71,7 +71,7 @@ export default function CookiesPage() {
 
           {/* Action buttons */}
           <div className="flex flex-wrap gap-3 mb-16">
-            <button onClick={() => setSettings({ essential: true, analytics: true, marketing: true, preferences: true })} className="px-5 py-3 bg-accent text-[#0d0f0e] rounded-full text-sm font-semibold transition-all hover:bg-accent-deep hover:-translate-y-0.5">
+            <button onClick={() => setSettings({ essential: true, analytics: true, marketing: true, preferences: true })} className="px-5 py-3 bg-accent text-[#faf8f2] rounded-full text-sm font-semibold transition-all hover:bg-accent-deep hover:-translate-y-0.5">
               Accept all
             </button>
             <button onClick={() => setSettings({ essential: true, analytics: false, marketing: false, preferences: false })} className="px-5 py-3 border border-line-strong bg-white/[0.04] text-ink rounded-full text-sm font-semibold transition-all hover:border-accent">

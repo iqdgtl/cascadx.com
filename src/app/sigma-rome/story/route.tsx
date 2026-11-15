@@ -19,7 +19,7 @@ export async function GET() {
       <div
         style={{
           width: W, height: H,
-          background: "#0d0f0e",
+          background: "#faf8f2",
           display: "flex",
           position: "relative",
           overflow: "hidden",
@@ -123,7 +123,7 @@ export async function GET() {
 
           {/* Logo — centered top */}
           <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-            <div style={{ color: "#fafaf7", fontSize: 34, fontWeight: 800, letterSpacing: "-1px", display: "flex" }}>
+            <div style={{ color: "#1a0f0a", fontSize: 34, fontWeight: 800, letterSpacing: "-1px", display: "flex" }}>
               CascadX
             </div>
             <div style={{ width: 9, height: 9, borderRadius: "50%", background: "#d97757", marginLeft: 4, marginBottom: -5, display: "flex" }} />
@@ -148,7 +148,7 @@ export async function GET() {
               <div style={{ color: "#d97757", fontSize: 82, fontWeight: 800, lineHeight: 1.06, letterSpacing: "-2.5px", display: "flex" }}>
                 SiGMA Rome
               </div>
-              <div style={{ color: "#fafaf7", fontSize: 82, fontWeight: 800, lineHeight: 1.06, letterSpacing: "-2.5px", display: "flex" }}>
+              <div style={{ color: "#1a0f0a", fontSize: 82, fontWeight: 800, lineHeight: 1.06, letterSpacing: "-2.5px", display: "flex" }}>
                 2026
               </div>
             </div>

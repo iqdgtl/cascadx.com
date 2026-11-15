@@ -110,7 +110,7 @@ export function ShowcaseCard({
   href?: string;
 }) {
   return (
-    <div className="bg-surface-el border border-line rounded-[var(--radius-lg)] p-7 shadow-[0_1px_0_rgba(255,255,255,0.08)_inset,0_20px_40px_-20px_rgba(0,0,0,0.3)] flex flex-col gap-4 transition-all duration-250 hover:-translate-y-0.5">
+    <div className="bg-surface-el border border-line rounded-[var(--radius-lg)] p-7 shadow-[0_1px_0_rgba(26,15,10,0.08)_inset,0_20px_40px_-20px_rgba(0,0,0,0.3)] flex flex-col gap-4 transition-all duration-250 hover:-translate-y-0.5">
       <div className="text-accent w-10 h-10">{icon}</div>
       <h3 className="font-display font-[600] text-[18px] tracking-[-0.02em]">{title}</h3>
       <p className="text-sm text-ink-soft leading-relaxed m-0">{description}</p>

@@ -62,7 +62,7 @@ function DesktopDropdown({ group }: { group: NavGroup }) {
         {isGroupActive && <span className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-accent" />}
       </button>
       <div className={`absolute top-full left-1/2 -translate-x-1/2 pt-3 transition-all duration-200 ${open ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}>
-        <div className="min-w-[220px] p-[10px] bg-surface-el border border-[rgba(255,255,255,0.10)] rounded-[var(--radius)] shadow-[0_20px_50px_-20px_rgba(0,0,0,0.8),0_1px_0_rgba(255,255,255,0.06)_inset]">
+        <div className="min-w-[220px] p-[10px] bg-surface-el border border-[rgba(26,15,10,0.10)] rounded-[var(--radius)] shadow-[0_20px_50px_-20px_rgba(0,0,0,0.8),0_1px_0_rgba(26,15,10,0.06)_inset]">
           {group.items.map((item) => {
             const isCurrent = pathname === item.href;
             return (
@@ -98,7 +98,7 @@ export default function Nav() {
 
   return (
     <>
-      <nav className="sticky top-0 z-50 backdrop-blur-[14px] bg-[rgba(13,15,14,0.8)] border-b border-line">
+      <nav className="sticky top-0 z-50 backdrop-blur-[14px] bg-[rgba(250,248,242,0.85)] border-b border-[rgba(26,15,10,0.08)]">
         <div className="max-w-[var(--max)] mx-auto px-5 md:px-7 py-3 md:py-4 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="text-ink">
@@ -116,14 +116,14 @@ export default function Nav() {
           <div className="flex items-center gap-3">
             {/* Desktop CTA */}
             <Link href="/contact"
-              className="hidden lg:inline-flex items-center gap-2 px-4 py-[10px] bg-accent text-[#0d0f0e] rounded-full text-[13px] font-semibold shadow-[0_6px_30px_-10px_rgba(217,119,87,0.5)] transition-all duration-250 ease-out hover:bg-accent-deep hover:-translate-y-0.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#0d0f0e]" />
+              className="hidden lg:inline-flex items-center gap-2 px-4 py-[10px] bg-accent text-[#faf8f2] rounded-full text-[13px] font-semibold shadow-[0_6px_30px_-10px_rgba(217,119,87,0.5)] transition-all duration-250 ease-out hover:bg-accent-deep hover:-translate-y-0.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#faf8f2]" />
               Contact us
             </Link>
 
             {/* Mobile CTA — compact pill */}
             <Link href="/contact"
-              className="lg:hidden inline-flex items-center px-3.5 py-1.5 bg-accent text-[#0d0f0e] rounded-full text-[12px] font-semibold h-8">
+              className="lg:hidden inline-flex items-center px-3.5 py-1.5 bg-accent text-[#faf8f2] rounded-full text-[12px] font-semibold h-8">
               Contact us
             </Link>
 
@@ -166,7 +166,7 @@ export default function Nav() {
             {navGroups.map((group, gi) => (
               <div
                 key={group.label}
-                className="border-b border-line opacity-0 translate-y-2"
+                className="border-b border-[rgba(26,15,10,0.08)] opacity-0 translate-y-2"
                 style={{ animation: `msgIn 0.3s ease ${gi * 80}ms forwards` }}
               >
                 <button
@@ -202,7 +202,7 @@ export default function Nav() {
             <div className="mt-10">
               <Link
                 href="/contact"
-                className="flex items-center justify-center w-full py-4 bg-accent text-[#0d0f0e] rounded-full text-[16px] font-semibold active:bg-accent-deep"
+                className="flex items-center justify-center w-full py-4 bg-accent text-[#faf8f2] rounded-full text-[16px] font-semibold active:bg-accent-deep"
                 onClick={() => setMobileOpen(false)}
               >
                 Contact us

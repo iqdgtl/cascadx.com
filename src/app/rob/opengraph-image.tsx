@@ -15,7 +15,7 @@ export default function Image() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "#0d0f0e",
+          background: "#faf8f2",
           position: "relative",
           overflow: "hidden",
         }}
@@ -53,7 +53,7 @@ export default function Image() {
         <div style={{ display: "flex", alignItems: "center", marginBottom: 44 }}>
           <span
             style={{
-              color: "#fafaf7",
+              color: "#1a0f0a",
               fontSize: 30,
               fontWeight: 800,
               letterSpacing: "-1px",
@@ -104,7 +104,7 @@ export default function Image() {
         {/* Name */}
         <div
           style={{
-            color: "#fafaf7",
+            color: "#1a0f0a",
             fontSize: 62,
             fontWeight: 800,
             letterSpacing: "-2px",
@@ -126,7 +126,7 @@ export default function Image() {
         >
           <span
             style={{
-              color: "rgba(255,255,255,0.65)",
+              color: "rgba(26,15,10,0.65)",
               fontSize: 22,
               fontFamily: "sans-serif",
             }}
@@ -164,7 +164,7 @@ export default function Image() {
         {/* Tagline */}
         <div
           style={{
-            color: "rgba(255,255,255,0.48)",
+            color: "rgba(26,15,10,0.48)",
             fontSize: 19,
             textAlign: "center",
             maxWidth: 680,

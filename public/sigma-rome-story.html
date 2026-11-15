@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1920px;overflow:hidden;background:#0d0f0e}
+.root{width:1080px;height:1920px;position:relative;overflow:hidden;background:#0d0f0e}
+
+/* ── PHOTO (top half) ── */
+.photo-wrap{position:absolute;left:0;top:0;width:1080px;height:940px;overflow:hidden}
+.photo-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:brightness(.62) saturate(.8) contrast(1.05)}
+.photo-ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,15,14,.15) 0%,rgba(13,15,14,.25) 60%,rgba(13,15,14,.95) 100%)}
+.photo-tint{position:absolute;inset:0;background:rgba(217,119,87,.06)}
+.photo-top{position:absolute;top:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,rgba(13,15,14,.6) 0%,transparent 100%)}
+
+/* Diagonal accent lines on photo */
+.photo-diag{position:absolute;left:0;top:0;width:1080px;height:940px;pointer-events:none}
+
+/* ── TEXT SECTION ── */
+.text-section{
+  position:absolute;left:0;right:0;top:850px;
+  padding:0 80px;
+  display:flex;flex-direction:column;align-items:flex-start
+}
+.badge{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(217,119,87,.1);border:1px solid rgba(217,119,87,.28);
+  border-radius:8px;padding:8px 18px;margin-bottom:28px;width:fit-content
+}
+.badge-dot{width:7px;height:7px;border-radius:50%;background:#d97757;flex-shrink:0}
+.badge-text{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:2.5px;color:rgba(217,119,87,.9);text-transform:uppercase}
+.eyebrow{font-family:'Inter',sans-serif;font-size:24px;font-weight:500;letter-spacing:8px;color:rgba(250,250,247,.55);text-transform:uppercase;margin-bottom:16px}
+.headline{font-family:'Inter',sans-serif;font-weight:800;font-size:100px;line-height:.92;letter-spacing:-4px;margin-bottom:40px}
+.h-w{color:#fafaf7;display:block}
+.h-t{color:#d97757;display:block}
+.divider{width:70px;height:3px;background:#d97757;margin-bottom:36px;border-radius:2px}
+.info-row{display:flex;align-items:center;gap:16px;margin-bottom:22px}
+.info-date{font-family:'Inter',sans-serif;font-size:32px;font-weight:600;color:#fafaf7;letter-spacing:.5px}
+.info-venue{font-family:'Inter',sans-serif;font-size:26px;font-weight:500;color:rgba(250,250,247,.72);letter-spacing:.5px}
+
+/* ── QR + CTA ── */
+.qr-section{
+  position:absolute;left:80px;right:80px;bottom:246px;
+  display:flex;align-items:center;gap:40px
+}
+.qr-box{
+  width:160px;height:160px;background:#0d0f0e;
+  border:2px solid rgba(217,119,87,.3);border-radius:16px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden
+}
+.qr-box img{width:148px;height:148px}
+.qr-text-wrap{display:flex;flex-direction:column;gap:8px}
+.qr-label{font-family:'Inter',sans-serif;font-size:14px;font-weight:500;letter-spacing:2px;color:rgba(250,250,247,.45);text-transform:uppercase}
+.qr-url{font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:500;color:rgba(217,119,87,.9)}
+.qr-sub{font-family:'Inter',sans-serif;font-size:16px;font-weight:400;color:rgba(250,250,247,.4)}
+
+/* ── ROME SKYLINE ── */
+.skyline{position:absolute;left:0;width:1080px;bottom:70px;height:174px}
+
+/* ── FOOTER ── */
+.footer{
+  position:absolute;left:0;bottom:0;width:1080px;height:70px;
+  background:rgba(10,12,11,.97);border-top:1px solid rgba(217,119,87,.14);
+  display:flex;align-items:center;justify-content:space-between;padding:0 50px
+}
+.logo-w{display:flex;align-items:center;font-family:'Inter',sans-serif;font-size:26px;font-weight:800;letter-spacing:-.5px;color:#fafaf7}
+.logo-dot{width:7px;height:7px;border-radius:50%;background:#d97757;margin-left:3px;margin-bottom:-3px;display:inline-block}
+.footer-url{font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:500;color:rgba(217,119,87,.75)}
+
+/* Logo top overlay on photo */
+.top-logo{
+  position:absolute;left:80px;top:72px;
+  display:flex;align-items:center;
+  font-family:'Inter',sans-serif;font-size:28px;font-weight:800;letter-spacing:-.5px;color:#fafaf7
+}
+.top-logo-dot{width:8px;height:8px;border-radius:50%;background:#d97757;margin-left:3px;margin-bottom:-4px;display:inline-block}
+</style>
+</head>
+<body>
+<div class="root">
+
+<!-- Dark background base -->
+<div style="position:absolute;inset:0;background:linear-gradient(180deg,#0d0f0e 0%,#1a1210 55%,#0d0f0e 100%)"></div>
+
+<!-- Warm glow behind text section -->
+<div style="position:absolute;top:900px;left:-200px;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(217,119,87,.12) 0%,transparent 65%)"></div>
+<div style="position:absolute;top:1100px;right:-150px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(217,119,87,.08) 0%,transparent 65%)"></div>
+
+<!-- Photo panel -->
+<div class="photo-wrap">
+  <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1400&q=85&fit=crop&crop=center" alt="" crossorigin="anonymous">
+  <div class="photo-ov"></div>
+  <div class="photo-tint"></div>
+  <div class="photo-top"></div>
+</div>
+
+<!-- Diagonal accent lines on photo corners -->
+<svg class="photo-diag" viewBox="0 0 1080 940" xmlns="http://www.w3.org/2000/svg">
+  <!-- Left edge lines angling in -->
+  <line x1="0" y1="400" x2="160" y2="940" stroke="#d97757" stroke-width="3" opacity=".55"/>
+  <line x1="0" y1="320" x2="130" y2="940" stroke="#d97757" stroke-width="1.5" opacity=".22"/>
+  <!-- Right edge lines -->
+  <line x1="1080" y1="350" x2="920" y2="940" stroke="#d97757" stroke-width="3" opacity=".55"/>
+  <line x1="1080" y1="270" x2="950" y2="940" stroke="#d97757" stroke-width="1.5" opacity=".22"/>
+</svg>
+
+<!-- CascadX logo over photo (top-left) -->
+<div class="top-logo">CascadX<span class="top-logo-dot"></span></div>
+
+<!-- Text section -->
+<div class="text-section">
+  <div class="badge"><span class="badge-dot"></span><span class="badge-text">SiGMA World · Rome 2026</span></div>
+  <div class="eyebrow">Meet us at</div>
+  <div class="headline">
+    <span class="h-w">SiGMA</span>
+    <span class="h-t">Rome</span>
+    <span class="h-w">2026</span>
+  </div>
+  <div class="divider"></div>
+  <div class="info-row">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" style="flex-shrink:0">
+      <rect x="3" y="4" width="18" height="18" rx="3" stroke="#d97757" stroke-width="2"/>
+      <path d="M3 9h18" stroke="#d97757" stroke-width="2"/>
+      <path d="M8 2v4M16 2v4" stroke="#d97757" stroke-width="2" stroke-linecap="round"/>
+      <rect x="7" y="12" width="2.5" height="2.5" rx=".5" fill="#d97757"/>
+      <rect x="11" y="12" width="2.5" height="2.5" rx=".5" fill="#d97757"/>
+      <rect x="7" y="16" width="2.5" height="2.5" rx=".5" fill="#d97757"/>
+    </svg>
+    <span class="info-date">2–5 NOV 2026</span>
+  </div>
+  <div class="info-row">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" style="flex-shrink:0">
+      <path d="M12 2C8.686 2 6 4.686 6 8c0 4.418 6 12 6 12s6-7.582 6-12c0-3.314-2.686-6-6-6z" stroke="#d97757" stroke-width="2"/>
+      <circle cx="12" cy="8" r="2" stroke="#d97757" stroke-width="2"/>
+    </svg>
+    <span class="info-venue">FIERA ROMA, ITALY</span>
+  </div>
+</div>
+
+<!-- QR code + CTA section -->
+<div class="qr-section">
+  <div class="qr-box">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=148x148&data=https%3A%2F%2Fcascadx.com%2Frob&color=d97757&bgcolor=0d0f0e&margin=2" alt="QR" crossorigin="anonymous">
+  </div>
+  <div class="qr-text-wrap">
+    <div class="qr-label">Book a meeting</div>
+    <div class="qr-url">cascadx.com/rob</div>
+    <div class="qr-sub">Scan to connect with Robi Guetta</div>
+  </div>
+</div>
+
+<!-- Separator line above skyline -->
+<div style="position:absolute;left:50px;right:50px;bottom:244px;height:1px;background:linear-gradient(90deg,transparent,rgba(217,119,87,.25) 30%,rgba(217,119,87,.25) 70%,transparent)"></div>
+
+<!-- Rome skyline -->
+<div class="skyline">
+  <svg width="1080" height="174" viewBox="0 0 1080 174" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="sg1s" cx="50%" cy="100%" r="70%">
+        <stop offset="0%" stop-color="#d97757" stop-opacity=".32"/>
+        <stop offset="100%" stop-color="#d97757" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="sg2s" cx="60%" cy="100%" r="42%">
+        <stop offset="0%" stop-color="#d97757" stop-opacity=".2"/>
+        <stop offset="100%" stop-color="#d97757" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <ellipse cx="540" cy="175" rx="560" ry="110" fill="url(#sg1s)"/>
+    <ellipse cx="680" cy="175" rx="280" ry="90" fill="url(#sg2s)"/>
+    <path d="
+      M0,174 L0,144
+      L18,144 L18,132 L26,125 L34,132 L34,144
+      L55,144 L55,132 L60,124 L55,116 L70,102 L85,116 L80,124 L85,132 L85,144
+      L105,144
+      L110,144 L110,132 Q150,74 190,132 L190,144
+      L210,144 L210,132 L218,120 L226,132 L226,144
+      L248,144 L248,132 L260,132 L260,144
+      L280,144 L280,130 L286,122 L292,130 L292,144
+      L312,144 L312,136 L350,136 L350,144
+      L370,144 L370,127 L376,117 L380,107 Q385,92 390,86 Q395,92 400,107 L404,117 L408,127 L414,127 L414,144
+      L434,144
+      L450,144 L450,127 L456,120 L464,120 L464,127 L470,144
+      L490,144
+      L510,144 L510,127 L516,117 L520,100 L523,80 Q526,50 528,40 Q530,18 532,12 Q534,18 536,40 Q538,50 541,80 L544,100 L548,117 L554,127 L560,127 L560,144
+      L580,144 L580,136 L618,136 L618,144
+      L638,144 L638,130 L646,122 L654,130 L654,144
+      L674,144 L674,134 L714,134 L714,144
+      L734,144 L734,130 L742,122 L750,130 L750,144
+      L770,144 L770,134 L808,134 L808,144
+      L828,144 L828,127 Q845,102 862,127 L862,144
+      L882,144 L882,134 L892,127 L902,134 L902,144
+      L928,144 L928,134 L965,134 L965,144
+      L985,144 L985,132 L992,125 L999,132 L999,144
+      L1020,144 L1020,138 L1048,138 L1048,144 L1080,144 L1080,174 Z
+    " fill="#1a1210"/>
+    <path d="M0,174 L0,152 L1080,152 L1080,174 Z" fill="#0d0f0e"/>
+    <path d="M0,174 L0,154 L110,154 L190,150 L260,154 L350,154 L414,152 L490,154 L560,150 L618,154 L714,154 L808,154 L862,152 L965,154 L1080,154 L1080,174 Z" fill="#0d0f0e"/>
+  </svg>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="logo-w">CascadX<span class="logo-dot"></span></div>
+  <div class="footer-url">cascadx.com/rob</div>
+</div>
+
+</div>
+</body>
+</html>

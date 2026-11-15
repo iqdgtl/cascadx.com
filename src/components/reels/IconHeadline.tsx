@@ -50,7 +50,7 @@ export default function IconHeadline({ theme }: { theme: ReelTheme }) {
       <svg className="absolute bottom-0 left-0 w-full" viewBox="0 0 1080 400" preserveAspectRatio="none" style={{ height: `${waveP * 35}vh`, opacity: waveP * 0.8 * mainFade }}>
         <defs><linearGradient id="wG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor={theme.accent} stopOpacity="0.4" /><stop offset="100%" stopColor={theme.bg} stopOpacity="1" /></linearGradient></defs>
         <path d="M0,100 C200,0 400,150 540,80 C680,10 880,120 1080,60 L1080,400 L0,400 Z" fill="url(#wG)" />
-        <path d="M0,140 C180,50 380,170 540,110 C700,50 900,140 1080,90 L1080,400 L0,400 Z" fill="rgba(255,255,255,0.03)" />
+        <path d="M0,140 C180,50 380,170 540,110 C700,50 900,140 1080,90 L1080,400 L0,400 Z" fill="rgba(26,15,10,0.03)" />
       </svg>
       {outroP > 0 && <ReelLogoOutro progress={outroP} theme={theme} />}
     </div>

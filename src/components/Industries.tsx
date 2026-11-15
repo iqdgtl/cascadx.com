@@ -12,12 +12,12 @@ const INDUSTRIES = [
     href: "/solutions/igaming",
     icon: (
       <svg width="52" height="52" viewBox="0 0 52 52" fill="none" aria-hidden="true">
-        <rect x="4" y="4" width="44" height="44" rx="10" stroke="rgba(255,255,255,0.7)" strokeWidth="2"/>
-        <circle cx="17" cy="17" r="3.5" fill="rgba(255,255,255,0.9)"/>
-        <circle cx="35" cy="17" r="3.5" fill="rgba(255,255,255,0.9)"/>
-        <circle cx="17" cy="35" r="3.5" fill="rgba(255,255,255,0.9)"/>
-        <circle cx="35" cy="35" r="3.5" fill="rgba(255,255,255,0.9)"/>
-        <circle cx="26" cy="26" r="3.5" fill="rgba(255,255,255,0.9)"/>
+        <rect x="4" y="4" width="44" height="44" rx="10" stroke="rgba(26,15,10,0.7)" strokeWidth="2"/>
+        <circle cx="17" cy="17" r="3.5" fill="rgba(26,15,10,0.9)"/>
+        <circle cx="35" cy="17" r="3.5" fill="rgba(26,15,10,0.9)"/>
+        <circle cx="17" cy="35" r="3.5" fill="rgba(26,15,10,0.9)"/>
+        <circle cx="35" cy="35" r="3.5" fill="rgba(26,15,10,0.9)"/>
+        <circle cx="26" cy="26" r="3.5" fill="rgba(26,15,10,0.9)"/>
       </svg>
     ),
   },
@@ -31,10 +31,10 @@ const INDUSTRIES = [
     href: "/solutions/ecommerce",
     icon: (
       <svg width="52" height="52" viewBox="0 0 52 52" fill="none" aria-hidden="true">
-        <path d="M8 20h36l-4.5 24H12.5L8 20z" stroke="rgba(255,255,255,0.8)" strokeWidth="2" strokeLinejoin="round"/>
-        <path d="M19 20v-4a7 7 0 0114 0v4" stroke="rgba(255,255,255,0.8)" strokeWidth="2" strokeLinecap="round"/>
-        <circle cx="19" cy="40" r="2.5" fill="rgba(255,255,255,0.7)"/>
-        <circle cx="33" cy="40" r="2.5" fill="rgba(255,255,255,0.7)"/>
+        <path d="M8 20h36l-4.5 24H12.5L8 20z" stroke="rgba(26,15,10,0.8)" strokeWidth="2" strokeLinejoin="round"/>
+        <path d="M19 20v-4a7 7 0 0114 0v4" stroke="rgba(26,15,10,0.8)" strokeWidth="2" strokeLinecap="round"/>
+        <circle cx="19" cy="40" r="2.5" fill="rgba(26,15,10,0.7)"/>
+        <circle cx="33" cy="40" r="2.5" fill="rgba(26,15,10,0.7)"/>
       </svg>
     ),
   },
@@ -48,25 +48,25 @@ const INDUSTRIES = [
     href: "/solutions/dating",
     icon: (
       <svg width="52" height="52" viewBox="0 0 52 52" fill="none" aria-hidden="true">
-        <path d="M26 44S8 32 8 19a9 9 0 0118 0 9 9 0 0118 0c0 13-18 25-18 25z" stroke="rgba(255,255,255,0.8)" strokeWidth="2" strokeLinejoin="round"/>
-        <path d="M20 21l3 3 7-7" stroke="rgba(255,255,255,0.9)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M26 44S8 32 8 19a9 9 0 0118 0 9 9 0 0118 0c0 13-18 25-18 25z" stroke="rgba(26,15,10,0.8)" strokeWidth="2" strokeLinejoin="round"/>
+        <path d="M20 21l3 3 7-7" stroke="rgba(26,15,10,0.9)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
     ),
   },
   {
     name: "Food Delivery",
     tagline: "Lightning-fast payment processing at scale",
-    description: "High-volume, low-margin transactions at peak hours. CascadX keeps every order flowing with sub-40ms routing decisions.",
+    description: "High-volume, low-margin transactions at peak hours. CascadX keeps every order flowing with real-time routing decisions.",
     gradient: "linear-gradient(135deg, #064e3b, #059669, #34d399)",
     glow: "rgba(5,150,105,0.5)",
     glowHover: "rgba(52,211,153,0.4)",
     href: "/solutions/ecommerce",
     icon: (
       <svg width="52" height="52" viewBox="0 0 52 52" fill="none" aria-hidden="true">
-        <circle cx="26" cy="26" r="20" stroke="rgba(255,255,255,0.7)" strokeWidth="2"/>
-        <path d="M14 26h24M26 14v24" stroke="rgba(255,255,255,0.8)" strokeWidth="2" strokeLinecap="round"/>
-        <circle cx="26" cy="26" r="6" stroke="rgba(255,255,255,0.9)" strokeWidth="2"/>
-        <path d="M18 18l16 16M34 18L18 34" stroke="rgba(255,255,255,0.3)" strokeWidth="1"/>
+        <circle cx="26" cy="26" r="20" stroke="rgba(26,15,10,0.7)" strokeWidth="2"/>
+        <path d="M14 26h24M26 14v24" stroke="rgba(26,15,10,0.8)" strokeWidth="2" strokeLinecap="round"/>
+        <circle cx="26" cy="26" r="6" stroke="rgba(26,15,10,0.9)" strokeWidth="2"/>
+        <path d="M18 18l16 16M34 18L18 34" stroke="rgba(26,15,10,0.3)" strokeWidth="1"/>
       </svg>
     ),
   },
@@ -97,10 +97,7 @@ export default function Industries() {
           transform: visible ? "none" : "translateY(24px)",
           transition: "opacity 500ms ease, transform 500ms ease",
         }}>
-          <p style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "3px", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", margin: "0 0 16px" }}>
-            Vertical expertise
-          </p>
-          <h2 style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: "clamp(28px,4vw,52px)", letterSpacing: "-0.03em", lineHeight: 1.1, color: "#fafaf7", margin: 0 }}>
+          <h2 style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: "clamp(28px,4vw,52px)", letterSpacing: "-0.03em", lineHeight: 1.1, color: "#1a0f0a", margin: 0 }}>
             Built for your{" "}
             <span style={{ color: "#d97757" }}>industry.</span>
           </h2>
@@ -136,13 +133,13 @@ export default function Industries() {
                 transition: visible
                   ? `opacity 500ms ease ${i * 80}ms, transform 300ms cubic-bezier(0.34,1.56,0.64,1), box-shadow 300ms ease`
                   : "none",
-                border: "1px solid rgba(255,255,255,0.12)",
+                border: "1px solid rgba(26,15,10,0.12)",
               }}
             >
               {/* Shine overlay */}
               <div style={{
                 position: "absolute", inset: 0,
-                background: "linear-gradient(135deg,rgba(255,255,255,0.18) 0%,transparent 55%)",
+                background: "linear-gradient(135deg,rgba(26,15,10,0.18) 0%,transparent 55%)",
                 pointerEvents: "none",
               }} />
               {/* Noise overlay */}
@@ -169,14 +166,14 @@ export default function Industries() {
                 <p style={{
                   fontFamily: "var(--font-display)", fontWeight: 500,
                   fontSize: 14, lineHeight: 1.5,
-                  color: "rgba(255,255,255,0.75)", margin: "0 0 20px",
+                  color: "rgba(26,15,10,0.75)", margin: "0 0 20px",
                 }}>
                   {ind.tagline}
                 </p>
                 <div style={{
                   display: "inline-flex", alignItems: "center", gap: 6,
                   fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 14,
-                  color: "rgba(255,255,255,0.9)",
+                  color: "rgba(26,15,10,0.9)",
                   letterSpacing: "-0.01em",
                 }}>
                   Explore

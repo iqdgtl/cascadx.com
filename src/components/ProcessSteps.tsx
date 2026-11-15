@@ -27,7 +27,7 @@ export default function ProcessSteps({ kicker, title, steps }: { kicker: string;
           {steps.map((step, i) => (
             <div key={step.number} className="contents">
               <div
-                className="relative flex-1 bg-surface-el border border-line rounded-[var(--radius-lg)] p-7 min-h-[280px] flex flex-col gap-4 overflow-hidden opacity-0 translate-y-3 shadow-[0_1px_0_rgba(255,255,255,0.08)_inset,0_20px_40px_-20px_rgba(0,0,0,0.3)]"
+                className="relative flex-1 bg-surface-el border border-line rounded-[var(--radius-lg)] p-7 min-h-[280px] flex flex-col gap-4 overflow-hidden opacity-0 translate-y-3 shadow-[0_1px_0_rgba(26,15,10,0.08)_inset,0_20px_40px_-20px_rgba(0,0,0,0.3)]"
                 style={{ animation: vis ? `msgIn 0.5s cubic-bezier(0.2,0.8,0.2,1) ${i * 150}ms forwards` : "none" }}
               >
                 {/* Big background number */}

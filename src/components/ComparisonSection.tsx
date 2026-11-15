@@ -50,7 +50,7 @@ export default function ComparisonSection({ kicker, title, before, after }: Comp
 
           {/* After */}
           <div
-            className="bg-surface-el border border-accent/20 rounded-[var(--radius-lg)] p-7 opacity-0 translate-y-3 shadow-[0_1px_0_rgba(255,255,255,0.08)_inset,0_20px_40px_-20px_rgba(217,119,87,0.15)]"
+            className="bg-surface-el border border-accent/20 rounded-[var(--radius-lg)] p-7 opacity-0 translate-y-3 shadow-[0_1px_0_rgba(26,15,10,0.08)_inset,0_20px_40px_-20px_rgba(217,119,87,0.15)]"
             style={{ animation: vis ? "msgIn 0.5s cubic-bezier(0.2,0.8,0.2,1) 150ms forwards" : "none" }}
           >
             <div className="flex items-center gap-2 mb-5">

@@ -107,7 +107,7 @@ export default function AboutPage() {
             { name: "Tomás Becker", initials: "TB", role: "Head of Partnerships", bio: "Built PSP networks across 40+ markets. Speaks five languages.", gradient: "from-[#4e9eff] to-[#2980d4]" },
             { name: "Lila Okonkwo", initials: "LO", role: "Head of Customer Success", bio: "Scaled support orgs at two fintech unicorns. Operator-first mindset.", gradient: "from-[#4ade80] to-[#16a34a]" },
           ]).map((member) => (
-            <div key={member.name} className="bg-surface-el border border-line rounded-[var(--radius-lg)] p-6 text-center shadow-[0_1px_0_rgba(255,255,255,0.08)_inset,0_20px_40px_-20px_rgba(0,0,0,0.3)] transition-all duration-250 hover:-translate-y-[3px] hover:shadow-[0_1px_0_rgba(255,255,255,0.08)_inset,0_24px_48px_-16px_rgba(0,0,0,0.4)]">
+            <div key={member.name} className="bg-surface-el border border-line rounded-[var(--radius-lg)] p-6 text-center shadow-[0_1px_0_rgba(26,15,10,0.08)_inset,0_20px_40px_-20px_rgba(0,0,0,0.3)] transition-all duration-250 hover:-translate-y-[3px] hover:shadow-[0_1px_0_rgba(26,15,10,0.08)_inset,0_24px_48px_-16px_rgba(0,0,0,0.4)]">
               {/* Avatar with gradient + initials + terracotta ring */}
               <div className="relative w-20 h-20 mx-auto mb-4">
                 <div className="absolute inset-[-3px] rounded-full border border-accent/30 transition-all duration-250 group-hover:border-accent/60" />

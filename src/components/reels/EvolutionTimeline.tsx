@@ -30,7 +30,7 @@ export default function EvolutionTimeline({ theme }: { theme: ReelTheme }) {
   const outroP = Math.max(0, (t - OUTRO_START) / OUTRO_DUR);
   const mainFade = t < HOLD_END ? 1 : Math.max(0, 1 - (t - HOLD_END) / 500);
 
-  const nodeColor = (shade: number, isCx: boolean) => isCx ? theme.accent : theme.bg === "#0d0f0e" ? `rgba(255,255,255,${shade})` : `rgba(0,0,0,${shade * 0.8})`;
+  const nodeColor = (shade: number, isCx: boolean) => isCx ? theme.accent : theme.bg === "#faf8f2" ? `rgba(255,255,255,${shade})` : `rgba(0,0,0,${shade * 0.8})`;
 
   return (
     <div className="fixed inset-0 flex flex-col items-center overflow-hidden" style={{ cursor: "none", background: theme.bg }}>
