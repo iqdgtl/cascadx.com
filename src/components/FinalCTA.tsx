@@ -19,7 +19,7 @@ export default function FinalCTA() {
     const trimmed = email.trim();
     if (!trimmed) return;
     window.location.href =
-      `mailto:hello@cascadx.com?subject=Early%20access%20request&body=Hi%2C%20I%27d%20like%20early%20access%20to%20CascadX.%0A%0AEmail%3A%20${encodeURIComponent(trimmed)}`;
+      `mailto:hello@cascadx.com?subject=CascadX%20inquiry&body=Hi%2C%20I%27d%20like%20to%20learn%20more%20about%20CascadX.%0A%0AEmail%3A%20${encodeURIComponent(trimmed)}`;
   };
 
   const handleKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -57,17 +57,14 @@ export default function FinalCTA() {
             onChange={(e) => setEmail(e.target.value)}
             onKeyDown={handleKey}
           />
-          <button className="fcta-btn" onClick={handleSubmit} aria-label="Get early access">
-            <span>Get early access</span>
+          <button className="fcta-btn" onClick={handleSubmit} aria-label="Get in touch">
+            <span>Get in touch</span>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button>
         </div>
 
-        <p className="fcta-micro" style={anim(300)}>
-          No credit card required · Live in 48 hours
-        </p>
       </div>
 
       <style>{`
@@ -174,38 +171,55 @@ export default function FinalCTA() {
           letter-spacing: -0.005em;
         }
 
-        /* ── MOBILE: completely restructured — stacked, roomy, clean ── */
+        /* ── MOBILE: BIGGER input, standard button ── */
         @media (max-width: 640px) {
           .fcta-section { padding: 70px 20px 90px; }
           .fcta-headline { font-size: 32px; line-height: 1.15; margin-bottom: 16px; }
-          .fcta-sub { font-size: 15px; margin-bottom: 28px; padding: 0 4px; }
+          .fcta-sub { font-size: 15px; margin-bottom: 32px; padding: 0 4px; }
           .fcta-form {
             flex-direction: column;
             gap: 12px;
             max-width: 100%;
             padding: 0;
           }
+          /* INPUT — much bigger, white bg, pops on dark */
           .fcta-input {
             width: 100%;
-            height: 56px;
-            padding: 0 22px;
-            font-size: 16px;
-            background: rgba(255,255,255,0.05);
-            border: 1.5px solid rgba(255,255,255,0.12);
-            border-radius: 100px;
+            height: 76px;
+            padding: 0 28px;
+            font-size: 18px;
+            font-weight: 500;
+            background: #ffffff;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            color: #1a0f0a;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.8);
+          }
+          .fcta-input::placeholder {
+            color: rgba(26,15,10,0.4);
+            font-weight: 400;
+            font-size: 17px;
           }
           .fcta-input:focus {
-            background: rgba(255,255,255,0.08);
-            border-color: rgba(217,119,87,0.55);
-            box-shadow: 0 0 0 3px rgba(217,119,87,0.12);
+            border-color: #d97757;
+            box-shadow: 0 0 0 4px rgba(217,119,87,0.2), 0 12px 32px rgba(0,0,0,0.3);
           }
+          /* BUTTON — standard size, smaller than input visually */
           .fcta-btn {
             width: 100%;
-            height: 56px;
+            height: 60px;
             font-size: 16px;
+            font-weight: 600;
             padding: 0;
+            gap: 8px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(217,119,87,0.3);
           }
-          .fcta-micro { font-size: 12px; margin-top: 16px; }
+          .fcta-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 12px 28px rgba(217,119,87,0.4);
+          }
+          .fcta-micro { font-size: 13px; margin-top: 22px; }
         }
         @media (prefers-reduced-motion: reduce) {
           .fcta-btn { transition: none; }
