@@ -57,7 +57,7 @@ export default function Hero() {
         alignItems: "center",
         overflow: "hidden",
         background: "var(--bg)",
-        padding: "80px 28px 60px",
+        padding: "clamp(40px, 8vw, 80px) 24px clamp(32px, 6vw, 60px)",
       }}
     >
       {/* Single on-brand terracotta orb — no rainbow */}
@@ -315,9 +315,17 @@ export default function Hero() {
             gap: 24px !important;
           }
           .hero-grid > div:last-child {
-            height: clamp(510px, 128vw, 560px) !important;
+            height: clamp(380px, 95vw, 460px) !important;
             width: 100%;
           }
+          /* Make PremiumIPhone fill its mobile frame — fixes off-center */
+          .hero-phone-frame { position: relative !important; }
+          .hero-phone-frame > div {
+            width: 100% !important;
+            height: 100% !important;
+          }
+          .hero-phone-frame > div > * { border-radius: 38px !important; }
+          .hero-phone-wrap { --phone-y: 0px !important; }
           .hero-cta-row { justify-content: center; }
           .hero-cta-footnote { justify-content: center; }
           .hero-metrics { justify-content: center; }

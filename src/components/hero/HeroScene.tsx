@@ -298,9 +298,9 @@ export default function HeroScene() {
       <div style={{
         position: "absolute",
         left: "50%", top: "50%",
-        transform: "translate(-50%, calc(-50% - 30px))",
+        transform: "translate(-50%, calc(-50% + var(--phone-y, -30px)))",
         zIndex: 10,
-      }}>
+      }} className="hero-phone-wrap">
         {/* Ground shadow */}
         <div aria-hidden="true" style={{
           position: "absolute",
