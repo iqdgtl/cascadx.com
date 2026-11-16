@@ -45,14 +45,6 @@ export default function Hero() {
     return () => io.disconnect();
   }, []);
 
-  useEffect(() => {
-    const io = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setMetricVisible(true); io.disconnect(); } },
-      { threshold: 0.2 }
-    );
-    return () => io.disconnect();
-  }, []);
-
   const ta = (delay: number): React.CSSProperties =>
     textAnimate ? { animation: `hero-text-in 400ms ease-out ${delay}ms both` } : {};
 
