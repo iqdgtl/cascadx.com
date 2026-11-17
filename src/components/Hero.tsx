@@ -117,12 +117,12 @@ export default function Hero() {
             maxWidth: "640px",
             ...ta(200),
           }}>
+            Payment recovery,{" "}
             <span style={{
               color: "#d97757",
               fontWeight: 600,
               fontStyle: "italic",
-            }}>Payment tech</span>{" "}
-            for your business.
+            }}>for every business</span>.
           </h1>
 
           <p style={{
@@ -136,8 +136,9 @@ export default function Hero() {
             letterSpacing: "-0.005em",
             ...ta(500),
           }}>
-            Seamless software and APIs that help businesses accept every payment —
-            and recover the ones that fail. Built to scale with you.
+            Software and APIs that cascade every declined transaction across 1,000+
+            acquirers in milliseconds — recovering the revenue your current provider
+            quietly lets slip.
           </p>
 
           {/* Single CTA — clean, confident */}
