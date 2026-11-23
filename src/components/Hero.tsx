@@ -137,8 +137,7 @@ export default function Hero() {
             ...ta(500),
           }}>
             Software and APIs that cascade every declined transaction across 1,000+
-            acquirers in milliseconds — recovering the revenue your current provider
-            quietly lets slip.
+            acquirers in milliseconds.
           </p>
 
           {/* Single CTA — clean, confident */}
@@ -219,7 +218,7 @@ export default function Hero() {
           gap: 10px;
           height: 52px;
           padding: 0 28px;
-          background: var(--accent);
+          background: linear-gradient(180deg, #ff8a5c 0%, #ff6a3d 50%, #e8471b 100%);
           color: #fff;
           border: none;
           border-radius: 100px;
@@ -230,17 +229,17 @@ export default function Hero() {
           cursor: pointer;
           outline: none;
           touch-action: manipulation;
-          transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
-          box-shadow: 0 8px 20px rgba(255, 106, 61,0.35);
+          transition: filter 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+          box-shadow: 0 8px 20px rgba(255, 106, 61,0.4), inset 0 1px 0 rgba(255,255,255,0.22);
           position: relative;
           z-index: 2;
           white-space: nowrap;
         }
         .hero-btn-primary svg { transition: transform 200ms ease; flex-shrink: 0; }
         .hero-btn-primary:hover {
-          background: var(--accent-deep);
+          filter: brightness(1.08);
           transform: translateY(-2px);
-          box-shadow: 0 14px 32px rgba(255, 106, 61,0.45);
+          box-shadow: 0 14px 32px rgba(255, 106, 61,0.55), inset 0 1px 0 rgba(255,255,255,0.28);
         }
         .hero-btn-primary:hover svg { transform: translateX(3px); }
         .hero-btn-primary:active    { transform: scale(0.97); }

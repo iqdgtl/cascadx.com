@@ -28,7 +28,7 @@
   --line-on-dark:      rgba(255,255,255,0.08);
 
   --accent:       #ff6a3d;
-  --accent-deep:  #b35a3e;
+  --accent-deep:  #e8471b;
   --accent-glow:  rgba(255, 106, 61,0.25);
   --accent-ice:   rgba(255, 106, 61,0.1);
   --warn:         #ff6a3d;
@@ -396,25 +396,21 @@ body::before {
 /* Mobile overrides for hero scene */
 @media (max-width: 767px) {
   .hero-phone-frame {
-    width: 240px !important;
-    height: 490px !important;
-    border-radius: 44px !important;
+    width: 254px !important;
+    height: 519px !important;
+    border-radius: 46px !important;
     padding: 7px !important;
   }
   .hero-phone-island {
-    width: 112px !important;
-    height: 36px !important;
-    top: 20px !important;
+    width: 118px !important;
+    height: 37px !important;
+    top: 21px !important;
   }
-  .hero-scene { min-height: 500px !important; }
+  .hero-scene { min-height: 530px !important; }
 
   /* Scale down internal phone-screen content so Pay button + checkout rows fit */
-  .hero-phone-screen > div,
-  .hero-phone-screen {
-    font-size: 13px !important;
-  }
   .hero-phone-screen > div > div {
-    transform: scale(0.80) !important;
+    transform: scale(0.76) !important;
     transform-origin: center center !important;
   }
 }
