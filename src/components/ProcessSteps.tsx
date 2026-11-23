@@ -49,7 +49,7 @@ export default function ProcessSteps({ kicker, title, steps }: { kicker: string;
                   <svg width="48" height="24" viewBox="0 0 48 24" fill="none" className="hidden lg:block">
                     <line x1="0" y1="12" x2="36" y2="12" stroke="var(--line-strong)" strokeWidth="1.5" strokeDasharray="4 4" />
                     <path d="M34 6l10 6-10 6" fill="none" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    <circle r="2.5" fill="#d97757">
+                    <circle r="2.5" fill="#ff6a3d">
                       <animateMotion dur="1.8s" repeatCount="indefinite" path="M0,12 L36,12" />
                       <animate attributeName="opacity" values="0;1;1;0" dur="1.8s" repeatCount="indefinite" />
                     </circle>

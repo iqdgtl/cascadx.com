@@ -128,7 +128,7 @@ export default function LetterReel({ letter, phrase, bgVariant: _, theme = paste
                   transform: "translate(-50%, -50%)",
                   width: "120px",
                   height: "48px",
-                  background: `radial-gradient(ellipse at center, rgba(217,119,87,${highlightOpacity}) 0%, transparent 70%)`,
+                  background: `radial-gradient(ellipse at center, rgba(255, 106, 61,${highlightOpacity}) 0%, transparent 70%)`,
                   filter: "blur(8px)",
                   transition: "left 180ms ease-out",
                 }} />

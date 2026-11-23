@@ -13,7 +13,7 @@ export default function ReelLogoOutro({ progress, theme = darkTheme }: { progres
 
   return (
     <div className="absolute inset-0 flex items-center justify-center" style={{ opacity: progress > 0 ? 1 : 0 }}>
-      <div className="absolute w-[300px] h-[300px] rounded-full" style={{ background: `radial-gradient(circle, rgba(217,119,87,${0.15 * Math.min(progress * 2, 1)}) 0%, transparent 70%)` }} />
+      <div className="absolute w-[300px] h-[300px] rounded-full" style={{ background: `radial-gradient(circle, rgba(255, 106, 61,${0.15 * Math.min(progress * 2, 1)}) 0%, transparent 70%)` }} />
       <div className="relative flex items-baseline" style={{ top: "10%" }}>
         {letters.map((char, i) => {
           const s = starts[i];

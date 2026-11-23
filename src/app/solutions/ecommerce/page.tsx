@@ -21,9 +21,9 @@ const CartIcon = () => (<svg viewBox="0 0 48 48" width="48" height="48" fill="no
 const CardIcon = () => (<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 10h20"/></svg>);
 const RouteIcon = () => (<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg>);
 const CheckIcon = () => (<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M20 6L9 17l-5-5"/></svg>);
-const MobileIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#d97757" strokeWidth="1.5" strokeLinecap="round"><rect x="10" y="2" width="20" height="36" rx="4"/><line x1="18" y1="32" x2="22" y2="32"/></svg>);
-const RepeatIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#d97757" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M30 8l4 4-4 4M6 20a14 14 0 0 1 28-8M10 32l-4-4 4-4M34 20a14 14 0 0 1-28 8"/></svg>);
-const RetentionIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#d97757" strokeWidth="1.5" strokeLinecap="round"><path d="M20 6v28M6 20h28"/><circle cx="20" cy="20" r="14"/></svg>);
+const MobileIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#ff6a3d" strokeWidth="1.5" strokeLinecap="round"><rect x="10" y="2" width="20" height="36" rx="4"/><line x1="18" y1="32" x2="22" y2="32"/></svg>);
+const RepeatIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#ff6a3d" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M30 8l4 4-4 4M6 20a14 14 0 0 1 28-8M10 32l-4-4 4-4M34 20a14 14 0 0 1-28 8"/></svg>);
+const RetentionIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#ff6a3d" strokeWidth="1.5" strokeLinecap="round"><path d="M20 6v28M6 20h28"/><circle cx="20" cy="20" r="14"/></svg>);
 
 export default function EcommercePage() {
   return (
@@ -59,7 +59,7 @@ export default function EcommercePage() {
             "Every failed checkout erodes customer trust and lifetime value",
           ].map((item) => (
             <li key={item} className="flex items-start gap-3 text-sm text-ink-soft leading-relaxed">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d97757" strokeWidth="2" strokeLinecap="round" className="shrink-0 mt-0.5"><path d="M20 6L9 17l-5-5" /></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff6a3d" strokeWidth="2" strokeLinecap="round" className="shrink-0 mt-0.5"><path d="M20 6L9 17l-5-5" /></svg>
               {item}
             </li>
           ))}

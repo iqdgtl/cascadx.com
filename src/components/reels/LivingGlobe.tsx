@@ -111,7 +111,7 @@ export default function LivingGlobe({ t }: { t: number }) {
               style={{
                 width: "min(48px, 5vh)", height: "min(48px, 5vh)",
                 background: "#fff",
-                border: "1px solid rgba(217,119,87,0.25)",
+                border: "1px solid rgba(255, 106, 61,0.25)",
                 boxShadow: "0 3px 10px rgba(0,0,0,0.1)",
               }}>
               <span className="font-mono font-bold" style={{ fontSize: "min(8px, 0.85vh)", color: icon.color }}>

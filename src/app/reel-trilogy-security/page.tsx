@@ -120,7 +120,7 @@ export default function Page() {
               borderRadius: "min(24px, 3vh)",
               background: "linear-gradient(135deg, #2a1f1c 0%, #3d2520 60%, #2a1f1c 100%)",
               border: "1px solid rgba(26,15,10,0.08)",
-              boxShadow: `0 30px 80px -20px rgba(0,0,0,0.25), 0 0 ${pulseP * 40}px rgba(217,119,87,${pulseP * 0.3})`,
+              boxShadow: `0 30px 80px -20px rgba(0,0,0,0.25), 0 0 ${pulseP * 40}px rgba(255, 106, 61,${pulseP * 0.3})`,
               transform: `scale(${0.85 + 0.15 * cardP}) perspective(800px) rotateY(${cardTilt}deg)`,
               opacity: cardP,
               position: "relative",

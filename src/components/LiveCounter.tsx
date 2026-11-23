@@ -61,7 +61,7 @@ export default function LiveCounter() {
         flexDirection: "column",
         gap: 6,
         minWidth: 240,
-        boxShadow: "0 8px 32px rgba(0,0,0,0.5), 0 0 20px rgba(217,119,87,0.08)",
+        boxShadow: "0 8px 32px rgba(0,0,0,0.5), 0 0 20px rgba(255, 106, 61,0.08)",
       }}
     >
       {/* Close */}
@@ -100,7 +100,7 @@ export default function LiveCounter() {
         style={{
           fontFamily: "var(--font-display)", fontWeight: 800,
           fontSize: 24, letterSpacing: "-0.03em",
-          color: bump ? "#d97757" : "#1a0f0a",
+          color: bump ? "#ff6a3d" : "#1a0f0a",
           transition: "color 400ms ease",
           lineHeight: 1,
         }}

@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 
-const ACCENT = "#d97757";
+const ACCENT = "#ff6a3d";
 const FONT = "'Inter', -apple-system, BlinkMacSystemFont, sans-serif";
 const SCENE_DURATIONS = [5800, 4500, 3000];
 const FADE = 400;
@@ -32,7 +32,7 @@ function PayButton({ pulse }: { pulse?: boolean }) {
         height: 48, borderRadius: 100,
         background: `linear-gradient(180deg, #e88f6d 0%, ${ACCENT} 55%, #c86847 100%)`,
         display: "flex", alignItems: "center", justifyContent: "center",
-        boxShadow: "0 4px 20px rgba(217,119,87,0.4), inset 0 1px 0 rgba(255,255,255,0.4)",
+        boxShadow: "0 4px 20px rgba(255, 106, 61,0.4), inset 0 1px 0 rgba(255,255,255,0.4)",
         animation: pulse ? "ps-btn-pulse 1.4s ease-in-out infinite" : undefined,
       }}>
         <span style={{ fontSize: 15, fontWeight: 700, color: "white", letterSpacing: "-0.3px" }}>
@@ -191,7 +191,7 @@ function Scene1({ selected, visibleCount, scrollOffset }: { selected: boolean; v
               border: active ? `2px solid ${ACCENT}` : "1.5px solid #e5e7eb",
               borderRadius: 13,
               padding: "9px 11px",
-              background: active ? "rgba(217,119,87,0.04)" : "#fff",
+              background: active ? "rgba(255, 106, 61,0.04)" : "#fff",
               display: "flex", alignItems: "center", gap: 9,
               opacity: visible ? 1 : 0,
               transform: visible ? "translateY(0)" : "translateY(10px)",
@@ -297,7 +297,7 @@ function Scene2({ groups, name, btnPulse }: { groups: number; name: string; btnP
             height: 40, borderRadius: 10, border: `1.5px solid ${name.length > 0 ? ACCENT : "#e5e7eb"}`,
             padding: "0 12px", display: "flex", alignItems: "center",
             fontSize: 12, color: "#111827", fontWeight: 500,
-            background: name.length > 0 ? "rgba(217,119,87,0.03)" : "#fafafa",
+            background: name.length > 0 ? "rgba(255, 106, 61,0.03)" : "#fafafa",
             transition: "border-color 300ms ease",
           }}>
             {name}
@@ -506,8 +506,8 @@ export default function PhoneScreen() {
           100% { transform: translate(var(--px), var(--py)) scale(0); opacity: 0; }
         }
         @keyframes ps-btn-pulse {
-          0%, 100% { box-shadow: 0 4px 20px rgba(217,119,87,0.4), inset 0 1px 0 rgba(255,255,255,0.4); }
-          50%       { box-shadow: 0 4px 32px rgba(217,119,87,0.75), 0 0 0 5px rgba(217,119,87,0.18), inset 0 1px 0 rgba(255,255,255,0.4); }
+          0%, 100% { box-shadow: 0 4px 20px rgba(255, 106, 61,0.4), inset 0 1px 0 rgba(255,255,255,0.4); }
+          50%       { box-shadow: 0 4px 32px rgba(255, 106, 61,0.75), 0 0 0 5px rgba(255, 106, 61,0.18), inset 0 1px 0 rgba(255,255,255,0.4); }
         }
         @keyframes ps-cursor {
           0%, 49% { opacity: 1; }

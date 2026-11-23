@@ -29,7 +29,7 @@ export async function GET() {
         <div style={{
           position: "absolute", bottom: -150, left: -100,
           width: 500, height: 500, borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(217,119,87,0.22) 0%, transparent 60%)",
+          background: "radial-gradient(circle, rgba(255, 106, 61,0.22) 0%, transparent 60%)",
           display: "flex",
         }} />
         <div style={{
@@ -41,7 +41,7 @@ export async function GET() {
         <div style={{
           position: "absolute", top: 50, right: -100,
           width: 380, height: 380, borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(217,119,87,0.1) 0%, transparent 60%)",
+          background: "radial-gradient(circle, rgba(255, 106, 61,0.1) 0%, transparent 60%)",
           display: "flex",
         }} />
 
@@ -63,14 +63,14 @@ export async function GET() {
         ] as [number, number, number, number, number][]).map(([l, t, w, h, o], i) => (
           <div key={i} style={{
             position: "absolute", left: l, top: t, width: w, height: h,
-            borderRadius: "50%", border: `1px solid rgba(217,119,87,${o})`,
+            borderRadius: "50%", border: `1px solid rgba(255, 106, 61,${o})`,
             display: "flex",
           }} />
         ))}
-        <div style={{ position: "absolute", left: GX - GR, top: GY, width: GR * 2, height: 1, background: "rgba(217,119,87,0.16)", display: "flex" }} />
-        <div style={{ position: "absolute", left: GX, top: GY - GR, width: 1, height: GR * 2, background: "rgba(217,119,87,0.16)", display: "flex" }} />
-        <div style={{ position: "absolute", left: GX - GR, top: GY - GR * .5, width: GR * 2, height: 1, background: "rgba(217,119,87,0.09)", display: "flex" }} />
-        <div style={{ position: "absolute", left: GX - GR, top: GY + GR * .5, width: GR * 2, height: 1, background: "rgba(217,119,87,0.09)", display: "flex" }} />
+        <div style={{ position: "absolute", left: GX - GR, top: GY, width: GR * 2, height: 1, background: "rgba(255, 106, 61,0.16)", display: "flex" }} />
+        <div style={{ position: "absolute", left: GX, top: GY - GR, width: 1, height: GR * 2, background: "rgba(255, 106, 61,0.16)", display: "flex" }} />
+        <div style={{ position: "absolute", left: GX - GR, top: GY - GR * .5, width: GR * 2, height: 1, background: "rgba(255, 106, 61,0.09)", display: "flex" }} />
+        <div style={{ position: "absolute", left: GX - GR, top: GY + GR * .5, width: GR * 2, height: 1, background: "rgba(255, 106, 61,0.09)", display: "flex" }} />
 
         {/* ── Roman arches in left panel bottom ── */}
         <div style={{
@@ -82,8 +82,8 @@ export async function GET() {
             <div key={i} style={{
               flex: 1, height: 105,
               borderRadius: "52px 52px 0 0",
-              border: "1px solid rgba(217,119,87,0.16)",
-              background: "rgba(217,119,87,0.02)",
+              border: "1px solid rgba(255, 106, 61,0.16)",
+              background: "rgba(255, 106, 61,0.02)",
               display: "flex",
             }} />
           ))}
@@ -92,7 +92,7 @@ export async function GET() {
         {/* Vertical separator */}
         <div style={{
           position: "absolute", left: 420, top: 40, bottom: 40, width: 1,
-          background: "linear-gradient(to bottom, transparent, rgba(217,119,87,0.35) 30%, rgba(217,119,87,0.35) 70%, transparent)",
+          background: "linear-gradient(to bottom, transparent, rgba(255, 106, 61,0.35) 30%, rgba(255, 106, 61,0.35) 70%, transparent)",
           display: "flex",
         }} />
 
@@ -111,16 +111,16 @@ export async function GET() {
               <div style={{ color: "#1a0f0a", fontSize: 22, fontWeight: 800, letterSpacing: "-0.6px", display: "flex" }}>
                 CascadX
               </div>
-              <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#d97757", marginLeft: 3, marginBottom: -3, display: "flex" }} />
+              <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#ff6a3d", marginLeft: 3, marginBottom: -3, display: "flex" }} />
             </div>
             <div style={{
               display: "flex", alignItems: "center", gap: 7,
-              background: "rgba(217,119,87,0.09)",
-              border: "1px solid rgba(217,119,87,0.22)",
+              background: "rgba(255, 106, 61,0.09)",
+              border: "1px solid rgba(255, 106, 61,0.22)",
               borderRadius: 7, padding: "5px 12px",
             }}>
-              <div style={{ width: 5, height: 5, borderRadius: "50%", background: "#d97757", display: "flex" }} />
-              <div style={{ color: "rgba(217,119,87,0.9)", fontSize: 10, fontWeight: 600, letterSpacing: "1.5px", display: "flex" }}>
+              <div style={{ width: 5, height: 5, borderRadius: "50%", background: "#ff6a3d", display: "flex" }} />
+              <div style={{ color: "rgba(255, 106, 61,0.9)", fontSize: 10, fontWeight: 600, letterSpacing: "1.5px", display: "flex" }}>
                 SIGMA WORLD · ROME 2026
               </div>
             </div>
@@ -131,8 +131,8 @@ export async function GET() {
 
             {/* Eyebrow */}
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
-              <div style={{ width: 22, height: 2, background: "#d97757", display: "flex" }} />
-              <div style={{ color: "rgba(217,119,87,0.76)", fontSize: 11, fontWeight: 600, letterSpacing: "2.5px", display: "flex" }}>
+              <div style={{ width: 22, height: 2, background: "#ff6a3d", display: "flex" }} />
+              <div style={{ color: "rgba(255, 106, 61,0.76)", fontSize: 11, fontWeight: 600, letterSpacing: "2.5px", display: "flex" }}>
                 IGAMING · PAYMENTS · FINTECH
               </div>
             </div>
@@ -142,13 +142,13 @@ export async function GET() {
               <div style={{ color: "rgba(250,250,247,0.65)", fontSize: 28, fontWeight: 400, lineHeight: 1.3, display: "flex" }}>
                 Meet us at
               </div>
-              <div style={{ color: "#d97757", fontSize: 52, fontWeight: 800, lineHeight: 1.08, letterSpacing: "-1.5px", display: "flex" }}>
+              <div style={{ color: "#ff6a3d", fontSize: 52, fontWeight: 800, lineHeight: 1.08, letterSpacing: "-1.5px", display: "flex" }}>
                 SiGMA Rome 2026
               </div>
             </div>
 
             {/* Divider */}
-            <div style={{ width: 300, height: 1.5, background: "rgba(217,119,87,0.38)", marginBottom: 18, display: "flex" }} />
+            <div style={{ width: 300, height: 1.5, background: "rgba(255, 106, 61,0.38)", marginBottom: 18, display: "flex" }} />
 
             {/* Date + Venue */}
             <div style={{ display: "flex", flexDirection: "column", gap: 5, marginBottom: 20 }}>
@@ -161,14 +161,14 @@ export async function GET() {
             </div>
 
             {/* Tagline */}
-            <div style={{ color: "#d97757", fontSize: 22, fontWeight: 600, fontStyle: "italic", display: "flex" }}>
+            <div style={{ color: "#ff6a3d", fontSize: 22, fontWeight: 600, fontStyle: "italic", display: "flex" }}>
               &ldquo;Let&apos;s talk payments.&rdquo;
             </div>
           </div>
 
           {/* Contact */}
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-            <div style={{ width: 240, height: 1, background: "rgba(217,119,87,0.2)", display: "flex" }} />
+            <div style={{ width: 240, height: 1, background: "rgba(255, 106, 61,0.2)", display: "flex" }} />
             <div style={{ color: "rgba(250,250,247,0.38)", fontSize: 13, fontWeight: 400, display: "flex" }}>
               cascadx.com  ·  hello@cascadx.com
             </div>

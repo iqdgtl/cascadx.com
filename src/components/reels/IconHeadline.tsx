@@ -36,7 +36,7 @@ export default function IconHeadline({ theme }: { theme: ReelTheme }) {
           <div className="relative w-20 h-20 rounded-full grid place-items-center" style={{ background: theme.surface, border: `1px solid ${theme.borderStrong}`, transform: `translateY(${-80 * (1 - iconP)}px) scale(${iconP})`, opacity: iconP > 0.05 ? 1 : 0 }}>
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke={theme.ink} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg>
             <div className="absolute inset-[-12px] rounded-full" style={{ border: `1px solid ${theme.accent}`, opacity: haloPulse }} />
-            <div className="absolute inset-[-24px] rounded-full" style={{ background: `radial-gradient(circle, rgba(217,119,87,${haloPulse}) 0%, transparent 70%)` }} />
+            <div className="absolute inset-[-24px] rounded-full" style={{ background: `radial-gradient(circle, rgba(255, 106, 61,${haloPulse}) 0%, transparent 70%)` }} />
           </div>
         </div>
         <div className="text-center px-8">

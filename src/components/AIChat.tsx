@@ -103,7 +103,7 @@ export default function AIChat() {
                     <span className="w-1.5 h-1.5 rounded-full bg-warn shrink-0" />
                     12 declines / min on BIN range 445692 · likely issuer soft-decline
                   </div>
-                  <div className="mt-[10px] p-[10px_12px] bg-[rgba(217,119,87,0.1)] border-l-2 border-accent rounded text-[13.5px] text-accent-deep">
+                  <div className="mt-[10px] p-[10px_12px] bg-[rgba(255, 106, 61,0.1)] border-l-2 border-accent rounded text-[13.5px] text-accent-deep">
                     → Recommend cascading these BINs to Adyen first. Projected recovery: <strong>+$8.4K</strong> today.
                   </div>
                 </div>

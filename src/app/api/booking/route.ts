@@ -50,7 +50,7 @@ export async function POST(request: Request) {
               <tr><td style="padding: 8px 0; color: #7a8178; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; vertical-align: top;">Message</td><td style="padding: 8px 0; color: #fafaf7;">${message || "—"}</td></tr>
             </table>
             <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 24px 0;" />
-            <a href="mailto:${email}?subject=Re: Your CascadX call request" style="display: inline-block; background: #d97757; color: #0d0f0e; padding: 12px 20px; border-radius: 999px; text-decoration: none; font-weight: 600;">Reply to ${name}</a>
+            <a href="mailto:${email}?subject=Re: Your CascadX call request" style="display: inline-block; background: #ff6a3d; color: #0d0f0e; padding: 12px 20px; border-radius: 999px; text-decoration: none; font-weight: 600;">Reply to ${name}</a>
           </div>
           <p style="text-align: center; color: #7a8178; font-size: 12px; margin-top: 24px;">CascadX · AI-Powered Payment Cascading</p>
         </body>

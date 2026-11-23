@@ -64,7 +64,7 @@ export default function RobotMascot({
       <g style={{ animation: "robotFloat 4s ease-in-out infinite" }}>
         {/* === ANTENNA === */}
         <line x1="60" y1="18" x2="60" y2="6" stroke="#b8bcb6" strokeWidth="2.5" strokeLinecap="round" />
-        <circle cx="60" cy="5" r="5" fill="#d97757" opacity="0.8">
+        <circle cx="60" cy="5" r="5" fill="#ff6a3d" opacity="0.8">
           <animate attributeName="r" values="4.5;6.5;4.5" dur="2s" repeatCount="indefinite" />
           <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite" />
         </circle>
@@ -120,8 +120,8 @@ export default function RobotMascot({
         )}
 
         {/* Cheek blush */}
-        <circle cx="34" cy="53" r="4.5" fill="#d97757" opacity="0.2" />
-        <circle cx="84" cy="53" r="4.5" fill="#d97757" opacity="0.2" />
+        <circle cx="34" cy="53" r="4.5" fill="#ff6a3d" opacity="0.2" />
+        <circle cx="84" cy="53" r="4.5" fill="#ff6a3d" opacity="0.2" />
 
         {/* === MOUTH === */}
         {isConfused ? (
@@ -137,9 +137,9 @@ export default function RobotMascot({
 
         {/* === EARS === */}
         <rect x="14" y="36" width="10" height="18" rx="5" fill="#262c2b" stroke="rgba(26,15,10,0.08)" strokeWidth="0.8" />
-        <rect x="16.5" y="41" width="5" height="5" rx="2.5" fill="#d97757" opacity="0.4" />
+        <rect x="16.5" y="41" width="5" height="5" rx="2.5" fill="#ff6a3d" opacity="0.4" />
         <rect x="96" y="36" width="10" height="18" rx="5" fill="#262c2b" stroke="rgba(26,15,10,0.08)" strokeWidth="0.8" />
-        <rect x="98.5" y="41" width="5" height="5" rx="2.5" fill="#d97757" opacity="0.4" />
+        <rect x="98.5" y="41" width="5" height="5" rx="2.5" fill="#ff6a3d" opacity="0.4" />
 
         {/* === BODY === */}
         <rect x="34" y="80" width="52" height="26" rx="13" fill="#262c2b" stroke="rgba(26,15,10,0.08)" strokeWidth="0.8" />
@@ -150,7 +150,7 @@ export default function RobotMascot({
         <line x1="54" y1="87" x2="54" y2="99" stroke="rgba(26,15,10,0.06)" strokeWidth="0.5" />
         <line x1="66" y1="87" x2="66" y2="99" stroke="rgba(26,15,10,0.06)" strokeWidth="0.5" />
         <line x1="48" y1="93" x2="72" y2="93" stroke="rgba(26,15,10,0.06)" strokeWidth="0.5" />
-        <circle cx="60" cy="93" r="2.2" fill="#d97757" opacity="0.6">
+        <circle cx="60" cy="93" r="2.2" fill="#ff6a3d" opacity="0.6">
           <animate attributeName="opacity" values="0.4;0.8;0.4" dur="1.8s" repeatCount="indefinite" />
         </circle>
 

@@ -151,7 +151,7 @@ export default function TrustedByMarquee() {
           margin: 0,
         }}>
           Trusted across{" "}
-          <span style={{ color: "#d97757", fontStyle: "italic", fontWeight: 400 }}>
+          <span style={{ color: "#ff6a3d", fontStyle: "italic", fontWeight: 400 }}>
             every industry.
           </span>
         </h2>
@@ -199,7 +199,7 @@ export default function TrustedByMarquee() {
                   padding: "0 36px",
                   display: "flex",
                   alignItems: "center",
-                  color: "#d97757",
+                  color: "#ff6a3d",
                   opacity: 0.45,
                   fontSize: "20px",
                   lineHeight: 1,

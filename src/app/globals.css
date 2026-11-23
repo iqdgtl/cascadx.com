@@ -27,10 +27,10 @@
   --ink-on-dark-muted: rgba(250,250,247,0.4);
   --line-on-dark:      rgba(255,255,255,0.08);
 
-  --accent:       #d97757;
+  --accent:       #ff6a3d;
   --accent-deep:  #b35a3e;
-  --accent-glow:  rgba(217,119,87,0.25);
-  --accent-ice:   rgba(217,119,87,0.1);
+  --accent-glow:  rgba(255, 106, 61,0.25);
+  --accent-ice:   rgba(255, 106, 61,0.1);
   --warn:         #ff6a3d;
   --warn-soft:    rgba(255,106,61,0.15);
 
@@ -96,12 +96,12 @@
 .btn-primary {
   background: var(--accent);
   color: #fff;
-  box-shadow: 0 8px 20px rgba(217,119,87,0.25);
+  box-shadow: 0 8px 20px rgba(255, 106, 61,0.25);
 }
 .btn-primary:hover {
   background: var(--accent-deep);
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(217,119,87,0.35), 0 0 32px rgba(217,119,87,0.25);
+  box-shadow: 0 12px 28px rgba(255, 106, 61,0.35), 0 0 32px rgba(255, 106, 61,0.25);
 }
 
 /* Secondary — glass */
@@ -151,9 +151,9 @@
 }
 .input-pill::placeholder { color: rgba(255,255,255,0.35); }
 .input-pill:focus {
-  border-color: rgba(217,119,87,0.55);
+  border-color: rgba(255, 106, 61,0.55);
   background: rgba(255,255,255,0.06);
-  box-shadow: 0 0 0 3px rgba(217,119,87,0.1);
+  box-shadow: 0 0 0 3px rgba(255, 106, 61,0.1);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -168,7 +168,7 @@
 }
 .tile:hover {
   transform: translateY(-4px);
-  border-color: rgba(217,119,87,0.25);
+  border-color: rgba(255, 106, 61,0.25);
   box-shadow: var(--shadow-hover);
 }
 
@@ -262,7 +262,7 @@ body::before {
    ========================================================= */
 @keyframes pulse {
   0%, 100% { box-shadow: 0 0 0 3px var(--accent-glow); }
-  50%      { box-shadow: 0 0 0 7px rgba(217,119,87,0.08); }
+  50%      { box-shadow: 0 0 0 7px rgba(255, 106, 61,0.08); }
 }
 
 @keyframes rotate {
@@ -396,21 +396,25 @@ body::before {
 /* Mobile overrides for hero scene */
 @media (max-width: 767px) {
   .hero-phone-frame {
-    width: 224px !important;
-    height: 458px !important;
-    border-radius: 42px !important;
+    width: 240px !important;
+    height: 490px !important;
+    border-radius: 44px !important;
     padding: 7px !important;
   }
   .hero-phone-island {
-    width: 105px !important;
-    height: 35px !important;
-    top: 19px !important;
+    width: 112px !important;
+    height: 36px !important;
+    top: 20px !important;
   }
-  .hero-scene { min-height: 540px !important; }
+  .hero-scene { min-height: 500px !important; }
 
   /* Scale down internal phone-screen content so Pay button + checkout rows fit */
-  .hero-phone-screen > div {
-    transform: scale(0.88) !important;
+  .hero-phone-screen > div,
+  .hero-phone-screen {
+    font-size: 13px !important;
+  }
+  .hero-phone-screen > div > div {
+    transform: scale(0.80) !important;
     transform-origin: center center !important;
   }
 }

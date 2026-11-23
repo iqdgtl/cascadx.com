@@ -36,7 +36,7 @@ export default function SigmaRomePage() {
           <span style={{ fontSize: 20, fontWeight: 800, letterSpacing: "-0.5px", color: "#1a0f0a" }}>
             CascadX
           </span>
-          <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#d97757", display: "inline-block", marginLeft: 3, marginBottom: -3 }} />
+          <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#ff6a3d", display: "inline-block", marginLeft: 3, marginBottom: -3 }} />
         </div>
         <h1 style={{ fontSize: 32, fontWeight: 800, letterSpacing: "-1px", margin: "0 0 6px", color: "#1a0f0a" }}>
           SiGMA Rome 2026 — Graphics
@@ -50,13 +50,13 @@ export default function SigmaRomePage() {
             <div key={g.href}>
               <div style={{ display: "flex", alignItems: "baseline", gap: 14, marginBottom: 16 }}>
                 <h2 style={{ fontSize: 18, fontWeight: 700, margin: 0, color: "#1a0f0a" }}>{g.title}</h2>
-                <span style={{ fontSize: 13, color: "rgba(217,119,87,0.7)", fontWeight: 500 }}>{g.subtitle}</span>
+                <span style={{ fontSize: 13, color: "rgba(255, 106, 61,0.7)", fontWeight: 500 }}>{g.subtitle}</span>
               </div>
               <a
                 href={g.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ display: "block", borderRadius: 12, overflow: "hidden", border: "1px solid rgba(217,119,87,0.18)", transition: "border-color 0.2s" }}
+                style={{ display: "block", borderRadius: 12, overflow: "hidden", border: "1px solid rgba(255, 106, 61,0.18)", transition: "border-color 0.2s" }}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -74,10 +74,10 @@ export default function SigmaRomePage() {
                     alignItems: "center",
                     gap: 8,
                     padding: "9px 20px",
-                    background: "rgba(217,119,87,0.1)",
-                    border: "1px solid rgba(217,119,87,0.24)",
+                    background: "rgba(255, 106, 61,0.1)",
+                    border: "1px solid rgba(255, 106, 61,0.24)",
                     borderRadius: 8,
-                    color: "rgba(217,119,87,0.9)",
+                    color: "rgba(255, 106, 61,0.9)",
                     fontSize: 13,
                     fontWeight: 600,
                     textDecoration: "none",

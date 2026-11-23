@@ -30,7 +30,7 @@ export default async function Image() {
               width: "8px",
               height: "8px",
               borderRadius: "50%",
-              backgroundColor: "#d97757",
+              backgroundColor: "#ff6a3d",
               marginLeft: "2px",
             }}
           />
@@ -42,7 +42,7 @@ export default async function Image() {
             style={{
               width: "80px",
               height: "3px",
-              backgroundColor: "#d97757",
+              backgroundColor: "#ff6a3d",
               borderRadius: "2px",
             }}
           />
@@ -70,7 +70,7 @@ export default async function Image() {
               width: "6px",
               height: "6px",
               borderRadius: "50%",
-              backgroundColor: "#d97757",
+              backgroundColor: "#ff6a3d",
             }}
           />
           <span style={{ fontSize: "16px", color: "#7a8178", letterSpacing: "0.06em", textTransform: "uppercase" as const }}>

@@ -215,7 +215,7 @@ export default function ChatWidget() {
         <button
           onClick={() => setOpen(true)}
           aria-label="Open chat with CascadX assistant"
-          className="fixed z-50 flex items-center gap-2 h-10 pl-1.5 pr-3.5 bg-surface-el border border-[rgba(26,15,10,0.12)] rounded-full shadow-[0_8px_20px_-8px_rgba(0,0,0,0.5),0_0_0_1px_rgba(217,119,87,0.15)] transition-all duration-200 hover:bg-[#2e3533] hover:border-accent hover:scale-[1.03] max-[600px]:w-10 max-[600px]:pl-0 max-[600px]:pr-0 max-[600px]:justify-center"
+          className="fixed z-50 flex items-center gap-2 h-10 pl-1.5 pr-3.5 bg-surface-el border border-[rgba(26,15,10,0.12)] rounded-full shadow-[0_8px_20px_-8px_rgba(0,0,0,0.5),0_0_0_1px_rgba(255, 106, 61,0.15)] transition-all duration-200 hover:bg-[#2e3533] hover:border-accent hover:scale-[1.03] max-[600px]:w-10 max-[600px]:pl-0 max-[600px]:pr-0 max-[600px]:justify-center"
           style={{ bottom: "calc(20px + env(safe-area-inset-bottom, 0px))", right: "20px" }}
         >
           <div className="relative w-7 h-7 rounded-full bg-surface grid place-items-center shrink-0">
@@ -280,7 +280,7 @@ export default function ChatWidget() {
                         onClick={() => pickDate(d)}
                         className={`shrink-0 w-16 h-20 rounded-[var(--radius)] border flex flex-col items-center justify-center gap-0.5 transition-all ${
                           sel
-                            ? "border-accent bg-[rgba(217,119,87,0.12)]"
+                            ? "border-accent bg-[rgba(255, 106, 61,0.12)]"
                             : "border-line bg-surface hover:border-ink-muted"
                         }`}
                       >
@@ -307,7 +307,7 @@ export default function ChatWidget() {
                         onClick={() => pickTime(t)}
                         className={`h-9 rounded-[var(--radius-sm)] border text-[13px] font-medium transition-all ${
                           sel
-                            ? "border-accent bg-[rgba(217,119,87,0.15)] text-ink"
+                            ? "border-accent bg-[rgba(255, 106, 61,0.15)] text-ink"
                             : "border-line bg-surface text-ink-soft hover:border-ink-muted"
                         }`}
                       >

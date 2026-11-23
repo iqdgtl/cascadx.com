@@ -133,7 +133,7 @@ export default function Page() {
               </div>
               <div style={{ opacity: introLine2P, transform: `translateY(${8 * (1 - introLine2P)}px)` }}>
                 <span className="font-display font-[800] text-[52px] tracking-[-0.03em] leading-[1.1] text-[#1a0f0a]">
-                  inside <span className="text-[#d97757]">CascadX.</span>
+                  inside <span className="text-[#ff6a3d]">CascadX.</span>
                 </span>
               </div>
             </div>
@@ -149,7 +149,7 @@ export default function Page() {
         <div className="absolute top-0 left-0 right-0 px-5 py-4 flex items-center justify-between" style={{ opacity: bootP, zIndex: 5 }}>
           <div className="flex items-center gap-2">
             <span className="font-display font-[700] text-[16px] text-[#1a0f0a] tracking-[-0.02em]">CascadX Live</span>
-            <span className="w-[6px] h-[6px] rounded-full bg-[#d97757]" style={{ animation: "pulse 1.5s ease-in-out infinite" }} />
+            <span className="w-[6px] h-[6px] rounded-full bg-[#ff6a3d]" style={{ animation: "pulse 1.5s ease-in-out infinite" }} />
           </div>
           <span className="font-mono text-[14px] text-[#7a8178]">{clockH}:{clockM}</span>
         </div>
@@ -159,7 +159,7 @@ export default function Page() {
           {/* Recovered */}
           <div className="flex-1 rounded-xl p-4" style={{ background: "#f0ebe0", border: "1px solid rgba(26,15,10,0.08)" }}>
             <div className="font-mono text-[10px] uppercase tracking-[0.08em] text-[#7a8178] mb-2">Recovered</div>
-            <div className="font-display font-[700] text-[24px] text-[#d97757] tracking-[-0.02em]">
+            <div className="font-display font-[700] text-[24px] text-[#ff6a3d] tracking-[-0.02em]">
               ${targetRecovered.toLocaleString()}
             </div>
           </div>
@@ -170,7 +170,7 @@ export default function Page() {
               {dayProgress > 0.05 ? `${approvalRate.toFixed(1)}%` : "--"}
             </div>
             {dayProgress > 0.3 && (
-              <div className="font-mono text-[10px] text-[#d97757] mt-1">↑ from 87%</div>
+              <div className="font-mono text-[10px] text-[#ff6a3d] mt-1">↑ from 87%</div>
             )}
           </div>
         </div>
@@ -186,11 +186,11 @@ export default function Page() {
 
             return (
               <div key={tx.id} className="flex items-center justify-between py-3 px-4 mb-2 rounded-lg" style={{
-                background: isGlow ? "rgba(217,119,87,0.08)" : "#f0ebe0",
-                border: `1px solid ${isGlow ? "rgba(217,119,87,0.2)" : "rgba(26,15,10,0.05)"}`,
+                background: isGlow ? "rgba(255, 106, 61,0.08)" : "#f0ebe0",
+                border: `1px solid ${isGlow ? "rgba(255, 106, 61,0.2)" : "rgba(26,15,10,0.05)"}`,
                 opacity: entryP * fadeP,
                 transform: `translateY(${-12 * (1 - entryP)}px)`,
-                boxShadow: isGlow ? "0 0 16px rgba(217,119,87,0.15)" : "none",
+                boxShadow: isGlow ? "0 0 16px rgba(255, 106, 61,0.15)" : "none",
                 transition: "background 300ms, border-color 300ms, box-shadow 300ms",
               }}>
                 <div>
@@ -198,15 +198,15 @@ export default function Page() {
                   <span className="font-mono text-[12px] text-[#7a8178] ml-2">{tx.country}</span>
                 </div>
                 <div className="font-mono text-[11px] font-medium">
-                  {state === "approved" && <span className="text-[#d97757]">✓ Approved</span>}
+                  {state === "approved" && <span className="text-[#ff6a3d]">✓ Approved</span>}
                   {state === "declined" && <span className="text-[#ff6a3d]">✗ Declined</span>}
                   {state === "routing" && (
                     <span className="text-[#7a8178] flex items-center gap-1">
-                      <span className="inline-block w-3 h-3 border border-[#d97757] border-t-transparent rounded-full animate-spin" />
+                      <span className="inline-block w-3 h-3 border border-[#ff6a3d] border-t-transparent rounded-full animate-spin" />
                       Routing...
                     </span>
                   )}
-                  {state === "recovered" && <span className="text-[#d97757]">✓ Recovered</span>}
+                  {state === "recovered" && <span className="text-[#ff6a3d]">✓ Recovered</span>}
                 </div>
               </div>
             );
@@ -223,17 +223,17 @@ export default function Page() {
               boxShadow: "0 20px 60px rgba(0,0,0,0.4)",
               transform: `scale(${0.95 + 0.05 * summaryP})`,
             }}>
-              <div className="font-mono text-[11px] uppercase tracking-[0.1em] text-[#d97757] mb-4">End of day</div>
+              <div className="font-mono text-[11px] uppercase tracking-[0.1em] text-[#ff6a3d] mb-4">End of day</div>
               <div className="font-display font-[800] text-[56px] text-[#1a0f0a] tracking-[-0.03em] leading-none">1,247</div>
               <div className="font-mono text-[13px] text-[#7a8178] mt-2 mb-6">transactions recovered</div>
               <div className="space-y-3 text-left">
                 <div className="flex justify-between font-mono text-[14px]">
                   <span className="text-[#7a8178]">Revenue saved</span>
-                  <span className="text-[#d97757] font-bold">$14,900</span>
+                  <span className="text-[#ff6a3d] font-bold">$14,900</span>
                 </div>
                 <div className="flex justify-between font-mono text-[14px]">
                   <span className="text-[#7a8178]">Approval rate</span>
-                  <span className="text-[#1a0f0a]">87% → <span className="text-[#d97757]">94.2%</span></span>
+                  <span className="text-[#1a0f0a]">87% → <span className="text-[#ff6a3d]">94.2%</span></span>
                 </div>
               </div>
             </div>

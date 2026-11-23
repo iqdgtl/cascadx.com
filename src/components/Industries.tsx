@@ -99,7 +99,7 @@ export default function Industries() {
         }}>
           <h2 style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: "clamp(28px,4vw,52px)", letterSpacing: "-0.03em", lineHeight: 1.1, color: "#1a0f0a", margin: 0 }}>
             Built for your{" "}
-            <span style={{ color: "#d97757" }}>industry.</span>
+            <span style={{ color: "#ff6a3d" }}>industry.</span>
           </h2>
         </div>
 

@@ -60,7 +60,7 @@ export default function StatsStrip() {
       {/* Subtle glow */}
       <div style={{
         position: "absolute", inset: 0, pointerEvents: "none",
-        background: "radial-gradient(ellipse 60% 80% at 50% 50%, rgba(217,119,87,0.07) 0%, transparent 70%)",
+        background: "radial-gradient(ellipse 60% 80% at 50% 50%, rgba(255, 106, 61,0.07) 0%, transparent 70%)",
       }} />
 
       <div style={{
@@ -91,7 +91,7 @@ export default function StatsStrip() {
               fontSize: "clamp(52px,8vw,96px)",
               letterSpacing: "-0.04em",
               lineHeight: 1,
-              color: "#d97757",
+              color: "#ff6a3d",
               marginBottom: 12,
             }}>
               {s.prefix}{counts[i].toLocaleString()}{s.suffix}

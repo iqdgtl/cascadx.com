@@ -40,7 +40,7 @@ export default function CascadingLayers({ theme }: { theme: ReelTheme }) {
             const emph = isAccent && pp >= 1 ? 1 + 0.05 * Math.sin(Math.max(0, t - PILLS_START - i * PILL_STAGGER - PILL_DUR) / 300 * Math.PI) * Math.max(0, 1 - (t - PILLS_START - i * PILL_STAGGER - PILL_DUR) / 600) : 1;
             return (
               <div key={pill} className="px-5 py-2.5 rounded-full text-[15px] font-medium border"
-                style={{ borderColor: isAccent ? theme.accent : theme.border, color: isAccent ? theme.accent : theme.inkSoft, background: theme.surface, opacity: pp, transform: `translateY(${20 * (1 - pp)}px) scale(${(0.9 + 0.1 * pp) * emph})`, boxShadow: isAccent ? `0 0 20px rgba(217,119,87,0.3)` : "none" }}>
+                style={{ borderColor: isAccent ? theme.accent : theme.border, color: isAccent ? theme.accent : theme.inkSoft, background: theme.surface, opacity: pp, transform: `translateY(${20 * (1 - pp)}px) scale(${(0.9 + 0.1 * pp) * emph})`, boxShadow: isAccent ? `0 0 20px rgba(255, 106, 61,0.3)` : "none" }}>
                 {pill}
               </div>
             );

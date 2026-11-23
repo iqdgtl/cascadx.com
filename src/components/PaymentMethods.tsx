@@ -356,7 +356,7 @@ export default function PaymentMethods() {
           margin: 0,
         }}>
             Every payment method.{" "}
-            <span style={{ color: "#d97757", fontStyle: "italic", fontWeight: 400 }}>One orchestration.</span>
+            <span style={{ color: "#ff6a3d", fontStyle: "italic", fontWeight: 400 }}>One orchestration.</span>
           </h2>
         </div>
 
@@ -383,7 +383,7 @@ export default function PaymentMethods() {
                   ? (hovered === i ? "translateY(-8px) scale(1.08) rotateZ(-1deg)" : "translateY(0) scale(1) rotateZ(0deg)")
                   : "translateY(32px) scale(0.85) rotateZ(-3deg)",
                 boxShadow: hovered === i
-                  ? "0 24px 48px rgba(0,0,0,0.55), 0 0 40px rgba(217,119,87,0.4)"
+                  ? "0 24px 48px rgba(0,0,0,0.55), 0 0 40px rgba(255, 106, 61,0.4)"
                   : "0 6px 28px rgba(0,0,0,0.4)",
                 transition: visible
                   ? `opacity 650ms cubic-bezier(0.16, 1, 0.3, 1) ${i * 90}ms, transform 650ms cubic-bezier(0.34, 1.56, 0.64, 1) ${i * 90}ms, box-shadow 320ms ease`

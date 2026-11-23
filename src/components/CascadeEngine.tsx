@@ -23,7 +23,7 @@ export default function CascadeEngine() {
         {/* Visualization */}
         <div className="relative mt-[60px] p-[40px_30px] rounded-[var(--radius-lg)] overflow-hidden" style={{ background: "#1a0f0a", border: "1px solid rgba(42,31,28,0.08)", boxShadow: "0 20px 40px -10px rgba(0,0,0,0.3), 0 8px 20px -5px rgba(0,0,0,0.2)" }}>
           {/* Background pattern */}
-          <div className="absolute inset-0 opacity-40 pointer-events-none bg-[linear-gradient(90deg,transparent,rgba(217,119,87,0.06)_50%,transparent),repeating-linear-gradient(90deg,rgba(42,31,28,0.04)_0_1px,transparent_1px_80px)]" />
+          <div className="absolute inset-0 opacity-40 pointer-events-none bg-[linear-gradient(90deg,transparent,rgba(255, 106, 61,0.06)_50%,transparent),repeating-linear-gradient(90deg,rgba(42,31,28,0.04)_0_1px,transparent_1px_80px)]" />
 
           <div className="cascade-grid relative z-[1] grid grid-cols-5 gap-5 items-center">
             {/* Node: Stripe — declined */}
@@ -65,8 +65,8 @@ export default function CascadeEngine() {
             <div className="cascade-arrow relative h-px bg-accent self-center after:content-[''] after:absolute after:right-[-1px] after:top-1/2 after:-translate-y-1/2 after:border-l-[6px] after:border-l-accent-deep after:border-t-[4px] after:border-t-transparent after:border-b-[4px] after:border-b-transparent" />
 
             {/* Node: Checkout.com — success */}
-            <div className="relative p-[18px_16px] border border-accent bg-[rgba(217,119,87,0.12)] rounded-[var(--radius)] font-mono text-xs text-center transition-all duration-300">
-              <span className="block mx-auto mb-[10px] w-8 h-8 rounded-lg bg-[rgba(217,119,87,0.12)] grid place-items-center text-accent-deep">
+            <div className="relative p-[18px_16px] border border-accent bg-[rgba(255, 106, 61,0.12)] rounded-[var(--radius)] font-mono text-xs text-center transition-all duration-300">
+              <span className="block mx-auto mb-[10px] w-8 h-8 rounded-lg bg-[rgba(255, 106, 61,0.12)] grid place-items-center text-accent-deep">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
                   <path d="M20 6 9 17l-5-5" />
                 </svg>

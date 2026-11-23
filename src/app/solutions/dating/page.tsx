@@ -11,9 +11,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/solutions/dating" },
 };
 
-const HeartIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#d97757" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 36S4 26 4 16a8 8 0 0 1 16 0 8 8 0 0 1 16 0c0 10-16 20-16 20z"/></svg>);
-const RefreshIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#d97757" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M30 8l4 4-4 4M6 20a14 14 0 0 1 28-8M10 32l-4-4 4-4M34 20a14 14 0 0 1-28 8"/></svg>);
-const WalletIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#d97757" strokeWidth="1.5" strokeLinecap="round"><rect x="4" y="10" width="32" height="22" rx="4"/><path d="M28 22h4"/><circle cx="30" cy="22" r="2" fill="#d97757" stroke="none"/></svg>);
+const HeartIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#ff6a3d" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 36S4 26 4 16a8 8 0 0 1 16 0 8 8 0 0 1 16 0c0 10-16 20-16 20z"/></svg>);
+const RefreshIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#ff6a3d" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M30 8l4 4-4 4M6 20a14 14 0 0 1 28-8M10 32l-4-4 4-4M34 20a14 14 0 0 1-28 8"/></svg>);
+const WalletIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#ff6a3d" strokeWidth="1.5" strokeLinecap="round"><rect x="4" y="10" width="32" height="22" rx="4"/><path d="M28 22h4"/><circle cx="30" cy="22" r="2" fill="#ff6a3d" stroke="none"/></svg>);
 
 export default function DatingPage() {
   return (

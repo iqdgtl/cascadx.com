@@ -36,7 +36,7 @@ export default function EvolutionTimeline({ theme }: { theme: ReelTheme }) {
     <div className="fixed inset-0 flex flex-col items-center overflow-hidden" style={{ cursor: "none", background: theme.bg }}>
       <div className="flex flex-col items-center mt-[12vh]" style={{ opacity: mainFade }}>
         <div className="relative w-28 h-28 rounded-full grid place-items-center mb-10"
-          style={{ background: theme.surface, border: `2px solid rgba(217,119,87,0.4)`, transform: `scale(${badgeP})`, opacity: badgeP > 0.05 ? 1 : 0 }}>
+          style={{ background: theme.surface, border: `2px solid rgba(255, 106, 61,0.4)`, transform: `scale(${badgeP})`, opacity: badgeP > 0.05 ? 1 : 0 }}>
           <div className="text-center">
             {showArrow ? (
               <span className="font-display font-[800] text-[22px] tracking-[-0.02em]" style={{ color: theme.ink }}>2015 <span style={{ color: theme.accent }}>→</span> 2026</span>
@@ -44,7 +44,7 @@ export default function EvolutionTimeline({ theme }: { theme: ReelTheme }) {
               <span className="font-display font-[800] text-[36px] tracking-[-0.02em]" style={{ color: theme.ink }}>{years[yearIdx].year}</span>
             )}
           </div>
-          <div className="absolute inset-[-8px] rounded-full border border-[#d97757]/20 animate-[pulse_2.6s_ease-in-out_infinite]" />
+          <div className="absolute inset-[-8px] rounded-full border border-[#ff6a3d]/20 animate-[pulse_2.6s_ease-in-out_infinite]" />
         </div>
         <div className="text-center px-8" style={{ opacity: headP, transform: `translateY(${16 * (1 - headP)}px)` }}>
           <h1 className="font-display font-[800] text-[44px] tracking-[-0.04em] leading-[1.1] mb-3" style={{ color: theme.ink }}>The Evolution of<br />Payment Routing</h1>
@@ -60,7 +60,7 @@ export default function EvolutionTimeline({ theme }: { theme: ReelTheme }) {
             return (
               <div key={y.year} className="absolute top-1/2 -translate-y-1/2 flex flex-col items-center" style={{ left: `${pct}%`, opacity: nodeP, transform: `translateX(-50%) scale(${spring(nodeP)})` }}>
                 <div className={`rounded-full grid place-items-center ${isCx ? "w-10 h-10" : "w-6 h-6"}`}
-                  style={{ background: isCx ? theme.accent : theme.surface, border: isCx ? `2px solid ${theme.accent}` : `1px solid ${theme.border}`, boxShadow: isCx ? "0 0 30px rgba(217,119,87,0.4)" : "none" }}>
+                  style={{ background: isCx ? theme.accent : theme.surface, border: isCx ? `2px solid ${theme.accent}` : `1px solid ${theme.border}`, boxShadow: isCx ? "0 0 30px rgba(255, 106, 61,0.4)" : "none" }}>
                   {isCx && <span className="text-[10px] font-mono font-bold" style={{ color: theme.bg }}>CX</span>}
                 </div>
                 <span className="font-mono text-[11px] mt-3 tracking-[0.06em]" style={{ color: nodeColor(y.shade, isCx) }}>{y.year}</span>

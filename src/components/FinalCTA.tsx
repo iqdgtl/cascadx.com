@@ -41,7 +41,7 @@ export default function FinalCTA() {
       <div className="fcta-inner">
         <h2 className="fcta-headline" style={anim(0)}>
           Stop losing revenue to{" "}
-          <span style={{ color: "#d97757", fontStyle: "italic", fontWeight: 400 }}>failed payments.</span>
+          <span style={{ color: "#ff6a3d", fontStyle: "italic", fontWeight: 400 }}>failed payments.</span>
         </h2>
 
         <p className="fcta-sub" style={anim(100)}>
@@ -78,7 +78,7 @@ export default function FinalCTA() {
         .fcta-glow {
           position: absolute;
           inset: 0;
-          background: radial-gradient(ellipse 55% 65% at 50% 50%, rgba(217,119,87,0.1) 0%, transparent 70%);
+          background: radial-gradient(ellipse 55% 65% at 50% 50%, rgba(255, 106, 61,0.1) 0%, transparent 70%);
           pointer-events: none;
         }
         .fcta-inner {
@@ -130,9 +130,9 @@ export default function FinalCTA() {
         }
         .fcta-input::placeholder { color: rgba(255,255,255,0.35); }
         .fcta-input:focus {
-          border-color: rgba(217,119,87,0.6);
+          border-color: rgba(255, 106, 61,0.6);
           background: rgba(255,255,255,0.06);
-          box-shadow: 0 0 0 4px rgba(217,119,87,0.1);
+          box-shadow: 0 0 0 4px rgba(255, 106, 61,0.1);
         }
         .fcta-btn {
           display: inline-flex;
@@ -141,7 +141,7 @@ export default function FinalCTA() {
           gap: 8px;
           height: 56px;
           padding: 0 28px;
-          background: #d97757;
+          background: #ff6a3d;
           color: #fff;
           border: none;
           border-radius: 100px;
@@ -153,12 +153,12 @@ export default function FinalCTA() {
           letter-spacing: -0.01em;
           transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
           flex-shrink: 0;
-          box-shadow: 0 8px 20px rgba(217,119,87,0.25);
+          box-shadow: 0 8px 20px rgba(255, 106, 61,0.25);
         }
         .fcta-btn:hover {
           background: #c86847;
           transform: translateY(-2px);
-          box-shadow: 0 12px 28px rgba(217,119,87,0.35);
+          box-shadow: 0 12px 28px rgba(255, 106, 61,0.35);
         }
         .fcta-btn:active { transform: scale(0.97); }
 
@@ -201,8 +201,8 @@ export default function FinalCTA() {
             font-size: 17px;
           }
           .fcta-input:focus {
-            border-color: #d97757;
-            box-shadow: 0 0 0 4px rgba(217,119,87,0.2), 0 12px 32px rgba(0,0,0,0.3);
+            border-color: #ff6a3d;
+            box-shadow: 0 0 0 4px rgba(255, 106, 61,0.2), 0 12px 32px rgba(0,0,0,0.3);
           }
           /* BUTTON — standard size, smaller than input visually */
           .fcta-btn {
@@ -213,11 +213,11 @@ export default function FinalCTA() {
             padding: 0;
             gap: 8px;
             border-radius: 20px;
-            box-shadow: 0 8px 20px rgba(217,119,87,0.3);
+            box-shadow: 0 8px 20px rgba(255, 106, 61,0.3);
           }
           .fcta-btn:hover {
             transform: translateY(-1px);
-            box-shadow: 0 12px 28px rgba(217,119,87,0.4);
+            box-shadow: 0 12px 28px rgba(255, 106, 61,0.4);
           }
           .fcta-micro { font-size: 13px; margin-top: 22px; }
         }

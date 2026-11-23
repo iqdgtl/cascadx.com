@@ -11,9 +11,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/technology/ai-routing" },
 };
 
-const BrainIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#d97757" strokeWidth="1.5" strokeLinecap="round"><circle cx="20" cy="20" r="16"/><path d="M14 14c2-2 10-2 12 0M14 26c2 2 10 2 12 0M20 8v24"/></svg>);
-const ClockIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#d97757" strokeWidth="1.5" strokeLinecap="round"><circle cx="20" cy="20" r="16"/><path d="M20 10v10l7 7"/></svg>);
-const EyeIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#d97757" strokeWidth="1.5" strokeLinecap="round"><path d="M4 20s6-12 16-12 16 12 16 12-6 12-16 12S4 20 4 20z"/><circle cx="20" cy="20" r="5"/></svg>);
+const BrainIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#ff6a3d" strokeWidth="1.5" strokeLinecap="round"><circle cx="20" cy="20" r="16"/><path d="M14 14c2-2 10-2 12 0M14 26c2 2 10 2 12 0M20 8v24"/></svg>);
+const ClockIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#ff6a3d" strokeWidth="1.5" strokeLinecap="round"><circle cx="20" cy="20" r="16"/><path d="M20 10v10l7 7"/></svg>);
+const EyeIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#ff6a3d" strokeWidth="1.5" strokeLinecap="round"><path d="M4 20s6-12 16-12 16 12 16 12-6 12-16 12S4 20 4 20z"/><circle cx="20" cy="20" r="5"/></svg>);
 
 export default function AIRoutingPage() {
   return (

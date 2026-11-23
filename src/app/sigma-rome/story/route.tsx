@@ -30,7 +30,7 @@ export async function GET() {
         <div style={{
           position: "absolute", top: -250, right: -180,
           width: 700, height: 700, borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(217,119,87,0.2) 0%, transparent 60%)",
+          background: "radial-gradient(circle, rgba(255, 106, 61,0.2) 0%, transparent 60%)",
           display: "flex",
         }} />
         <div style={{
@@ -42,7 +42,7 @@ export async function GET() {
         <div style={{
           position: "absolute", bottom: 300, right: -150,
           width: 500, height: 500, borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(217,119,87,0.14) 0%, transparent 65%)",
+          background: "radial-gradient(circle, rgba(255, 106, 61,0.14) 0%, transparent 65%)",
           display: "flex",
         }} />
 
@@ -64,14 +64,14 @@ export async function GET() {
         ] as [number, number, number, number, number][]).map(([l, t, w, h, o], i) => (
           <div key={i} style={{
             position: "absolute", left: l, top: t, width: w, height: h,
-            borderRadius: "50%", border: `1px solid rgba(217,119,87,${o})`,
+            borderRadius: "50%", border: `1px solid rgba(255, 106, 61,${o})`,
             display: "flex",
           }} />
         ))}
-        <div style={{ position: "absolute", left: GX - GR, top: GY, width: GR * 2, height: 1, background: "rgba(217,119,87,0.1)", display: "flex" }} />
-        <div style={{ position: "absolute", left: GX, top: GY - GR, width: 1, height: GR * 2, background: "rgba(217,119,87,0.1)", display: "flex" }} />
-        <div style={{ position: "absolute", left: GX - GR, top: GY - GR * .55, width: GR * 2, height: 1, background: "rgba(217,119,87,0.06)", display: "flex" }} />
-        <div style={{ position: "absolute", left: GX - GR, top: GY + GR * .55, width: GR * 2, height: 1, background: "rgba(217,119,87,0.06)", display: "flex" }} />
+        <div style={{ position: "absolute", left: GX - GR, top: GY, width: GR * 2, height: 1, background: "rgba(255, 106, 61,0.1)", display: "flex" }} />
+        <div style={{ position: "absolute", left: GX, top: GY - GR, width: 1, height: GR * 2, background: "rgba(255, 106, 61,0.1)", display: "flex" }} />
+        <div style={{ position: "absolute", left: GX - GR, top: GY - GR * .55, width: GR * 2, height: 1, background: "rgba(255, 106, 61,0.06)", display: "flex" }} />
+        <div style={{ position: "absolute", left: GX - GR, top: GY + GR * .55, width: GR * 2, height: 1, background: "rgba(255, 106, 61,0.06)", display: "flex" }} />
 
         {/* ── Roman arches – back ── */}
         <div style={{
@@ -83,7 +83,7 @@ export async function GET() {
             <div key={i} style={{
               flex: 1, height: 110,
               borderRadius: "60px 60px 0 0",
-              border: "1px solid rgba(217,119,87,0.08)",
+              border: "1px solid rgba(255, 106, 61,0.08)",
               display: "flex",
             }} />
           ))}
@@ -99,8 +99,8 @@ export async function GET() {
             <div key={i} style={{
               flex: 1, height: 195,
               borderRadius: "95px 95px 0 0",
-              border: "1px solid rgba(217,119,87,0.18)",
-              background: "rgba(217,119,87,0.02)",
+              border: "1px solid rgba(255, 106, 61,0.18)",
+              background: "rgba(255, 106, 61,0.02)",
               display: "flex",
             }} />
           ))}
@@ -126,7 +126,7 @@ export async function GET() {
             <div style={{ color: "#1a0f0a", fontSize: 34, fontWeight: 800, letterSpacing: "-1px", display: "flex" }}>
               CascadX
             </div>
-            <div style={{ width: 9, height: 9, borderRadius: "50%", background: "#d97757", marginLeft: 4, marginBottom: -5, display: "flex" }} />
+            <div style={{ width: 9, height: 9, borderRadius: "50%", background: "#ff6a3d", marginLeft: 4, marginBottom: -5, display: "flex" }} />
           </div>
 
           {/* Main content — upper center */}
@@ -134,8 +134,8 @@ export async function GET() {
 
             {/* Eyebrow */}
             <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 24 }}>
-              <div style={{ width: 32, height: 2, background: "#d97757", display: "flex" }} />
-              <div style={{ color: "rgba(217,119,87,0.78)", fontSize: 14, fontWeight: 600, letterSpacing: "3px", display: "flex" }}>
+              <div style={{ width: 32, height: 2, background: "#ff6a3d", display: "flex" }} />
+              <div style={{ color: "rgba(255, 106, 61,0.78)", fontSize: 14, fontWeight: 600, letterSpacing: "3px", display: "flex" }}>
                 IGAMING · PAYMENTS · FINTECH
               </div>
             </div>
@@ -145,7 +145,7 @@ export async function GET() {
               <div style={{ color: "rgba(250,250,247,0.68)", fontSize: 44, fontWeight: 400, lineHeight: 1.25, display: "flex" }}>
                 Meet us at
               </div>
-              <div style={{ color: "#d97757", fontSize: 82, fontWeight: 800, lineHeight: 1.06, letterSpacing: "-2.5px", display: "flex" }}>
+              <div style={{ color: "#ff6a3d", fontSize: 82, fontWeight: 800, lineHeight: 1.06, letterSpacing: "-2.5px", display: "flex" }}>
                 SiGMA Rome
               </div>
               <div style={{ color: "#1a0f0a", fontSize: 82, fontWeight: 800, lineHeight: 1.06, letterSpacing: "-2.5px", display: "flex" }}>
@@ -154,7 +154,7 @@ export async function GET() {
             </div>
 
             {/* Divider */}
-            <div style={{ width: 400, height: 1.5, background: "rgba(217,119,87,0.4)", marginBottom: 28, display: "flex" }} />
+            <div style={{ width: 400, height: 1.5, background: "rgba(255, 106, 61,0.4)", marginBottom: 28, display: "flex" }} />
 
             {/* Date + Venue */}
             <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 36 }}>
@@ -167,19 +167,19 @@ export async function GET() {
             </div>
 
             {/* Tagline */}
-            <div style={{ color: "#d97757", fontSize: 32, fontWeight: 600, fontStyle: "italic", marginBottom: 40, display: "flex" }}>
+            <div style={{ color: "#ff6a3d", fontSize: 32, fontWeight: 600, fontStyle: "italic", marginBottom: 40, display: "flex" }}>
               &ldquo;Let&apos;s talk payments.&rdquo;
             </div>
 
             {/* Event badge */}
             <div style={{
               display: "flex", alignItems: "center", gap: 10,
-              background: "rgba(217,119,87,0.1)",
-              border: "1px solid rgba(217,119,87,0.24)",
+              background: "rgba(255, 106, 61,0.1)",
+              border: "1px solid rgba(255, 106, 61,0.24)",
               borderRadius: 10, padding: "10px 20px",
             }}>
-              <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#d97757", display: "flex" }} />
-              <div style={{ color: "rgba(217,119,87,0.9)", fontSize: 14, fontWeight: 600, letterSpacing: "2px", display: "flex" }}>
+              <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#ff6a3d", display: "flex" }} />
+              <div style={{ color: "rgba(255, 106, 61,0.9)", fontSize: 14, fontWeight: 600, letterSpacing: "2px", display: "flex" }}>
                 EUROPE&apos;S LARGEST IGAMING CONFERENCE
               </div>
             </div>
@@ -190,7 +190,7 @@ export async function GET() {
             display: "flex", flexDirection: "column",
             alignItems: "center", gap: 12,
           }}>
-            <div style={{ width: 400, height: 1, background: "rgba(217,119,87,0.22)", display: "flex" }} />
+            <div style={{ width: 400, height: 1, background: "rgba(255, 106, 61,0.22)", display: "flex" }} />
             <div style={{ color: "rgba(250,250,247,0.55)", fontSize: 18, fontWeight: 400, display: "flex" }}>
               Book a meeting →  cascadx.com/rob
             </div>

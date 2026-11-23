@@ -150,17 +150,17 @@ export default function NeuralVisual() {
       <svg viewBox="0 0 500 500" aria-hidden="true" className="w-full h-full overflow-visible">
         <defs>
           <radialGradient id="coreGrad" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#d97757" stopOpacity="0.35"/>
-            <stop offset="35%" stopColor="#d97757" stopOpacity="0.06"/>
-            <stop offset="100%" stopColor="#d97757" stopOpacity="0"/>
+            <stop offset="0%" stopColor="#ff6a3d" stopOpacity="0.35"/>
+            <stop offset="35%" stopColor="#ff6a3d" stopOpacity="0.06"/>
+            <stop offset="100%" stopColor="#ff6a3d" stopOpacity="0"/>
           </radialGradient>
           <linearGradient id="linkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#d97757" stopOpacity="0.25"/>
-            <stop offset="100%" stopColor="#d97757" stopOpacity="0.02"/>
+            <stop offset="0%" stopColor="#ff6a3d" stopOpacity="0.25"/>
+            <stop offset="100%" stopColor="#ff6a3d" stopOpacity="0.02"/>
           </linearGradient>
           <linearGradient id="packetGrad" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#d97757" stopOpacity="0.2"/>
-            <stop offset="60%" stopColor="#d97757" stopOpacity="1"/>
+            <stop offset="0%" stopColor="#ff6a3d" stopOpacity="0.2"/>
+            <stop offset="60%" stopColor="#ff6a3d" stopOpacity="1"/>
             <stop offset="100%" stopColor="#b35a3e" stopOpacity="1"/>
           </linearGradient>
           <linearGradient id="packetGradV" x1="0" y1="0" x2="1" y2="0">
@@ -249,7 +249,7 @@ export default function NeuralVisual() {
 
         {/* Center robot — NOT scroll-rotated */}
         <g style={{ opacity: entered?1:0, transform: entered?"scale(1)":"scale(0.7)", transformOrigin:`${CX}px ${CY}px`, transition:"opacity 500ms ease 0ms, transform 600ms cubic-bezier(0.34,1.56,0.64,1) 0ms" }}>
-          <circle cx={CX} cy={CY} r="53" fill="none" stroke="#d97757" strokeWidth="1.5" opacity="0.3">
+          <circle cx={CX} cy={CY} r="53" fill="none" stroke="#ff6a3d" strokeWidth="1.5" opacity="0.3">
             <animate attributeName="r" values="53;65;53" dur="2.6s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values="0.3;0;0.3" dur="2.6s" repeatCount="indefinite"/>
           </circle>

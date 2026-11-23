@@ -258,13 +258,13 @@ function ProviderLogo({ name }: { name: string }) {
     case "Bank Transfer":
       return (
         <svg viewBox="0 0 32 32" width="28" height="28" fill="none" style={{ display: "block" }} aria-hidden>
-          <path d="M16 4 L29 14 H3 Z" fill="#d97757"/>
-          <rect x="3" y="14" width="26" height="2" rx="0.5" fill="#d97757"/>
-          <rect x="5" y="16" width="3" height="10" rx="0.5" fill="#d97757"/>
-          <rect x="10.5" y="16" width="3" height="10" rx="0.5" fill="#d97757"/>
-          <rect x="16" y="16" width="3" height="10" rx="0.5" fill="#d97757"/>
-          <rect x="21.5" y="16" width="3" height="10" rx="0.5" fill="#d97757"/>
-          <rect x="3" y="25.5" width="26" height="2.5" rx="1" fill="#d97757"/>
+          <path d="M16 4 L29 14 H3 Z" fill="#ff6a3d"/>
+          <rect x="3" y="14" width="26" height="2" rx="0.5" fill="#ff6a3d"/>
+          <rect x="5" y="16" width="3" height="10" rx="0.5" fill="#ff6a3d"/>
+          <rect x="10.5" y="16" width="3" height="10" rx="0.5" fill="#ff6a3d"/>
+          <rect x="16" y="16" width="3" height="10" rx="0.5" fill="#ff6a3d"/>
+          <rect x="21.5" y="16" width="3" height="10" rx="0.5" fill="#ff6a3d"/>
+          <rect x="3" y="25.5" width="26" height="2.5" rx="1" fill="#ff6a3d"/>
         </svg>
       );
 
@@ -363,7 +363,7 @@ export default function PaymentNetworkMap() {
           letterSpacing: "-0.035em", color: "#faf8f2", margin: "0 0 20px",
         }}>
           Every provider.{" "}
-          <em style={{ fontStyle: "normal", color: "#d97757" }}>One orchestration layer.</em>
+          <em style={{ fontStyle: "normal", color: "#ff6a3d" }}>One orchestration layer.</em>
         </h2>
         <p style={{ fontSize: 18, color: "#5a4a42", lineHeight: 1.6, margin: 0 }}>
           CascadX connects your checkout to a global network of PSPs, wallets, and local payment
@@ -400,7 +400,7 @@ export default function PaymentNetworkMap() {
           <circle cx={CX} cy={CY} r={GLOBE_R} fill="url(#pnm-globe-grad)"/>
           <path ref={graticuleRef} fill="none" stroke="rgba(245,239,230,0.07)" strokeWidth="0.8" clipPath="url(#pnm-globe-clip)"/>
           <path ref={landRef}      fill="rgba(245,239,230,0.18)" stroke="rgba(245,239,230,0.22)" strokeWidth="0.5" clipPath="url(#pnm-globe-clip)"/>
-          <circle cx={CX} cy={CY} r={GLOBE_R} fill="none" stroke="rgba(217,119,87,0.25)" strokeWidth="1.5"/>
+          <circle cx={CX} cy={CY} r={GLOBE_R} fill="none" stroke="rgba(255, 106, 61,0.25)" strokeWidth="1.5"/>
 
           {/* Connection lines — react to hover */}
           {PROVIDERS.map((p, i) => (
@@ -409,7 +409,7 @@ export default function PaymentNetworkMap() {
               id={`pnm-path-${i}`}
               d={`M ${CX + p.dx} ${CY + p.dy} L ${CX} ${CY}`}
               fill="none"
-              stroke="#d97757"
+              stroke="#ff6a3d"
               strokeWidth={hoveredIdx === i ? 2.5 : 1.5}
               strokeDasharray={hoveredIdx === i ? "none" : "5 7"}
               opacity={
@@ -427,7 +427,7 @@ export default function PaymentNetworkMap() {
 
           {/* Data pulses */}
           {PROVIDERS.map((p, i) => (
-            <circle key={`pulse-${p.name}`} r="3.5" fill="#d97757" opacity="0.9">
+            <circle key={`pulse-${p.name}`} r="3.5" fill="#ff6a3d" opacity="0.9">
               <animateMotion dur="4s" begin={`${(i * 0.3 + 1.5).toFixed(1)}s`} repeatCount="indefinite">
                 <mpath href={`#pnm-path-${i}`}/>
               </animateMotion>
@@ -437,19 +437,19 @@ export default function PaymentNetworkMap() {
           ))}
 
           {/* Hub breathing rings */}
-          <circle cx={CX} cy={CY} r={48} fill="none" stroke="rgba(217,119,87,0.2)">
+          <circle cx={CX} cy={CY} r={48} fill="none" stroke="rgba(255, 106, 61,0.2)">
             <animate attributeName="r" values="48;72;48" dur="2.4s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1"/>
             <animate attributeName="stroke-opacity" values="0.2;0;0.2" dur="2.4s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1"/>
           </circle>
-          <circle cx={CX} cy={CY} r={48} fill="none" stroke="rgba(217,119,87,0.5)">
+          <circle cx={CX} cy={CY} r={48} fill="none" stroke="rgba(255, 106, 61,0.5)">
             <animate attributeName="r" values="48;60;48" dur="2.4s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1"/>
             <animate attributeName="stroke-opacity" values="0.5;0;0.5" dur="2.4s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1"/>
           </circle>
 
           {/* Hub disc */}
-          <circle cx={CX} cy={CY} r={46} fill="#faf8f2" stroke="#d97757" strokeWidth="1.5"/>
+          <circle cx={CX} cy={CY} r={46} fill="#faf8f2" stroke="#ff6a3d" strokeWidth="1.5"/>
           <text x={CX} y={CY + 1} textAnchor="middle" dominantBaseline="middle"
-            fill="#d97757" fontFamily="var(--font-display,sans-serif)" fontWeight="800" fontSize="19" letterSpacing="-1">
+            fill="#ff6a3d" fontFamily="var(--font-display,sans-serif)" fontWeight="800" fontSize="19" letterSpacing="-1">
             CX
           </text>
         </svg>
@@ -500,9 +500,9 @@ export default function PaymentNetworkMap() {
                     <div style={{
                       width: 84, height: 84, borderRadius: "50%",
                       background: "#fff",
-                      border: isHovered ? "1.5px solid rgba(217,119,87,0.5)" : "1.5px solid rgba(42,31,28,0.1)",
+                      border: isHovered ? "1.5px solid rgba(255, 106, 61,0.5)" : "1.5px solid rgba(42,31,28,0.1)",
                       boxShadow: isHovered
-                        ? "0 0 30px rgba(217,119,87,0.5), 0 8px 24px rgba(0,0,0,0.16)"
+                        ? "0 0 30px rgba(255, 106, 61,0.5), 0 8px 24px rgba(0,0,0,0.16)"
                         : "0 4px 20px rgba(0,0,0,0.14), 0 1px 4px rgba(0,0,0,0.08)",
                       display: "flex", alignItems: "center", justifyContent: "center",
                       transform: `scale(${isHovered ? 1.15 : 1})`,
@@ -517,7 +517,7 @@ export default function PaymentNetworkMap() {
                     fontFamily: "var(--font-mono,monospace)",
                     fontSize: 9, letterSpacing: "0.06em",
                     textTransform: "uppercase",
-                    color: isHovered ? "#d97757" : "#5a4a42",
+                    color: isHovered ? "#ff6a3d" : "#5a4a42",
                     whiteSpace: "nowrap",
                     textShadow: "0 1px 3px rgba(245,239,230,0.9)",
                     transition: "color 300ms ease",
@@ -571,9 +571,9 @@ export default function PaymentNetworkMap() {
       }}>
         <a href="#integrations" style={{
           fontFamily: "var(--font-display,sans-serif)", fontWeight: 700,
-          fontSize: 15, color: "#d97757", textDecoration: "none",
+          fontSize: 15, color: "#ff6a3d", textDecoration: "none",
           letterSpacing: "-0.01em",
-          borderBottom: "1px solid rgba(217,119,87,0.35)", paddingBottom: 2,
+          borderBottom: "1px solid rgba(255, 106, 61,0.35)", paddingBottom: 2,
         }}>
           Explore every integration we support →
         </a>

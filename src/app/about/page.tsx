@@ -13,21 +13,21 @@ export const metadata: Metadata = {
 
 const MissionIcon = () => (
   <svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="24" cy="24" r="20" /><circle cx="24" cy="24" r="12" /><circle cx="24" cy="24" r="4" fill="#d97757" stroke="none" />
+    <circle cx="24" cy="24" r="20" /><circle cx="24" cy="24" r="12" /><circle cx="24" cy="24" r="4" fill="#ff6a3d" stroke="none" />
   </svg>
 );
 const TransparencyIcon = () => (
-  <svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#d97757" strokeWidth="1.5" strokeLinecap="round">
+  <svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#ff6a3d" strokeWidth="1.5" strokeLinecap="round">
     <rect x="4" y="4" width="32" height="32" rx="6" /><path d="M12 20h16M20 12v16" />
   </svg>
 );
 const IntelligenceIcon = () => (
-  <svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#d97757" strokeWidth="1.5" strokeLinecap="round">
-    <circle cx="20" cy="16" r="8" /><path d="M8 36c0-6.6 5.4-12 12-12s12 5.4 12 12" /><circle cx="20" cy="16" r="3" fill="#d97757" stroke="none" />
+  <svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#ff6a3d" strokeWidth="1.5" strokeLinecap="round">
+    <circle cx="20" cy="16" r="8" /><path d="M8 36c0-6.6 5.4-12 12-12s12 5.4 12 12" /><circle cx="20" cy="16" r="3" fill="#ff6a3d" stroke="none" />
   </svg>
 );
 const GlobalIcon = () => (
-  <svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#d97757" strokeWidth="1.5" strokeLinecap="round">
+  <svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#ff6a3d" strokeWidth="1.5" strokeLinecap="round">
     <circle cx="20" cy="20" r="16" /><ellipse cx="20" cy="20" rx="8" ry="16" /><path d="M4 20h32M6 12h28M6 28h28" />
   </svg>
 );

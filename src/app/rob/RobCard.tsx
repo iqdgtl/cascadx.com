@@ -48,7 +48,7 @@ function GlobeBackground() {
             <circle cx="240" cy="240" r="200"/>
           </clipPath>
         </defs>
-        <circle cx="240" cy="240" r="200" fill="none" stroke="rgba(217,119,87,0.3)" strokeWidth="1"/>
+        <circle cx="240" cy="240" r="200" fill="none" stroke="rgba(255, 106, 61,0.3)" strokeWidth="1"/>
         <path ref={graticuleRef} fill="none" stroke="rgba(245,239,230,0.28)" strokeWidth="0.6" clipPath="url(#rob-globe-clip)"/>
         <path ref={landRef}      fill="rgba(245,239,230,0.32)" stroke="rgba(245,239,230,0.4)" strokeWidth="0.5" clipPath="url(#rob-globe-clip)"/>
       </svg>
@@ -81,7 +81,7 @@ function IconLinkedIn() {
 }
 function IconGlobe() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d97757" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff6a3d" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="12" cy="12" r="10"/>
       <path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
     </svg>
@@ -179,14 +179,14 @@ export default function RobCard() {
       <div aria-hidden style={{
         position: "fixed", top: "-15%", right: "-5%",
         width: 500, height: 500, borderRadius: "50%",
-        background: "radial-gradient(circle, rgba(217,119,87,0.14) 0%, transparent 70%)",
+        background: "radial-gradient(circle, rgba(255, 106, 61,0.14) 0%, transparent 70%)",
         animation: "rob-glow1 22s ease-in-out infinite alternate",
         pointerEvents: "none", zIndex: 0,
       }}/>
       <div aria-hidden style={{
         position: "fixed", bottom: "-20%", left: "-10%",
         width: 620, height: 620, borderRadius: "50%",
-        background: "radial-gradient(circle, rgba(217,119,87,0.09) 0%, transparent 70%)",
+        background: "radial-gradient(circle, rgba(255, 106, 61,0.09) 0%, transparent 70%)",
         animation: "rob-glow2 28s ease-in-out infinite alternate",
         pointerEvents: "none", zIndex: 0,
       }}/>
@@ -216,7 +216,7 @@ export default function RobCard() {
           </span>
           <span style={{
             display: "inline-block", width: 6, height: 6, borderRadius: "50%",
-            background: "#d97757", marginLeft: 3, marginBottom: -2,
+            background: "#ff6a3d", marginLeft: 3, marginBottom: -2,
           }}/>
         </div>
 
@@ -244,7 +244,7 @@ export default function RobCard() {
         <p style={{
           fontFamily: "var(--font-mono,monospace)", fontWeight: 500,
           fontSize: 13, letterSpacing: "3px", textTransform: "uppercase",
-          color: "#d97757", margin: "0 0 20px", textAlign: "center",
+          color: "#ff6a3d", margin: "0 0 20px", textAlign: "center",
           ...slideUp(940),
         }}>
           CascadX
@@ -263,7 +263,7 @@ export default function RobCard() {
 
         {/* Divider */}
         <div style={{
-          width: "60%", height: 1, background: "rgba(217,119,87,0.25)",
+          width: "60%", height: 1, background: "rgba(255, 106, 61,0.25)",
           marginBottom: 32, ...fadeIn(1100),
         }}/>
 
@@ -345,7 +345,7 @@ export default function RobCard() {
 
         {/* Divider */}
         <div style={{
-          width: "60%", height: 1, background: "rgba(217,119,87,0.25)",
+          width: "60%", height: 1, background: "rgba(255, 106, 61,0.25)",
           marginBottom: 24, ...fadeIn(1620),
         }}/>
 
@@ -357,7 +357,7 @@ export default function RobCard() {
           <span style={{
             fontFamily: "var(--font-mono,monospace)", fontSize: 10,
             letterSpacing: "2px", textTransform: "uppercase",
-            color: "rgba(217,119,87,0.6)", marginBottom: 8,
+            color: "rgba(255, 106, 61,0.6)", marginBottom: 8,
           }}>
             Direct contact
           </span>
@@ -372,7 +372,7 @@ export default function RobCard() {
               padding: "8px 16px", borderRadius: 10, minHeight: 44,
             }}
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d97757" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff6a3d" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/>
             </svg>
             hello@cascadx.com
@@ -388,7 +388,7 @@ export default function RobCard() {
               padding: "8px 16px", borderRadius: 10, minHeight: 44,
             }}
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d97757" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff6a3d" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
             </svg>
             +44 7459 166788
@@ -397,7 +397,7 @@ export default function RobCard() {
 
         {/* Divider */}
         <div style={{
-          width: "60%", height: 1, background: "rgba(217,119,87,0.25)",
+          width: "60%", height: 1, background: "rgba(255, 106, 61,0.25)",
           marginBottom: 32, ...fadeIn(1760),
         }}/>
 
@@ -406,12 +406,12 @@ export default function RobCard() {
           display: "flex", flexDirection: "column", alignItems: "center", gap: 14,
           ...slideUp(1840),
         }}>
-          <div style={{ position: "relative", filter: "drop-shadow(0 0 20px rgba(217,119,87,0.22))" }}>
+          <div style={{ position: "relative", filter: "drop-shadow(0 0 20px rgba(255, 106, 61,0.22))" }}>
             <QRCodeSVG
               value="https://cascadx.com/rob"
               size={180}
               bgColor="transparent"
-              fgColor="#d97757"
+              fgColor="#ff6a3d"
               level="H"
               marginSize={1}
             />

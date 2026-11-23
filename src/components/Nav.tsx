@@ -67,7 +67,7 @@ function DesktopDropdown({ group }: { group: NavGroup }) {
             const isCurrent = pathname === item.href;
             return (
               <Link key={item.href} href={item.href} onClick={() => setOpen(false)}
-                className={`group flex items-center gap-2.5 px-3.5 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 ${isCurrent ? "bg-[rgba(217,119,87,0.05)] text-ink border-l-2 border-accent pl-3" : "text-ink-soft hover:text-ink hover:bg-white/[0.06]"}`}>
+                className={`group flex items-center gap-2.5 px-3.5 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 ${isCurrent ? "bg-[rgba(255, 106, 61,0.05)] text-ink border-l-2 border-accent pl-3" : "text-ink-soft hover:text-ink hover:bg-white/[0.06]"}`}>
                 {!isCurrent && <span className="w-0 group-hover:w-1 h-1 rounded-full bg-accent transition-all duration-200 shrink-0" />}
                 {item.label}
               </Link>
@@ -116,7 +116,7 @@ export default function Nav() {
           <div className="flex items-center gap-3">
             {/* Desktop CTA */}
             <Link href="/contact"
-              className="hidden lg:inline-flex items-center gap-2 px-4 py-[10px] bg-accent text-[#faf8f2] rounded-full text-[13px] font-semibold shadow-[0_6px_30px_-10px_rgba(217,119,87,0.5)] transition-all duration-250 ease-out hover:bg-accent-deep hover:-translate-y-0.5">
+              className="hidden lg:inline-flex items-center gap-2 px-4 py-[10px] bg-accent text-[#faf8f2] rounded-full text-[13px] font-semibold shadow-[0_6px_30px_-10px_rgba(255, 106, 61,0.5)] transition-all duration-250 ease-out hover:bg-accent-deep hover:-translate-y-0.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#faf8f2]" />
               Contact us
             </Link>

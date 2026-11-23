@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 
-const ACCENT = "#d97757";
+const ACCENT = "#ff6a3d";
 
 // ── Icons ──────────────────────────────────────────────────────────────────────
 
@@ -140,7 +140,7 @@ export default function Solutions() {
   };
 
   const DEFAULT_SHADOW = "0 20px 40px -10px rgba(0,0,0,0.3), 0 8px 20px -5px rgba(0,0,0,0.2)";
-  const HOVER_SHADOW   = "0 30px 60px -15px rgba(217,119,87,0.25), 0 15px 30px -10px rgba(0,0,0,0.3)";
+  const HOVER_SHADOW   = "0 30px 60px -15px rgba(255, 106, 61,0.25), 0 15px 30px -10px rgba(0,0,0,0.3)";
 
   const blockAnim = (i: number): React.CSSProperties => {
     if (!visible) return { opacity: 0, transform: "translateY(40px)" };
@@ -163,7 +163,7 @@ export default function Solutions() {
   };
 
   const borderColor = (i: number) =>
-    entered && hovered === i ? "rgba(217,119,87,0.4)" : "rgba(26,15,10,0.08)";
+    entered && hovered === i ? "rgba(255, 106, 61,0.4)" : "rgba(26,15,10,0.08)";
 
   return (
     <section
@@ -320,7 +320,7 @@ export default function Solutions() {
             {/* Soft terracotta glow, left side */}
             <div aria-hidden="true" style={{
               position: "absolute", inset: 0, pointerEvents: "none",
-              background: "radial-gradient(ellipse 50% 100% at 15% 50%, rgba(217,119,87,0.06) 0%, transparent 70%)",
+              background: "radial-gradient(ellipse 50% 100% at 15% 50%, rgba(255, 106, 61,0.06) 0%, transparent 70%)",
             }} />
 
             {/* Left — headline */}

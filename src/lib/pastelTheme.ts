@@ -13,20 +13,20 @@ export const pastel: LetterTheme = {
   bg: "#f5efe6",
   surface: "#ffffff",
   letter: "#e8a98e",
-  accent: "#d97757",
+  accent: "#ff6a3d",
   ink: "#2a1f1c",
   inkSoft: "#7a6961",
-  line: "rgba(217,119,87,0.15)",
+  line: "rgba(255, 106, 61,0.15)",
   outerBg: "#1a1a1a",
 };
 
 export const pastelDark: LetterTheme = {
   bg: "#0d0f0e",
   surface: "#1e2423",
-  letter: "#d97757",
-  accent: "#d97757",
+  letter: "#ff6a3d",
+  accent: "#ff6a3d",
   ink: "#fafaf7",
   inkSoft: "#7a8178",
-  line: "rgba(217,119,87,0.15)",
+  line: "rgba(255, 106, 61,0.15)",
   outerBg: "#000000",
 };

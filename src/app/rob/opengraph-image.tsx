@@ -30,7 +30,7 @@ export default function Image() {
             height: 560,
             borderRadius: "50%",
             background:
-              "radial-gradient(circle, rgba(217,119,87,0.28) 0%, transparent 70%)",
+              "radial-gradient(circle, rgba(255, 106, 61,0.28) 0%, transparent 70%)",
             display: "flex",
           }}
         />
@@ -44,7 +44,7 @@ export default function Image() {
             height: 480,
             borderRadius: "50%",
             background:
-              "radial-gradient(circle, rgba(217,119,87,0.15) 0%, transparent 70%)",
+              "radial-gradient(circle, rgba(255, 106, 61,0.15) 0%, transparent 70%)",
             display: "flex",
           }}
         />
@@ -67,7 +67,7 @@ export default function Image() {
               width: 8,
               height: 8,
               borderRadius: "50%",
-              background: "#d97757",
+              background: "#ff6a3d",
               marginLeft: 4,
               marginBottom: -4,
               display: "flex",
@@ -81,12 +81,12 @@ export default function Image() {
             width: 104,
             height: 104,
             borderRadius: "50%",
-            background: "linear-gradient(135deg, #e68a67, #d97757, #c86847)",
+            background: "linear-gradient(135deg, #e68a67, #ff6a3d, #c86847)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             marginBottom: 32,
-            boxShadow: "0 0 60px rgba(217,119,87,0.45)",
+            boxShadow: "0 0 60px rgba(255, 106, 61,0.45)",
           }}
         >
           <span
@@ -133,12 +133,12 @@ export default function Image() {
           >
             Founder &amp; CEO
           </span>
-          <span style={{ color: "#d97757", fontSize: 22, fontFamily: "sans-serif" }}>
+          <span style={{ color: "#ff6a3d", fontSize: 22, fontFamily: "sans-serif" }}>
             ·
           </span>
           <span
             style={{
-              color: "#d97757",
+              color: "#ff6a3d",
               fontSize: 16,
               letterSpacing: "3px",
               fontFamily: "monospace",
@@ -154,7 +154,7 @@ export default function Image() {
           style={{
             width: 360,
             height: 1,
-            background: "rgba(217,119,87,0.3)",
+            background: "rgba(255, 106, 61,0.3)",
             marginTop: 28,
             marginBottom: 28,
             display: "flex",
@@ -185,7 +185,7 @@ export default function Image() {
             right: 0,
             height: 4,
             background:
-              "linear-gradient(90deg, transparent 0%, #d97757 40%, #d97757 60%, transparent 100%)",
+              "linear-gradient(90deg, transparent 0%, #ff6a3d 40%, #ff6a3d 60%, transparent 100%)",
             display: "flex",
           }}
         />

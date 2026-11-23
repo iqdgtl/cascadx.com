@@ -77,7 +77,7 @@ export default function ContactPage() {
               </div>
               <button
                 type="submit"
-                className="inline-flex items-center gap-[10px] px-6 py-[15px] bg-accent text-[#faf8f2] rounded-full text-[15px] font-semibold transition-all duration-250 hover:bg-accent-deep hover:text-[#faf8f2] hover:-translate-y-0.5 shadow-[0_6px_30px_-10px_rgba(217,119,87,0.5)] hover:shadow-[0_14px_40px_-10px_rgba(217,119,87,0.55)]"
+                className="inline-flex items-center gap-[10px] px-6 py-[15px] bg-accent text-[#faf8f2] rounded-full text-[15px] font-semibold transition-all duration-250 hover:bg-accent-deep hover:text-[#faf8f2] hover:-translate-y-0.5 shadow-[0_6px_30px_-10px_rgba(255, 106, 61,0.5)] hover:shadow-[0_14px_40px_-10px_rgba(255, 106, 61,0.55)]"
               >
                 Send message
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">

@@ -11,9 +11,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/technology/hosted-payment" },
 };
 
-const PaintIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#d97757" strokeWidth="1.5" strokeLinecap="round"><rect x="4" y="4" width="32" height="24" rx="4"/><path d="M4 12h32"/><circle cx="20" cy="20" r="3" fill="#d97757" stroke="none"/></svg>);
-const CurrencyIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#d97757" strokeWidth="1.5" strokeLinecap="round"><circle cx="20" cy="20" r="16"/><path d="M16 14h8a4 4 0 0 1 0 8h-8M16 22h8a4 4 0 0 1 0 8h-8M20 10v4M20 26v4"/></svg>);
-const PhoneIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#d97757" strokeWidth="1.5" strokeLinecap="round"><rect x="10" y="2" width="20" height="36" rx="4"/><line x1="18" y1="32" x2="22" y2="32"/></svg>);
+const PaintIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#ff6a3d" strokeWidth="1.5" strokeLinecap="round"><rect x="4" y="4" width="32" height="24" rx="4"/><path d="M4 12h32"/><circle cx="20" cy="20" r="3" fill="#ff6a3d" stroke="none"/></svg>);
+const CurrencyIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#ff6a3d" strokeWidth="1.5" strokeLinecap="round"><circle cx="20" cy="20" r="16"/><path d="M16 14h8a4 4 0 0 1 0 8h-8M16 22h8a4 4 0 0 1 0 8h-8M20 10v4M20 26v4"/></svg>);
+const PhoneIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#ff6a3d" strokeWidth="1.5" strokeLinecap="round"><rect x="10" y="2" width="20" height="36" rx="4"/><line x1="18" y1="32" x2="22" y2="32"/></svg>);
 
 export default function HostedPaymentPage() {
   return (

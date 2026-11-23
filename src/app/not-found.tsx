@@ -10,7 +10,7 @@ export default function NotFound() {
       <Nav />
       <section className="relative z-[2] flex flex-col items-center justify-center text-center px-7 py-32 min-h-[70vh]">
         {/* Subtle terracotta glow behind robot */}
-        <div className="absolute inset-0 bg-[radial-gradient(400px_400px_at_50%_40%,rgba(217,119,87,0.12),transparent_60%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(400px_400px_at_50%_40%,rgba(255, 106, 61,0.12),transparent_60%)] pointer-events-none" />
 
         <div className="relative z-[2] flex flex-col items-center">
           <RobotMascot size={220} variant="confused" />

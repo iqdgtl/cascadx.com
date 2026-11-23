@@ -15,7 +15,7 @@ const graticule = geoGraticule().step([30, 30])();
 const GW = 600, GH = 580;
 const CX = GW / 2, CY = GH / 2;
 const GLOBE_R = 228;
-const ACCENT = "#d97757";
+const ACCENT = "#ff6a3d";
 
 const projection = geoOrthographic()
   .scale(GLOBE_R)
@@ -85,7 +85,7 @@ function PremiumIPhone() {
           0 60px 80px -10px rgba(0,0,0,0.6),
           0 30px 40px -10px rgba(0,0,0,0.4),
           0 0 0 1px rgba(0,0,0,0.5),
-          0 0 80px rgba(217,119,87,0.08)
+          0 0 80px rgba(255, 106, 61,0.08)
         `,
       }} />
 

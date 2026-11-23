@@ -36,7 +36,7 @@ function WaterfallInner({ theme }: { theme: ReelTheme }) {
   const textColor = isDark ? "#1a0f0a" : "#2a1f1c";
   const softColor = isDark ? "#b8bcb6" : "#5a4a42";
   const mutedColor = isDark ? "#7a8178" : "#8a7a72";
-  const cardGrad = isDark ? "linear-gradient(135deg, #2a1f1c, #3d2520)" : "linear-gradient(135deg, #e8a98e, #d97757)";
+  const cardGrad = isDark ? "linear-gradient(135deg, #2a1f1c, #3d2520)" : "linear-gradient(135deg, #e8a98e, #ff6a3d)";
   const cardText = "#1a0f0a"; // white on both — readable on dark card AND terracotta card
   const declineColor = isDark ? "#c4564a" : "#d4756a";
   const overlayBg = isDark ? "rgba(13,15,14,0.8)" : "rgba(245,239,230,0.85)";
@@ -140,7 +140,7 @@ function WaterfallInner({ theme }: { theme: ReelTheme }) {
         {t >= L1_APPROACH && t < RESULT_IN && (
           <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.035 }}>
             {[12, 30, 50, 70, 88].map((x, i) => (
-              <div key={i} className="absolute w-[1px]" style={{ left: `${x}%`, top: 0, bottom: 0, background: "linear-gradient(180deg, transparent, #d97757 50%, transparent)" }} />
+              <div key={i} className="absolute w-[1px]" style={{ left: `${x}%`, top: 0, bottom: 0, background: "linear-gradient(180deg, transparent, #ff6a3d 50%, transparent)" }} />
             ))}
           </div>
         )}
@@ -158,7 +158,7 @@ function WaterfallInner({ theme }: { theme: ReelTheme }) {
                 borderRadius: "18px",
                 background: "linear-gradient(135deg, #2a1f1c 0%, #3d2520 60%, #2a1f1c 100%)",
                 border: "1px solid rgba(26,15,10,0.08)",
-                boxShadow: "0 25px 50px -15px rgba(0,0,0,0.5), 0 0 35px rgba(217,119,87,0.12)",
+                boxShadow: "0 25px 50px -15px rgba(0,0,0,0.5), 0 0 35px rgba(255, 106, 61,0.12)",
                 padding: "20px", display: "flex", flexDirection: "column" as const, justifyContent: "space-between", overflow: "hidden",
               }}>
                 <div style={{ position: "absolute", inset: 0, background: `linear-gradient(${135 + rotY * 2}deg, transparent 30%, rgba(26,15,10,0.08) 45%, rgba(26,15,10,0.14) 50%, rgba(26,15,10,0.08) 55%, transparent 70%)`, pointerEvents: "none", borderRadius: "inherit" }} />
@@ -175,7 +175,7 @@ function WaterfallInner({ theme }: { theme: ReelTheme }) {
                 {/* Card number — typewriter */}
                 <div className="font-mono font-medium text-center" style={{ fontSize: "min(20px, 2.2vh)", color: cardText, letterSpacing: "0.06em", position: "relative", zIndex: 1 }}>
                   {numDisplay}
-                  {numTyping && <span className="inline-block w-[1.5px] h-[18px] ml-[1px] align-middle" style={{ background: "#d97757", animation: "pulse 0.7s step-end infinite" }} />}
+                  {numTyping && <span className="inline-block w-[1.5px] h-[18px] ml-[1px] align-middle" style={{ background: "#ff6a3d", animation: "pulse 0.7s step-end infinite" }} />}
                 </div>
                 {/* Bottom: cardholder (typed) + expiry (typed) + CascadX brand */}
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", position: "relative", zIndex: 1 }}>
@@ -187,7 +187,7 @@ function WaterfallInner({ theme }: { theme: ReelTheme }) {
                     <div className="font-mono" style={{ fontSize: "8px", color: "rgba(26,15,10,0.3)", letterSpacing: "0.1em" }}>EXPIRES</div>
                     <div className="font-mono" style={{ fontSize: "11px", color: "rgba(26,15,10,0.75)" }}>{expiryStr.slice(0, expChars) || "—"}</div>
                   </div>
-                  <div className="font-mono" style={{ fontSize: "9px", color: "#d97757", opacity: 0.6 }}>CascadX.</div>
+                  <div className="font-mono" style={{ fontSize: "9px", color: "#ff6a3d", opacity: 0.6 }}>CascadX.</div>
                 </div>
               </div>
               <div style={{ position: "absolute", inset: 0, backfaceVisibility: "hidden" as const, transform: "rotateY(180deg)", borderRadius: "18px", background: "linear-gradient(135deg, #1a1512, #2a1f1c)", border: "1px solid rgba(26,15,10,0.05)" }}>
@@ -209,7 +209,7 @@ function WaterfallInner({ theme }: { theme: ReelTheme }) {
           <>
             {/* Trail */}
             {t >= L1_APPROACH && !caught && (
-              <div className="absolute left-1/2 -translate-x-1/2 w-[3px]" style={{ top: "10%", height: `${Math.max(0, cardY - 10)}%`, background: "linear-gradient(180deg, transparent 50%, rgba(217,119,87,0.35))", zIndex: 6, opacity: contentFade }} />
+              <div className="absolute left-1/2 -translate-x-1/2 w-[3px]" style={{ top: "10%", height: `${Math.max(0, cardY - 10)}%`, background: "linear-gradient(180deg, transparent 50%, rgba(255, 106, 61,0.35))", zIndex: 6, opacity: contentFade }} />
             )}
             {/* The mini card */}
             <div className="absolute left-1/2" style={{
@@ -222,15 +222,15 @@ function WaterfallInner({ theme }: { theme: ReelTheme }) {
                 background: cardGrad,
                 border: "1px solid rgba(26,15,10,0.1)",
                 boxShadow: catchGlow
-                  ? "0 0 40px rgba(217,119,87,0.5), 0 15px 40px -10px rgba(0,0,0,0.4)"
-                  : "0 15px 40px -10px rgba(0,0,0,0.4), 0 0 20px rgba(217,119,87,0.15)",
+                  ? "0 0 40px rgba(255, 106, 61,0.5), 0 15px 40px -10px rgba(0,0,0,0.4)"
+                  : "0 15px 40px -10px rgba(0,0,0,0.4), 0 0 20px rgba(255, 106, 61,0.15)",
               }}>
                 <span className="font-display font-[700] text-[22px]" style={{ color: cardText }}>€129.00</span>
               </div>
               {/* "Trying..." label */}
               {tryingLabel && (
                 <div className="text-center mt-2">
-                  <span className="font-mono text-[12px] text-[#d97757]">{tryingLabel}</span>
+                  <span className="font-mono text-[12px] text-[#ff6a3d]">{tryingLabel}</span>
                 </div>
               )}
             </div>
@@ -253,9 +253,9 @@ function WaterfallInner({ theme }: { theme: ReelTheme }) {
               transition: "opacity 500ms",
             }}>
               <div className="rounded-2xl px-5 py-4 flex items-center justify-between" style={{
-                background: approved ? "rgba(217,119,87,0.1)" : "#f0ebe0",
-                border: `1.5px solid ${hitFlash ? (approved ? "#d97757" : "rgba(196,86,74,0.6)") : approved ? "rgba(217,119,87,0.3)" : "rgba(26,15,10,0.07)"}`,
-                boxShadow: approved ? "0 0 30px rgba(217,119,87,0.2)" : hitFlash && !approved ? "0 0 20px rgba(196,86,74,0.15)" : "none",
+                background: approved ? "rgba(255, 106, 61,0.1)" : "#f0ebe0",
+                border: `1.5px solid ${hitFlash ? (approved ? "#ff6a3d" : "rgba(196,86,74,0.6)") : approved ? "rgba(255, 106, 61,0.3)" : "rgba(26,15,10,0.07)"}`,
+                boxShadow: approved ? "0 0 30px rgba(255, 106, 61,0.2)" : hitFlash && !approved ? "0 0 20px rgba(196,86,74,0.15)" : "none",
                 minHeight: "min(64px, 7vh)",
               }}>
                 <div className="flex items-center gap-3">
@@ -266,7 +266,7 @@ function WaterfallInner({ theme }: { theme: ReelTheme }) {
                   <span className="font-display font-[600] text-[16px]" style={{ color: dimmed ? "#7a8178" : "#1a0f0a" }}>{layer.name}</span>
                 </div>
                 {hit && (
-                  <span className="font-mono text-[12px] font-medium" style={{ color: approved ? "#d97757" : "#c4564a" }}>
+                  <span className="font-mono text-[12px] font-medium" style={{ color: approved ? "#ff6a3d" : "#c4564a" }}>
                     {approved ? "✓ Approved" : `✗ ${layer.reason}`}
                   </span>
                 )}
@@ -282,7 +282,7 @@ function WaterfallInner({ theme }: { theme: ReelTheme }) {
           const elapsed = t - (L4_HIT + 300);
           const dist = 25 + (elapsed / 1700) * 70;
           const fade = Math.max(0, 1 - elapsed / 1500);
-          return <div key={i} className="absolute w-[5px] h-[5px] rounded-full" style={{ left: `calc(50% + ${Math.cos(rad) * dist}px)`, top: `calc(${layers[3].y}% + ${Math.sin(rad) * dist - 20}px)`, background: "#d97757", opacity: fade * 0.5, zIndex: 13 }} />;
+          return <div key={i} className="absolute w-[5px] h-[5px] rounded-full" style={{ left: `calc(50% + ${Math.cos(rad) * dist}px)`, top: `calc(${layers[3].y}% + ${Math.sin(rad) * dist - 20}px)`, background: "#ff6a3d", opacity: fade * 0.5, zIndex: 13 }} />;
         })}
 
         {/* Result text */}
@@ -292,7 +292,7 @@ function WaterfallInner({ theme }: { theme: ReelTheme }) {
               <div className="font-display font-[800] text-[40px] tracking-[-0.03em] leading-tight" style={{ color: textColor }}>
                 3 declines. 1 success.
               </div>
-              <div className="font-display font-medium text-[24px] text-[#d97757] mt-4">
+              <div className="font-display font-medium text-[24px] text-[#ff6a3d] mt-4">
                 Caught on the 4th route — in 38ms.
               </div>
             </div>

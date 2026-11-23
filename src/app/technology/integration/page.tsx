@@ -11,10 +11,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "/technology/integration" },
 };
 
-const CodeIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#d97757" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14 12L4 20l10 8M26 12l10 8-10 8"/></svg>);
-const WebhookIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#d97757" strokeWidth="1.5" strokeLinecap="round"><circle cx="10" cy="30" r="6"/><circle cx="30" cy="30" r="6"/><circle cx="20" cy="10" r="6"/><path d="M16 10l-6 20M24 10l6 20"/></svg>);
-const KeyIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#d97757" strokeWidth="1.5" strokeLinecap="round"><circle cx="14" cy="20" r="8"/><path d="M22 20h14M30 16v8M36 16v8"/></svg>);
-const RocketIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#d97757" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 36V20M20 4c-6 4-10 12-10 20h20c0-8-4-16-10-20z"/><path d="M14 32c-4 0-6-4-6-4M26 32c4 0 6-4 6-4"/></svg>);
+const CodeIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#ff6a3d" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14 12L4 20l10 8M26 12l10 8-10 8"/></svg>);
+const WebhookIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#ff6a3d" strokeWidth="1.5" strokeLinecap="round"><circle cx="10" cy="30" r="6"/><circle cx="30" cy="30" r="6"/><circle cx="20" cy="10" r="6"/><path d="M16 10l-6 20M24 10l6 20"/></svg>);
+const KeyIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#ff6a3d" strokeWidth="1.5" strokeLinecap="round"><circle cx="14" cy="20" r="8"/><path d="M22 20h14M30 16v8M36 16v8"/></svg>);
+const RocketIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#ff6a3d" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 36V20M20 4c-6 4-10 12-10 20h20c0-8-4-16-10-20z"/><path d="M14 32c-4 0-6-4-6-4M26 32c4 0 6-4 6-4"/></svg>);
 
 export default function IntegrationPage() {
   return (

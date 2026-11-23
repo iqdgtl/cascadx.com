@@ -7,7 +7,7 @@ export default function CTA() {
   return (
     <section id="cta" className="relative z-[2] py-16 md:py-[140px] px-5 md:px-7 bg-gradient-to-b from-[#faf8f2] to-[#050606] text-ink overflow-hidden">
       {/* Glow overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(500px_300px_at_80%_20%,rgba(217,119,87,0.35),transparent_65%),radial-gradient(400px_250px_at_20%_80%,rgba(217,119,87,0.12),transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(500px_300px_at_80%_20%,rgba(255, 106, 61,0.35),transparent_65%),radial-gradient(400px_250px_at_20%_80%,rgba(255, 106, 61,0.12),transparent_60%)]" />
 
       {/* Waving robot — bottom right on desktop, centered on mobile */}
       <div className="absolute bottom-10 right-[12%] opacity-90 hidden md:block">

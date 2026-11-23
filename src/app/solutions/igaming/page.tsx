@@ -11,9 +11,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/solutions/igaming" },
 };
 
-const BoltIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#d97757" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 2L8 24h12l-2 14L32 16H20l2-14z"/></svg>);
-const ShieldIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#d97757" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 4L6 10v10c0 8.4 6 14 14 16 8-2 14-7.6 14-16V10L20 4z"/></svg>);
-const GlobeIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#d97757" strokeWidth="1.5" strokeLinecap="round"><circle cx="20" cy="20" r="16"/><ellipse cx="20" cy="20" rx="8" ry="16"/><path d="M4 20h32"/></svg>);
+const BoltIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#ff6a3d" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 2L8 24h12l-2 14L32 16H20l2-14z"/></svg>);
+const ShieldIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#ff6a3d" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 4L6 10v10c0 8.4 6 14 14 16 8-2 14-7.6 14-16V10L20 4z"/></svg>);
+const GlobeIcon = () => (<svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#ff6a3d" strokeWidth="1.5" strokeLinecap="round"><circle cx="20" cy="20" r="16"/><ellipse cx="20" cy="20" rx="8" ry="16"/><path d="M4 20h32"/></svg>);
 
 export default function IGamingPage() {
   return (

@@ -66,7 +66,7 @@ export default function Hero() {
       {/* Terracotta radial glow behind scene */}
       <div style={{
         position: "absolute", inset: 0, pointerEvents: "none",
-        background: "radial-gradient(ellipse 70% 60% at 65% 50%, rgba(217,119,87,0.09) 0%, transparent 70%)",
+        background: "radial-gradient(ellipse 70% 60% at 65% 50%, rgba(255, 106, 61,0.09) 0%, transparent 70%)",
       }} />
 
       {/* Film grain — cinematic depth */}
@@ -82,7 +82,7 @@ export default function Hero() {
         position: "absolute",
         width: 700, height: 520,
         left: "clamp(-60px, 2vw, 20px)", top: "12%",
-        background: "radial-gradient(ellipse at center, rgba(217,119,87,0.10) 0%, rgba(217,119,87,0.04) 40%, transparent 70%)",
+        background: "radial-gradient(ellipse at center, rgba(255, 106, 61,0.10) 0%, rgba(255, 106, 61,0.04) 40%, transparent 70%)",
         pointerEvents: "none",
         zIndex: 1,
         filter: "blur(60px)",
@@ -119,7 +119,7 @@ export default function Hero() {
           }}>
             Payment recovery,{" "}
             <span style={{
-              color: "#d97757",
+              color: "#ff6a3d",
               fontWeight: 600,
               fontStyle: "italic",
             }}>for every business</span>.
@@ -148,10 +148,10 @@ export default function Hero() {
                 <button
                   className="hero-btn-primary"
                   onClick={() => {
-                    document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" });
+                    document.getElementById("final-cta")?.scrollIntoView({ behavior: "smooth" });
                   }}
                 >
-                  Learn more
+                  Book a demo
                   <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                     <path d="M4 9h10M10 5l4 4-4 4" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
@@ -189,7 +189,7 @@ export default function Hero() {
           z-index: 0;
         }
         .hero-orb-1 {
-          background: rgba(217,119,87,0.22);
+          background: rgba(255, 106, 61,0.22);
           top: -140px; right: 5%;
           animation: orb-float-1 22s ease-in-out infinite;
         }
@@ -231,7 +231,7 @@ export default function Hero() {
           outline: none;
           touch-action: manipulation;
           transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
-          box-shadow: 0 8px 20px rgba(217,119,87,0.35);
+          box-shadow: 0 8px 20px rgba(255, 106, 61,0.35);
           position: relative;
           z-index: 2;
           white-space: nowrap;
@@ -240,7 +240,7 @@ export default function Hero() {
         .hero-btn-primary:hover {
           background: var(--accent-deep);
           transform: translateY(-2px);
-          box-shadow: 0 14px 32px rgba(217,119,87,0.45);
+          box-shadow: 0 14px 32px rgba(255, 106, 61,0.45);
         }
         .hero-btn-primary:hover svg { transform: translateX(3px); }
         .hero-btn-primary:active    { transform: scale(0.97); }
@@ -250,7 +250,7 @@ export default function Hero() {
           position: absolute;
           inset: 0;
           border-radius: 100px;
-          border: 1.5px solid rgba(217,119,87,0.55);
+          border: 1.5px solid rgba(255, 106, 61,0.55);
           pointer-events: none;
           animation: hero-ring-pulse 4s ease-out infinite;
         }
@@ -315,7 +315,7 @@ export default function Hero() {
             gap: 24px !important;
           }
           .hero-grid > div:last-child {
-            height: clamp(430px, 112vw, 510px) !important;
+            height: clamp(450px, 115vw, 520px) !important;
             width: 100%;
           }
           /* Make PremiumIPhone fill its mobile frame — fixes off-center */
@@ -332,8 +332,13 @@ export default function Hero() {
           .hero-headline-glow { display: none !important; }
         }
         @media (max-width: 768px) {
-          .hero-scene-col { order: 1; }
-          .hero-text-col  { order: -1; }
+          /* Unwrap text-col so its children become flex items of the grid */
+          .hero-text-col { display: contents !important; }
+          .hero-text-col > h1 { order: -3; margin-bottom: 14px !important; }
+          .hero-text-col > p  { order: -2; margin-bottom: 20px !important; }
+          .hero-text-col > div { order: 2 !important; margin-bottom: 0 !important; }
+          .hero-scene-col { order: 1 !important; margin-top: -8px; }
+          .hero-grid { gap: 10px !important; }
           .hero-btn-secondary  { display: none !important; }
           .hero-cta-footnote   { display: none !important; }
           .hero-metrics        { display: none !important; }

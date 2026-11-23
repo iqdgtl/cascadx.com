@@ -98,7 +98,7 @@ export default function PaymentNetwork({ theme }: { theme: ReelTheme }) {
             background: theme.surface,
             border: `2px solid ${theme.accent}`,
             opacity: centerP,
-            boxShadow: `0 0 50px rgba(217,119,87,${0.35 * centerP})`,
+            boxShadow: `0 0 50px rgba(255, 106, 61,${0.35 * centerP})`,
           }}
         >
           <span className="font-display font-[800] text-[22px] tracking-[-0.035em]" style={{ color: theme.ink }}>CX</span>

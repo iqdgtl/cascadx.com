@@ -46,8 +46,8 @@ export default function IntegrationsNetwork() {
           >
             <defs>
               <linearGradient id="chipLink" x1="0" x2="1">
-                <stop offset="0%" stopColor="#d97757" stopOpacity="0.45" />
-                <stop offset="100%" stopColor="#d97757" stopOpacity="0" />
+                <stop offset="0%" stopColor="#ff6a3d" stopOpacity="0.45" />
+                <stop offset="100%" stopColor="#ff6a3d" stopOpacity="0" />
               </linearGradient>
             </defs>
             <g stroke="url(#chipLink)" strokeWidth="1" fill="none">
@@ -58,7 +58,7 @@ export default function IntegrationsNetwork() {
           </svg>
 
           {/* Center hub */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140px] h-[140px] rounded-full bg-surface-el border border-line-strong grid place-items-center shadow-[0_0_0_10px_rgba(26,15,10,0.05),0_0_0_20px_rgba(26,15,10,0.02),0_0_60px_rgba(217,119,87,0.2)] z-[3] before:content-[''] before:absolute before:inset-[-1px] before:rounded-full before:border before:border-accent before:opacity-40 before:animate-[pulse_2.6s_ease-in-out_infinite]">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140px] h-[140px] rounded-full bg-surface-el border border-line-strong grid place-items-center shadow-[0_0_0_10px_rgba(26,15,10,0.05),0_0_0_20px_rgba(26,15,10,0.02),0_0_60px_rgba(255, 106, 61,0.2)] z-[3] before:content-[''] before:absolute before:inset-[-1px] before:rounded-full before:border before:border-accent before:opacity-40 before:animate-[pulse_2.6s_ease-in-out_infinite]">
             <Logo className="text-[20px]" dotSize={5} />
           </div>
 

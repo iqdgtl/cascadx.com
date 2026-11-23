@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 
-const GOLD  = "#d97757";  // Brand accent (was gold, now terracotta)
+const GOLD  = "#ff6a3d";  // Brand accent (was gold, now terracotta)
 const CREAM = "#1a0f0a";
 
 function delay(ms: number) { return new Promise(r => setTimeout(r, ms)); }
@@ -59,7 +59,7 @@ function CardAnim() {
         width: 230, height: 144, borderRadius: 15,
         background: "linear-gradient(135deg, #d4af37 0%, #b8860b 28%, #daa520 58%, #c9a227 100%)",
         position: "relative", overflow: "hidden",
-        boxShadow: "0 10px 28px rgba(0,0,0,0.55), 0 2px 8px rgba(217,119,87,0.35), inset 0 1px 0 rgba(26,15,10,0.4)",
+        boxShadow: "0 10px 28px rgba(0,0,0,0.55), 0 2px 8px rgba(255, 106, 61,0.35), inset 0 1px 0 rgba(26,15,10,0.4)",
         animation: "card-sway 8s ease-in-out infinite",
         flexShrink: 0,
       }}>
@@ -225,7 +225,7 @@ function RoutingAnim() {
           display: "flex", justifyContent: "space-between", alignItems: "center",
           marginBottom: 12,
           paddingBottom: 8,
-          borderBottom: "1px solid rgba(217,119,87,0.1)",
+          borderBottom: "1px solid rgba(255, 106, 61,0.1)",
         }}>
           <span style={{
             fontFamily: "var(--font-mono)",
@@ -282,8 +282,8 @@ function RoutingAnim() {
               marginBottom: 6, height: 28,
               padding: "4px 6px",
               borderRadius: 6,
-              background: isApproved ? "rgba(16,185,129,0.08)" : isDeclined ? "rgba(239,68,68,0.04)" : "rgba(217,119,87,0.08)",
-              border: `1px solid ${isApproved ? "rgba(16,185,129,0.25)" : isDeclined ? "rgba(239,68,68,0.15)" : "rgba(217,119,87,0.25)"}`,
+              background: isApproved ? "rgba(16,185,129,0.08)" : isDeclined ? "rgba(239,68,68,0.04)" : "rgba(255, 106, 61,0.08)",
+              border: `1px solid ${isApproved ? "rgba(16,185,129,0.25)" : isDeclined ? "rgba(239,68,68,0.15)" : "rgba(255, 106, 61,0.25)"}`,
               animation: "hiw-slide-in 280ms cubic-bezier(0.22, 1, 0.36, 1)",
               transition: "background 300ms ease, border-color 300ms ease",
             }}>
@@ -346,7 +346,7 @@ function RoutingAnim() {
         {/* Footer: total time */}
         <div style={{
           marginTop: 8, paddingTop: 8,
-          borderTop: "1px solid rgba(217,119,87,0.1)",
+          borderTop: "1px solid rgba(255, 106, 61,0.1)",
           display: "flex", justifyContent: "space-between",
           fontFamily: "var(--font-mono)",
           fontSize: 9,
@@ -549,7 +549,7 @@ export default function HowItWorks() {
           margin: 0,
         }}>
             Declined once.{" "}
-            <span style={{ color: "#d97757", fontStyle: "italic", fontWeight: 400 }}>Recovered.</span>
+            <span style={{ color: "#ff6a3d", fontStyle: "italic", fontWeight: 400 }}>Recovered.</span>
           </h2>
           <p style={{
             marginTop: 20, color: "rgba(26,15,10,0.6)",
@@ -572,9 +572,9 @@ export default function HowItWorks() {
                   transition: `opacity 500ms ease ${i * 110}ms, transform 500ms ease ${i * 110}ms`,
                   background: "linear-gradient(135deg, #e8e4dc 0%, #d8d2c6 50%, #e5e0d5 100%)",
                   boxShadow: i === 0
-                    ? "0 20px 50px -15px rgba(26,15,10,0.1), 0 0 60px rgba(217,119,87,0.06), inset 0 0 0 1px rgba(217,119,87,0.12)"
+                    ? "0 20px 50px -15px rgba(26,15,10,0.1), 0 0 60px rgba(255, 106, 61,0.06), inset 0 0 0 1px rgba(255, 106, 61,0.12)"
                     : i === 1
-                    ? "0 20px 50px -15px rgba(26,15,10,0.1), 0 0 60px rgba(217,119,87,0.1), inset 0 0 0 1px rgba(217,119,87,0.18)"
+                    ? "0 20px 50px -15px rgba(26,15,10,0.1), 0 0 60px rgba(255, 106, 61,0.1), inset 0 0 0 1px rgba(255, 106, 61,0.18)"
                     : "0 20px 50px -15px rgba(26,15,10,0.1), 0 0 60px rgba(16,185,129,0.08), inset 0 0 0 1px rgba(16,185,129,0.18)",
                 }}
               >
@@ -650,10 +650,10 @@ export default function HowItWorks() {
         @media (hover: hover) {
           .hiw-tile:hover {
             transform: translateY(-4px);
-            box-shadow: 0 24px 48px rgba(0,0,0,0.5), 0 0 50px rgba(217,119,87,0.14),
+            box-shadow: 0 24px 48px rgba(0,0,0,0.5), 0 0 50px rgba(255, 106, 61,0.14),
                         inset 0 1px 0 rgba(26,15,10,0.05);
           }
-          .hiw-tile:hover .hiw-border { border-color: rgba(217,119,87,0.35); }
+          .hiw-tile:hover .hiw-border { border-color: rgba(255, 106, 61,0.35); }
         }
 
         .hiw-anim {
@@ -669,7 +669,7 @@ export default function HowItWorks() {
         }
         .hiw-border {
           position: absolute; inset: 0; border-radius: inherit;
-          border: 1px solid rgba(217,119,87,0.15);
+          border: 1px solid rgba(255, 106, 61,0.15);
           pointer-events: none;
           transition: border-color 300ms ease;
         }
@@ -685,8 +685,8 @@ export default function HowItWorks() {
           position: absolute; inset: 0;
           background: repeating-linear-gradient(
             90deg,
-            rgba(217,119,87,0.3) 0,
-            rgba(217,119,87,0.3) 5px,
+            rgba(255, 106, 61,0.3) 0,
+            rgba(255, 106, 61,0.3) 5px,
             transparent 5px,
             transparent 11px
           );
@@ -697,7 +697,7 @@ export default function HowItWorks() {
           width: 8px; height: 8px; margin-top: -4px;
           border-radius: 50%;
           background: ${GOLD};
-          box-shadow: 0 0 8px rgba(217,119,87,0.9), 0 0 18px rgba(217,119,87,0.4);
+          box-shadow: 0 0 8px rgba(255, 106, 61,0.9), 0 0 18px rgba(255, 106, 61,0.4);
           animation: hiw-dot-travel 2.5s ease-in-out infinite;
         }
         @keyframes hiw-dot-travel {

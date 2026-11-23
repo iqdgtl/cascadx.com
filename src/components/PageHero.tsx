@@ -24,7 +24,7 @@ export default function PageHero({
 
   return (
     <section className="relative z-[2] overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(500px_300px_at_80%_20%,rgba(217,119,87,0.08),transparent_60%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(500px_300px_at_80%_20%,rgba(255, 106, 61,0.08),transparent_60%)] pointer-events-none" />
 
       <div
         className="max-w-[var(--max)] mx-auto px-5 md:px-7 pt-14 md:pt-20 pb-10 md:pb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-10"

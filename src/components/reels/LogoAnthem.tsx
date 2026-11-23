@@ -31,7 +31,7 @@ export default function LogoAnthem({ theme }: { theme: ReelTheme }) {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center overflow-hidden" style={{ cursor: "none", background: theme.bg }}>
-      <div className="absolute inset-0 pointer-events-none" style={{ background: `radial-gradient(300px 300px at 50% 50%, rgba(217,119,87,${0.12 * glowP * resetFade}), transparent 70%)` }} />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: `radial-gradient(300px 300px at 50% 50%, rgba(255, 106, 61,${0.12 * glowP * resetFade}), transparent 70%)` }} />
       <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1080 1920" style={{ opacity: linesP * 0.3 * resetFade }}>
         {[30, 80, 150, 210, 280].map((y, i) => {
           const offset = ((t / 3000 + i * 0.3) % 3) / 3;

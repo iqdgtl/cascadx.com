@@ -160,14 +160,14 @@ export default function BigTiles() {
           className="bt-tile"
           style={{
             background: [
-              "radial-gradient(ellipse 80% 70% at 85% 15%, rgba(217,119,87,0.25) 0%, transparent 60%)",
+              "radial-gradient(ellipse 80% 70% at 85% 15%, rgba(255, 106, 61,0.25) 0%, transparent 60%)",
               "radial-gradient(ellipse 60% 60% at 15% 90%, rgba(234,179,8,0.14) 0%, transparent 60%)",
               "linear-gradient(145deg, #2a1810 0%, #3d1f14 60%, #1a0f0a 100%)",
             ].join(","),
             opacity: visible ? 1 : 0,
             transform: visible ? "none" : "translateY(32px)",
             transition: "opacity 600ms ease 150ms, transform 600ms ease 150ms",
-            boxShadow: "0 20px 40px -10px rgba(0,0,0,0.5), 0 0 80px rgba(217,119,87,0.1), inset 0 1px 0 rgba(26,15,10,0.05)",
+            boxShadow: "0 20px 40px -10px rgba(0,0,0,0.5), 0 0 80px rgba(255, 106, 61,0.1), inset 0 1px 0 rgba(26,15,10,0.05)",
           }}
         >
           {/* Sparkline chart */}

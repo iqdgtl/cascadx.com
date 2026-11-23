@@ -62,12 +62,12 @@ export default function ReelOrbit() {
       </div>
 
       {/* Terracotta glow */}
-      <div className="absolute inset-0 pointer-events-none" style={{ background: `radial-gradient(500px 500px at 50% 55%, rgba(217,119,87,${0.18 * entrance * resetFade}), transparent 70%)` }} />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: `radial-gradient(500px 500px at 50% 55%, rgba(255, 106, 61,${0.18 * entrance * resetFade}), transparent 70%)` }} />
 
       {/* SLOGAN — visible from frame 1, always on top */}
       <div className="text-center mb-10 px-8 relative z-10" style={{ opacity: resetFade }}>
         <h1 className="font-display font-[800] text-[56px] tracking-[-0.04em] leading-[1.05] text-[#1a0f0a]">
-          Payments that <span className="text-[#d97757]">think</span><br />before they fall.
+          Payments that <span className="text-[#ff6a3d]">think</span><br />before they fall.
         </h1>
         <p className="font-mono text-[18px] text-white/40 mt-4">cascadx.com</p>
       </div>
@@ -82,8 +82,8 @@ export default function ReelOrbit() {
 
         {/* Center robot */}
         <div className="absolute left-1/2 top-1/2 w-20 h-20 rounded-full bg-[#262c2b] border border-white/[0.14] grid place-items-center"
-          style={{ transform: `translate(-50%, -50%) scale(${spring(entrance) * breathe})`, opacity: entrance, boxShadow: `0 0 50px rgba(217,119,87,${0.35 * entrance})` }}>
-          <div className="absolute inset-[-5px] rounded-full border border-[#d97757] opacity-30 animate-[pulse_2.6s_ease-in-out_infinite]" />
+          style={{ transform: `translate(-50%, -50%) scale(${spring(entrance) * breathe})`, opacity: entrance, boxShadow: `0 0 50px rgba(255, 106, 61,${0.35 * entrance})` }}>
+          <div className="absolute inset-[-5px] rounded-full border border-[#ff6a3d] opacity-30 animate-[pulse_2.6s_ease-in-out_infinite]" />
           <RobotMascot size={56} variant="thinking" />
         </div>
 
@@ -113,7 +113,7 @@ export default function ReelOrbit() {
             const rad = ((totalAngle - 90) * Math.PI) / 180;
             const ex = 50 + (icon.r / 3.3) * Math.cos(rad);
             const ey = 50 + (icon.r / 3.3) * Math.sin(rad);
-            return <line key={i} x1="50" y1="50" x2={ex} y2={ey} stroke="#d97757" strokeWidth="0.4" opacity="0.5" />;
+            return <line key={i} x1="50" y1="50" x2={ex} y2={ey} stroke="#ff6a3d" strokeWidth="0.4" opacity="0.5" />;
           })}
         </svg>
       </div>

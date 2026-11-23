@@ -74,8 +74,8 @@ export default function SignalsDashboard() {
               <svg viewBox="0 0 600 160" preserveAspectRatio="none" className="w-full h-full overflow-visible">
                 <defs>
                   <linearGradient id="areaGrad" x1="0" x2="0" y1="0" y2="1">
-                    <stop offset="0%" stopColor="#d97757" stopOpacity="0.35" />
-                    <stop offset="100%" stopColor="#d97757" stopOpacity="0" />
+                    <stop offset="0%" stopColor="#ff6a3d" stopOpacity="0.35" />
+                    <stop offset="100%" stopColor="#ff6a3d" stopOpacity="0" />
                   </linearGradient>
                 </defs>
                 <g strokeDasharray="2 4">
@@ -93,7 +93,7 @@ export default function SignalsDashboard() {
                   d="M0,90 C60,80 90,95 150,70 C210,50 240,60 300,55 C360,50 390,30 450,45 C510,60 540,35 600,20"
                 />
                 <circle cx="150" cy="70" r="4" fill="#ff6a3d" />
-                <circle cx="450" cy="45" r="4" fill="#d97757" />
+                <circle cx="450" cy="45" r="4" fill="#ff6a3d" />
               </svg>
             </div>
 

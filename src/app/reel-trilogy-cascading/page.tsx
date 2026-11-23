@@ -83,7 +83,7 @@ export default function Page() {
                 const chosenGlow = isChosen && picked;
                 return (
                   <div key={psp.name} className="flex flex-col items-center gap-1" style={{ opacity: ep, transform: `scale(${ep})` }}>
-                    <div className="w-[56px] h-[56px] rounded-full flex items-center justify-center" style={{ background: pastel.surface, border: `2px solid ${chosenGlow ? pastel.accent : pastel.line}`, boxShadow: chosenGlow ? `0 0 20px rgba(217,119,87,0.4)` : "none", transform: chosenGlow ? `scale(${1 + 0.08 * pickP})` : "scale(1)" }}>
+                    <div className="w-[56px] h-[56px] rounded-full flex items-center justify-center" style={{ background: pastel.surface, border: `2px solid ${chosenGlow ? pastel.accent : pastel.line}`, boxShadow: chosenGlow ? `0 0 20px rgba(255, 106, 61,0.4)` : "none", transform: chosenGlow ? `scale(${1 + 0.08 * pickP})` : "scale(1)" }}>
                       <span className="font-mono text-[9px] font-bold" style={{ color: psp.color }}>{psp.name}</span>
                     </div>
                     <span className="font-mono text-[10px]" style={{ color: chosenGlow ? pastel.accent : pastel.inkSoft }}>{isChosen && picked ? "✓ Selected" : "Evaluating"}</span>

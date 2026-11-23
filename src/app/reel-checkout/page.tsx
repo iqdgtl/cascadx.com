@@ -31,11 +31,11 @@ function CardStep({ active }: { active: boolean }) {
   return (
     <div className="w-full max-w-[340px] mx-auto">
       {/* Big background number */}
-      <span className="absolute top-4 right-6 font-display font-[800] text-[200px] leading-none text-[#d97757] opacity-[0.06] select-none pointer-events-none">01</span>
+      <span className="absolute top-4 right-6 font-display font-[800] text-[200px] leading-none text-[#ff6a3d] opacity-[0.06] select-none pointer-events-none">01</span>
       <div className="font-mono text-[10px] tracking-[0.1em] uppercase text-ink-muted mb-4">Step 01 · Customer pays</div>
       {/* Card */}
       <div className="relative w-full h-[200px] bg-gradient-to-br from-[#1a0f0a] from-0% to-[#1a2622] to-0% rounded-[14px] p-6 flex flex-col justify-between overflow-hidden" style={{ background: "linear-gradient(135deg, #faf8f2 0%, #1a2622 100%)" }}>
-        <div className="absolute top-0 left-0 right-0 h-1 bg-[#d97757]" />
+        <div className="absolute top-0 left-0 right-0 h-1 bg-[#ff6a3d]" />
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-10 h-7 rounded-[3px] bg-gradient-to-br from-[#d4a853] to-[#c49a3a]" />
@@ -45,7 +45,7 @@ function CardStep({ active }: { active: boolean }) {
         </div>
         <div className="font-display font-semibold text-[20px] tracking-[0.08em] text-white/90 relative">
           {text}
-          {cursorPos >= 0 && <span className="inline-block w-[2px] h-[20px] bg-[#d97757] ml-[1px] align-middle animate-[pulse_0.8s_step-end_infinite]" />}
+          {cursorPos >= 0 && <span className="inline-block w-[2px] h-[20px] bg-[#ff6a3d] ml-[1px] align-middle animate-[pulse_0.8s_step-end_infinite]" />}
         </div>
         <div className="flex justify-between items-end">
           <div><div className="font-mono text-[8px] uppercase tracking-[0.1em] text-white/35 mb-0.5">Cardholder Name</div><div className="font-display font-medium text-[13px] text-white/70">ALEX MERCER</div></div>
@@ -79,7 +79,7 @@ function RoutingStep({ active }: { active: boolean }) {
 
   return (
     <div className="w-full max-w-[340px] mx-auto">
-      <span className="absolute top-4 right-6 font-display font-[800] text-[200px] leading-none text-[#d97757] opacity-[0.06] select-none pointer-events-none">02</span>
+      <span className="absolute top-4 right-6 font-display font-[800] text-[200px] leading-none text-[#ff6a3d] opacity-[0.06] select-none pointer-events-none">02</span>
       <div className="font-mono text-[10px] tracking-[0.1em] uppercase text-ink-muted mb-4">Step 02 · CascadX routes</div>
       <div className="relative w-full h-[200px] flex items-center justify-center">
         <svg viewBox="0 0 280 180" className="absolute inset-0 w-full h-full pointer-events-none">
@@ -89,12 +89,12 @@ function RoutingStep({ active }: { active: boolean }) {
             const ex = 140 + Math.cos(rad) * 80;
             const ey = 90 + Math.sin(rad) * 65;
             const isChosen = i === chosen;
-            return (<g key={psp.name}><line x1="140" y1="90" x2={ex} y2={ey} stroke={isChosen ? "#d97757" : "rgba(26,15,10,0.08)"} strokeWidth={isChosen ? "2" : "1"} strokeDasharray={isChosen ? "none" : "3 3"} className="transition-all duration-500" />{isChosen && <circle r="3.5" fill="#d97757"><animateMotion dur="1.2s" repeatCount="indefinite" path={`M140,90 L${ex},${ey}`} /><animate attributeName="opacity" values="0;1;1;0" dur="1.2s" repeatCount="indefinite" /></circle>}</g>);
+            return (<g key={psp.name}><line x1="140" y1="90" x2={ex} y2={ey} stroke={isChosen ? "#ff6a3d" : "rgba(26,15,10,0.08)"} strokeWidth={isChosen ? "2" : "1"} strokeDasharray={isChosen ? "none" : "3 3"} className="transition-all duration-500" />{isChosen && <circle r="3.5" fill="#ff6a3d"><animateMotion dur="1.2s" repeatCount="indefinite" path={`M140,90 L${ex},${ey}`} /><animate attributeName="opacity" values="0;1;1;0" dur="1.2s" repeatCount="indefinite" /></circle>}</g>);
           })}
         </svg>
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-[#d97757] grid place-items-center z-10 shadow-[0_0_20px_rgba(217,119,87,0.4)]">
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-[#ff6a3d] grid place-items-center z-10 shadow-[0_0_20px_rgba(255, 106, 61,0.4)]">
           <span className="font-mono text-[11px] font-bold text-[#1a0f0a]">AI</span>
-          <div className="absolute inset-[-4px] rounded-full border border-[#d97757] opacity-40 animate-[pulse_2s_ease-in-out_infinite]" />
+          <div className="absolute inset-[-4px] rounded-full border border-[#ff6a3d] opacity-40 animate-[pulse_2s_ease-in-out_infinite]" />
         </div>
         {psps.map((psp, i) => {
           const angle = -90 + i * 60;
@@ -103,14 +103,14 @@ function RoutingStep({ active }: { active: boolean }) {
           const cy = 50 + Math.sin(rad) * 36;
           const isChosen = i === chosen;
           return (<div key={psp.name} className={`absolute flex flex-col items-center gap-1 transition-all duration-500 ${isChosen ? "scale-110" : ""}`} style={{ left: `${cx}%`, top: `${cy}%`, transform: `translate(-50%,-50%)${isChosen ? " scale(1.1)" : ""}` }}>
-            <div className={`px-3 py-1.5 rounded-lg border text-[12px] font-mono font-bold transition-all duration-500 ${isChosen ? "bg-[rgba(217,119,87,0.1)] border-[#d97757] shadow-[0_4px_12px_rgba(217,119,87,0.3)]" : "bg-[#f0ebe0] border-white/[0.08]"}`} style={{ color: psp.color }}>{psp.name}</div>
+            <div className={`px-3 py-1.5 rounded-lg border text-[12px] font-mono font-bold transition-all duration-500 ${isChosen ? "bg-[rgba(255, 106, 61,0.1)] border-[#ff6a3d] shadow-[0_4px_12px_rgba(255, 106, 61,0.3)]" : "bg-[#f0ebe0] border-white/[0.08]"}`} style={{ color: psp.color }}>{psp.name}</div>
             <span className={`font-mono text-[10px] transition-all duration-500 ${isChosen ? "text-[#b35a3e] font-bold" : "text-[#7a8178]"}`}>{psp.approval}{isChosen ? " ✓" : ""}</span>
           </div>);
         })}
       </div>
       <div className="flex items-center justify-between mt-5 pt-4 border-t border-white/[0.08]">
         <div><h4 className="font-display font-[700] text-[22px] tracking-[-0.02em] mb-0.5 text-[#1a0f0a]">AI picks the best PSP</h4><p className="text-sm text-[#7a8178]">AI picks the best PSP in &lt;40ms</p></div>
-        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono tracking-[0.06em] uppercase border bg-[rgba(217,119,87,0.1)] border-[#d97757] text-[#b35a3e]"><span className="w-1.5 h-1.5 rounded-full bg-[#b35a3e] animate-[pulse_1.6s_ease-in-out_infinite]" />Routing</span>
+        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono tracking-[0.06em] uppercase border bg-[rgba(255, 106, 61,0.1)] border-[#ff6a3d] text-[#b35a3e]"><span className="w-1.5 h-1.5 rounded-full bg-[#b35a3e] animate-[pulse_1.6s_ease-in-out_infinite]" />Routing</span>
       </div>
     </div>
   );
@@ -133,19 +133,19 @@ function SuccessStep({ active }: { active: boolean }) {
 
   return (
     <div className="w-full max-w-[340px] mx-auto">
-      <span className="absolute top-4 right-6 font-display font-[800] text-[200px] leading-none text-[#d97757] opacity-[0.06] select-none pointer-events-none">03</span>
+      <span className="absolute top-4 right-6 font-display font-[800] text-[200px] leading-none text-[#ff6a3d] opacity-[0.06] select-none pointer-events-none">03</span>
       <div className="font-mono text-[10px] tracking-[0.1em] uppercase text-ink-muted mb-4">Step 03 · Payment approved</div>
       <div className="relative w-full h-[200px] flex flex-col items-center justify-center gap-4">
         {/* Confetti */}
         {[0, 1, 2, 3].map((i) => {
           const angle = i * 90 + 45;
           const rad = (angle * Math.PI) / 180;
-          return <div key={i} className="absolute w-2 h-2 rounded-full bg-[#d97757]" style={{ left: `calc(50% + ${Math.cos(rad) * 60}px)`, top: `calc(40% + ${Math.sin(rad) * 60}px)`, animation: drawn ? `pulse 1.8s ease-in-out ${i * 0.2}s infinite` : "none", opacity: drawn ? 0.6 : 0, transition: "opacity 0.5s" }} />;
+          return <div key={i} className="absolute w-2 h-2 rounded-full bg-[#ff6a3d]" style={{ left: `calc(50% + ${Math.cos(rad) * 60}px)`, top: `calc(40% + ${Math.sin(rad) * 60}px)`, animation: drawn ? `pulse 1.8s ease-in-out ${i * 0.2}s infinite` : "none", opacity: drawn ? 0.6 : 0, transition: "opacity 0.5s" }} />;
         })}
         <div className="relative w-[110px] h-[110px]">
           <svg viewBox="0 0 100 100" className="w-full h-full">
-            <circle cx="50" cy="50" r="42" fill="none" stroke="#d97757" strokeWidth="3" strokeDasharray="264" strokeDashoffset={drawn ? "0" : "264"} style={{ transition: "stroke-dashoffset 1.2s ease" }} />
-            <path d="M30 52 l14 14 l26-30" fill="none" stroke="#d97757" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="80" strokeDashoffset={drawn ? "0" : "80"} style={{ transition: "stroke-dashoffset 0.8s ease 0.7s" }} />
+            <circle cx="50" cy="50" r="42" fill="none" stroke="#ff6a3d" strokeWidth="3" strokeDasharray="264" strokeDashoffset={drawn ? "0" : "264"} style={{ transition: "stroke-dashoffset 1.2s ease" }} />
+            <path d="M30 52 l14 14 l26-30" fill="none" stroke="#ff6a3d" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="80" strokeDashoffset={drawn ? "0" : "80"} style={{ transition: "stroke-dashoffset 0.8s ease 0.7s" }} />
           </svg>
         </div>
         <div className="font-display font-[700] text-[26px] tracking-[-0.02em] text-[#b35a3e]">
@@ -154,7 +154,7 @@ function SuccessStep({ active }: { active: boolean }) {
       </div>
       <div className="flex items-center justify-between mt-5 pt-4 border-t border-white/[0.08]">
         <div><h4 className="font-display font-[700] text-[22px] tracking-[-0.02em] mb-0.5 text-[#1a0f0a]">Transaction captured</h4><p className="text-sm text-[#7a8178]">Transaction captured</p></div>
-        <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-mono tracking-[0.06em] uppercase border bg-[#d97757] text-[#faf8f2] animate-[pulse_2s_ease-in-out_infinite]">Approved</span>
+        <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-mono tracking-[0.06em] uppercase border bg-[#ff6a3d] text-[#faf8f2] animate-[pulse_2s_ease-in-out_infinite]">Approved</span>
       </div>
     </div>
   );
@@ -201,7 +201,7 @@ export default function ReelCheckout() {
       </div>
 
       {/* Subtle glow */}
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(400px_400px_at_50%_50%,rgba(217,119,87,0.06),transparent_70%)]" />
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(400px_400px_at_50%_50%,rgba(255, 106, 61,0.06),transparent_70%)]" />
 
       {/* Step container — centered, same position for all steps */}
       <div className="relative w-full max-w-[480px] px-8">
