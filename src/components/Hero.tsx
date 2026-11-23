@@ -57,7 +57,7 @@ export default function Hero() {
         alignItems: "center",
         overflow: "hidden",
         background: "var(--bg)",
-        padding: "clamp(40px, 8vw, 80px) 24px clamp(32px, 6vw, 60px)",
+        padding: "clamp(32px, 6vw, 80px) 24px clamp(40px, 6vw, 60px)",
       }}
     >
       {/* Single on-brand terracotta orb — no rainbow */}
@@ -315,7 +315,7 @@ export default function Hero() {
             gap: 24px !important;
           }
           .hero-grid > div:last-child {
-            height: clamp(380px, 95vw, 460px) !important;
+            height: clamp(430px, 112vw, 510px) !important;
             width: 100%;
           }
           /* Make PremiumIPhone fill its mobile frame — fixes off-center */
@@ -332,8 +332,8 @@ export default function Hero() {
           .hero-headline-glow { display: none !important; }
         }
         @media (max-width: 768px) {
-          .hero-scene-col { order: -1; }
-          .hero-text-col  { order: 1; }
+          .hero-scene-col { order: 1; }
+          .hero-text-col  { order: -1; }
           .hero-btn-secondary  { display: none !important; }
           .hero-cta-footnote   { display: none !important; }
           .hero-metrics        { display: none !important; }

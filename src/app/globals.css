@@ -396,17 +396,23 @@ body::before {
 /* Mobile overrides for hero scene */
 @media (max-width: 767px) {
   .hero-phone-frame {
-    width: 204px !important;
-    height: 416px !important;
-    border-radius: 38px !important;
-    padding: 6px !important;
+    width: 224px !important;
+    height: 458px !important;
+    border-radius: 42px !important;
+    padding: 7px !important;
   }
   .hero-phone-island {
-    width: 95px !important;
-    height: 32px !important;
-    top: 17px !important;
+    width: 105px !important;
+    height: 35px !important;
+    top: 19px !important;
   }
   .hero-scene { min-height: 540px !important; }
+
+  /* Scale down internal phone-screen content so Pay button + checkout rows fit */
+  .hero-phone-screen > div {
+    transform: scale(0.88) !important;
+    transform-origin: center center !important;
+  }
 }
 
 /* =========================================================
